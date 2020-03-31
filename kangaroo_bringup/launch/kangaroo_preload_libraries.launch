@@ -1,0 +1,6 @@
+<launch>
+
+  <include file="$(find kangaroo_controller_configuration)/launch/default_controllers.launch" />
+
+</launch>
+

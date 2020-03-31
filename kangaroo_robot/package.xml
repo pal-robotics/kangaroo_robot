@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>kangaroo_robot</name>
+  <version>0.0.1</version>
+  <description>Description and launch files for the kangaroo robot</description>
+  <maintainer email="luca.marchionni@pal-robotics.com">Luca Marchionni</maintainer>
+  <license>Propietary</license>
+  <author email="luca.marchionni@pal-robotics.com">Luca Marchionni</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>kangaroo_description</exec_depend>
+  <exec_depend>kangaroo_bringup</exec_depend>
+  <exec_depend>kangaroo_controller_configuration</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>
+

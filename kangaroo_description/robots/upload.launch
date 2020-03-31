@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <arg name="robot" default=""/>
+  <arg name="parameter_name" default="robot_description"/>
+  <arg name="enable_crane" default="true"/> 
+  <!-- Robot description -->
+  <param
+      name="$(arg parameter_name)"
+      command=" $(find xacro)/xacro --inorder
+                '$(find kangaroo_description)/robots/kangaroo.urdf.xacro'
+                enable_crane:=$(arg enable_crane) robot:=$(arg robot)"
+      />
+</launch>

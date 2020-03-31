@@ -1,0 +1,13 @@
+<launch>
+
+  <!-- Hardware configuration -->
+  <rosparam command="load" file="$(find kangaroo_bringup)/config/kangaroo_common_hardware.yaml" />
+
+  <include file="$(find kangaroo_description)/robots/upload.launch" />
+
+  <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch" />
+
+  <!-- Hardware specific bringup -->
+  <include file="$(find kangaroo_controller_configuration)/launch/bringup_controllers_hardware.launch" />
+
+</launch>

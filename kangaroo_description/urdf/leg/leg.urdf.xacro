@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.transmission.xacro" />
+
+  <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
+  <xacro:property name="eps_radians"      value="0.008" /> <!-- 0.45deg -->
+  <xacro:property name="eps_meters"       value="0.005" />
+  <xacro:property name="leg_reduction"    value="1.0" />
+  <xacro:property name="leg_friction"     value="0.0" />
+  <xacro:property name="leg_damping"      value="0.0" />
+
+
+  <xacro:macro name="kangaroo_leg" params="prefix reflect parent">
+dasbfsb
+   
+    <joint name="leg_${prefix}_1_joint" type="revolute">
+      <parent link="${parent}"/>
+      <child link="leg_${prefix}_1_link"/>
+      <origin xyz="0.0 0.15 -0.1"
+              rpy="${0.00000 * deg_to_rad} ${0.00000 * deg_to_rad} ${0.00000 * deg_to_rad}"/>
+      <axis xyz="0 1 0" />
+      <limit lower="${-80.0 *deg_to_rad}" upper="${80.0*deg_to_rad}" effort="100" velocity="3.87" />
+      <dynamics friction="${leg_friction}" damping="${leg_damping}"/>
+    </joint>
+
+    <link name="leg_${prefix}_1_link">
+      <inertial>
+        <mass value="3.0"/>
+        <inertia ixx="0.15337403915" ixy="0.00068913396" ixz="0.00168034366" iyy="0.13648139346" iyz="-0.02187635445" izz="0.03001594885" />
+        <origin rpy="0 0 0" xyz="0.00 0.0 -0.19"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 -0.19"/>
+        <geometry>
+          <cylinder length="0.38" radius="0.02"/>
+        </geometry>
+        <material name="DarkGrey" />
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 -0.19"/>
+        <geometry>
+          <cylinder length="0.38" radius="0.02"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="leg_${prefix}_2_joint" type="revolute">
+      <parent link="leg_${prefix}_1_link"/>
+      <child link="leg_${prefix}_2_link"/>
+      <origin xyz="0.00000 0.00000 -0.38"
+              rpy="${0.00000 * deg_to_rad} ${0.00000 * deg_to_rad} ${0.00000 * deg_to_rad}"/>
+      <axis xyz="0 1 0" />
+     <limit lower="${40.0 *deg_to_rad}" upper="${160.0*deg_to_rad}" effort="100" velocity="3.87" />
+      <dynamics friction="${leg_friction}" damping="${leg_damping}"/>
+    </joint>
+
+
+    <link name="leg_${prefix}_2_link">
+      <inertial>
+        <mass value="2.0"/>
+        <inertia ixx="0.04287677484" ixy="0.00043705397" ixz="0.00078292368" iyy="0.03598906971" iyz="0.00037717694" izz="0.01364791564" />
+        <origin rpy="0 0 0" xyz="0.0 0.0 -0.19"/>
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 -0.19"/>
+        <geometry>
+          <cylinder length="0.38" radius="0.02"/>
+        </geometry>
+        <material name="DarkGrey" />
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 -0.19"/>
+        <geometry>
+          <cylinder length="0.38" radius="0.02"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <xacro:kangaroo_leg_length_actuator_transmission side="${prefix}" number1="1" number2="2" femur="0.380" intersection_crank_axis="${0.360*5.8/9.2}" fbl11_long="0.360" fbl11_short="0.095" fbl21_fixed="0.1265" fbl21_long="0.099" fbl21_short="${0.1265/2.875}" crank_slider_long="0.120" crank_slider_short="0.090" crank_slider_axis_angle="{-5.0*deg_to_rad}" shin_offset_angle="{-5.0*deg_to_rad}" connection_fbl_offset_angle="{5.0*deg_to_rad}" knee_angle_min ="{40*deg_to_rad}" knee_angle_max="{160*deg_to_rad}" />
+   
+
+   <gazebo reference="leg_${prefix}_1_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${prefix}_2_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+
+   <gazebo reference="leg_${prefix}_1_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${prefix}_2_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+
+  <gazebo reference="leg_${prefix}_1_link">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="leg_${prefix}_2_link">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  </xacro:macro>
+
+</robot>

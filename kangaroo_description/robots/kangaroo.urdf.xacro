@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2020, PAL Robotics, S.L.
+  All rights reserved.
+-->
+<robot name="kangaroo" xmlns:xacro="http://ros.org/wiki/xacro"
+        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <xacro:if value="$(arg enable_crane)">
+    <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
+  </xacro:if>
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
+
+  <xacro:if value="$(arg enable_crane)">
+    <xacro:crane parent="base_link"/>
+  </xacro:if>
+
+  <!--************************-->
+  <!--        BASE_LINK       -->
+  <!--************************-->
+  <link name="base_link">
+     <inertial>
+       <mass value="15.36284"/>
+       <inertia ixx="0.20105075811" ixy="0.00023244734" ixz="0.0040167728" iyy="0.08411496729" iyz="-0.00087206649" izz="0.2318908414" />
+       <origin rpy="0 0 0" xyz="-0.05709419 0.00153054 -0.0762521"/>
+     </inertial>
+     <visual>
+       <origin xyz="0 0 0" rpy="0 0 0" />
+       <geometry>
+         <box size="0.4 0.3 0.2"/>
+       </geometry>
+       <material name="LightGrey" />
+     </visual>
+     <collision>
+       <origin xyz="0 0 0" rpy="0 0 0" />
+       <geometry>
+         <box size="0.3 0.3 0.2"/>
+       </geometry>
+     </collision>
+  </link>
+
+  <xacro:kangaroo_leg prefix="left" reflect="1" parent="base_link"/>
+  <!-- Generic simulator_gazebo plugins -->
+  <xacro:include filename="$(find kangaroo_description)/gazebo/gazebo.urdf.xacro" />
+  <!-- Materials for visualization -->
+  <xacro:include filename="$(find kangaroo_description)/urdf/materials.urdf.xacro" />
+
+</robot>
