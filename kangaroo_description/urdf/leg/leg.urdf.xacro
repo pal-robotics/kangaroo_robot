@@ -13,10 +13,10 @@
   <xacro:property name="leg_2_max_pos"   value="${42.5 *deg_to_rad}" />
   <xacro:property name="leg_3_min_pos"   value="${27.0 *deg_to_rad}" />
   <xacro:property name="leg_3_max_pos"   value="${-27.0 *deg_to_rad}" />
-  <xacro:property name="leg_4_min_pos"   value="${0.0 *deg_to_rad}" />
-  <xacro:property name="leg_4_max_pos"   value="${60.0 *deg_to_rad}" />
-  <xacro:property name="leg_5_min_pos"   value="${0.0 *deg_to_rad}" />
-  <xacro:property name="leg_5_max_pos"   value="${120.0 *deg_to_rad}" />
+  <xacro:property name="leg_4_min_pos"   value="${10.0 *deg_to_rad}" />
+  <xacro:property name="leg_4_max_pos"   value="${70.0 *deg_to_rad}" />
+  <xacro:property name="leg_5_min_pos"   value="${20.0 *deg_to_rad}" />
+  <xacro:property name="leg_5_max_pos"   value="${140.0 *deg_to_rad}" />
   <xacro:property name="leg_6_min_pos"   value="${-42.5 *deg_to_rad}" />
   <xacro:property name="leg_6_max_pos"   value="${42.5 *deg_to_rad}" />
   <xacro:property name="leg_7_min_pos"   value="${-27.0 *deg_to_rad}" />
@@ -136,7 +136,7 @@
       </collision>
     </link>
     <joint name="leg_${side}_4_joint" type="revolute">
-      <origin xyz="0 ${reflect * 0.0669} -0.09" rpy="0 0 0" />
+      <origin xyz="0 ${reflect * 0.0669} -0.09" rpy="0 ${-10.0 * deg_to_rad} 0" />
       <parent link="leg_${side}_3_link" />
       <child link="leg_${side}_4_link" />
       <axis xyz="0 1 0" />
@@ -166,7 +166,7 @@
       </collision>
     </link>
     <joint name="leg_${side}_5_joint" type="revolute">
-      <origin xyz="0.37413 0 -0.066509" rpy="0 0 0" />
+      <origin xyz="0.37413 0 -0.066509" rpy="0 ${20.0 * deg_to_rad} 0" />
       <parent link="leg_${side}_4_link" />
       <child link="leg_${side}_5_link" />
       <axis xyz="0 -1 0" />
