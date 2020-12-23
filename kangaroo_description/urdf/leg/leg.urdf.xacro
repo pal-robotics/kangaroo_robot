@@ -11,8 +11,8 @@
   <xacro:property name="leg_1_max_pos"   value="${40.0 *deg_to_rad}" />
   <xacro:property name="leg_2_min_pos"   value="${-42.5 *deg_to_rad}" />
   <xacro:property name="leg_2_max_pos"   value="${42.5 *deg_to_rad}" />
-  <xacro:property name="leg_3_min_pos"   value="${27.0 *deg_to_rad}" />
-  <xacro:property name="leg_3_max_pos"   value="${-27.0 *deg_to_rad}" />
+  <xacro:property name="leg_3_min_pos"   value="${-27.0 *deg_to_rad}" />
+  <xacro:property name="leg_3_max_pos"   value="${27.0 *deg_to_rad}" />
   <xacro:property name="leg_4_min_pos"   value="${10.0 *deg_to_rad}" />
   <xacro:property name="leg_4_max_pos"   value="${70.0 *deg_to_rad}" />
   <xacro:property name="leg_5_min_pos"   value="${20.0 *deg_to_rad}" />
@@ -109,7 +109,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="leg_${side}_2_link" />
       <child link="leg_${side}_3_link" />
-      <axis xyz="1 0 0" />
+      <axis xyz="-1 0 0" />
       <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="0" velocity="0" />
     </joint>
     <link name="leg_${side}_4_link">
