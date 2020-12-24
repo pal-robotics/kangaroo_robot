@@ -9,14 +9,10 @@
         xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-<!--   <xacro:if value="$(arg enable_crane)">
-    <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
-  </xacro:if> -->
-  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
-<!-- 
   <xacro:if value="$(arg enable_crane)">
-    <xacro:crane parent="base_link"/>
-  </xacro:if> -->
+    <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
+  </xacro:if>
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
 
   <!--************************-->
   <!--        BASE_LINK       -->
@@ -45,6 +41,9 @@
     </collision>
   </link>
 
+  <xacro:if value="$(arg enable_crane)">
+    <xacro:crane parent="base_link"/>
+  </xacro:if>
   <xacro:kangaroo_leg side="left" reflect="1" parent="base_link">
     <origin xyz="-0.01602 0.08 -0.0585" rpy="0 0 0" />
   </xacro:kangaroo_leg>
