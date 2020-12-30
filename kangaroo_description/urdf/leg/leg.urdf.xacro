@@ -236,6 +236,7 @@
 
     <xacro:kangaroo_leg_length_actuator_transmission side="${side}" number1="1" number2="2" femur="0.380" intersection_crank_axis="${0.360*5.8/9.2}" fbl11_long="0.360" fbl11_short="0.095" fbl21_fixed="0.1265" fbl21_long="0.099" fbl21_short="${0.1265/2.875}" crank_slider_long="0.120" crank_slider_short="0.090" crank_slider_axis_angle="{-5.0*deg_to_rad}" shin_offset_angle="{-5.0*deg_to_rad}" connection_fbl_offset_angle="{5.0*deg_to_rad}" knee_angle_min ="{40*deg_to_rad}" knee_angle_max="{160*deg_to_rad}" />
     -->
+    <xacro:kangaroo_lower_body_simple_simulation_transmission side="${side}"/>
 
    <gazebo reference="leg_${side}_1_link">
      <mu1>0.9</mu1>
