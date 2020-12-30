@@ -52,8 +52,8 @@
     <origin xyz="-0.01602 -0.08 -0.0585" rpy="0 0 0" />
   </xacro:kangaroo_leg>
   <!-- Generic simulator_gazebo plugins -->
-  <!-- <xacro:include filename="$(find kangaroo_description)/gazebo/gazebo.urdf.xacro" /> -->
+  <xacro:include filename="$(find kangaroo_description)/gazebo/gazebo.urdf.xacro" />
   <!-- Materials for visualization -->
-  <!-- <xacro:include filename="$(find kangaroo_description)/urdf/materials.urdf.xacro" /> -->
+  <xacro:include filename="$(find kangaroo_description)/urdf/materials.urdf.xacro" />
 
 </robot>
