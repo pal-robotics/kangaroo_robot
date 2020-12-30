@@ -245,6 +245,26 @@
      <mu1>0.9</mu1>
      <mu2>0.9</mu2>
    </gazebo>
+   <gazebo reference="leg_${side}_3_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${side}_4_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${side}_5_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${side}_6_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${side}_7_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
 
    <gazebo reference="leg_${side}_1_joint">
       <implicitSpringDamper>1</implicitSpringDamper>
@@ -252,12 +272,42 @@
    <gazebo reference="leg_${side}_2_joint">
       <implicitSpringDamper>1</implicitSpringDamper>
    </gazebo>
+   <gazebo reference="leg_${side}_3_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${side}_4_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${side}_5_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${side}_6_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${side}_7_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
 
   <gazebo reference="leg_${side}_1_link">
-    <material>Gazebo/FlatBlack</material>
+    <material>Gazebo/FlatWhite</material>
   </gazebo>
   <gazebo reference="leg_${side}_2_link">
+    <material>Gazebo/FlatWhite</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_3_link">
+    <material>Gazebo/FlatWhite</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_4_link">
     <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_5_link">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_6_link">
+    <material>Gazebo/FlatWhite</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_7_link">
+    <material>Gazebo/FlatWhite</material>
   </gazebo>
 
   </xacro:macro>
