@@ -50,7 +50,7 @@
       <parent link="${parent}" />
       <child link="leg_${side}_1_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="0" velocity="0" />
+      <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="100" velocity="3.87" />
     </joint>
     <link name="leg_${side}_2_link">
       <inertial>
@@ -80,7 +80,7 @@
       <parent link="leg_${side}_1_link" />
       <child link="leg_${side}_2_link" />
       <axis xyz="0 1 0" />
-      <limit lower="${leg_2_min_pos}" upper="${leg_2_max_pos}" effort="0" velocity="0" />
+      <limit lower="${leg_2_min_pos}" upper="${leg_2_max_pos}" effort="100" velocity="3.87" />
     </joint>
     <link name="leg_${side}_3_link">
       <inertial>
@@ -110,7 +110,7 @@
       <parent link="leg_${side}_2_link" />
       <child link="leg_${side}_3_link" />
       <axis xyz="-1 0 0" />
-      <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="0" velocity="0" />
+      <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="100" velocity="3.87" />
     </joint>
     <link name="leg_${side}_4_link">
       <inertial>
@@ -140,7 +140,7 @@
       <parent link="leg_${side}_3_link" />
       <child link="leg_${side}_4_link" />
       <axis xyz="0 1 0" />
-      <limit lower="${leg_4_min_pos}" upper="${leg_4_max_pos}" effort="0" velocity="0" />
+      <limit lower="${leg_4_min_pos}" upper="${leg_4_max_pos}" effort="100" velocity="3.87" />
     </joint>
     <link name="leg_${side}_5_link">
       <inertial>
@@ -170,7 +170,7 @@
       <parent link="leg_${side}_4_link" />
       <child link="leg_${side}_5_link" />
       <axis xyz="0 -1 0" />
-      <limit lower="${leg_5_min_pos}" upper="${leg_5_max_pos}" effort="0" velocity="0" />
+      <limit lower="${leg_5_min_pos}" upper="${leg_5_max_pos}" effort="100" velocity="3.87" />
     </joint>
     <link name="leg_${side}_6_link">
       <inertial>
@@ -200,7 +200,7 @@
       <parent link="leg_${side}_5_link" />
       <child link="leg_${side}_6_link" />
       <axis xyz="0 1 0" />
-      <limit lower="${leg_6_min_pos}" upper="${leg_6_max_pos}" effort="0" velocity="0" />
+      <limit lower="${leg_6_min_pos}" upper="${leg_6_max_pos}" effort="100" velocity="3.87" />
     </joint>
     <link name="leg_${side}_7_link">
       <inertial>
@@ -230,7 +230,7 @@
       <parent link="leg_${side}_6_link" />
       <child link="leg_${side}_7_link" />
       <axis xyz="-0.93969 0 0.34202" />
-      <limit lower="${leg_7_min_pos}" upper="${leg_7_max_pos}" effort="0" velocity="0" />
+      <limit lower="${leg_7_min_pos}" upper="${leg_7_max_pos}" effort="100" velocity="3.87" />
     </joint>
 <!-- 
 
