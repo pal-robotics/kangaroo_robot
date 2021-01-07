@@ -50,7 +50,12 @@
       <parent link="${parent}" />
       <child link="leg_${side}_1_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="100" velocity="3.87" />
+      <xacro:if value="${reflect == 1}">
+        <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="100" velocity="3.87" />
+      </xacro:if>
+      <xacro:if value="${reflect == -1}">
+        <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="100" velocity="3.87" />
+      </xacro:if>
     </joint>
     <link name="leg_${side}_2_link">
       <inertial>
