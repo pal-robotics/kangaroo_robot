@@ -21,8 +21,11 @@
   <xacro:property name="leg_6_max_pos"   value="${42.5 *deg_to_rad}" />
   <xacro:property name="leg_7_min_pos"   value="${-27.0 *deg_to_rad}" />
   <xacro:property name="leg_7_max_pos"   value="${27.0 *deg_to_rad}" />
+  <xacro:property name="leg_min_length"   value="0.131973" />
+  <xacro:property name="leg_max_length"   value="0.71416639" />
 
-  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin">
+
+  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin simulation:=false">
     <link name="leg_${side}_1_link">
       <inertial>
         <origin xyz="0.0461079574284527 -0.000826631128234001 0.00897630312181676" rpy="0 0 0" />
@@ -237,11 +240,16 @@
       <axis xyz="-0.93969 0 0.34202" />
       <limit lower="${leg_7_min_pos}" upper="${leg_7_max_pos}" effort="100" velocity="3.87" />
     </joint>
-<!-- 
 
-    <xacro:kangaroo_leg_length_actuator_transmission side="${side}" number1="1" number2="2" femur="0.380" intersection_crank_axis="${0.360*5.8/9.2}" fbl11_long="0.360" fbl11_short="0.095" fbl21_fixed="0.1265" fbl21_long="0.099" fbl21_short="${0.1265/2.875}" crank_slider_long="0.120" crank_slider_short="0.090" crank_slider_axis_angle="{-5.0*deg_to_rad}" shin_offset_angle="{-5.0*deg_to_rad}" connection_fbl_offset_angle="{5.0*deg_to_rad}" knee_angle_min ="{40*deg_to_rad}" knee_angle_max="{160*deg_to_rad}" />
-    -->
-    <xacro:kangaroo_lower_body_simple_simulation_transmission side="${side}"/>
+    <xacro:unless value="${simulation}">
+      <xacro:hip_transmission_yaw side="${side}" number="1" reduction="1.0" />
+      <xacro:hip_transmission_roll_pitch side="${side}" roll_joint="3" pitch_joint="2" />
+      <xacro:kangaroo_leg_length_actuator_transmission side="${side}" number1="4" number2="5" leg_min_length="${leg_min_length}" leg_max_length="${leg_max_length}" femur="0.380" intersection_crank_axis="0.155693813961639" fbl11_long="0.404273" fbl11_short="0.090" fbl21_fixed="0.115" fbl21_long="0.090" fbl21_short="0.040" crank_slider_long="0.215" crank_slider_short="0.090" crank_slider_axis_angle="${-15.65*deg_to_rad}" shin_offset_angle="${0.0*deg_to_rad}" connection_fbl_offset_angle="${-45.0*deg_to_rad}" shin_fbl11_offset_angle="${-15.00*deg_to_rad}" knee_angle_min ="${leg_5_min_pos - 5.0 *deg_to_rad}" knee_angle_max="${leg_5_max_pos + 5.0 *deg_to_rad}" femur_angle_min="${leg_4_min_pos}" femur_angle_max="${leg_4_max_pos}" />
+      <xacro:kangaroo_ankle_transmission side="${side}" roll_joint="7" pitch_joint="6" read_actuator="leg_${side}_length_motor" />
+    </xacro:unless>
+    <xacro:if value="${simulation}">
+      <xacro:kangaroo_lower_body_simple_simulation_transmission side="${side}"/>
+    </xacro:if>
 
    <gazebo reference="leg_${side}_1_link">
      <mu1>0.9</mu1>
