@@ -4,6 +4,7 @@
   <arg name="gzpose" default="-x 0.0 -y 0.0 -z 1.1 -R 0.0 -P 0.0 -Y 0.0"/>
   <arg name="debug" default="false"/>
   <arg name="fixed_testbench" default="true"/>
+  <arg name="simulation" default="true"/> 
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
     <arg name="debug" value="$(arg debug)"/>
@@ -11,6 +12,7 @@
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
     <arg name="enable_crane" value="true"/> 
+    <arg name="simulation" value="$(arg simulation)"/> 
   </include>
 
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"

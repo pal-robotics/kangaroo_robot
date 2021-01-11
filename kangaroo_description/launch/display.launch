@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
-  <include file="$(find kangaroo_description)/robots/upload.launch"/>
+  <arg name="simulation" default="true"/> 
+
+  <include file="$(find kangaroo_description)/robots/upload.launch">
+  	<arg name="simulation" value="$(arg simulation)"/> 
+  </include>
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kangaroo_description)/config/rviz.rviz" />
