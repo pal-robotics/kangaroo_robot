@@ -147,5 +147,119 @@
       </joint>
     </transmission>
   </xacro:macro>
+
+  <xacro:macro name="hip_transmission_roll_pitch" params="side roll_joint pitch_joint">
+    <transmission name="leg_${side}_transmission_roll_pitch">
+      <type>pal_transmissions/HipCustomTransmission</type>
+      <actuator name="leg_${side}_${roll_joint}_motor">
+        <role>actuator1</role>
+        <virtual_linear_actuator>
+          <screw_lead> 0.005 </screw_lead>
+          <efficiency> 0.9 </efficiency>
+          <limits>
+            <position>
+              <min> 0.0 </min>
+              <max> 0.10 </max>
+            </position>
+            <velocity>
+              <min> -0.3 </min>
+              <max> 0.3 </max>
+            </velocity>
+          </limits>
+        </virtual_linear_actuator>
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <actuator name="leg_${side}_${pitch_joint}_motor">
+        <role>actuator2</role>
+        <virtual_linear_actuator>
+          <screw_lead> 0.005 </screw_lead>
+          <efficiency> 0.9 </efficiency>
+          <limits>
+            <position>
+              <min> 0.0 </min>
+              <max> 0.10 </max>
+            </position>
+            <velocity>
+              <min> -0.3 </min>
+              <max> 0.3 </max>
+            </velocity>
+          </limits>
+        </virtual_linear_actuator>
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <joint name="leg_${side}_${roll_joint}_joint">
+        <role>joint1</role>
+        <limits>
+          <position>
+            <min> ${ -27.0 * deg_to_rad} </min>
+            <max> ${ 27.0 * deg_to_rad} </max>
+          </position>
+        </limits>
+        <configuration>
+          <offset_x> 0.0035 </offset_x>
+          <offset_y> 0.0051 </offset_y>
+          <projected_distance> 0.17650 </projected_distance>
+          <dx> 0.0035 </dx>
+          <dy> 0.0060 </dy>
+        </configuration>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <joint name="leg_${side}_${pitch_joint}_joint">
+        <role>joint2</role>
+        <limits>
+          <position>
+            <min> ${ -42.5 * deg_to_rad} </min>
+            <max> ${ 42.5 * deg_to_rad} </max>
+          </position>
+        </limits>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="hip_transmission_yaw" params="side number reduction">
+    <transmission name="leg_${side}_transmission_yaw">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="leg_${side}_${number}_motor" >
+        <mechanicalReduction>${reduction}</mechanicalReduction>
+      </actuator>
+      <joint name="leg_${side}_${number}_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="kangaroo_ankle_transmission" params="side roll_joint pitch_joint read_actuator">
+    <transmission name="leg_${side}_transmission">
+      <type>pal_transmissions/AnkleCustomTransmission</type>
+      <actuator name="leg_${side}_${roll_joint}_motor">
+        <role>right_actuator</role>
+        <param_ns>/ankle_params</param_ns>
+      </actuator>
+      <actuator name="leg_${side}_${pitch_joint}_motor">
+        <role>left_actuator</role>
+      </actuator>
+      <actuator name="${read_actuator}">
+        <role>leg_length</role>
+        <param_ns>/leg_params</param_ns>
+      </actuator>
+      <joint name="leg_${side}_${roll_joint}_joint">
+        <role>roll_joint</role>
+        <offset> 0.0 </offset>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <joint name="leg_${side}_${pitch_joint}_joint">
+        <role>pitch_joint</role>
+        <offset> 0.0 </offset>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
 </robot>
 
