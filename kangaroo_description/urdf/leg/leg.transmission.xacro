@@ -77,34 +77,6 @@
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
-    <transmission name="leg_${side}_6_transmission">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="leg_${side}_6_motor" >
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-        <mechanicalReduction>1.0</mechanicalReduction>
-      </actuator>
-      <joint name="leg_${side}_6_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-      </joint>
-    </transmission>
-    <transmission name="leg_${side}_7_transmission">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="leg_${side}_7_motor" >
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-        <mechanicalReduction>1.0</mechanicalReduction>
-      </actuator>
-      <joint name="leg_${side}_7_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-      </joint>
-    </transmission>
   </xacro:macro>
 
   <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side number1 number2 leg_min_length leg_max_length femur intersection_crank_axis fbl11_long fbl11_short fbl21_fixed fbl21_long fbl21_short crank_slider_long crank_slider_short crank_slider_axis_angle shin_offset_angle connection_fbl_offset_angle shin_fbl11_offset_angle knee_angle_min knee_angle_max femur_angle_min femur_angle_max" >
@@ -226,35 +198,6 @@
         <mechanicalReduction>${reduction}</mechanicalReduction>
       </actuator>
       <joint name="leg_${side}_${number}_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-    </transmission>
-  </xacro:macro>
-
-  <xacro:macro name="kangaroo_ankle_transmission" params="side roll_joint pitch_joint read_actuator">
-    <transmission name="leg_${side}_transmission">
-      <type>pal_transmissions/AnkleCustomTransmission</type>
-      <actuator name="leg_${side}_${roll_joint}_motor">
-        <role>right_actuator</role>
-        <param_ns>/ankle_params</param_ns>
-      </actuator>
-      <actuator name="leg_${side}_${pitch_joint}_motor">
-        <role>left_actuator</role>
-      </actuator>
-      <actuator name="${read_actuator}">
-        <role>leg_length</role>
-        <param_ns>/leg_params</param_ns>
-      </actuator>
-      <joint name="leg_${side}_${roll_joint}_joint">
-        <role>roll_joint</role>
-        <offset> 0.0 </offset>
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <joint name="leg_${side}_${pitch_joint}_joint">
-        <role>pitch_joint</role>
-        <offset> 0.0 </offset>
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
