@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2020, PAL Robotics, S.L.
+  All rights reserved.
+-->
+<robot name="kangaroo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="kangaroo_ankle_simple_simulation_transmission" params="side pitch_joint roll_joint">
+    <transmission name="leg_${side}_${pitch_joint}_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="leg_${side}_${pitch_joint}_motor" >
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <joint name="leg_${side}_${pitch_joint}_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
+    <transmission name="leg_${side}_${roll_joint}_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="leg_${side}_${roll_joint}_motor" >
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <joint name="leg_${side}_${roll_joint}_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="kangaroo_ankle_transmission" params="side roll_joint pitch_joint read_actuator">
+    <transmission name="leg_${side}_transmission">
+      <type>pal_transmissions/AnkleCustomTransmission</type>
+      <actuator name="leg_${side}_${roll_joint}_motor">
+        <role>right_actuator</role>
+        <param_ns>/ankle_params</param_ns>
+      </actuator>
+      <actuator name="leg_${side}_${pitch_joint}_motor">
+        <role>left_actuator</role>
+      </actuator>
+      <actuator name="${read_actuator}">
+        <role>leg_length</role>
+        <param_ns>/leg_params</param_ns>
+      </actuator>
+      <joint name="leg_${side}_${roll_joint}_joint">
+        <role>roll_joint</role>
+        <offset> 0.0 </offset>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <joint name="leg_${side}_${pitch_joint}_joint">
+        <role>pitch_joint</role>
+        <offset> 0.0 </offset>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+</robot>
+
