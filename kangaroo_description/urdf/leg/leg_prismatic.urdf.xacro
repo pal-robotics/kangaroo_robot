@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.transmission.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle.urdf.xacro" />
+
+  <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
+  <xacro:property name="eps_radians"      value="0.008" /> <!-- 0.45deg -->
+  <xacro:property name="eps_meters"       value="0.005" />
+  <xacro:property name="leg_1_min_pos"   value="${-15.0 *deg_to_rad}" />
+  <xacro:property name="leg_1_max_pos"   value="${40.0 *deg_to_rad}" />
+  <xacro:property name="leg_2_min_pos"   value="${-42.5 *deg_to_rad}" />
+  <xacro:property name="leg_2_max_pos"   value="${42.5 *deg_to_rad}" />
+  <xacro:property name="leg_3_min_pos"   value="${-27.0 *deg_to_rad}" />
+  <xacro:property name="leg_3_max_pos"   value="${27.0 *deg_to_rad}" />
+  <xacro:property name="leg_4_min_pos"   value="${10.0 *deg_to_rad}" />
+  <xacro:property name="leg_4_max_pos"   value="${70.0 *deg_to_rad}" />
+  <xacro:property name="leg_5_min_pos"   value="${20.0 *deg_to_rad}" />
+  <xacro:property name="leg_5_max_pos"   value="${140.0 *deg_to_rad}" />
+  <xacro:property name="leg_min_length"   value="0.131973" />
+  <xacro:property name="leg_max_length"   value="0.71416639" />
+
+
+  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin simulation:=false type:=dynamic">
+    <link name="leg_${side}_1_link">
+      <inertial>
+        <origin xyz="0.0461079574284527 -0.000826631128234001 0.00897630312181676" rpy="0 0 0" />
+        <mass value="2.49954419149183" />
+        <inertia ixx="0.00151181747940305" ixy="${reflect * 8.83298140320242E-06}" ixz="${reflect * 2.17752660615735E-05}" iyy="0.00154876023440654" iyz="${reflect * -1.94449871986378E-05}" izz="0.00136106613590181" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl" scale="1 ${reflect} 1"/>
+        </geometry>
+        <material name="">
+          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl" scale="1 ${reflect} 1"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="leg_${side}_1_joint" type="revolute">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}" />
+      <child link="leg_${side}_1_link" />
+      <axis xyz="0 0 1" />
+      <xacro:if value="${reflect == 1}">
+        <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="100" velocity="3.87" />
+      </xacro:if>
+      <xacro:if value="${reflect == -1}">
+        <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="100" velocity="3.87" />
+      </xacro:if>
+    </joint>
+    <link name="leg_${side}_2_link">
+      <inertial>
+        <origin xyz="-0.00299642516878475 -0.000101293190038279 6.76277450706309E-10" rpy="0 0 0" />
+        <mass value="0.0907287903783648" />
+        <inertia ixx="6.10402208807908E-06" ixy="${reflect * 3.54403077254796E-08}" ixz="${reflect * -3.0910293306339E-13}"
+          iyy="3.90470919341026E-05" iyz="${reflect * -1.14069181428674E-12}" izz="3.64238433670963E-05" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_2_link.stl" scale="1 ${reflect} 1"/>
+        </geometry>
+        <material name="">
+          <color rgba="0.894117647058823 0.913725490196078 0.929411764705882 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_2_link.stl" scale="1 ${reflect} 1"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="leg_${side}_2_joint" type="revolute">
+      <origin xyz="0.016042 0 -0.0925" rpy="0 0 0" />
+      <parent link="leg_${side}_1_link" />
+      <child link="leg_${side}_2_link" />
+      <axis xyz="0 1 0" />
+      <limit lower="${leg_2_min_pos}" upper="${leg_2_max_pos}" effort="100" velocity="3.87" />
+    </joint>
+    <link name="leg_${side}_3_link">
+      <inertial>
+        <origin xyz="-0.042791492019428 0.0477271400490046 -0.0411219993940296" rpy="0 0 0" />
+        <mass value="3.66987205802361" />
+        <inertia ixx="0.00226579365890287" ixy="${reflect * 0.000186528466622377}" ixz="${reflect * -9.4464170720752E-05}"
+          iyy="0.00347844100338387" iyz="${reflect * 4.48424073671215E-05}" izz="0.00335571040406776" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_3_link.stl" scale="1 ${reflect} 1"/>
+        </geometry>
+        <material name="">
+          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_3_link.stl" scale="1 ${reflect} 1"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="leg_${side}_3_joint" type="revolute">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="leg_${side}_2_link" />
+      <child link="leg_${side}_3_link" />
+      <axis xyz="-1 0 0" />
+      <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="100" velocity="3.87" />
+    </joint>
+    <link name="leg_${side}_4_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0.0 0.0 ${leg_min_length/2.0}"/>
+				<!-- TODO: update inertia and mass -->
+        <mass value="3.57408268817521" /> 
+        <inertia ixx="0.00247170768644724" ixy="2.87874888621229E-05" ixz="0.00247469186737281"
+          iyy="0.0126050262407564" iyz="1.01404330133204E-05" izz="0.0116319632922522" />
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 ${leg_min_length/2.0}"/>
+        <geometry>
+          <cylinder length="${leg_min_length}" radius="0.02"/>
+        </geometry>
+        <material name="DarkGrey" />
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 ${leg_min_length/2.0}"/>
+        <geometry>
+          <cylinder length="${leg_min_length}" radius="0.02"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="leg_${side}_length_fixed_joint" type="fixed">
+      <origin xyz="0 ${reflect * 0.0669} -0.09" rpy="0 ${180 * deg_to_rad} 0" />
+      <parent link="leg_${side}_3_link" />
+      <child link="leg_${side}_4_link" />
+      <axis xyz="0 0 1" />
+    </joint>
+    <link name="leg_${side}_5_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0.0 0.0 ${-leg_min_length}"/>
+				<!-- TODO: update inertia and mass -->
+        <mass value="0.87223211672797" />
+        <inertia ixx="0.000350603269949793" ixy="6.37793331536252E-07" ixz="-0.000461550351107159"
+          iyy="0.00242184402988972" iyz="5.09327556678297E-07" izz="0.0022368624903808" />
+      </inertial>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 ${(leg_min_length - leg_max_length)/2}"/>
+        <geometry>
+          <cylinder length="${(leg_max_length - leg_min_length)}" radius="0.02"/>
+        </geometry>
+        <material name="DarkGrey" />
+      </visual>
+      <!--<collision>
+        <origin rpy="0 0 0" xyz="0 0 ${(leg_min_length - leg_max_length)/2}"/>
+        <geometry>
+          <cylinder length="${(leg_min_length - leg_max_length)}" radius="0.02"/>
+        </geometry>
+      </collision> -->
+    </link>
+    <joint name="leg_${side}_5_joint" type="prismatic">
+     <origin xyz="0.0 0.0 ${leg_min_length}"  rpy="0.0 0.0 0.0"/>
+      <parent link="leg_${side}_4_link" />
+      <child link="leg_${side}_5_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="0" upper="${leg_max_length - leg_min_length}" effort="100" velocity="10" /> <!-- TODO: update effort and velocity -->
+    </joint>
+
+    <xacro:if value="${type=='dynamic'}" >
+      <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_5_link" reflect="${reflect}" roll_joint="7" pitch_joint="6" read_actuator="leg_${side}_length_motor">
+        <origin xyz="0. 0. 0." rpy="0 ${180 * deg_to_rad} 0" />
+      </xacro:kangaroo_ankle>
+    </xacro:if>
+
+    <xacro:unless value="${simulation}">
+      <xacro:hip_transmission_yaw side="${side}" number="1" reduction="1.0" />
+      <xacro:hip_transmission_roll_pitch side="${side}" roll_joint="3" pitch_joint="2" />
+      <xacro:kangaroo_leg_length_actuator_transmission side="${side}" number1="4" number2="5" leg_min_length="${leg_min_length}" leg_max_length="${leg_max_length}" femur="0.380" intersection_crank_axis="0.155693813961639" fbl11_long="0.404273" fbl11_short="0.090" fbl21_fixed="0.115" fbl21_long="0.090" fbl21_short="0.040" crank_slider_long="0.215" crank_slider_short="0.090" crank_slider_axis_angle="${-15.65*deg_to_rad}" shin_offset_angle="${0.0*deg_to_rad}" connection_fbl_offset_angle="${-45.0*deg_to_rad}" shin_fbl11_offset_angle="${-15.00*deg_to_rad}" knee_angle_min ="${leg_5_min_pos - 5.0 *deg_to_rad}" knee_angle_max="${leg_5_max_pos + 5.0 *deg_to_rad}" femur_angle_min="${leg_4_min_pos}" femur_angle_max="${leg_4_max_pos}" />
+    </xacro:unless>
+    <xacro:if value="${simulation}">
+      <xacro:kangaroo_lower_body_simple_simulation_transmission side="${side}" prismatic="$(arg prismatic)"/>
+    </xacro:if>
+
+   <gazebo reference="leg_${side}_1_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${side}_2_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${side}_3_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${side}_4_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+   <gazebo reference="leg_${side}_5_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+   </gazebo>
+
+   <gazebo reference="leg_${side}_1_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${side}_2_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${side}_3_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${side}_length_fixed_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="leg_${side}_5_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+
+  <gazebo reference="leg_${side}_1_link">
+    <material>Gazebo/FlatWhite</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_2_link">
+    <material>Gazebo/FlatWhite</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_3_link">
+    <material>Gazebo/FlatWhite</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_4_link">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  <gazebo reference="leg_${side}_5_link">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  </xacro:macro>
+
+</robot>
