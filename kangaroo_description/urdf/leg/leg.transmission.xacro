@@ -49,36 +49,36 @@
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
-	  <xacro:unless value="$(arg prismatic)">
-		  <transmission name="leg_${side}_4_transmission">
-		    <type>transmission_interface/SimpleTransmission</type>
-		    <actuator name="leg_${side}_4_motor" >
-		      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-		      <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-		      <mechanicalReduction>1.0</mechanicalReduction>
-		    </actuator>
-		    <joint name="leg_${side}_4_joint">
-		      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-		      <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-		    </joint>
-		  </transmission>
-		</xacro:unless>
-    <transmission name="leg_${side}_5_transmission">
+    <transmission name="leg_${side}_4_transmission">
       <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="leg_${side}_5_motor" >
+      <actuator name="leg_${side}_4_motor" >
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
         <mechanicalReduction>1.0</mechanicalReduction>
       </actuator>
-      <joint name="leg_${side}_5_joint">
+      <joint name="leg_${side}_4_joint">
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
+    <xacro:unless value="$(arg prismatic)">
+      <transmission name="leg_${side}_5_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="leg_${side}_5_motor" >
+          <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+          <mechanicalReduction>1.0</mechanicalReduction>
+        </actuator>
+        <joint name="leg_${side}_5_joint">
+          <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+        </joint>
+      </transmission>
+    </xacro:unless>
   </xacro:macro>
 
   <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side number1 number2 leg_min_length leg_max_length femur intersection_crank_axis fbl11_long fbl11_short fbl21_fixed fbl21_long fbl21_short crank_slider_long crank_slider_short crank_slider_axis_angle shin_offset_angle connection_fbl_offset_angle shin_fbl11_offset_angle knee_angle_min knee_angle_max femur_angle_min femur_angle_max" >

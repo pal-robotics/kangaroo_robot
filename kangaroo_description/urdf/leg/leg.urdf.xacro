@@ -179,8 +179,8 @@
 		    <limit lower="${leg_5_min_pos}" upper="${leg_5_max_pos}" effort="100" velocity="3.87" />
 		  </joint>
     </xacro:unless>
-    <xacro:if value="${type=='prismatic'}" > <!-- load the model with the leg lenght prismatic joint-->
-			 <link name="leg_${side}_4_link">
+    <xacro:if value="${type=='prismatic'}" > <!-- load the model with the leg length prismatic joint-->
+			 <link name="leg_${side}_length_fixed_link">
 		    <inertial>
 		      <origin rpy="0 0 0" xyz="0.0 0.0 ${-leg_min_length/2.0}"/>
 					<!-- TODO: update inertia and mass -->
@@ -205,10 +205,10 @@
 		  <joint name="leg_${side}_length_fixed_joint" type="fixed">
 		    <origin xyz="0 ${reflect * 0.0669} -0.09" rpy="0 0 0" />
 		    <parent link="leg_${side}_3_link" />
-		    <child link="leg_${side}_4_link" />
+		    <child link="leg_${side}_length_fixed_link" />
 		    <axis xyz="0 0 0" />
 		  </joint>
-		  <link name="leg_${side}_5_link">
+		  <link name="leg_${side}_4_link">
 		    <inertial>
 		      <origin rpy="0 0 0" xyz="0.0 0.0 ${(leg_max_length - leg_min_length)/2}"/>
 					<!-- TODO: update inertia and mass -->
@@ -230,10 +230,10 @@
 		      </geometry>
 		    </collision> -->
 		  </link>
-		  <joint name="leg_${side}_5_joint" type="prismatic">
+		  <joint name="leg_${side}_4_joint" type="prismatic">
 		   <origin xyz="0.0 0.0 ${-leg_min_length}"  rpy="0.0 0.0 0.0"/>
-		    <parent link="leg_${side}_4_link" />
-		    <child link="leg_${side}_5_link" />
+		    <parent link="leg_${side}_length_fixed_link" />
+		    <child link="leg_${side}_4_link" />
 		    <axis xyz="0 0 -1" />
 		    <limit lower="0" upper="${leg_max_length - leg_min_length}" effort="100" velocity="10" /> <!-- TODO: update effort and velocity -->
 		  </joint>
@@ -244,8 +244,8 @@
       </xacro:kangaroo_ankle>
     </xacro:if>
     <xacro:if value="${type=='prismatic'}" >
-      <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_5_link" reflect="${reflect}" roll_joint="7" pitch_joint="6" read_actuator="leg_${side}_length_motor">
-        <origin xyz="0. 0 -0." rpy="0 0 0" />
+      <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_4_link" reflect="${reflect}" roll_joint="6" pitch_joint="5" read_actuator="leg_${side}_length_motor">
+        <origin xyz="0 0 0" rpy="0 0 0" />
       </xacro:kangaroo_ankle>
     </xacro:if>
 
