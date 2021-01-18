@@ -2,9 +2,11 @@
 
 <launch>
   <arg name="simulation" default="true"/> 
+  <arg name="prismatic" default="false"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
   	<arg name="simulation" value="$(arg simulation)"/> 
+    <arg name="prismatic" value="$(arg prismatic)"/>
   </include>
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
