@@ -6,7 +6,7 @@
 -->
 <robot name="kangaroo" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="kangaroo_lower_body_simple_simulation_transmission" params="side">
+  <xacro:macro name="kangaroo_lower_body_simple_simulation_transmission" params="side prismatic">
     <transmission name="leg_${side}_1_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <actuator name="leg_${side}_1_motor" >
@@ -49,20 +49,22 @@
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
-    <transmission name="leg_${side}_4_transmission">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="leg_${side}_4_motor" >
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-        <mechanicalReduction>1.0</mechanicalReduction>
-      </actuator>
-      <joint name="leg_${side}_4_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-      </joint>
-    </transmission>
+	  <xacro:unless value="$(arg prismatic)">
+		  <transmission name="leg_${side}_4_transmission">
+		    <type>transmission_interface/SimpleTransmission</type>
+		    <actuator name="leg_${side}_4_motor" >
+		      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+		      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		      <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+		      <mechanicalReduction>1.0</mechanicalReduction>
+		    </actuator>
+		    <joint name="leg_${side}_4_joint">
+		      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+		      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		      <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+		    </joint>
+		  </transmission>
+		</xacro:unless>
     <transmission name="leg_${side}_5_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <actuator name="leg_${side}_5_motor" >
