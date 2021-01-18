@@ -8,11 +8,16 @@
 
 
   <arg name="controllers" default="" /> <!-- override default controllers -->
+  <arg name="prismatic" default="false" />
 
+	<group if="$(arg prismatic)" >
+   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/leg_left_prismatic.yaml"/>
+   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/leg_right_prismatic.yaml"/>
+	</group>
+	<group unless="$(arg prismatic)">
    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/leg_left.yaml"/>
-
    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/leg_right.yaml"/>
-
+  </group>
   <arg name="controllers_to_load"
       value="left_leg_controller right_leg_controller" />
 
