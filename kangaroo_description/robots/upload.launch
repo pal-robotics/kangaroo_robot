@@ -4,11 +4,12 @@
   <arg name="parameter_name" default="robot_description"/>
   <arg name="enable_crane" default="false"/> 
   <arg name="simulation" default="false"/> 
+	<arg name="prismatic" default="false"/>
   <!-- Robot description -->
   <param
       name="$(arg parameter_name)"
       command=" $(find xacro)/xacro --inorder
                 '$(find kangaroo_description)/robots/kangaroo.urdf.xacro'
-                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation)"
+                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) prismatic:=$(arg prismatic)"
       />
 </launch>

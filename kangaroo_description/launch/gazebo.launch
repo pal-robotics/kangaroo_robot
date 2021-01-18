@@ -5,6 +5,7 @@
   <arg name="debug" default="false"/>
   <arg name="fixed_testbench" default="true"/>
   <arg name="simulation" default="true"/> 
+	<arg name="prismatic" default="false"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch" >
     <arg name="debug" value="$(arg debug)"/>
@@ -13,13 +14,15 @@
   <include file="$(find kangaroo_description)/robots/upload.launch">
     <arg name="enable_crane" value="true"/> 
     <arg name="simulation" value="$(arg simulation)"/> 
+    <arg name="prismatic" value="$(arg prismatic)"/> 
   </include>
 
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo" />
 
-  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch"/>
-
+  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
+		<arg name="prismatic" value="$(arg prismatic)"/> 
+  </include>
 
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
 
