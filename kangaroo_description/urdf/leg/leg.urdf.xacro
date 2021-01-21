@@ -270,14 +270,22 @@
      <mu1>0.9</mu1>
      <mu2>0.9</mu2>
    </gazebo>
+   <xacro:if value="${type=='prismatic'}" >
+		 <gazebo reference="leg_${side}_length_fixed_link">
+		   <mu1>0.9</mu1>
+		   <mu2>0.9</mu2>
+		 </gazebo>
+   </xacro:if>
    <gazebo reference="leg_${side}_4_link">
      <mu1>0.9</mu1>
      <mu2>0.9</mu2>
    </gazebo>
-   <gazebo reference="leg_${side}_5_link">
-     <mu1>0.9</mu1>
-     <mu2>0.9</mu2>
-   </gazebo>
+   <xacro:unless value="${type=='prismatic'}" >
+		 <gazebo reference="leg_${side}_5_link">
+		   <mu1>0.9</mu1>
+		   <mu2>0.9</mu2>
+		 </gazebo>
+   </xacro:unless>
 
    <gazebo reference="leg_${side}_1_joint">
       <implicitSpringDamper>1</implicitSpringDamper>
@@ -288,14 +296,14 @@
    <gazebo reference="leg_${side}_3_joint">
       <implicitSpringDamper>1</implicitSpringDamper>
    </gazebo>
+	 <gazebo reference="leg_${side}_4_joint">
+	    <implicitSpringDamper>1</implicitSpringDamper>
+	 </gazebo>
 	 <xacro:unless value="${type=='prismatic'}" >
-		 <gazebo reference="leg_${side}_4_joint">
+		 <gazebo reference="leg_${side}_5_joint">
 		    <implicitSpringDamper>1</implicitSpringDamper>
 		 </gazebo>
 	 </xacro:unless>
-   <gazebo reference="leg_${side}_5_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-   </gazebo>
 
   <gazebo reference="leg_${side}_1_link">
     <material>Gazebo/FlatWhite</material>
