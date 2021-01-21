@@ -39,8 +39,10 @@
   </link>
 
   <xacro:if value="$(arg enable_crane)">
-    <!-- <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" /> -->
-    <!-- <xacro:crane parent="base_link"/> -->
+    <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
+    <xacro:crane parent="base_link"/>
+  </xacro:if>
+  <xacro:if value="$(arg fixed_base)">
     <link name="world"/>
     <joint name="world_base_link" type="fixed">
       <origin xyz="0.0 0.0 1.2" rpy="0.0  0.0  0.0"/>
