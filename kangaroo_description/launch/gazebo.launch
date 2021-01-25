@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
-  <arg name="gzpose" default="-x 0.0 -y 0.0 -z 0.65 -R 0.0 -P 0.0 -Y 0.0"/>
+  <arg name="gzpose" default="-x 0.0 -y 0.0 -z 0.4 -R 0.0 -P 0.0 -Y 0.0"/>
   <arg name="debug" default="false"/>
   <arg name="enable_crane" default="false"/> 
   <arg name="simulation" default="true"/> 
