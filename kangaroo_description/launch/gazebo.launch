@@ -46,12 +46,11 @@
 
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
 
-	<group if="$(arg prismatic)" >
-    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/pids_prismatic.yaml"/>
-	</group>
-	<group unless="$(arg prismatic)">
-    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/pids.yaml"/>
-	</group>
+  <arg if="$(arg prismatic)" name="pids_filename" value="pids_prismatic.yaml" />
+  <arg unless="$(arg prismatic)"  name="pids_filename"  value="pids.yaml" />
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/$(arg pids_filename)"/>
+
+
   <!-- Robot state publisher -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0"/>
