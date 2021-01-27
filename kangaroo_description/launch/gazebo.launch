@@ -38,7 +38,7 @@
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
         $(arg joints_positions_args)
-        " />
+        -unpause" />
 
   <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
 		<arg name="prismatic" value="$(arg prismatic)"/> 
