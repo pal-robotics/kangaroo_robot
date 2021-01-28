@@ -31,10 +31,10 @@
       name="joints_positions_args"
       value=" -J leg_left_4_joint 0.698
               -J leg_left_5_joint 1.396
-              -J leg_left_6_joint 0.52
+              -J leg_left_6_joint 0.53
               -J leg_right_4_joint 0.698
               -J leg_right_5_joint 1.396
-              -J leg_right_6_joint 0.52" />
+              -J leg_right_6_joint 0.53" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
         $(arg joints_positions_args)
@@ -46,9 +46,11 @@
 
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
 
-  <arg if="$(arg prismatic)" name="pids_filename" value="pids_prismatic.yaml" />
-  <arg unless="$(arg prismatic)"  name="pids_filename"  value="pids.yaml" />
-  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/$(arg pids_filename)"/>
+  <arg if="$(arg fixed_base)" name="pids_filename_contact_suffixe" value="" />
+  <arg unless="$(arg fixed_base)"  name="pids_filename_contact_suffixe"  value="_contact" />
+  <arg if="$(arg prismatic)" name="pids_filename_suffixe" value="$(arg pids_filename_contact_suffixe)_prismatic" />
+  <arg unless="$(arg prismatic)" name="pids_filename_suffixe" value="$(arg pids_filename_contact_suffixe)" />
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/pids$(arg pids_filename_suffixe).yaml"/>
 
 
   <!-- Robot state publisher -->
