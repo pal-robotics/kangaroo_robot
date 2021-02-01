@@ -51,12 +51,13 @@
     </joint>
   </xacro:if>
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
-	<xacro:if value="$(arg prismatic)">
-  	<xacro:property name="leg_type"       value="prismatic" />
+  <xacro:if value="$(arg prismatic)">
+    <xacro:property name="leg_type"       value="prismatic" />
   </xacro:if>
-	<xacro:unless value="$(arg prismatic)">
-  	<xacro:property name="leg_type"       value="dynamic" />
+  <xacro:unless value="$(arg prismatic)">
+    <xacro:property name="leg_type"       value="dynamic" />
   </xacro:unless>
+
   <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)" type="${leg_type}">
     <origin xyz="-0.01602 0.08 -0.0585" rpy="0 0 0" />
   </xacro:kangaroo_leg>

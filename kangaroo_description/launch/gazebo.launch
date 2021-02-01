@@ -41,7 +41,7 @@
         -unpause" />
 
   <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
-		<arg name="prismatic" value="$(arg prismatic)"/> 
+    <arg name="prismatic" value="$(arg prismatic)"/> 
   </include>
 
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>

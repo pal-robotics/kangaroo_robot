@@ -6,7 +6,7 @@
   <arg name="fixed_base" default="true"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
-  	<arg name="simulation" value="$(arg simulation)"/> 
+    <arg name="simulation" value="$(arg simulation)"/> 
     <arg name="prismatic" value="$(arg prismatic)"/>
     <arg name="fixed_base" default="$(arg fixed_base)"/>
   </include>
