@@ -5,8 +5,7 @@ left_leg_controller:
     - leg_left_1_joint
     - leg_left_2_joint
     - leg_left_3_joint
-    - leg_left_4_joint
-    - leg_left_5_joint
+    - leg_left_length_joint
     - leg_left_6_joint
     - leg_left_7_joint
   constraints:
@@ -18,9 +17,7 @@ left_leg_controller:
       goal: *goal_pos_constraint
     leg_left_3_joint:
       goal: *goal_pos_constraint
-    leg_left_4_joint:
-      goal: *goal_pos_constraint
-    leg_left_5_joint:
+    leg_left_length_joint:
       goal: *goal_pos_constraint
     leg_left_6_joint:
       goal: *goal_pos_constraint

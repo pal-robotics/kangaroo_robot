@@ -251,7 +251,7 @@
     <xacro:unless value="${simulation}">
       <xacro:hip_transmission_yaw side="${side}" number="1" reduction="1.0" />
       <xacro:hip_transmission_roll_pitch side="${side}" roll_joint="3" pitch_joint="2" />
-      <xacro:kangaroo_leg_length_actuator_transmission side="${side}" number1="4" number2="5" leg_min_length="${leg_min_length}" leg_max_length="${leg_max_length}" femur="0.380" intersection_crank_axis="0.155693813961639" fbl11_long="0.404273" fbl11_short="0.090" fbl21_fixed="0.115" fbl21_long="0.090" fbl21_short="0.040" crank_slider_long="0.215" crank_slider_short="0.090" crank_slider_axis_angle="${-15.65*deg_to_rad}" shin_offset_angle="${0.0*deg_to_rad}" connection_fbl_offset_angle="${-45.0*deg_to_rad}" shin_fbl11_offset_angle="${-15.00*deg_to_rad}" knee_angle_min ="${leg_5_min_pos - 5.0 *deg_to_rad}" knee_angle_max="${leg_5_max_pos + 5.0 *deg_to_rad}" femur_angle_min="${leg_4_min_pos}" femur_angle_max="${leg_4_max_pos}" />
+      <xacro:kangaroo_leg_length_actuator_transmission side="${side}" number1="4" number2="5" params_ns="/leg_params" />
     </xacro:unless>
     <xacro:if value="${simulation}">
       <xacro:kangaroo_lower_body_simple_simulation_transmission side="${side}" prismatic="${type=='prismatic'}"/>
