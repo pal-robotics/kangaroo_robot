@@ -180,7 +180,6 @@
       </joint>
     </xacro:unless>
     <xacro:if value="${type=='prismatic'}" > <!-- load the model with the leg length prismatic joint-->
-<<<<<<< HEAD
        <link name="leg_${side}_length_fixed_link">
         <inertial>
           <origin rpy="0 0 0" xyz="0.0 0.0 ${-leg_min_length/2.0}"/>
