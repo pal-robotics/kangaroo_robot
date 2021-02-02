@@ -235,7 +235,7 @@
         <parent link="leg_${side}_length_fixed_link" />
         <child link="leg_${side}_4_link" />
         <axis xyz="0 0 -1" />
-        <limit lower="0" upper="${leg_max_length - leg_min_length}" effort="100" velocity="10" /> <!-- TODO: update effort and velocity -->
+        <limit lower="0" upper="${leg_max_length - leg_min_length}" effort="500" velocity="10" /> <!-- TODO: update effort and velocity -->
       </joint>
     </xacro:if>
     <xacro:if value="${type=='dynamic'}" >
@@ -248,7 +248,6 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
       </xacro:kangaroo_ankle>
     </xacro:if>
-
     <xacro:unless value="${simulation}">
       <xacro:hip_transmission_yaw side="${side}" number="1" reduction="1.0" />
       <xacro:hip_transmission_roll_pitch side="${side}" roll_joint="3" pitch_joint="2" />
