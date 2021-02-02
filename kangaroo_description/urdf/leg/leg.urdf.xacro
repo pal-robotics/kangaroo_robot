@@ -180,6 +180,7 @@
       </joint>
     </xacro:unless>
     <xacro:if value="${type=='prismatic'}" > <!-- load the model with the leg length prismatic joint-->
+<<<<<<< HEAD
        <link name="leg_${side}_length_fixed_link">
         <inertial>
           <origin rpy="0 0 0" xyz="0.0 0.0 ${-leg_min_length/2.0}"/>
@@ -195,12 +196,12 @@
           </geometry>
           <material name="DarkGrey" />
         </visual>
-        <collision>
+        <!--<collision>
           <origin rpy="0 0 0" xyz="0 0 ${-leg_min_length/2.0}"/>
           <geometry>
             <cylinder length="${leg_min_length}" radius="0.02"/>
           </geometry>
-        </collision>
+        </collision>-->
       </link>
       <joint name="leg_${side}_length_fixed_joint" type="fixed">
         <origin xyz="0 ${reflect * 0.0669} -0.09" rpy="0 0 0" />
