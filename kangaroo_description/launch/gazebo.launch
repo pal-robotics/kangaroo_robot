@@ -31,12 +31,14 @@
              -J leg_right_4_joint 0.36" />
   <arg unless="$(arg prismatic)"
       name="joints_positions_args"
-      value=" -J leg_left_4_joint 0.698
+      value=" -J leg_left_2_joint 0.02
+              -J leg_left_4_joint 0.698
               -J leg_left_5_joint 1.396
-              -J leg_left_6_joint 0.53
+              -J leg_left_6_joint 0.52
+              -J leg_right_2_joint 0.02
               -J leg_right_4_joint 0.698
               -J leg_right_5_joint 1.396
-              -J leg_right_6_joint 0.53" />
+              -J leg_right_6_joint 0.52" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
         $(arg joints_positions_args)
