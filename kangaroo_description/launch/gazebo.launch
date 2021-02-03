@@ -25,7 +25,9 @@
       Values here for leg length = 642.8 => theta = 50°, beta = 100°-->
   <arg if="$(arg prismatic)"
       name="joints_positions_args"
-      value="-J leg_left_4_joint 0.36
+      value="-J leg_left_2_joint 0.005
+             -J leg_left_4_joint 0.36
+             -J leg_right_2_joint 0.005
              -J leg_right_4_joint 0.36" />
   <arg unless="$(arg prismatic)"
       name="joints_positions_args"
