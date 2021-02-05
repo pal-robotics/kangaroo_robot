@@ -85,15 +85,24 @@
      <mu1>0.9</mu1>
      <mu2>0.9</mu2>
    </gazebo>
-   <gazebo reference="leg_${side}_${roll_joint}_link">
-     <mu1>0.9</mu1>
-     <mu2>0.9</mu2>
-   </gazebo>
+
+  <!-- contact model for foot surface -->
+  <gazebo reference="leg_{side}_${roll_joint}_link">
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <fdir1>1 0 0</fdir1>
+    <maxVel>1.0</maxVel>
+    <minDepth>0.00</minDepth>
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
 
    <gazebo reference="leg_${side}_${pitch_joint}_joint">
       <implicitSpringDamper>1</implicitSpringDamper>
    </gazebo>
    <gazebo reference="leg_${side}_${roll_joint}_joint">
+      <provideFeedback>1</provideFeedback>
       <implicitSpringDamper>1</implicitSpringDamper>
    </gazebo>
 
