@@ -11,8 +11,10 @@
 
    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/leg_left.yaml"/>
 
+   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/leg_right.yaml"/>
+
   <arg name="controllers_to_load"
-      value="left_leg_controller" />
+      value="left_leg_controller right_leg_controller" />
 
   <arg unless="$(eval arg('controllers') == '')"
       name="controllers_to_load"

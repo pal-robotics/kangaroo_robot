@@ -1,0 +1,31 @@
+ankle_params:
+  motor_origin_offset_angle: !degrees 60.0
+  m_O_TL1_angle: !degrees 5.0 
+  pitch_offset_angle: !degrees 20.0
+  TL2_BR1_BL1_angle: !degrees 60.0
+  M_O: 0.0867 
+  m_O: 0.035
+  dx: 0.035
+  dy: 0.060
+  kho: 0.0425
+  fbl_short: 0.060
+  fbl_long: 0.380
+  ball_screw_lead: 0.005
+  ball_screw_efficiency: 0.9
+
+leg_params:
+  femur_length: 0.380
+  fbl11_long: 0.360
+  fbl11_short: 0.095
+  intersection_crank_axis: 0.226956522
+  fbl21_fixed: 0.1265
+  fbl21_long: 0.099
+  fbl21_short: 0.044
+  crank_slider_long: 0.120
+  crank_slider_short: 0.090
+  crank_slider_axis_angle: -0.087266463
+  shin_offset_angle: -0.087266463
+  connection_fbl_offset_angle: 0.087266463
+  shin_fbl11_offset_angle: -0.274889357
+  knee_angle_min: !degrees 15.0 # 5 degrees less than actual
+  knee_angle_max: !degrees 145.0 # 5 degrees more than actual
