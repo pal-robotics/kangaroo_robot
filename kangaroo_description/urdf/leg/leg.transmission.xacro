@@ -6,7 +6,7 @@
 -->
 <robot name="kangaroo" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="kangaroo_lower_body_simple_simulation_transmission" params="side prismatic">
+  <xacro:macro name="kangaroo_lower_body_simple_simulation_transmission" params="side">
     <transmission name="leg_${side}_1_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <actuator name="leg_${side}_1_motor" >
@@ -63,58 +63,67 @@
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
-    <xacro:unless value="$(arg prismatic)">
-      <transmission name="leg_${side}_5_transmission">
-        <type>transmission_interface/SimpleTransmission</type>
-        <actuator name="leg_${side}_5_motor" >
-          <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-          <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-          <mechanicalReduction>1.0</mechanicalReduction>
-        </actuator>
-        <joint name="leg_${side}_5_joint">
-          <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-          <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-        </joint>
-      </transmission>
-    </xacro:unless>
-  </xacro:macro>
-
-  <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side number1 number2 leg_min_length leg_max_length femur intersection_crank_axis fbl11_long fbl11_short fbl21_fixed fbl21_long fbl21_short crank_slider_long crank_slider_short crank_slider_axis_angle shin_offset_angle connection_fbl_offset_angle shin_fbl11_offset_angle knee_angle_min knee_angle_max femur_angle_min femur_angle_max" >
-    <transmission name="leg_${side}_length_trans">
-      <type>pal_transmissions/LegCustomTransmission</type>
-      <actuator name="leg_${side}_length_motor">
-        <parameters>
-          <femur>${femur}</femur>
-          <fbl11_long>${fbl11_long}</fbl11_long>
-          <fbl11_short>${fbl11_short}</fbl11_short>
-          <intersection_crank_axis>${intersection_crank_axis}</intersection_crank_axis>
-          <fbl21_fixed>${fbl21_fixed}</fbl21_fixed>
-          <fbl21_long>${fbl21_long}</fbl21_long>
-          <fbl21_short>${fbl21_short}</fbl21_short>
-          <crank_slider_long>${crank_slider_long}</crank_slider_long>
-          <crank_slider_short>${crank_slider_short}</crank_slider_short>
-          <crank_slider_axis_angle>${crank_slider_axis_angle}</crank_slider_axis_angle>
-          <shin_offset_angle>${shin_offset_angle}</shin_offset_angle>
-          <connection_fbl_offset_angle>${connection_fbl_offset_angle} </connection_fbl_offset_angle>
-          <shin_fbl11_offset_angle>${shin_fbl11_offset_angle}</shin_fbl11_offset_angle>
-          <knee_angle_min>${knee_angle_min}</knee_angle_min>
-          <knee_angle_max>${knee_angle_max}</knee_angle_max>
-        </parameters>
+    <transmission name="leg_${side}_5_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="leg_${side}_5_motor" >
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <joint name="leg_${side}_5_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
+    <transmission name="leg_${side}_leg_length_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="leg_${side}_length_motor" >
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+        <mechanicalReduction>1.0</mechanicalReduction>
       </actuator>
       <joint name="leg_${side}_length_joint">
-        <role> leg_length </role>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side number1 number2 params_ns:=/leg_params" >
+    <transmission name="leg_${side}_${number1}_trans">
+      <type>pal_transmissions/LegCustomTransmission</type>
+      <actuator name="leg_${side}_leg_length_motor" >
+      </actuator>
+      <joint name="leg_${side}_${number1}_joint">
+        <joint_type> femur </joint_type>
+        <param_ns> ${params_ns} </param_ns>
         <offset> 0.0 </offset>
-        <limits>
-          <position>
-            <min> ${leg_min_length} </min>
-            <max> ${leg_max_length} </max>
-          </position>
-        </limits>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
+    <transmission name="leg_${side}_${number2}_trans">
+      <type>pal_transmissions/LegCustomTransmission</type>
+      <actuator name="leg_${side}_leg_length_motor" >
+      </actuator>
+      <joint name="leg_${side}_${number2}_joint">
+        <joint_type> knee </joint_type>
+        <param_ns> ${params_ns} </param_ns>
+        <offset> 0.0 </offset>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
+    <transmission name="leg_${side}_leg_length_trans">
+      <type>pal_transmissions/LegCustomTransmission</type>
+      <actuator name="leg_${side}_leg_length_motor" >
+      </actuator>
+      <joint name="leg_${side}_length_joint">
+        <joint_type> leg_length </joint_type>
+        <param_ns> ${params_ns} </param_ns>
+        <offset> 0.0 </offset>
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>

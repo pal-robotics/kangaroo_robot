@@ -38,7 +38,35 @@
   </xacro:macro>
 
   <xacro:macro name="kangaroo_ankle_transmission" params="side roll_joint pitch_joint read_actuator">
-    <transmission name="leg_${side}_transmission">
+    <transmission name="leg_${side}_${pitch_joint}_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="leg_${side}_${pitch_joint}_motor" >
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <joint name="leg_${side}_${pitch_joint}_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
+    <transmission name="leg_${side}_${roll_joint}_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="leg_${side}_${roll_joint}_motor" >
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <joint name="leg_${side}_${roll_joint}_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
+<!--     <transmission name="leg_${side}_transmission">
       <type>pal_transmissions/AnkleCustomTransmission</type>
       <actuator name="leg_${side}_${roll_joint}_motor">
         <role>right_actuator</role>
@@ -63,7 +91,7 @@
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
-    </transmission>
+    </transmission> -->
   </xacro:macro>
 
 </robot>
