@@ -9,7 +9,7 @@
         xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-
+  <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
 
   <!--************************-->
   <!--        BASE_LINK       -->
@@ -52,18 +52,11 @@
     </joint>
   </xacro:if>
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
-  <xacro:if value="$(arg prismatic)">
-    <xacro:property name="leg_type"       value="prismatic" />
-  </xacro:if>
-  <xacro:unless value="$(arg prismatic)">
-    <xacro:property name="leg_type"       value="dynamic" />
-  </xacro:unless>
 
-  <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)" type="${leg_type}">
+  <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)">
     <origin xyz="-0.01602 0.08 -0.0585" rpy="0 0 0" />
   </xacro:kangaroo_leg>
-  <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
-  <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" simulation="$(arg simulation)" type="${leg_type}">
+  <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" simulation="$(arg simulation)">
     <origin xyz="-0.01602 -0.08 -0.0585" rpy="0 0 0" />
   </xacro:kangaroo_leg>
   <!-- Generic simulator_gazebo plugins -->
