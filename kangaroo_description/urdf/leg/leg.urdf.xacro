@@ -182,9 +182,8 @@
       <inertial>
         <origin rpy="0 0 0" xyz="0.0 0.0 ${leg_min_length/2.0}"/>
         <!-- TODO: update inertia and mass -->
-        <mass value="0.1"/>
-        <inertia ixx="0.04287677484" ixy="0.00043705397" ixz="0.00078292368" 
-                iyy="0.03598906971" iyz="0.00037717694" izz="0.01364791564" />
+        <mass value="1.E-3" /> 
+        <inertia ixx="1.0E-05" ixy="0.0" ixz="0.0" iyy="1.0E-05" iyz="0.0" izz="1.0E-05" />
       </inertial>
       <visual>
         <origin rpy="0 0 0" xyz="0 0 ${leg_min_length/2.0}"/>
@@ -212,9 +211,8 @@
       <inertial>
         <origin rpy="0 0 0" xyz="0.0 0.0 ${(leg_max_length - leg_min_length)/2}"/>
         <!-- TODO: update inertia and mass -->
-        <mass value="3.57408268817521" /> 
-        <inertia ixx="0.00247170768644724" ixy="2.87874888621229E-05" ixz="0.00247469186737281"
-          iyy="0.0126050262407564" iyz="1.01404330133204E-05" izz="0.0116319632922522" />
+        <mass value="1.E-3" /> 
+        <inertia ixx="1.0E-05" ixy="0.0" ixz="0.0" iyy="1.0E-05" iyz="0.0" izz="1.0E-05" />
       </inertial>
       <visual>
         <origin rpy="0 0 0" xyz="0 0 ${(leg_min_length - leg_max_length)/2}"/>
