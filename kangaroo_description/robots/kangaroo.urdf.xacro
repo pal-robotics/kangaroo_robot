@@ -16,11 +16,10 @@
   <!--************************-->
   <link name="base_link">
     <inertial>
-      <origin xyz="-0.078625 0.0016806 0.12164" rpy="0 0 0" />
-      <mass
-        value="8.3635" />
-      <inertia ixx="0.051463" ixy="-2.3239E-05" ixz="0.000993" 
-        iyy="0.051275" iyz="7.7677E-05" izz="0.014591" />
+      <origin xyz="-0.060294 0.00050634 0.15428" rpy="0 0 0" />
+      <mass value="12.296" />
+      <inertia  ixx="0.084937" ixy="-4.4873E-05" ixz="0.0036119"
+        iyy="0.080587" iyz="0.0001781" izz="0.0247" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
