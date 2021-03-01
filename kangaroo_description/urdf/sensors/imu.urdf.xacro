@@ -7,11 +7,10 @@
   To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
   Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 -->
-<robot name="talos" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="kangaroo" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="talos_imu" params="name parent update_rate *origin">
+  <xacro:macro name="kangaroo_imu" params="name parent update_rate *origin">
     <link name="${name}_link">
-      <xacro:call macro="${name}_link_inertial" />
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>

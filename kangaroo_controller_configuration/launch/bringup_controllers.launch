@@ -7,7 +7,7 @@
 
 
   <!-- Joint state controller -->
-  <rosparam command="load" file="$(find joint_state_controller)/joint_state_controller.yaml" />
+  <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
 
   <!-- IMU sensors controller -->
   <rosparam command="load" file="$(find imu_sensor_controller)/imu_sensor_controller.yaml" />
@@ -25,6 +25,5 @@
   <node name="bringup_controllers_spawner"
         pkg="controller_manager" type="spawner" output="screen"
         args="$(arg extra_args)
-              imu_sensor_controller
-              joint_state_controller" />
+              imu_sensor_controller" />
 </launch>

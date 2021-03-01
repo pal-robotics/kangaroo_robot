@@ -170,7 +170,7 @@
       <visual>
         <origin rpy="0 0 0" xyz="0 0 ${(leg_min_length - leg_max_length)/2}"/>
         <geometry>
-          <cylinder length="${(leg_min_length - leg_max_length)}" radius="0.00005"/>
+          <cylinder length="${(leg_max_length - leg_min_length)}" radius="0.00005"/>
         </geometry>
         <material name="DarkGrey" />
       </visual>

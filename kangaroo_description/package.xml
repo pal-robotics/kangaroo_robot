@@ -10,6 +10,8 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <exec_depend>imu_sensor_controller</exec_depend>
+
   <export>
   </export>
 

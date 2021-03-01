@@ -5,11 +5,12 @@
   <arg name="debug" default="false"/>
   <arg name="enable_crane" default="false"/> 
   <arg name="simulation" default="true"/>
-  <arg name="fixed_base" default="true"/>
+  <arg name="fixed_base" default="false"/>
 
 
-  <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+  <include file="$(find pal_gazebo_worlds)/launch/pal_gazebo.launch" >
     <arg name="debug" value="$(arg debug)"/>
+    <arg name="world" value="empty_high_resolution"/>
     <arg name="paused" value="true"/>
   </include>
 
@@ -33,19 +34,14 @@
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
         $(arg joints_positions_args)" />
 
-  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch"/>
-
-  <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
-
+  <include file="$(find kangaroo_controller_configuration)/launch/default_controllers.launch"/>
+  
   <arg if="$(arg fixed_base)" name="pids_filename_suffix" value="" />
   <arg unless="$(arg fixed_base)"  name="pids_filename_suffix"  value="_contact" />
   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/pids$(arg pids_filename_suffix).yaml"/>
 
+  <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch" />
 
-  <!-- Robot state publisher -->
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
-    <param name="publish_frequency" type="double" value="50.0"/>
-    <param name="tf_prefix" type="string" value=""/>
-  </node>
+  <rosparam command="load" file="$(find kangaroo_bringup)/config/sensors/imu.yaml" />
 
 </launch>

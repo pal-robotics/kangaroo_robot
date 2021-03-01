@@ -68,6 +68,15 @@
       <limit lower="${roll_joint_min_pos}" upper="${roll_joint_max_pos}" effort="100" velocity="3.87" />
     </joint>
 
+    <link name="${side}_sole_link"/>
+
+    <joint name="${side}_sole_fix_joint" type="fixed">
+      <parent link="leg_${side}_${roll_joint}_link" />
+      <child link="${side}_sole_link" />
+      <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
+      <axis xyz="1 0 0" />
+    </joint>
+
     <xacro:unless value="${simulation}">
       <xacro:kangaroo_ankle_transmission side="${side}" roll_joint="${roll_joint}" pitch_joint="${pitch_joint}" read_actuator="${read_actuator}" />
     </xacro:unless>
