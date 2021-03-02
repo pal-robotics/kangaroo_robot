@@ -55,7 +55,7 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
 
   <xacro:kangaroo_imu name="imu" parent="base_link" update_rate="100.0">
-    <origin xyz="0.0 0.0 0.0" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${90.0*deg_to_rad}"/>
+    <origin xyz="-0.07075 0.0 0.012" rpy="${0.0*deg_to_rad} ${180.0*deg_to_rad} ${0.0*deg_to_rad}"/>
   </xacro:kangaroo_imu>
 
   <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)">
