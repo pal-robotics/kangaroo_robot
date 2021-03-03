@@ -73,7 +73,7 @@
     <joint name="${side}_sole_fix_joint" type="fixed">
       <parent link="leg_${side}_${roll_joint}_link" />
       <child link="${side}_sole_link" />
-      <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
+      <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
       <axis xyz="1 0 0" />
     </joint>
 
