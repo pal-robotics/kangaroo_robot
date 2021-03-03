@@ -83,13 +83,22 @@
     <xacro:if value="${simulation}">
       <xacro:kangaroo_ankle_simple_simulation_transmission side="${side}" roll_joint="${roll_joint}" pitch_joint="${pitch_joint}"/>
     </xacro:if>
+   
+    <gazebo reference="leg_${side}_${pitch_joint}_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    
+    </gazebo>
+    <gazebo reference="leg_${side}_${roll_joint}_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+      <provideFeedback>1</provideFeedback>
+     </gazebo>
 
-   <gazebo reference="leg_${side}_${pitch_joint}_link">
-     <mu1>0.9</mu1>
-     <mu2>0.9</mu2>
-     <implicitSpringDamper>1</implicitSpringDamper>
-     <material>Gazebo/FlatWhite</material>
-   </gazebo>
+    <gazebo reference="leg_${side}_${pitch_joint}_link">
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+      <implicitSpringDamper>1</implicitSpringDamper>
+      <material>Gazebo/FlatWhite</material>
+    </gazebo>
 
    <!--
    <gazebo reference="leg_${side}_${roll_joint}_link">
