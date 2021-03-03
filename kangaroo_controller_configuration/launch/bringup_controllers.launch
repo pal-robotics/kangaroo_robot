@@ -12,6 +12,8 @@
   <!-- IMU sensors controller -->
   <rosparam command="load" file="$(find imu_sensor_controller)/imu_sensor_controller.yaml" />
 
+  <rosparam command="load" file="$(find force_torque_sensor_controller)/force_torque_sensor_controller.yaml" />
+
 
   <arg if="$(arg enable_unloading_workaround)"
       name="extra_args"
@@ -25,5 +27,6 @@
   <node name="bringup_controllers_spawner"
         pkg="controller_manager" type="spawner" output="screen"
         args="$(arg extra_args)
+              force_torque_sensor_controller
               imu_sensor_controller" />
 </launch>
