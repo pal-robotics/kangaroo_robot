@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="prefix" />
+  <arg name="suffix" value=".yaml" />
+
+  <rosparam command="load" file="$(arg prefix)leg_left$(arg suffix)" />
+  <rosparam command="load" file="$(arg prefix)leg_right$(arg suffix)" />
+
+</launch>

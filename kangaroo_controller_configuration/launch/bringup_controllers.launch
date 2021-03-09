@@ -5,6 +5,8 @@
   -->
   <arg name="enable_unloading_workaround" default="false" />
 
+  <!-- Load Transmission Parameters -->
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/transmission_parameters.yaml" />
 
   <!-- Joint state controller -->
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
