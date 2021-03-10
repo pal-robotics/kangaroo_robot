@@ -144,6 +144,12 @@
           <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
         </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_4_link.stl"/>
+        </geometry>
+      </collision>
     </link>
     <link name="leg_${side}_knee_link">
       <inertial>
@@ -160,6 +166,12 @@
           <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
         </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_5_collision_link.stl"/>
+        </geometry>
+      </collision>
     </link>
     <link name="leg_${side}_length_link">
       <inertial>
