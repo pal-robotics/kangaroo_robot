@@ -11,4 +11,6 @@
       command=" $(find xacro)/xacro --inorder
                 '$(find kangaroo_description)/robots/kangaroo.urdf.xacro'
                 enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base)"/>
+
+  <rosparam command="load" file="$(find kangaroo_description)/config/collision_parameters.yaml" />
 </launch>

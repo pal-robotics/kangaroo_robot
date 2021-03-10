@@ -1,0 +1,25 @@
+collision_model_parameters:
+  padding: 0
+  links_with_padding: []
+  blacklist:
+    leg_joints:
+      - first: leg_right_1_link
+        second: left_sole_link
+      - first: leg_right_2_link
+        second: left_sole_link
+      - first: leg_left_1_link
+        second: right_sole_link
+      - first: leg_left_2_link
+        second: right_sole_link
+      - first: leg_right_2_link
+        second: leg_left_1_link
+      - first: leg_left_2_link
+        second: leg_right_1_link
+      - first: leg_left_1_link
+        second: leg_left_3_link
+      - first: leg_left_3_link
+        second: leg_left_1_link
+      - first: leg_right_1_link
+        second: leg_right_3_link
+      - first: leg_right_3_link
+        second: leg_right_1_link
