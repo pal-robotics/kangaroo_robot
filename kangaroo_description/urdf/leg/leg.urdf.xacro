@@ -151,7 +151,7 @@
         </geometry>
       </collision>
     </link>
-    <link name="leg_${side}_knee_link">
+    <!-- <link name="leg_${side}_knee_link">
       <inertial>
         <origin xyz="-0.158662729273678 -8.28192764317226E-05 -0.0337468261967321" rpy="0 0 0" />
         <mass value="0.1" />
@@ -172,7 +172,7 @@
           <mesh filename="package://kangaroo_description/meshes/leg_5_collision_link.stl"/>
         </geometry>
       </collision>
-    </link>
+    </link> -->
     <link name="leg_${side}_length_link">
       <inertial>
         <origin rpy="0 0 0" xyz="0.0 0.0 -0.2"/>
@@ -204,14 +204,14 @@
       <mimic joint="leg_${side}_length_joint" multiplier="1.69435" offset="-0.096145"/>
     </joint>
 
-    <joint name="leg_${side}_knee_joint" type="revolute">
+    <!-- <joint name="leg_${side}_knee_joint" type="revolute">
       <origin xyz="0.37413 0 -0.066509" rpy="0 ${20.0 * deg_to_rad} 0" />
       <parent link="leg_${side}_femur_link" />
       <child link="leg_${side}_knee_link" />
       <axis xyz="0 -1 0" />
       <limit lower="${leg_knee_min_pos}" upper="${leg_knee_max_pos}" effort="100" velocity="3.87" />
       <mimic joint="leg_${side}_length_joint" multiplier="3.38877" offset="-0.19229"/>
-    </joint>
+    </joint> -->
 
     <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_length_link" reflect="${reflect}" roll_joint="5" pitch_joint="4" read_actuator="leg_${side}_length_motor">
       <origin xyz="0.0 0 0.0" rpy="0 ${180 *deg_to_rad} 0" />
