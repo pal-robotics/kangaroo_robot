@@ -4,13 +4,13 @@ zeros:
   leg_left_3_joint:                   0.0
   leg_left_4_joint:                   -0.05
   leg_left_5_joint:                   0.0
-  leg_left_length_joint:              0.55           
+  leg_left_length_joint:              0.55
   leg_right_1_joint:                  0.0
   leg_right_2_joint:                  0.05
   leg_right_3_joint:                  0.0
   leg_right_4_joint:                  -0.05
   leg_right_5_joint:                  0.0
-  leg_right_length_joint:              0.55  
+  leg_right_length_joint:             0.55
 
 default_floating_base_pose:
   orientation:
