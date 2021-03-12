@@ -13,4 +13,5 @@
                 enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base)"/>
 
   <rosparam command="load" file="$(find kangaroo_description)/config/collision_parameters.yaml" />
+  <rosparam command="load" file="$(find kangaroo_description)/config/default_configuration_locomotion.yaml" />
 </launch>
