@@ -34,7 +34,7 @@
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
         $(arg joints_positions_args)" />
 
-  <include file="$(find kangaroo_controller_configuration)/launch/default_controllers.launch"/>
+  <!-- <include file="$(find kangaroo_controller_configuration)/launch/default_controllers.launch"/> -->
   
   <arg if="$(arg fixed_base)" name="pids_filename_suffix" value="" />
   <arg unless="$(arg fixed_base)"  name="pids_filename_suffix"  value="_contact" />
