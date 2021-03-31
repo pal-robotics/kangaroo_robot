@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <launch>
-  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch"/>
+
+  <arg name="simulation" default="false"/>
+
+  <include file="$(find kangaroo_controller_configuration)/launch/walking_controller.launch">
+  	<arg name="simulation" value="$(arg simulation)"/>
+  </include>
+
 </launch>
