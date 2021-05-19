@@ -126,7 +126,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="leg_${side}_2_link" />
       <child link="leg_${side}_3_link" />
-      <axis xyz="-1 0 0" />
+      <axis xyz="1 0 0" />
       <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="100" velocity="3.87" />
     </joint>
     <link name="leg_${side}_femur_link">
