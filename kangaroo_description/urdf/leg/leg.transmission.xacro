@@ -49,34 +49,6 @@
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
-    <!-- <transmission name="leg_${side}_4_transmission">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="leg_${side}_4_motor" >
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-        <mechanicalReduction>1.0</mechanicalReduction>
-      </actuator>
-      <joint name="leg_${side}_4_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-      </joint>
-    </transmission>
-    <transmission name="leg_${side}_5_transmission">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="leg_${side}_5_motor" >
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-        <mechanicalReduction>1.0</mechanicalReduction>
-      </actuator>
-      <joint name="leg_${side}_5_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-      </joint>
-    </transmission> -->
     <transmission name="leg_${side}_leg_length_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <actuator name="leg_${side}_length_motor" >
