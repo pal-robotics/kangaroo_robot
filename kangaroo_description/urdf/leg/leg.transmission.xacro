@@ -93,29 +93,7 @@
     </transmission>
   </xacro:macro>
 
-  <!-- <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side number1 number2 params_ns:=/leg_params" >
-    <transmission name="leg_${side}_${number1}_trans">
-      <type>pal_transmissions/LegCustomTransmission</type>
-      <actuator name="leg_${side}_length_motor" >
-      </actuator>
-      <joint name="leg_${side}_${number1}_joint">
-        <joint_type> femur </joint_type>
-        <param_ns> ${params_ns} </param_ns>
-        <offset> 0.0 </offset>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-      </joint>
-    </transmission>
-    <transmission name="leg_${side}_${number2}_trans">
-      <type>pal_transmissions/LegCustomTransmission</type>
-      <actuator name="leg_${side}_length_motor" >
-      </actuator>
-      <joint name="leg_${side}_${number2}_joint">
-        <joint_type> knee </joint_type>
-        <param_ns> ${params_ns} </param_ns>
-        <offset> 0.0 </offset>
-        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
-      </joint>
-    </transmission>
+  <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side number1 number2 params_ns:=/leg_params" >
     <transmission name="leg_${side}_leg_length_trans">
       <type>pal_transmissions/LegCustomTransmission</type>
       <actuator name="leg_${side}_length_motor" >
@@ -129,7 +107,7 @@
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
-  </xacro:macro> -->
+  </xacro:macro>
 
   <xacro:macro name="hip_transmission_roll_pitch" params="side roll_joint pitch_joint">
     <transmission name="leg_${side}_transmission_roll_pitch">
