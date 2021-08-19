@@ -129,11 +129,11 @@
           </position>
         </limits>
         <configuration>
-          <offset_x> 0.0035 </offset_x>
-          <offset_y> 0.0051 </offset_y>
+          <offset_x> 0.035 </offset_x>
+          <offset_y> 0.051 </offset_y>
           <projected_distance> 0.17650 </projected_distance>
-          <dx> 0.0035 </dx>
-          <dy> 0.0060 </dy>
+          <dx> 0.035 </dx>
+          <dy> 0.060 </dy>
         </configuration>
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
