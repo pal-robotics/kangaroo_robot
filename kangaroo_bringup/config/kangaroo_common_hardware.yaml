@@ -11,6 +11,10 @@ actuators:
     torque_sensor_port: act_torque
     temperature_sensor_port: act_temperature
     current_limit_cmd_port: ref_limit_current
+    pids_port: act_pids
+    ff_term_port: act_ff_term
+    pids_cmd_port: ref_pids
+    ff_term_cmd_port: ref_ff_term
 
 e_stop:
   raw_data:

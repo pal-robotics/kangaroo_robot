@@ -23,3 +23,7 @@ collision_model_parameters:
         second: leg_right_3_link
       - first: leg_right_3_link
         second: leg_right_1_link
+      - first: leg_right_3_link
+        second: leg_right_knee_link
+      - first: leg_left_3_link
+        second: leg_left_knee_link
