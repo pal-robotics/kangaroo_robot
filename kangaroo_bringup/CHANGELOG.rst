@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2021-08-30)
+------------------
 * Fix package version
 * Merge branch 'kangaroo_wbc' into 'master'
   Kangaroo wbc
