@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.3 (2021-08-30)
+------------------
 * Merge branch 'enable_ankle_transmission' into 'master'
   enable the ankle transmission on the real robot
   See merge request robots/kangaroo_robot!12
