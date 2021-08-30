@@ -3,10 +3,3 @@ imu:
     frame: imu_link
     gazebo_sensor_name: imu_sensor
 
-force_torque:
-  left_ankle_ft:
-    sensor_joint: leg_left_5_joint
-    frame: leg_left_5_link
-  right_ankle_ft:
-    sensor_joint: leg_right_5_joint
-    frame: leg_right_5_link
