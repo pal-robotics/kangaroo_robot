@@ -2,6 +2,17 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'enable_ankle_transmission' into 'master'
+  enable the ankle transmission on the real robot
+  See merge request robots/kangaroo_robot!12
+* added missing urdf_test dependency
+* fix the kangaroo_description tests
+* added test dependency of the rostest
+* enable the ankle transmission on the real robot
+* Contributors: Sai Kishor Kothakota, victor
+
 0.0.2 (2021-08-30)
 ------------------
 * Merge branch 'kangaroo_wbc' into 'master'
