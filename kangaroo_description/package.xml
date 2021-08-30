@@ -13,6 +13,9 @@
   <exec_depend>imu_sensor_controller</exec_depend>
   <exec_depend>force_torque_sensor_controller</exec_depend>
 
+  <test_depend>rostest</test_depend>
+  <test_depend>urdf_test</test_depend>
+
   <export>
   </export>
 

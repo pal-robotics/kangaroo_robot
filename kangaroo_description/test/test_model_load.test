@@ -1,9 +1,13 @@
 <launch>
 
-  <arg name="robot" />
+  <arg name="enable_crane"/>
+  <arg name="simulation"/>
+  <arg name="fixed_base"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
-    <arg name="robot" value="$(arg robot)"/>
+    <arg name="enable_crane" value="$(arg enable_crane)"/>
+    <arg name="simulation" value="$(arg simulation)"/>
+    <arg name="fixed_base" value="$(arg fixed_base)"/>
   </include>
 
   <include file="$(find urdf_test)/launch/test_urdf.launch">
