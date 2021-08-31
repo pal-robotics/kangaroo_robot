@@ -1,0 +1,34 @@
+<launch>
+
+  <!--
+    If true, shutdown timeout for spawner is set to 1.0 due to this issue:
+      https://github.com/ros-controls/ros_control/issues/195
+  -->
+  <arg name="enable_unloading_workaround" default="false" />
+
+
+  <arg name="controllers" default="" /> <!-- override default controllers -->
+
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/current/leg_left.yaml"/>
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/current/leg_right.yaml"/>
+
+
+  <arg name="controllers_to_load"
+      value="left_leg_current_controller right_leg_current_controller" />
+
+  <arg unless="$(eval arg('controllers') == '')"
+      name="controllers_to_load"
+      value="$(arg controllers)" />
+
+  <arg if="$(arg enable_unloading_workaround)"
+      name="extra_args"
+      value="--shutdown-timeout 1.0" />
+  <arg unless="$(arg enable_unloading_workaround)"
+      name="extra_args"
+      value="" />
+
+  <node name="body_controllers_spawner"
+      pkg="controller_manager" type="spawner" output="screen"
+      args="$(arg extra_args) $(arg controllers_to_load)" />
+
+</launch>
