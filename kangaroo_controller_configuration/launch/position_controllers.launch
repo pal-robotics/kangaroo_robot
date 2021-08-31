@@ -9,8 +9,8 @@
 
   <arg name="controllers" default="" /> <!-- override default controllers -->
 
-  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/leg_left.yaml"/>
-  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/leg_right.yaml"/>
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/leg_left.yaml"/>
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/leg_right.yaml"/>
 
 
   <arg name="controllers_to_load"
