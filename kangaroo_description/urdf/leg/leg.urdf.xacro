@@ -212,6 +212,14 @@
       <limit lower="${leg_knee_min_pos}" upper="${leg_knee_max_pos}" effort="100" velocity="3.87" />
       <mimic joint="leg_${side}_length_joint" multiplier="3.38877" offset="-0.19229"/>
     </joint>
+    
+    <!-- THIS FRAME NEEDS TO BE VALIDATED BY CAD!!! -->
+    <link name="leg_${side}_knee_lower_bearing"/>
+    <joint name="leg_${side}_knee_lower_bearing_joint" type="fixed">
+    	<parent link="leg_${side}_knee_link"/>
+    	<child link="leg_${side}_knee_lower_bearing"/>
+    	<origin rpy="0 0 0" xyz="-0.375 0.0 -0.067"/>
+    </joint>
 
     <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_length_link" reflect="${reflect}" roll_joint="5" pitch_joint="4" read_actuator="leg_${side}_length_motor">
       <origin xyz="0.0 0 0.0" rpy="0 ${180 *deg_to_rad} 0" />
