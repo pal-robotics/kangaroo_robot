@@ -1,0 +1,16 @@
+XBotInterface:
+  urdf_path: $(rospack find kangaroo_description)/robots/kangaroo.urdf
+  srdf_path: $(rospack find kangaroo_cartesio_config)/kangaroo.srdf
+
+ModelInterface:
+  model_type: "RBDL"
+  is_model_floating_base: "true"
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>kangaroo_cartesio_config</name>
+  <version>0.0.1</version>
+  <description>The kangaroo config package for cartesio</description>
+
+  <maintainer email="enrico.mingo@pal-robotics.com">Enrico Mingo Hoffman</maintainer>
+
+  <license>PAL Propietary</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  
+  <export>
+  </export>
+
+</package>
