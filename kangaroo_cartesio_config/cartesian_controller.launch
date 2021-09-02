@@ -1,6 +1,18 @@
 <launch>
 
-    <param name="robot_description" textfile="$(find kangaroo_description)/robots/kangaroo.urdf"/>
+    <!-- param name="robot_description" textfile="$(find kangaroo_description)/robots/kangaroo.urdf"/ -->
+    
+    
+    <arg name="enable_crane" default="false"/> 
+    <arg name="simulation" default="false"/>
+    <arg name="fixed_base" default="false"/>
+    <arg name="use_mimic" default="false"/>
+    <!-- Robot description -->
+    <param name="robot_description" command=" $(find xacro)/xacro --inorder '$(find kangaroo_cartesio_config)/kangaroo_cartesio.urdf.xacro'
+                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic)"/>
+    
+    
+    
     <param name="robot_description_semantic" textfile="$(find kangaroo_cartesio_config)/kangaroo.srdf"/>
     <param name="cartesian/problem_description" textfile="$(find kangaroo_cartesio_config)/kangaroo_cartesian.stack"/>
     

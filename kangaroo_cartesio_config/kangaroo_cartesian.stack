@@ -18,7 +18,7 @@ VelocityLimits:
 
 Waist:
     type: "Cartesian"
-    distal_link: "waist"
+    distal_link: "base_link"
     lambda: 0.1
 
 LeftFoot:
