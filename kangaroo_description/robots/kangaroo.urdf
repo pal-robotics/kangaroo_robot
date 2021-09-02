@@ -263,8 +263,7 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="leg_left_4_link"/>
     <child link="leg_left_5_link"/>
-    <!--axis xyz="-0.93969 0 0.34202"/-->
-    <axis xyz="-1 0 0"/>
+    <axis xyz="-0.93969 0 0.34202"/>
     <limit effort="100" lower="-0.47123889803846897" upper="0.47123889803846897" velocity="3.87"/>
   </joint>
   <link name="left_sole_link"/>
@@ -760,8 +759,7 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="leg_right_4_link"/>
     <child link="leg_right_5_link"/>
-    <!--axis xyz="-0.93969 0 0.34202"/-->
-    <axis xyz="-1. 0 0."/>
+    <axis xyz="-0.93969 0 0.34202"/>
     <limit effort="100" lower="-0.47123889803846897" upper="0.47123889803846897" velocity="3.87"/>
   </joint>
   <link name="right_sole_link"/>
