@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2021-09-02)
+------------------
 * Merge branch 'imu_and_other_configuration' into 'master'
   Imu and other configuration
   See merge request robots/kangaroo_robot!13

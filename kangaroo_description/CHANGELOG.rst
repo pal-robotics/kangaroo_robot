@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2021-09-02)
+------------------
 * Update the transmission plugin names
 * Contributors: Sai Kishor Kothakota
 
