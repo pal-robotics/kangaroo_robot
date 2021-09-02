@@ -67,7 +67,7 @@
 
   <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side number1 number2 params_ns:=/leg_params" >
     <transmission name="leg_${side}_leg_length_trans">
-      <type>pal_transmissions/LegCustomTransmission</type>
+      <type>kangaroo_transmissions/LegCustomTransmission</type>
       <actuator name="leg_${side}_length_motor" >
       </actuator>
       <joint name="leg_${side}_length_joint">
@@ -83,7 +83,7 @@
 
   <xacro:macro name="hip_transmission_roll_pitch" params="side roll_joint pitch_joint">
     <transmission name="leg_${side}_transmission_roll_pitch">
-      <type>pal_transmissions/HipCustomTransmission</type>
+      <type>kangaroo_transmissions/HipCustomTransmission</type>
       <actuator name="leg_${side}_${roll_joint}_motor">
         <role>actuator1</role>
         <virtual_linear_actuator>

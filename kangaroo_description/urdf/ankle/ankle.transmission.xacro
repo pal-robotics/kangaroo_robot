@@ -67,7 +67,7 @@
       </joint>
     </transmission> -->
     <transmission name="leg_${side}_transmission">
-      <type>pal_transmissions/AnkleCustomTransmission</type>
+      <type>kangaroo_transmissions/AnkleCustomTransmission</type>
       <actuator name="leg_${side}_${roll_joint}_motor">
         <role>right_actuator</role>
         <param_ns>/ankle_params</param_ns>
