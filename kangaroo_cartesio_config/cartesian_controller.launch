@@ -2,7 +2,7 @@
 
     <param name="robot_description" textfile="$(find kangaroo_description)/robots/kangaroo.urdf"/>
     <param name="robot_description_semantic" textfile="$(find kangaroo_cartesio_config)/kangaroo.srdf"/>
-    <param name="cartesian/problem_description" textfile="$(find kangaroo_cartesio_config)/kangaroo.stack"/>
+    <param name="cartesian/problem_description" textfile="$(find kangaroo_cartesio_config)/kangaroo_cartesian.stack"/>
     
     <arg name="solver" default="OpenSot"/>
     <arg name="prefix" default=""/>

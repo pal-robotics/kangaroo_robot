@@ -1,0 +1,43 @@
+solver_options:
+    regularization: 1e-3
+    back_end: "qpoases"
+
+stack:
+    - ["LeftFoot", "RightFoot"]
+    - ["Waist"]
+
+    
+constraints: ["JointLimits", "VelocityLimits","LeftLeg", "RightLeg"] 
+
+JointLimits:
+    type: "JointLimits"
+    
+VelocityLimits:
+    type: "VelocityLimits"
+
+
+Waist:
+    type: "Cartesian"
+    distal_link: "waist"
+    lambda: 0.1
+
+LeftFoot:
+    type: "Cartesian"
+    distal_link: "left_sole_link"
+    
+RightFoot:
+    type: "Cartesian"
+    distal_link: "right_sole_link"
+
+LeftLeg:
+    type: "Cartesian"
+    base_link: leg_left_length_link
+    distal_link: "leg_left_knee_lower_bearing"
+    indices: [0, 2]
+    
+RightLeg:
+    type: "Cartesian"
+    base_link: leg_right_length_link
+    distal_link: "leg_right_knee_lower_bearing"
+    indices: [0, 2]
+
