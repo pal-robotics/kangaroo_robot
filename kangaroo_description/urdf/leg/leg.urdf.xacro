@@ -40,7 +40,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin simulation:=false">
+  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin simulation:=false use_mimic:=true">
     <link name="leg_${side}_1_link">
       <inertial>
         <origin xyz="0.0461079574284527 ${reflect * -0.000826631128234001} 0.00897630312181676" rpy="0 0 0" />
@@ -201,7 +201,9 @@
       <child link="leg_${side}_femur_link" />
       <axis xyz="0 1 0" />
       <limit lower="${leg_femur_min_pos}" upper="${leg_femur_max_pos}" effort="100" velocity="3.87" />
-      <mimic joint="leg_${side}_length_joint" multiplier="1.69435" offset="-0.096145"/>
+      <xacro:if value="${use_mimic}">
+      	<mimic joint="leg_${side}_length_joint" multiplier="1.69435" offset="-0.096145"/>
+      </xacro:if>
     </joint>
 
     <joint name="leg_${side}_knee_joint" type="revolute">
@@ -210,7 +212,9 @@
       <child link="leg_${side}_knee_link" />
       <axis xyz="0 -1 0" />
       <limit lower="${leg_knee_min_pos}" upper="${leg_knee_max_pos}" effort="100" velocity="3.87" />
-      <mimic joint="leg_${side}_length_joint" multiplier="3.38877" offset="-0.19229"/>
+      <xacro:if value="${use_mimic}">
+      	<mimic joint="leg_${side}_length_joint" multiplier="3.38877" offset="-0.19229"/>
+      </xacro:if>
     </joint>
     
     <!-- THIS FRAME NEEDS TO BE VALIDATED BY CAD!!! -->
@@ -298,8 +302,10 @@
      <material>Gazebo/FlatBlack</material>
    </gazebo>
 
-   <xacro:mimic_joint_plugin_gazebo name_prefix="" parent_joint="leg_${side}_length_joint" mimic_joint="leg_${side}_knee_joint" has_pid="false" multiplier="3.38877" offset="-0.19229" max_effort="100.0"/>
-   <xacro:mimic_joint_plugin_gazebo name_prefix="" parent_joint="leg_${side}_length_joint" mimic_joint="leg_${side}_femur_joint" has_pid="false" multiplier="1.69435" offset="-0.096145" max_effort="100.0"/>
+   <xacro:if value="${use_mimic}">
+   	<xacro:mimic_joint_plugin_gazebo name_prefix="" parent_joint="leg_${side}_length_joint" mimic_joint="leg_${side}_knee_joint" has_pid="false" multiplier="3.38877" offset="-0.19229" max_effort="100.0"/>
+   	<xacro:mimic_joint_plugin_gazebo name_prefix="" parent_joint="leg_${side}_length_joint" mimic_joint="leg_${side}_femur_joint" has_pid="false" multiplier="1.69435" offset="-0.096145" max_effort="100.0"/>
+   </xacro:if>
    
   </xacro:macro>
 
