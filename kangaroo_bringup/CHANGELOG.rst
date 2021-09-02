@@ -2,6 +2,15 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'imu_and_other_configuration' into 'master'
+  Imu and other configuration
+  See merge request robots/kangaroo_robot!13
+* remove the force torque sensors information
+* add the IMU hardware configuration
+* Contributors: Jordan Palacios, Sai Kishor Kothakota
+
 0.0.3 (2021-08-30)
 ------------------
 

@@ -2,6 +2,14 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'imu_and_other_configuration' into 'master'
+  Imu and other configuration
+  See merge request robots/kangaroo_robot!13
+* remove the starting of force_torque_sensor_controller
+* Contributors: Jordan Palacios, Sai Kishor Kothakota
+
 0.0.3 (2021-08-30)
 ------------------
 

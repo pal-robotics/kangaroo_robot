@@ -2,6 +2,11 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update the transmission plugin names
+* Contributors: Sai Kishor Kothakota
+
 0.0.3 (2021-08-30)
 ------------------
 * Merge branch 'enable_ankle_transmission' into 'master'
