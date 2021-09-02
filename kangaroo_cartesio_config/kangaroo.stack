@@ -3,10 +3,10 @@ solver_options:
     back_end: "qpoases"
 
 stack:
-    - ["Postural", "LeftLeg", "RightLeg"]
+    - ["Postural"]
 
     
-constraints: [] #["LeftLeg", "RightLeg"]
+constraints: ["JointLimits", "LeftLeg", "RightLeg"]
 
 JointLimits:
     type: "JointLimits"
@@ -19,13 +19,13 @@ LeftLeg:
     type: "Cartesian"
     base_link: leg_left_length_link
     distal_link: "leg_left_knee_lower_bearing"
-    indices: [0, 1, 2, 3, 5]
+    indices: [0, 2]
     
 RightLeg:
     type: "Cartesian"
     base_link: leg_right_length_link
     distal_link: "leg_right_knee_lower_bearing"
-    indices: [0, 1, 2, 3, 5]
+    indices: [0, 2]
     
 Postural:
     type: "Postural"
