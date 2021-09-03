@@ -2,6 +2,11 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* add missing install rule of launch folder
+* Contributors: Sai Kishor Kothakota
+
 0.0.4 (2021-09-02)
 ------------------
 * Update the transmission plugin names
