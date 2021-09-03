@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2021-09-03)
+------------------
 * add missing install rule of launch folder
 * Contributors: Sai Kishor Kothakota
 
