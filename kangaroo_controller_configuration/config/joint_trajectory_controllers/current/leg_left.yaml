@@ -1,0 +1,35 @@
+left_leg_current_controller:
+  type: "effort_controllers/JointTrajectoryController"
+  check_mode: True
+  joints:
+    - leg_left_1_joint
+    - leg_left_2_joint
+    - leg_left_3_joint
+    - leg_left_length_joint
+    - leg_left_4_joint
+    - leg_left_5_joint
+  gains: # Required because we're controlling an effort interface
+    leg_left_1_joint: {p: 1,  d: 0, i: 0, i_clamp: 1}
+    leg_left_2_joint: {p: 250,  d: 0, i: 0, i_clamp: 1}
+    leg_left_3_joint: {p: 350,  d: 0, i: 10, i_clamp: 5}
+    leg_left_4_joint: {p: 75,  d: 0, i: 0, i_clamp: 1}
+    leg_left_5_joint: {p: 150,  d: 0, i: 0, i_clamp: 1}
+    leg_left_length_joint: {p: 3000,  d: 10, i: 3, i_clamp: 1}
+  constraints:
+    goal_time: &goal_time_constraint 0.6
+    stopped_velocity_tolerance: &stopped_velocity_constraint 0.05
+    leg_left_1_joint:
+      goal: &goal_pos_constraint 0.02
+    leg_left_2_joint:
+      goal: *goal_pos_constraint
+    leg_left_3_joint:
+      goal: *goal_pos_constraint
+    leg_left_length_joint:
+      goal: *goal_pos_constraint
+    leg_left_4_joint:
+      goal: *goal_pos_constraint
+    leg_left_5_joint:
+      goal: *goal_pos_constraint
+
+  stop_trajectory_duration: 0.0
+
