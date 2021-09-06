@@ -2,6 +2,15 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'current_controllers' into 'master'
+  moved the position joint trajectory config files to position folder
+  See merge request robots/kangaroo_robot!14
+* added effort based joint trajectory controllers configuration
+* moved the position joint trajectory config files to position folder
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.5 (2021-09-03)
 ------------------
 

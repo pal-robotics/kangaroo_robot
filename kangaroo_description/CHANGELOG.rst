@@ -2,6 +2,11 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* added the kangaroo_transmissions exec dependency
+* Contributors: Sai Kishor Kothakota
+
 0.0.5 (2021-09-03)
 ------------------
 * add missing install rule of launch folder
