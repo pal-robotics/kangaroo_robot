@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2021-09-06)
+------------------
 * added the kangaroo_transmissions exec dependency
 * Contributors: Sai Kishor Kothakota
 
