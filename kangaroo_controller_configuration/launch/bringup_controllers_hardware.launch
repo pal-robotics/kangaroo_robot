@@ -16,6 +16,4 @@
               temperature_sensor_controller
               mode_state_controller" />
 
-  <include file="$(find kangaroo_controller_configuration)/launch/current_limit_controllers.launch" />
-
 </launch>
