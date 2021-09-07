@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.7 (2021-09-07)
+------------------
 * remove the launch of non existing current_limit_controllers
 * Contributors: Sai Kishor Kothakota
 
