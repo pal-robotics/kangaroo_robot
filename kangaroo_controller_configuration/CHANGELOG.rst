@@ -2,6 +2,11 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* remove the launch of non existing current_limit_controllers
+* Contributors: Sai Kishor Kothakota
+
 0.0.6 (2021-09-06)
 ------------------
 * Merge branch 'current_controllers' into 'master'
