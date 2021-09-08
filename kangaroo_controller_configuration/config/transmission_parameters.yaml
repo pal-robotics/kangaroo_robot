@@ -35,5 +35,5 @@ hip_z_params:
   offset_y: 0.00087
   dy: 0.040
   max_joint_angle: !degrees 45.0
-  max_joint_angle: !degrees -15.0
+  min_joint_angle: !degrees -15.0
   zero_joint_offset: !degrees 24.0
