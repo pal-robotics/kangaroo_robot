@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.8 (2021-09-10)
+------------------
 * Merge branch 'hip_z_implementation' into 'master'
   Hip z implementation
   See merge request robots/kangaroo_robot!17
