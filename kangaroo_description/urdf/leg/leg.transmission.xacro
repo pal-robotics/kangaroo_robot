@@ -152,15 +152,18 @@
     </transmission>
   </xacro:macro>
 
-  <xacro:macro name="hip_transmission_yaw" params="side number reduction">
+  <xacro:macro name="hip_transmission_yaw" params="side params_ns:=/hip_z_params" >
     <transmission name="leg_${side}_transmission_yaw">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="leg_${side}_${number}_motor" >
-        <mechanicalReduction>${reduction}</mechanicalReduction>
+      <type>kangaroo_transmissions/HipZCustomTransmission</type>
+      <actuator name="leg_${side}_1_motor" >
       </actuator>
-      <joint name="leg_${side}_${number}_joint">
+      <joint name="leg_${side}_1_joint">
+        <side> ${side} </side>
+        <param_ns> ${params_ns} </param_ns>
+        <offset> 0.0 </offset>
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
   </xacro:macro>

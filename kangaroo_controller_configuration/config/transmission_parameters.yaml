@@ -29,3 +29,11 @@ leg_params:
   shin_fbl11_offset_angle: -0.274889357
   knee_angle_min: !degrees 15.0 # 5 degrees less than actual
   knee_angle_max: !degrees 145.0 # 5 degrees more than actual
+
+hip_z_params:
+  Ly: 0.09639
+  offset_y: 0.00087
+  dy: 0.040
+  max_joint_angle: !degrees 45.0
+  min_joint_angle: !degrees -15.0
+  zero_joint_offset: !degrees 24.0
