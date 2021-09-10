@@ -2,6 +2,15 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'hip_z_implementation' into 'master'
+  Hip z implementation
+  See merge request robots/kangaroo_robot!17
+* param name fix
+* Adding hip z custom transmission
+* Contributors: narcismiguel, saikishor
+
 0.0.7 (2021-09-07)
 ------------------
 * remove the launch of non existing current_limit_controllers
