@@ -218,11 +218,17 @@
     </joint>
     
     <!-- THIS FRAME NEEDS TO BE VALIDATED BY CAD!!! -->
+    <link name="leg_${side}_knee_straight"/>
+    <joint name="leg_${side}_knee_straight_joint" type="fixed">
+    	<parent link="leg_${side}_knee_link"/>
+    	<child link="leg_${side}_knee_straight"/>
+    	<origin rpy="0 ${-10.0 * deg_to_rad} 0" xyz="0 0 0"/>
+    </joint>
     <link name="leg_${side}_knee_lower_bearing"/>
     <joint name="leg_${side}_knee_lower_bearing_joint" type="fixed">
-    	<parent link="leg_${side}_knee_link"/>
+    	<parent link="leg_${side}_knee_straight"/>
     	<child link="leg_${side}_knee_lower_bearing"/>
-    	<origin rpy="0 0 0" xyz="-0.375 0.0 -0.067"/>
+    	<origin rpy="0 0 0" xyz="-0.38 0.0 0.0"/>
     </joint>
 
     <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_length_link" reflect="${reflect}" roll_joint="5" pitch_joint="4" read_actuator="leg_${side}_length_motor">
