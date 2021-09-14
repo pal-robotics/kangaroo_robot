@@ -160,7 +160,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_5_link_v2.stl" />
+          <mesh filename="package://kangaroo_description/meshes/leg_5_collision_link.stl" />
         </geometry>
         <material name="">
           <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
