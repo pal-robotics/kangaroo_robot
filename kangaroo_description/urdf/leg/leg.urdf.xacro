@@ -312,6 +312,18 @@
    	<xacro:mimic_joint_plugin_gazebo name_prefix="" parent_joint="leg_${side}_length_joint" mimic_joint="leg_${side}_knee_joint" has_pid="false" multiplier="3.38877" offset="-0.19229" max_effort="100.0"/>
    	<xacro:mimic_joint_plugin_gazebo name_prefix="" parent_joint="leg_${side}_length_joint" mimic_joint="leg_${side}_femur_joint" has_pid="false" multiplier="1.69435" offset="-0.096145" max_effort="100.0"/>
    </xacro:if>
+   <xacro:unless value="${use_mimic}">
+	   <gazebo reference="">
+		<joint type="revolute" name="leg_${side}_closed_kin_joint">
+	              <pose>0 0 0 0 0 0</pose>
+		      <parent>leg_${side}_knee_link</parent>
+		      <child>leg_${side}_length_link</child>
+		      <axis>
+			<xyz>0 1 0</xyz>
+		      </axis>
+    		</joint>
+	   </gazebo> 
+   </xacro:unless>
    
   </xacro:macro>
 
