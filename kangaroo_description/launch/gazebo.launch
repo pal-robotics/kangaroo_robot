@@ -7,6 +7,7 @@
   <arg name="simulation" default="true"/>
   <arg name="fixed_base" default="false"/>
   <arg name="world" default="empty"/>
+  <arg name="use_mimic" default="true"/>
 
   <include file="$(find pal_gazebo_worlds)/launch/pal_gazebo.launch" >
     <arg name="debug" value="$(arg debug)"/>
@@ -18,21 +19,43 @@
     <arg name="enable_crane" value="$(arg enable_crane)"/> 
     <arg name="simulation" value="$(arg simulation)"/> 
     <arg name="fixed_base" value="$(arg fixed_base)"/> 
+    <arg name="use_mimic" value="$(arg use_mimic)"/> 
   </include>
 
   <!-- define initial joints position values when spawned: 
       Values here for leg length = 642.8 => theta = 50°, beta = 100°-->
+<group if="$(arg use_mimic)">
   <arg name="joints_positions_args"
       value=" -J leg_left_2_joint 0.05
               -J leg_left_length_joint 0.55
               -J leg_left_4_joint -0.05
               -J leg_right_2_joint 0.05
               -J leg_right_length_joint 0.55
-              -J leg_right_4_joint -0.05" />
-
+              -J leg_right_4_joint -0.05
+              -unpause" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
         $(arg joints_positions_args)" />
+</group>
+<group unless="$(arg use_mimic)">
+  <arg name="joints_positions_args"
+      value=" -J leg_left_2_joint 0.04999999999997918
+	      -J leg_left_femur_joint 1.1693870096573384
+              -J leg_left_knee_joint 2.3401777720374923
+              -J leg_left_length_joint 0.6999999999999997
+              -J leg_left_4_joint -0.049999999999970346
+              -J leg_right_2_joint 0.04999999999997918
+	      -J leg_right_femur_joint 1.1693870096573384
+              -J leg_right_knee_joint 2.3401777720374923
+              -J leg_right_length_joint 0.6999999999999997
+              -J leg_right_4_joint -0.049999999999970346
+              -unpause " />
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
+    args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
+        $(arg joints_positions_args)" />
+</group>
+
+
 
   <!-- <include file="$(find kangaroo_controller_configuration)/launch/default_controllers.launch"/> -->
   
