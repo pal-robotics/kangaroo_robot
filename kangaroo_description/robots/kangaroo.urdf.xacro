@@ -16,29 +16,8 @@
   <!--************************-->
   <!--        BASE_LINK       -->
   <!--************************-->
-  <link name="base_link">
-    <inertial>
-      <origin xyz="-0.060294 0.00050634 0.15428" rpy="0 0 0" />
-      <mass value="12.296" />
-      <inertia  ixx="0.084937" ixy="-4.4873E-05" ixz="0.0036119"
-        iyy="0.080587" iyz="0.0001781" izz="0.0247" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://kangaroo_description/meshes/base_link.stl" />
-      </geometry>
-      <material name="">
-        <color rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://kangaroo_description/meshes/base_link.stl" />
-      </geometry>
-    </collision>
-  </link>
+  <xacro:include filename="$(find kangaroo_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:base_link with_cage="true"/>
 
   <xacro:if value="$(arg enable_crane)">
     <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
