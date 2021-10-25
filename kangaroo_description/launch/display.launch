@@ -3,7 +3,7 @@
 <launch>
   <arg name="simulation" default="true"/>
   <arg name="fixed_base" default="true"/>
-  <arg name="use_mimic" default="true"/>
+  <arg name="use_mimic" default="false"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
     <arg name="simulation" value="$(arg simulation)"/> 

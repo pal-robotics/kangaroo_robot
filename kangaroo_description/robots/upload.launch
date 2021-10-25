@@ -5,7 +5,7 @@
   <arg name="enable_crane" default="false"/> 
   <arg name="simulation" default="false"/>
   <arg name="fixed_base" default="false"/>
-  <arg name="use_mimic" default="true"/>
+  <arg name="use_mimic" default="false"/>
   <!-- Robot description -->
   <param
       name="$(arg parameter_name)"

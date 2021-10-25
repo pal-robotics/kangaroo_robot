@@ -13,7 +13,7 @@
   <include file="$(find pal_gazebo_worlds)/launch/pal_gazebo.launch" >
     <arg name="debug" value="$(arg debug)"/>
     <arg name="world" value="$(arg world)"/>
-    <arg name="paused" value="true"/>
+    <arg name="paused" value="false"/>
     <arg name="extra_gz_model_path" default="$(find kangaroo_description)"/>
     <arg name="extra_gz_resource_path" default="$(find kangaroo_description)"/>
     <arg name="extra_gazebo_args" value="--verbose"/>
@@ -35,8 +35,7 @@
               -J leg_left_4_joint -0.05
               -J leg_right_2_joint 0.05
               -J leg_right_length_joint 0.55
-              -J leg_right_4_joint -0.05
-              -unpause" />
+              -J leg_right_4_joint -0.05" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
         $(arg joints_positions_args)" />
@@ -54,8 +53,7 @@
 	      -J leg_right_femur_joint 1.1693870096573384
               -J leg_right_knee_joint 2.3401777720374923
               -J leg_right_length_joint 0.6999999999999997
-              -J leg_right_4_joint -0.049999999999970346
-              -unpause " />
+              -J leg_right_4_joint -0.049999999999970346" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
         $(arg joints_positions_args)" output="screen"/>
