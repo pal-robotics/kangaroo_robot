@@ -50,4 +50,16 @@
     <arg name="safety_override" value="$(eval ('' if not 'leg_left_length_joint' in arg('disable_safety_for_joints') else (arg('safety_override') if arg('safety_override') != '' else 'false')))"/> 
   </include>
 
+  <include file="$(find pal_local_joint_control)/launch/no_control.launch" >
+    <arg name="controller_pkg_name" value="$(arg controller_pkg_name)"/>
+    <arg name="ns" value="$(arg ns)"/>
+    <arg name="joint_name" value="leg_left_femur_joint"/>
+  </include>
+
+  <include file="$(find pal_local_joint_control)/launch/no_control.launch" >
+    <arg name="controller_pkg_name" value="$(arg controller_pkg_name)"/>
+    <arg name="ns" value="$(arg ns)"/>
+    <arg name="joint_name" value="leg_left_knee_joint"/>
+  </include>
+
 </launch>

@@ -2,6 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
+  <xacro:include filename="$(find kangaroo_description)/urdf/ankle/foot_frames.urdf.xacro" />
   <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle.transmission.xacro" />
 
   <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
@@ -74,8 +75,9 @@
       <parent link="leg_${side}_${roll_joint}_link" />
       <child link="${side}_sole_link" />
       <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
-      <axis xyz="1 0 0" />
     </joint>
+    
+    <xacro:kangaroo_foot_frames side="${side}" parent="${side}_sole_link" offset_x="0.01"/>
 
     <xacro:unless value="${simulation}">
       <xacro:kangaroo_ankle_transmission side="${side}" roll_joint="${roll_joint}" pitch_joint="${pitch_joint}" read_actuator="${read_actuator}" />

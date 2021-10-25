@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+<xacro:macro name="base_link" params="with_cage:=true">
+
+<xacro:if value="${with_cage}">
+<link name="base_link">
+    <inertial>
+      <origin xyz="-0.062235 0.00069557 0.1604" rpy="0 0 0" />
+      <mass value="18.363" />
+      <inertia  ixx="0.10459" ixy="-3.8305E-05" ixz="0.0015436"
+        iyy="0.1462" iyz="0.00017891" izz="0.085641" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://kangaroo_description/meshes/base_link_with_cage.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://kangaroo_description/meshes/base_link_convex_hull.stl" />
+      </geometry>
+    </collision>
+</link>
+</xacro:if>
+
+<xacro:unless value="${with_cage}">
+<link name="base_link">
+    <inertial>
+      <origin xyz="-0.060294 0.00050634 0.15428" rpy="0 0 0" />
+      <mass value="12.296" />
+      <inertia  ixx="0.084937" ixy="-4.4873E-05" ixz="0.0036119"
+        iyy="0.080587" iyz="0.0001781" izz="0.0247" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://kangaroo_description/meshes/base_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://kangaroo_description/meshes/base_link.stl" />
+      </geometry>
+    </collision>
+</link>
+</xacro:unless>
+</xacro:macro>
+
+</robot>

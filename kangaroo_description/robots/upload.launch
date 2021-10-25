@@ -5,12 +5,13 @@
   <arg name="enable_crane" default="false"/> 
   <arg name="simulation" default="false"/>
   <arg name="fixed_base" default="false"/>
+  <arg name="use_mimic" default="false"/>
   <!-- Robot description -->
   <param
       name="$(arg parameter_name)"
       command=" $(find xacro)/xacro --inorder
                 '$(find kangaroo_description)/robots/kangaroo.urdf.xacro'
-                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base)"/>
+                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic)"/>
 
   <rosparam command="load" file="$(find kangaroo_description)/config/collision_parameters.yaml" />
   <rosparam command="load" file="$(find kangaroo_description)/config/default_configuration_locomotion.yaml" />

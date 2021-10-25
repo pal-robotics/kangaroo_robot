@@ -1,0 +1,7 @@
+type: "force_control/GravityCompensation"
+robot_model_chains: []
+dt: 0.0005
+controller_dt: 0.002
+spawn_controller_thread: true
+
+
