@@ -99,6 +99,21 @@
         <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
       </joint>
     </transmission>
+    <transmission name="leg_${side}_leg_state_trans">
+      <type>kangaroo_transmissions/LegStateCustomTransmission</type>
+      <actuator name="leg_${side}_length_motor" >
+      </actuator>
+      <joint name="leg_${side}_knee_joint">
+        <joint_type> knee </joint_type>
+        <param_ns> ${params_ns} </param_ns>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+      <joint name="leg_${side}_femur_joint">
+        <joint_type> femur </joint_type>
+        <param_ns> ${params_ns} </param_ns>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
+    </transmission>
   </xacro:macro>
 
   <xacro:macro name="hip_transmission_roll_pitch" params="side roll_joint pitch_joint">
