@@ -1,0 +1,3 @@
+stiffness_factor: 650.0
+damping_factor: 0.0
+feedforward_prev_cmd: true
