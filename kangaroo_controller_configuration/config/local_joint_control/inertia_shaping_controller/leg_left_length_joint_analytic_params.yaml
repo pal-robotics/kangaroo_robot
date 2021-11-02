@@ -8,7 +8,7 @@ acceleration_differentiator_parameters:
 observer_filter_type: ButterworthFilterd
 observer_filter_parameters:
   filter_parameters:
-    - order: 3
+    - order: 5
       type: LowPass
       composition_type: Sequence
       
@@ -18,7 +18,7 @@ observer_filter_parameters:
 torque_filter_type: ButterworthFilterd
 torque_filter_parameters:
   filter_parameters:
-    - order: 3
+    - order: 5
       type: LowPass
       composition_type: Sequence
       
@@ -28,7 +28,7 @@ torque_filter_parameters:
 feedback_acceleration_filter_type: ButterworthFilterd
 feedback_acceleration_filter_parameters:
   filter_parameters:
-    - order: 3
+    - order: 5
       type: LowPass
       composition_type: Sequence
       
@@ -38,7 +38,7 @@ feedback_acceleration_filter_parameters:
 torque_derivative_filter_type: ButterworthFilterd
 torque_derivative_filter_parameters:
   filter_parameters:
-    - order: 3
+    - order: 5
       type: LowPass
       composition_type: Sequence
       
@@ -47,7 +47,7 @@ torque_derivative_filter_parameters:
 
 feedback_acceleration_compensation_gain: 0.0
 feedforward_acceleration_gain: 0.0
-torque_feedback_gain: 6.0
-torque_derivative_feedback_gain: 0.001
-observer_feedback_gain: 0.0
+torque_feedback_gain: 1.0
+torque_derivative_feedback_gain: 0.0
+observer_feedback_gain: 0.8
 
