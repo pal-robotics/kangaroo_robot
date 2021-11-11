@@ -9,8 +9,15 @@
   <arg name="disable_safety_for_joints" default=""/>
   <arg name="robot_joint_specific_ns" value="$(eval arg('ns') + '/joints/')"/>
 
-  <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_left.launch" pass_all_args="true" />
-  <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_right.launch" pass_all_args="true" />
+  <group if="$(eval arg('local_joint_control_type') == inertia_shaping_kangaroo_analytic_dob_control)">
+    <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_left_force_control.launch" pass_all_args="true" />
+    <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_right_force_control.launch" pass_all_args="true" />
+  </group>
+
+  <group unless="$(eval arg('local_joint_control_type') == inertia_shaping_kangaroo_analytic_dob_control)">
+    <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_left.launch" pass_all_args="true" />
+    <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_right.launch" pass_all_args="true" />
+  </group>
 
   <!-- specifics configuration -->
   <arg name="specific_file_path" value="$(eval optenv(arg('controller_pkg_name') + '_specifics_path', find(arg('controller_pkg_name'))))"/>
