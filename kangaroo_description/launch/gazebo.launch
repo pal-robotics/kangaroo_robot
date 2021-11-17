@@ -55,10 +55,8 @@
               -J leg_right_length_joint 0.6999999999999997
               -J leg_right_4_joint -0.049999999999970346" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
-    args="-urdf -param robot_description $(arg gzpose) -model kangaroo 
-        $(arg joints_positions_args)" output="screen"/>
+    args="-urdf -param robot_description $(arg gzpose) -model kangaroo" output="screen"/>
 </group>
-
 
 
   <include file="$(find kangaroo_controller_configuration)/launch/default_controllers.launch"/> 
