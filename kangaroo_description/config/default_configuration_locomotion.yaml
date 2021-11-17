@@ -22,4 +22,4 @@ default_floating_base_pose:
     y: 0.
     z: 0.
     w: 1.
-  position: [0., 0., 0.84]
+  position: [0., 0., 0.92]
