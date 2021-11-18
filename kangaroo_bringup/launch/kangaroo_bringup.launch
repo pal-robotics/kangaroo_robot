@@ -12,4 +12,7 @@
     <param name="tf_prefix" type="string" value=""/>
   </node>
 
+  <!-- Launch play_motion -->
+  <include file="$(find kangaroo_bringup)/launch/play_motion.launch" />
+
 </launch>
