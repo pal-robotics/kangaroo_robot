@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.9 (2021-11-18)
+------------------
 * Add torque control in local joint control launcher
 * Launch torque control when local joint control type specified
 * Fix typo in the torque control launch files

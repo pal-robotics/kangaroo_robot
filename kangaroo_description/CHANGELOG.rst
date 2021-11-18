@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.9 (2021-11-18)
+------------------
 * Merge branch 'play_motion_setup' into 'master'
   Play motion setup
   See merge request robots/kangaroo_robot!19
