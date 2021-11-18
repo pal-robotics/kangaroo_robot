@@ -2,6 +2,27 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add torque control in local joint control launcher
+* Launch torque control when local joint control type specified
+* Fix typo in the torque control launch files
+* Merge branch 'master' of gitlab:robots/kangaroo_robot
+* Tune filter and torque control gains
+* update transmission parameters
+* Add launch files fro launching toruqe control in both legs
+* Add torque offsets + impedance files
+* tuned pids
+* Merge branch 'torque_control_rebased' into 'master'
+  Added files to run kangaroo model in CartesI/O. Notice that: to have the model...
+  See merge request robots/kangaroo_robot!21
+* Add no control parameters
+* Changes to fix issues with tf
+* Tune torque control in the real robot
+* Changes for run torque control on the real robot
+* small tuning
+* Contributors: Adria Roig, Sai Kishor Kothakota, enricomingo
+
 0.0.8 (2021-09-10)
 ------------------
 * Merge branch 'hip_z_implementation' into 'master'

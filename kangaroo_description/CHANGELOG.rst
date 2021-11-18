@@ -2,6 +2,45 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'play_motion_setup' into 'master'
+  Play motion setup
+  See merge request robots/kangaroo_robot!19
+* Updated the crane URDF to be similar to that of the TALOS
+* Updtae the collision blacklist and the default floating base position
+* Merge branch 'kangaroo_leg_state' into 'master'
+  added the leg state transmission
+  See merge request robots/kangaroo_robot!22
+* added the leg state transmission
+* Merge branch 'master' of gitlab:robots/kangaroo_robot
+* fixed base hight
+* Add femur and knee joints in default configuration
+* Merge branch 'torque_control_rebased' into 'master'
+  Added files to run kangaroo model in CartesI/O. Notice that: to have the model...
+  See merge request robots/kangaroo_robot!21
+* Changes to fix issues with tf
+* Increase max effort
+* Changes for run torque control on the real robot
+* Updated Kangaroo model with base_link with cage. Added possibility to use also old model without cage
+* added missing wolrd file
+* removed comment from xacro
+* when using use_mimic true the old masses and inertias are now used
+* passed use_mimic option to all nodes. set initial config for use_mimic
+  false but does not work
+* added closed kinematic chain joint for gazebo when use_mimic is false
+* removed useless mesh
+* using link5 collision mesh for visualization
+* added clenaed leg_5_link mesh
+* updated frames according to data sent to Pau
+* Removed kangaroo.urdf. Now for CartesI/O the default knagaroo.urdf.xacro is included in kangaroo_cartesio.urdf.xacro and loaded in CartesI/O with disabled mimic
+* added use_mimic parameter to enable/disable mimic joints
+* small fix in ankles + added foot frames in the corners
+* roll ankle joint is not a problem (RBDL just complain but it works)
+* Added files to run kangaroo model in CartesI/O. Notice that: to have the model loaded in RBDL the foot roll joint axis has been modified to being unit!
+* Added frame located at the tip of the knee link. Needs to be validated against CAD!
+* Contributors: Adria Roig, EnricoMingo, Sai Kishor Kothakota, enricomingo
+
 0.0.8 (2021-09-10)
 ------------------
 * Merge branch 'hip_z_implementation' into 'master'

@@ -2,6 +2,16 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'play_motion_setup' into 'master'
+  Play motion setup
+  See merge request robots/kangaroo_robot!19
+* added kangaroo initial motions
+* added the both legs configuration
+* added play_motion setup without motions
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.8 (2021-09-10)
 ------------------
 
