@@ -2,6 +2,15 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'homing_procedure' into 'master'
+  Homing procedure
+  See merge request robots/kangaroo_robot!23
+* Mv homing motion to kangaroo motions
+* Added files for play_motion homing
+* Contributors: Adria Roig, enricomingo
+
 0.0.9 (2021-11-18)
 ------------------
 * Merge branch 'play_motion_setup' into 'master'

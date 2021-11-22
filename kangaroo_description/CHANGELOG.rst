@@ -2,6 +2,15 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'homing_procedure' into 'master'
+  Homing procedure
+  See merge request robots/kangaroo_robot!23
+* Added homing script (as python node) procedure
+* Removed call to set configuration in gazebo.launch file
+* Contributors: Adria Roig, enricomingo
+
 0.0.9 (2021-11-18)
 ------------------
 * Merge branch 'play_motion_setup' into 'master'
