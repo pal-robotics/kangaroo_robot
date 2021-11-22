@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.10 (2021-11-22)
+-------------------
 * Merge branch 'homing_procedure' into 'master'
   Homing procedure
   See merge request robots/kangaroo_robot!23
