@@ -49,4 +49,4 @@ feedback_acceleration_compensation_gain: 0.0
 feedforward_acceleration_gain: 0.0
 torque_feedback_gain: 1.5 #1.0
 torque_derivative_feedback_gain: 0.0 # 0.02
-observer_feedback_gain: 0.95 # -2.0
+observer_feedback_gain: 0.5 #0.95

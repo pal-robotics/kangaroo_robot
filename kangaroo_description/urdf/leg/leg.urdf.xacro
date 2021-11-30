@@ -69,7 +69,7 @@
       <child link="leg_${side}_1_link" />
       <axis xyz="0 0 1" />
       <xacro:if value="${reflect == 1}">
-        <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="500" velocity="3.87" />
+        <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="150" velocity="3.87" />
       </xacro:if>
       <xacro:if value="${reflect == -1}">
         <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="500" velocity="3.87" />
@@ -97,7 +97,7 @@
       <parent link="leg_${side}_1_link" />
       <child link="leg_${side}_2_link" />
       <axis xyz="0 1 0" />
-      <limit lower="${leg_2_min_pos}" upper="${leg_2_max_pos}" effort="100" velocity="3.87" />
+      <limit lower="${leg_2_min_pos}" upper="${leg_2_max_pos}" effort="150" velocity="3.87" />
     </joint>
     <link name="leg_${side}_3_link">
       <inertial>
@@ -127,7 +127,7 @@
       <parent link="leg_${side}_2_link" />
       <child link="leg_${side}_3_link" />
       <axis xyz="1 0 0" />
-      <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="100" velocity="3.87" />
+      <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="150" velocity="3.87" />
     </joint>
     <link name="leg_${side}_femur_link">
       <inertial>

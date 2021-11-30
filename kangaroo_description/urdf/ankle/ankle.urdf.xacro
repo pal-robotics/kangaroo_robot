@@ -138,6 +138,34 @@
       <material>Gazebo/FlatWhite</material>
     </gazebo>
     -->
+    <!--
+    <link name="${side}_pesa_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="5.0" />
+        <inertia ixx="0.015291667" ixy="0.0" ixz="0.0"
+          iyy="0.015291667" iyz="0.0" izz="0.0302" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="0.02" radius="0.11"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="0.02" radius="0.11"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${side}_pesa_joint" type="fixed">
+      <parent link="${side}_sole_link" />
+      <child link="${side}_pesa_link" />
+      <origin xyz="0.0 0.0 -0.01" rpy="0 0 0" />
+    </joint>
+  -->
   </xacro:macro>
 
 </robot>
