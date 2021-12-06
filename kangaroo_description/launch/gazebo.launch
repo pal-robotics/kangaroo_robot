@@ -58,8 +58,15 @@
     args="-urdf -param robot_description $(arg gzpose) -model kangaroo" output="screen"/>
 </group>
 
+  <!-- HOMING -->
+  <!-- 'homing' motion is specified in ../kangaroo_bringup/config/kangaroo_motions.yaml -->
+  <include file="$(find kangaroo_controller_configuration)/launch/default_controllers.launch"/>
 
-  <include file="$(find kangaroo_controller_configuration)/launch/default_controllers.launch"/> 
+  <node pkg="kangaroo_description" type="homing" name="homing" output="screen">
+    <param name="robot_name" type="string" value="kangaroo"/>
+    <rosparam param="controllers">["left_leg_controller", "right_leg_controller"]</rosparam>
+  </node>
+  <!-- /HOMING  -->
   
   <arg if="$(arg fixed_base)" name="pids_filename_suffix" value="" />
   <arg unless="$(arg fixed_base)"  name="pids_filename_suffix"  value="_contact" />
