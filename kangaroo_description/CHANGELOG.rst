@@ -2,6 +2,15 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'master' of gitlab:robots/kangaroo_robot
+* Fix IMU wrong orientation
+* Solved issue #1 regarding improving homing procedure. Still something
+  more can be done in order to use it as a service everytime is needed.
+* Tune torque control params
+* Contributors: Adria Roig, enricomingo
+
 0.0.10 (2021-11-22)
 -------------------
 * Merge branch 'homing_procedure' into 'master'
