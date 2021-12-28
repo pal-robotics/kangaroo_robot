@@ -31,5 +31,5 @@ imu:
       linear_acceleration_port: linear_acceleration_base
       angular_velocity_port: angular_velocity_base
     transformation:
-      orientation_to_enu_frame: [0.0, 3.14159265358979, 0.0]
+      orientation_to_enu_frame: [3.14159265358979, 0.0, 0.0]
 
