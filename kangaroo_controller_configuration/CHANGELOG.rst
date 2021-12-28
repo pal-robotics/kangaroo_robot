@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.11 (2021-12-28)
+-------------------
 * Fix IMU wrong orientation
 * Tune torque control params
 * Contributors: Adria Roig
