@@ -1,43 +1,76 @@
 #!/usr/bin/env python
 import rospy
-from std_msgs.msg import String
-from play_motion_msgs.msg import PlayMotionActionGoal
+from actionlib import SimpleActionClient
+from play_motion_msgs.msg import PlayMotionAction, PlayMotionGoal
+from controller_manager_msgs.srv import ListControllers, SwitchController
 from gazebo_msgs.msg import ModelState
 from gazebo_msgs.srv import SetModelState
 from tf.transformations import quaternion_from_euler
 
 def homing():
-    pub = rospy.Publisher('/play_motion/goal', PlayMotionActionGoal, queue_size=10)
     rospy.init_node('homing', anonymous=True)
-    msg = PlayMotionActionGoal()
-    msg.goal.motion_name = 'homing'
-    msg.goal.skip_planning = True
 
-    rate = rospy.Rate(10)  # 10hz
-    published = False
-    while not rospy.is_shutdown():
-        if pub.get_num_connections() > 0:
-            if not published:
-                pub.publish(msg)
-                published = True
-                print("called homing motion")
-                break
-        rate.sleep()
+    #0. retrieve controllers to use and robot name
+    controllers_param = rospy.get_param('~controllers', "")
+    if controllers_param == "":
+        rospy.logerr("No parameter controllers specified, exiting!")
+        exit()
 
-    wait_for_homing = rospy.get_param("~wait_for_homing", 3.)
-    print("Wait ", wait_for_homing, " [s] for homing before setting model state.")
+    robot_name = rospy.get_param('~robot_name', "")
+    if robot_name == "":
+        rospy.logerr("No parameter robot_name specified, exiting!")
+        exit()
+    rospy.loginfo("executing homing procedure for " + robot_name)
 
+    running_controllers = dict()
+    for controller in controllers_param:
+        running_controllers[controller] = False
+
+    #1. check play_motion server started
+    client = SimpleActionClient('/play_motion', PlayMotionAction)
+    rospy.loginfo("Waiting for server...")
+    while not client.wait_for_server():
+        rospy.loginfo("still waiting...")
+    rospy.loginfo("play_motion server connected!")
+
+    #2. check controllers are running
+    rospy.wait_for_service('/controller_manager/list_controllers')
+    try:
+        controller_list = rospy.ServiceProxy('/controller_manager/list_controllers', ListControllers)
+
+        while not all(running is True for running in running_controllers.values()):
+            controllers = controller_list()
+            for controller in controllers.controller:
+                if controller.name in running_controllers.keys():
+                    rospy.loginfo("controller " + controller.name + " is " + controller.state)
+                    if controller.state == "running":
+                        running_controllers[controller.name] = True
+                else:
+                    rospy.loginfo(controller.name + " not requested")
+    except rospy.ServiceException as e:
+        rospy.logerr(e)
+
+    #3. send motions
+    rospy.sleep(.1) # without this play_motion complains about no controllers found for certain joint even if controller is running...
+    goal = PlayMotionGoal()
+    goal.motion_name = 'homing'
+    goal.skip_planning = True
+
+    client.send_goal(goal)
+    client.wait_for_result()
+
+    rospy.loginfo("homing done!")
+    #4. reset pose
     position = rospy.get_param("~xyz", [0., 0., 0.982])
     orientation = rospy.get_param("~rpy", [0., 0., 0.])
     quat = quaternion_from_euler(orientation[0], orientation[1], orientation[2])
-    print("Spawning at position: ", position, " [m] and orientation: ", orientation, "[rad]")
+    rospy.loginfo("Spawning at position: " + ''.join(map(str, position)) + " [m] and orientation: " + ''.join(map(str, orientation)) + "[rad]")
 
-    rospy.sleep(wait_for_homing)
     rospy.wait_for_service('gazebo/set_model_state')
     try:
         set_model_state = rospy.ServiceProxy('gazebo/set_model_state', SetModelState)
         gmsg = ModelState()
-        gmsg.model_name = 'kangaroo'
+        gmsg.model_name = robot_name
         gmsg.pose.position.x = position[0]
         gmsg.pose.position.y = position[1]
         gmsg.pose.position.z = position[2]
@@ -47,10 +80,20 @@ def homing():
         gmsg.pose.orientation.w = quat[3]
         resp1 = set_model_state(gmsg)
         if not resp1:
-            print(resp1.status_message)
+            rospy.loginfo(resp1.status_message)
     except rospy.ServiceException as e:
-        print("Service call failed: %s" % e)
-    print("called set_model_state service")
+        rospy.loginfo(e)
+    rospy.loginfo("called set_model_state service")
+
+    #5. stopping specified controllers
+    rospy.wait_for_service('/controller_manager/switch_controller')
+    try:
+        switch_controller = rospy.ServiceProxy('/controller_manager/switch_controller', SwitchController)
+        switch_controller([""], controllers_param, 1)
+    except rospy.ServiceException as e:
+        rospy.logerr(e)
+
+    #6. exiting
     exit()
 
 
