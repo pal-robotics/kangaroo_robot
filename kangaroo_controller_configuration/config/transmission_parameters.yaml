@@ -34,10 +34,18 @@ leg_params:
   knee_angle_min: !degrees 15.0 # 5 degrees less than actual
   knee_angle_max: !degrees 145.0 # 5 degrees more than actual
 
-hip_z_params:
-  Ly: 0.09639
-  offset_y: 0.00087
-  dy: 0.040
+left_hip_z_params:
+  Ly: &hipz_ly 0.09639
+  offset_y: &hipz_offset_y 0.00087
+  dy: &hipz_dy 0.040
   max_joint_angle: !degrees 45.0
   min_joint_angle: !degrees -15.0
-  zero_joint_offset: !degrees 24.0
+  zero_joint_offset: &hipz_zero_joint_offset !degrees 24.0
+
+right_hip_z_params:
+  Ly: *hipz_ly
+  offset_y: *hipz_offset_y
+  dy: *hipz_dy
+  max_joint_angle: !degrees 15.0
+  min_joint_angle: !degrees -45.0
+  zero_joint_offset: *hipz_zero_joint_offset
