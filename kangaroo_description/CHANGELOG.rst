@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.12 (2022-01-10)
+-------------------
 * Merge branch 'fix_transmission_params' into 'master'
   fix the wrong transmission parameters for hip z
   See merge request robots/kangaroo_robot!24
