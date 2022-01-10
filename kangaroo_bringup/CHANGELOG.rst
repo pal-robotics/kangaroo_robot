@@ -2,6 +2,9 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.11 (2021-12-28)
 -------------------
 * Merge branch 'master' of gitlab:robots/kangaroo_robot

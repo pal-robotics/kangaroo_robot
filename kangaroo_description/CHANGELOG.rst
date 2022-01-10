@@ -2,6 +2,14 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix_transmission_params' into 'master'
+  fix the wrong transmission parameters for hip z
+  See merge request robots/kangaroo_robot!24
+* fix the wrong transmission parameters for hip z
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.11 (2021-12-28)
 -------------------
 * Merge branch 'master' of gitlab:robots/kangaroo_robot
