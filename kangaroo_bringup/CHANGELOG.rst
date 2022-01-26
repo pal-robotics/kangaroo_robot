@@ -5,6 +5,13 @@ Changelog for package kangaroo_bringup
 0.0.12 (2022-01-10)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'master' of gitlab:robots/kangaroo_robot
+* 0.0.12
+* Update Changelog
+* Contributors: Adria Roig
+
 0.0.11 (2021-12-28)
 -------------------
 * Merge branch 'master' of gitlab:robots/kangaroo_robot
