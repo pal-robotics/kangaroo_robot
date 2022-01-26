@@ -10,8 +10,8 @@ Changelog for package kangaroo_controller_configuration
 * fix the wrong transmission parameters for hip z
 * Contributors: Adria Roig, Sai Kishor Kothakota
 
-Forthcoming
------------
+0.0.13 (2022-01-26)
+-------------------
 * Merge branch 'master' of gitlab:robots/kangaroo_robot
 * 0.0.12
 * Update Changelog
