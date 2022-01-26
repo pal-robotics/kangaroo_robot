@@ -6,7 +6,7 @@
       <ns></ns>
       <robotSimType>pal_hardware_gazebo/PalHardwareGazebo</robotSimType>
       <robotNamespace></robotNamespace>
-      <controlPeriod>0.001</controlPeriod>
+      <controlPeriod>0.0005</controlPeriod>
     </plugin>
   </gazebo>
 
