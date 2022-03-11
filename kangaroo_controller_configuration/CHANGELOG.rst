@@ -10,6 +10,20 @@ Changelog for package kangaroo_controller_configuration
 * fix the wrong transmission parameters for hip z
 * Contributors: Adria Roig, Sai Kishor Kothakota
 
+Forthcoming
+-----------
+* Merge branch 'walking_controller' into 'master'
+  Walking controller
+  See merge request robots/kangaroo_robot!10
+* set the position controllers back in default controllers
+* update the walking controlle parameters
+* update contact PIDs
+* Add desired step time parameter
+* update gazebo PID gains
+* update default controllers launch file
+* Added walking controller parameters
+* Contributors: Sai Kishor Kothakota, saikishor
+
 0.0.15 (2022-03-11)
 -------------------
 
