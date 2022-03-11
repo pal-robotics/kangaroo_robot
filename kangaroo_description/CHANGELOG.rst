@@ -10,6 +10,11 @@ Changelog for package kangaroo_description
 * fix the wrong transmission parameters for hip z
 * Contributors: Adria Roig, Sai Kishor Kothakota
 
+Forthcoming
+-----------
+* Add missing installation homing script
+* Contributors: Adria Roig
+
 0.0.13 (2022-01-26)
 -------------------
 * Merge branch 'master' of gitlab:robots/kangaroo_robot
