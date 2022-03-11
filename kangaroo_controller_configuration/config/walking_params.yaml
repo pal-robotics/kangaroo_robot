@@ -1,0 +1,66 @@
+loop_counter_factor: -1
+debug_backdoor: true
+
+odometry:
+   enabled        : true
+   vel_window_size: 10
+   use_imu_yaw    : false
+   publish_rate   : 100.0
+
+   pose_covariance_diagonal : [0.001, 0.001, 1000000.0, 0.1, 0.1, 0.1]
+   twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 0.1, 0.1, 0.1]
+
+biped_controller:
+   delta_T: 0.0005
+   ft_sensor_z: 0.02
+   variable_joint_offset_hip: 0.0
+   variable_joint_offset_ankle: 0.0
+   swing_foot_z: 0.03
+   desired_step_time: 0.75
+   z_lipm: 0.72
+
+com_stabilizer:
+   ds_x_p: 0.9
+   ds_y_p: 0.9
+   ss_x_p: 0.8
+   ss_y_p: 0.9
+   dead_zone: 0.003
+   foot_offset_clamp: 0.03
+   hip_offset_x_clamp: 0.02
+   hip_offset_y_clamp: 0.02
+   hip_offset_decay: 0.997
+   ss_min_weight: 100
+#052
+hip_spacing_x: 0.0 #0.022
+hip_spacing_y: 0.08
+hip_spacing_z: 0.0
+foot_hip_spacing_x: 0.0
+foot_hip_spacing_y: 0.067
+femur_length: 0.380
+tibia_length: 0.380
+foot_height: 0.022
+hip_down_default: 0.04
+
+leg_configuration:
+   HIP_Z: 0
+   HIP_Y: 1
+   HIP_X: 2
+   KNEE_Y: 3
+   ANKLE_Y: 4
+   ANKLE_X: 5
+
+leg_mapping:
+   leg_left_1_joint: "HIP_Z"
+   leg_left_2_joint: "HIP_Y"
+   leg_left_3_joint: "HIP_X"
+   leg_left_length_joint: "KNEE_Y"
+   leg_left_4_joint: "ANKLE_Y"
+   leg_left_5_joint: "ANKLE_X"
+   leg_right_1_joint: "HIP_Z"
+   leg_right_2_joint: "HIP_Y"
+   leg_right_3_joint: "HIP_X"
+   leg_right_length_joint: "KNEE_Y"
+   leg_right_4_joint: "ANKLE_Y"
+   leg_right_5_joint: "ANKLE_X"
+
+read_absolute_encoders: False
