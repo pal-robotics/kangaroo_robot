@@ -16,7 +16,8 @@ walking_controller:
   left_ft_sensor: left_ankle_ft
   right_ft_sensor: right_ankle_ft
   base_imu_sensor: base_imu
-  tree_tips: ["leg_left_5_link", "leg_right_5_link"]
+  left_tip: leg_left_5_link
+  right_tip: leg_right_5_link
   check_mode: False
   actuators:
     - leg_left_1_motor

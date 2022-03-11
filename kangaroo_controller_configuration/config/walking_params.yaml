@@ -17,7 +17,7 @@ biped_controller:
    variable_joint_offset_ankle: 0.0
    swing_foot_z: 0.03
    desired_step_time: 0.75
-   z_lipm: 0.6
+   z_lipm: 0.72
 
 com_stabilizer:
    ds_x_p: 0.9
@@ -31,7 +31,7 @@ com_stabilizer:
    hip_offset_decay: 0.997
    ss_min_weight: 100
 #052
-hip_spacing_x: 0.022
+hip_spacing_x: 0.0 #0.022
 hip_spacing_y: 0.08
 hip_spacing_z: 0.0
 foot_hip_spacing_x: 0.0
