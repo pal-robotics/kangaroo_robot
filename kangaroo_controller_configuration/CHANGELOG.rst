@@ -10,6 +10,12 @@ Changelog for package kangaroo_controller_configuration
 * fix the wrong transmission parameters for hip z
 * Contributors: Adria Roig, Sai Kishor Kothakota
 
+Forthcoming
+-----------
+* Revert contact PIDs to old values
+  This reverts commit d66f0b433452aaf0a4c34e11e3435e565833988d.
+* Contributors: Sai Kishor Kothakota
+
 0.0.16 (2022-03-11)
 -------------------
 * Merge branch 'walking_controller' into 'master'
