@@ -10,8 +10,8 @@ Changelog for package kangaroo_description
 * fix the wrong transmission parameters for hip z
 * Contributors: Adria Roig, Sai Kishor Kothakota
 
-Forthcoming
------------
+0.0.17 (2022-03-14)
+-------------------
 
 0.0.16 (2022-03-11)
 -------------------
