@@ -77,6 +77,13 @@
       <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
     </joint>
     
+    <link name="leg_${side}_${roll_joint}_aligned_link"/>
+    <joint name="leg_${side}_${roll_joint}_aligned_joint" type="fixed">
+      <parent link="leg_${side}_${roll_joint}_link" />
+      <child link="leg_${side}_${roll_joint}_aligned_link" />
+      <origin xyz="0.0 0.0 0.0" rpy="0 ${20.0 * deg_to_rad} 0" />
+    </joint>
+    
     <xacro:kangaroo_foot_frames side="${side}" parent="${side}_sole_link" offset_x="0.01"/>
 
     <xacro:unless value="${simulation}">
