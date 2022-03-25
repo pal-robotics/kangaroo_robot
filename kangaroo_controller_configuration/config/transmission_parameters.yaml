@@ -19,18 +19,18 @@ ankle_params:
 
 leg_params:
   femur_length: 0.380
-  fbl11_long: 0.360
-  fbl11_short: 0.095
-  intersection_crank_axis: 0.226956522
-  fbl21_fixed: 0.1265
-  fbl21_long: 0.099
-  fbl21_short: 0.044
-  crank_slider_long: 0.120
+  fbl11_long: 0.40427
+  fbl11_short: 0.09
+  intersection_crank_axis: 0.22012
+  fbl21_fixed: 0.115
+  fbl21_long: 0.09
+  fbl21_short: 0.04
+  crank_slider_long: 0.215
   crank_slider_short: 0.090
-  crank_slider_axis_angle: -0.087266463
-  shin_offset_angle: -0.087266463
-  connection_fbl_offset_angle: 0.087266463
-  shin_fbl11_offset_angle: -0.274889357
+  crank_slider_axis_angle: -0.191986217719376 
+  shin_offset_angle: 0.0
+  connection_fbl_offset_angle: -0.785398163397448 
+  shin_fbl11_offset_angle: -0.261799387799149
   knee_angle_min: !degrees 15.0 # 5 degrees less than actual
   knee_angle_max: !degrees 145.0 # 5 degrees more than actual
 
