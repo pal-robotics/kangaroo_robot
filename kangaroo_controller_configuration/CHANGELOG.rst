@@ -10,8 +10,8 @@ Changelog for package kangaroo_controller_configuration
 * fix the wrong transmission parameters for hip z
 * Contributors: Adria Roig, Sai Kishor Kothakota
 
-Forthcoming
------------
+0.0.18 (2022-03-25)
+-------------------
 * Merge branch 'update-leg-params' into 'master'
   updated parameters, compared with full model
   See merge request robots/kangaroo_robot!26
