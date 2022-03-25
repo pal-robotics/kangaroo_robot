@@ -5,6 +5,9 @@ Changelog for package kangaroo_bringup
 0.0.12 (2022-01-10)
 -------------------
 
+Forthcoming
+-----------
+
 0.0.17 (2022-03-14)
 -------------------
 
