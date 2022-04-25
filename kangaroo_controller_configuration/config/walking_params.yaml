@@ -49,6 +49,7 @@ leg_configuration:
    ANKLE_Y: 4
    ANKLE_X: 5
 
+ik_type: walking_controller/LegsTracIkSolver
 leg_mapping:
    leg_left_1_joint: "HIP_Z"
    leg_left_2_joint: "HIP_Y"
