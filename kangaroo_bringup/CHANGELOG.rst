@@ -5,8 +5,8 @@ Changelog for package kangaroo_bringup
 0.0.12 (2022-01-10)
 -------------------
 
-Forthcoming
------------
+0.0.19 (2022-05-04)
+-------------------
 * Merge branch 'fix_package_information' into 'master'
   Fix package information
   See merge request robots/kangaroo_robot!27
