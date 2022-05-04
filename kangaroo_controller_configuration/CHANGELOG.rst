@@ -10,6 +10,11 @@ Changelog for package kangaroo_controller_configuration
 * fix the wrong transmission parameters for hip z
 * Contributors: Adria Roig, Sai Kishor Kothakota
 
+Forthcoming
+-----------
+* update gains and launch files from the robot
+* Contributors: Sai Kishor Kothakota
+
 0.0.19 (2022-05-04)
 -------------------
 * Merge branch 'fix_package_information' into 'master'
