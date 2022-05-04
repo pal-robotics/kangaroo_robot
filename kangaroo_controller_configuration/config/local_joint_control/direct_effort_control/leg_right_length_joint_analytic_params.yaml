@@ -1,7 +1,7 @@
 acceleration_differentiator_parameters:
   initial_value: 0.
   order: 5
-
+  
   differentiator_type: OneSide
   differentiator_order: FirstOrder
 
@@ -11,7 +11,7 @@ observer_filter_parameters:
     - order: 5
       type: LowPass
       composition_type: Sequence
-
+      
       cutoff1: 30.0
       cutoff2: 0.0
 
@@ -21,7 +21,7 @@ torque_filter_parameters:
     - order: 5
       type: LowPass
       composition_type: Sequence
-
+      
       cutoff1: 30.0
       cutoff2: 0.0
 
@@ -31,7 +31,7 @@ feedback_acceleration_filter_parameters:
     - order: 5
       type: LowPass
       composition_type: Sequence
-
+      
       cutoff1: 30.0
       cutoff2: 0.0
 
@@ -41,12 +41,13 @@ torque_derivative_filter_parameters:
     - order: 5
       type: LowPass
       composition_type: Sequence
-
+      
       cutoff1: 200.0
       cutoff2: 0.0
 
 feedback_acceleration_compensation_gain: 0.0
 feedforward_acceleration_gain: 0.0
-torque_feedback_gain: 1.5 #1.0
-torque_derivative_feedback_gain: 0.0025 # 0.01
-observer_feedback_gain: 0.8 # 0.95
+torque_feedback_gain: 1.0
+torque_derivative_feedback_gain: 0.0
+observer_feedback_gain: 0.5 # 0.8
+

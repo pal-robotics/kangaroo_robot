@@ -9,7 +9,7 @@ right_leg_current_controller:
     - leg_right_4_joint
     - leg_right_5_joint
   gains: # Required because we're controlling an effort interface
-    leg_right_1_joint: {p: 1,  d: 0, i: 0, i_clamp: 1}
+    leg_right_1_joint: {p: 100,  d: 0, i: 0, i_clamp: 1}
     leg_right_2_joint: {p: 250,  d: 0, i: 0, i_clamp: 1}
     leg_right_3_joint: {p: 350,  d: 0, i: 10, i_clamp: 5}
     leg_right_4_joint: {p: 75,  d: 0, i: 0, i_clamp: 1}

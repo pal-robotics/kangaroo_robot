@@ -1,21 +1,21 @@
 leg_left_1_joint:
   actuator_params:
-    torque_sensor_offset: 960.0
+    torque_sensor_offset: 915.0
 leg_left_2_joint:
   actuator_params:
-    torque_sensor_offset: 1050.0
+    torque_sensor_offset: 1100.0
 leg_left_3_joint:
   actuator_params:
-    torque_sensor_offset: 402.0
+    torque_sensor_offset: 450.0
 leg_left_4_joint:
   actuator_params:
-    torque_sensor_offset: 140.0
+    torque_sensor_offset: 104.0
 leg_left_5_joint:
   actuator_params:
-    torque_sensor_offset: -210.0
+    torque_sensor_offset: -295.0
 leg_left_length_joint:
   actuator_params:
-    torque_sensor_offset: 0.0
+    torque_sensor_offset: -65.0
 leg_right_1_joint:
   actuator_params:
     torque_sensor_offset: 700.0
