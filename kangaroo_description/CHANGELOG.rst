@@ -10,6 +10,9 @@ Changelog for package kangaroo_description
 * fix the wrong transmission parameters for hip z
 * Contributors: Adria Roig, Sai Kishor Kothakota
 
+Forthcoming
+-----------
+
 0.0.18 (2022-03-25)
 -------------------
 * Added frame aligned to ankle joint_5 axis
