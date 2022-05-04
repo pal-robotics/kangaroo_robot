@@ -14,6 +14,10 @@
   <exec_depend>joint_trajectory_controller</exec_depend>
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>walking_controller</exec_depend>
+  <exec_depend>walking_utils</exec_depend>
+  <exec_depend>head_action</exec_depend>
+  <exec_depend>current_limit_controller</exec_depend>
 
   <export>
   </export>

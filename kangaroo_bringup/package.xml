@@ -10,14 +10,14 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <exec_depend>talos_controller_configuration</exec_depend>
-  <exec_depend>talos_description</exec_depend>
+  <exec_depend>kangaroo_controller_configuration</exec_depend>
+  <exec_depend>kangaroo_description</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
   <exec_depend>twist_mux</exec_depend>
   <exec_depend>joy</exec_depend>
   <exec_depend>joy_teleop</exec_depend>
   <exec_depend>play_motion</exec_depend>
-  <exec_depend>talos_moveit_config</exec_depend>
+  <exec_depend>kangaroo_moveit_config</exec_depend>
 
   <export>
   </export>
