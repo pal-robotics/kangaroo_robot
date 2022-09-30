@@ -16,6 +16,19 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'kangaroo_mpc' into 'master'
+  Kangaroo mpc
+  See merge request robots/kangaroo_robot!31
+* Increase leg length effort limits
+* Increase foot inertia for MPC experiments
+* 0.0.20
+* Update Changelog
+* 0.0.19
+* Update Changelog
+* Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
+
 0.0.18 (2022-03-25)
 -------------------
 * Added frame aligned to ankle joint_5 axis

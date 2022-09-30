@@ -17,6 +17,20 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'kangaroo_mpc' into 'master'
+  Kangaroo mpc
+  See merge request robots/kangaroo_robot!31
+* Add F/T sensors in Gazebo for simplicity in the experiments
+* 0.0.20
+* Update Changelog
+* 0.0.19
+* Update Changelog
+* added more package dependencies to the packages
+* Adapt motion home to real robot limits
+* Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
+
 0.0.18 (2022-03-25)
 -------------------
 

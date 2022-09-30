@@ -24,6 +24,17 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* 0.0.20
+* Update Changelog
+* update gains and launch files from the robot
+* 0.0.19
+* Update Changelog
+* added more package dependencies to the packages
+* added IK plugin
+* Contributors: Sai Kishor Kothakota
+
 0.0.18 (2022-03-25)
 -------------------
 * Merge branch 'update-leg-params' into 'master'
