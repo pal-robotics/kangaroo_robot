@@ -12,7 +12,7 @@
   <exec_depend>kangaroo_description</exec_depend>
   <exec_depend>kangaroo_bringup</exec_depend>
   <exec_depend>kangaroo_controller_configuration</exec_depend>
-  <exec_depend>kangaroo_mujoco</exec_depend>
+  <exec_depend>kangaroo_mj_description</exec_depend>
 
   <export>
     <metapackage/>
