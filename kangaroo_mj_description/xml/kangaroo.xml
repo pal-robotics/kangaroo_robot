@@ -3,6 +3,11 @@
   <size njmax="500" nconmax="100"/>
   <default/>
   <option integrator="RK4"/>
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6"  ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="150" elevation="-20"/>
+  </visual>
   <asset>
     <mesh name="base_link_with_cage" file="base_link_with_cage.stl"/>
     <mesh name="leg_1_link" file="leg_1_link.stl"/>
@@ -19,8 +24,9 @@
     <mesh name="leg_5_collision_link1" file="leg_5_collision_link.stl"/>
     <mesh name="leg_6_link1" file="leg_6_link.stl"/>
     <mesh name="leg_7_link1" file="leg_7_link.stl"/>
-    <texture builtin="checker" height="100" name="texplane" rgb1="0 0 0" rgb2="0.8 0.8 0.8" type="2d" width="100"/>
-    <material name="MatPlane" reflectance="0.5" shininess="1" specular="1" texrepeat="60 60" texture="texplane"/>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture builtin="checker" height="100" name="texplane" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" type="2d" width="200"/>
+    <material name="MatPlane" reflectance="0.1" shininess="0.4" specular="1" texrepeat="5 5" texuniform="true" texture="texplane"/>
   </asset>
   <worldbody>
     <geom name="floor" pos="0 0 -0.99" size="0 0 1" type="plane" material="MatPlane"/> 
