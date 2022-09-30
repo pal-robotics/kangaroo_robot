@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>kangaroo_mujoco</name>
+  <name>kangaroo_mj_description</name>
   <version>0.0.20</version>
-  <description>The kangaroo_mujoco package</description>
+  <description>The kangaroo_mj_description package</description>
 
   <maintainer email="enrico.mingo@pal-robotics.com">Enrico Mingo Hoffman</maintainer>
+  <author email="enrico.mingo@pal-robotics.com">Enrico Mingo Hoffman</author>
 
   <license>PAL Propietary</license>
 

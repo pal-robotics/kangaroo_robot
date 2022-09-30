@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(kangaroo_mujoco)
+project(kangaroo_mj_description)
 
 find_package(catkin REQUIRED)
 
