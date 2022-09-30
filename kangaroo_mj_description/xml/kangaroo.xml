@@ -1,5 +1,5 @@
 <mujoco model="kangaroo">
-  <compiler angle="radian" meshdir="../../kangaroo_description/meshes/"/>
+  <compiler angle="radian" meshdir="../meshes/"/>
   <size njmax="500" nconmax="100"/>
   <default/>
   <option integrator="RK4"/>
@@ -12,13 +12,13 @@
     <mesh name="leg_5_collision_link" file="leg_5_collision_link.stl"/>
     <mesh name="leg_6_link" file="leg_6_link.stl"/>
     <mesh name="leg_7_link" file="leg_7_link.stl"/>
-    <mesh name="leg_1_link1" file="leg_1_link1.stl" scale="1 -1 1"/>
-    <mesh name="leg_2_link1" file="leg_2_link1.stl" scale="1 -1 1"/>
-    <mesh name="leg_3_link1" file="leg_3_link1.stl" scale="1 -1 1"/>
-    <mesh name="leg_4_link1" file="leg_4_link1.stl"/>
-    <mesh name="leg_5_collision_link1" file="leg_5_collision_link1.stl"/>
-    <mesh name="leg_6_link1" file="leg_6_link1.stl"/>
-    <mesh name="leg_7_link1" file="leg_7_link1.stl"/>
+    <mesh name="leg_1_link1" file="leg_1_link.stl" scale="1 -1 1"/>
+    <mesh name="leg_2_link1" file="leg_2_link.stl" scale="1 -1 1"/>
+    <mesh name="leg_3_link1" file="leg_3_link.stl" scale="1 -1 1"/>
+    <mesh name="leg_4_link1" file="leg_4_link.stl"/>
+    <mesh name="leg_5_collision_link1" file="leg_5_collision_link.stl"/>
+    <mesh name="leg_6_link1" file="leg_6_link.stl"/>
+    <mesh name="leg_7_link1" file="leg_7_link.stl"/>
     <texture builtin="checker" height="100" name="texplane" rgb1="0 0 0" rgb2="0.8 0.8 0.8" type="2d" width="100"/>
     <material name="MatPlane" reflectance="0.5" shininess="1" specular="1" texrepeat="60 60" texture="texplane"/>
   </asset>
