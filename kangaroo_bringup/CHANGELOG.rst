@@ -17,6 +17,9 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+
 0.0.21 (2022-09-30)
 -------------------
 * Merge branch 'kangaroo_mpc' into 'master'
