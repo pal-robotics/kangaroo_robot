@@ -1,0 +1,3 @@
+#!/bin/bash
+
+simulate $(rospack find kangaroo_mj_description)/xml/kangaroo.xml
