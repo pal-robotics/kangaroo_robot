@@ -220,7 +220,7 @@
       <parent link="leg_${side}_3_link" />
       <child link="leg_${side}_length_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${leg_min_length}" upper="${leg_max_length}" effort="1000" velocity="10" />
+      <limit lower="${leg_min_length}" upper="${leg_max_length}" effort="1500" velocity="10" />
     </joint>
 
     <joint name="leg_${side}_femur_joint" type="revolute">
