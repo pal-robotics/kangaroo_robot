@@ -11,8 +11,8 @@ Changelog for package kangaroo_robot
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.0.22 (2022-09-30)
+-------------------
 * Merge branch 'kangaroo_mujoco' into 'master'
   Kangaroo mujoco
   See merge request robots/kangaroo_robot!32
