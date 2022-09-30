@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.0.21 (2022-09-30)
+-------------------
 * Merge branch 'kangaroo_mpc' into 'master'
   Kangaroo mpc
   See merge request robots/kangaroo_robot!31
