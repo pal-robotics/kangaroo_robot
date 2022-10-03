@@ -29,8 +29,9 @@ def homing():
     #1. check play_motion server started
     client = SimpleActionClient('/play_motion', PlayMotionAction)
     rospy.loginfo("Waiting for server...")
-    while not client.wait_for_server():
+    while not client.wait_for_server() and not rospy.is_shutdown():
         rospy.loginfo("still waiting...")
+        rospy.sleep(1.0)
     rospy.loginfo("play_motion server connected!")
 
     #2. check controllers are running
