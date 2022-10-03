@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import rospy
+import sys
 from actionlib import SimpleActionClient
-from play_motion_msgs.msg import PlayMotionAction, PlayMotionGoal
+from play_motion_msgs.msg import PlayMotionAction, PlayMotionGoal, PlayMotionResult
 from controller_manager_msgs.srv import ListControllers, SwitchController
 from gazebo_msgs.msg import ModelState
 from gazebo_msgs.srv import SetModelState
@@ -20,7 +21,7 @@ def homing():
     if robot_name == "":
         rospy.logerr("No parameter robot_name specified, exiting!")
         exit()
-    rospy.loginfo("executing homing procedure for " + robot_name)
+    rospy.loginfo("executing homing procedure for {}".format(robot_name))
 
     running_controllers = dict()
     for controller in controllers_param:
@@ -39,30 +40,44 @@ def homing():
     try:
         controller_list = rospy.ServiceProxy('/controller_manager/list_controllers', ListControllers)
 
-        while not all(running is True for running in running_controllers.values()):
+        while not all(running is True for running in running_controllers.values()) and not rospy.is_shutdown():
             controllers = controller_list()
             for controller in controllers.controller:
                 if controller.name in running_controllers.keys():
-                    rospy.loginfo("controller " + controller.name + " is " + controller.state)
+                    rospy.loginfo("controller {} is {}".format(controller.name, controller.state))
                     if controller.state == "running":
                         running_controllers[controller.name] = True
+                    else:
+                        rospy.logerr("Error while performing the homing. "
+                            "Controller : {} is in {} state".format(controller.name, controller.state))
+                        sys.exit(1)
                 else:
                     rospy.loginfo(controller.name + " not requested")
     except rospy.ServiceException as e:
         rospy.logerr(e)
 
     #3. send motions
-    rospy.sleep(.1) # without this play_motion complains about no controllers found for certain joint even if controller is running...
-    goal = PlayMotionGoal()
-    goal.motion_name = 'homing'
-    goal.skip_planning = True
+    rospy.sleep(0.1) # without this play_motion complains about no controllers found for certain joint even if controller is running...
+    homing_result = False
+    while not homing_result and not rospy.is_shutdown():
+        goal = PlayMotionGoal()
+        goal.motion_name = 'homing'
+        goal.skip_planning = True
 
-    client.send_goal(goal)
-    client.wait_for_result()
+        client.send_goal(goal)
+        client.wait_for_result()
+        result = client.get_result()
+        # Allow GOAL_NOT_REACHED as this is a common error and this means the gains needs to be tweaked a bit more
+        if result.error_code == PlayMotionResult.SUCCEEDED or result.error_code == PlayMotionResult.GOAL_NOT_REACHED:
+            homing_result = True
+        else:
+            rospy.loginfo("retrying the homing procedure...")
+            rospy.sleep(0.2)
+
 
     rospy.loginfo("homing done!")
     #4. reset pose
-    position = rospy.get_param("~xyz", [0., 0., 0.982])
+    position = rospy.get_param("~xyz", [0., 0., 0.96])
     orientation = rospy.get_param("~rpy", [0., 0., 0.])
     quat = quaternion_from_euler(orientation[0], orientation[1], orientation[2])
     rospy.loginfo("Spawning at position: " + ''.join(map(str, position)) + " [m] and orientation: " + ''.join(map(str, orientation)) + "[rad]")
