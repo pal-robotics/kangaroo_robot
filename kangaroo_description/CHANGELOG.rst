@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.0.23 (2022-10-03)
+-------------------
 * Fix the homing procedure to retry in case of failure
 * wait for 1 sec instead of continously checking
 * Contributors: Sai Kishor Kothakota
