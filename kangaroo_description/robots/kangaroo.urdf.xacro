@@ -17,7 +17,7 @@
   <!--        BASE_LINK       -->
   <!--************************-->
   <xacro:include filename="$(find kangaroo_description)/urdf/base/base.urdf.xacro"/>
-  <xacro:base_link with_cage="true"/>
+  <xacro:base_link with_cage="$(arg use_cage)"/>
 
   <xacro:if value="$(arg enable_crane)">
     <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
