@@ -24,6 +24,14 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'add_use_cage_argument' into 'master'
+  Added use_case argument to the kangaroo.urdf.xacro and other files
+  See merge request robots/kangaroo_robot!34
+* add some minor fixes
+* Contributors: Sai Kishor Kothakota, saikishor
+
 0.0.23 (2022-10-03)
 -------------------
 
