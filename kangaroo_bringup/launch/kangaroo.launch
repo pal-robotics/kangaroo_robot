@@ -1,9 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <launch>
+  <arg name="use_cage" default="true"/>
 
   <!-- Hardware configuration -->
   <rosparam command="load" file="$(find kangaroo_bringup)/config/kangaroo_common_hardware.yaml" />
 
-  <include file="$(find kangaroo_description)/robots/upload.launch" />
+  <include file="$(find kangaroo_description)/robots/upload.launch">
+    <arg name="use_cage" default="$(arg use_cage)"/> 
+  </include>
 
   <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch" />
 
