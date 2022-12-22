@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.0.24 (2022-12-22)
+-------------------
 * Merge branch 'add_use_cage_argument' into 'master'
   Added use_case argument to the kangaroo.urdf.xacro and other files
   See merge request robots/kangaroo_robot!34

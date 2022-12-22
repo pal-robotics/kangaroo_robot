@@ -17,8 +17,8 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
-Forthcoming
------------
+0.0.24 (2022-12-22)
+-------------------
 * Merge branch 'add_use_cage_argument' into 'master'
   Added use_case argument to the kangaroo.urdf.xacro and other files
   See merge request robots/kangaroo_robot!34
