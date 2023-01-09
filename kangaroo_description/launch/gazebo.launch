@@ -8,6 +8,7 @@
   <arg name="fixed_base" default="false"/>
   <arg name="world" default="kangaroo"/>
   <arg name="use_mimic" default="false"/>
+  <arg name="ft_sensors" default="false"/>
   
 
   <include file="$(find pal_gazebo_worlds)/launch/pal_gazebo.launch" >
@@ -23,7 +24,8 @@
     <arg name="enable_crane" value="$(arg enable_crane)"/> 
     <arg name="simulation" value="$(arg simulation)"/> 
     <arg name="fixed_base" value="$(arg fixed_base)"/> 
-    <arg name="use_mimic" value="$(arg use_mimic)"/> 
+    <arg name="use_mimic" value="$(arg use_mimic)"/>
+    <arg name="ft_sensors" value="$(arg ft_sensors)"/> 
   </include>
 
   <!-- define initial joints position values when spawned: 
