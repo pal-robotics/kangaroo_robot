@@ -97,7 +97,12 @@
     <joint name="${side}_sole_fix_joint" type="fixed">
       <parent link="leg_${side}_${roll_joint}_link" />
       <child link="${side}_sole_link" />
-      <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
+      <xacro:unless value="${ft_sensors}">
+        <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
+      </xacro:unless>
+      <xacro:if value="${ft_sensors}">
+        <origin xyz="0.028 0.0 -0.074" rpy="0 0 0" />
+      </xacro:if>
     </joint>
     
     <link name="leg_${side}_${roll_joint}_aligned_link"/>
