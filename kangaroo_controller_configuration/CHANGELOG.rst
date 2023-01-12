@@ -24,8 +24,8 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
-Forthcoming
------------
+0.0.25 (2023-01-12)
+-------------------
 * Merge branch 'add_joy_teleop' into 'master'
   added joy_teleop and twist_mux files to kangaroo_bringup
   See merge request robots/kangaroo_robot!33

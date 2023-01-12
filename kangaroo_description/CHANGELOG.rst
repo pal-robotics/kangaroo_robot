@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.0.25 (2023-01-12)
+-------------------
 * Merge branch 'add_joy_teleop' into 'master'
   added joy_teleop and twist_mux files to kangaroo_bringup
   See merge request robots/kangaroo_robot!33
