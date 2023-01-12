@@ -15,9 +15,11 @@ biped_controller:
    ft_sensor_z: 0.02
    variable_joint_offset_hip: 0.0
    variable_joint_offset_ankle: 0.0
-   swing_foot_z: 0.03
-   desired_step_time: 0.75
-   z_lipm: 0.72
+   swing_foot_z: 0.04
+   desired_step_time: 1.0
+   z_lipm: 1.0
+   max_knee_angle: 0.03
+   min_premature_force_z: 30.0
 
 com_stabilizer:
    ds_x_p: 0.9
@@ -28,18 +30,19 @@ com_stabilizer:
    foot_offset_clamp: 0.03
    hip_offset_x_clamp: 0.02
    hip_offset_y_clamp: 0.02
-   hip_offset_decay: 0.997
-   ss_min_weight: 100
+   hip_offset_decay: 0.999
+   ss_min_weight: 80 #100
+   ds_min_weight: 200 #250
 #052
 hip_spacing_x: 0.0 #0.022
 hip_spacing_y: 0.08
 hip_spacing_z: 0.0
 foot_hip_spacing_x: 0.0
 foot_hip_spacing_y: 0.067
-femur_length: 0.380
-tibia_length: 0.380
+femur_length: 0.4
+tibia_length: 0.4
 foot_height: 0.022
-hip_down_default: 0.04
+hip_down_default: 0.01
 
 leg_configuration:
    HIP_Z: 0
