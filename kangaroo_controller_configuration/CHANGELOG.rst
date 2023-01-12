@@ -24,6 +24,14 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'add_joy_teleop' into 'master'
+  added joy_teleop and twist_mux files to kangaroo_bringup
+  See merge request robots/kangaroo_robot!33
+* update the walking controller parameters as in the robot
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.24 (2022-12-22)
 -------------------
 * Merge branch 'add_use_cage_argument' into 'master'

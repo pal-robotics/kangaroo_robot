@@ -17,6 +17,14 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'add_joy_teleop' into 'master'
+  added joy_teleop and twist_mux files to kangaroo_bringup
+  See merge request robots/kangaroo_robot!33
+* added joy_teleop and twist_mux files to kangaroo_bringup
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.24 (2022-12-22)
 -------------------
 * Merge branch 'add_use_cage_argument' into 'master'

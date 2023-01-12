@@ -16,6 +16,14 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'add_joy_teleop' into 'master'
+  added joy_teleop and twist_mux files to kangaroo_bringup
+  See merge request robots/kangaroo_robot!33
+* changed the default configuration by reducing a bit the leg length
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.24 (2022-12-22)
 -------------------
 * Merge branch 'add_use_cage_argument' into 'master'
