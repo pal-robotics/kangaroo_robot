@@ -91,25 +91,39 @@
       <axis xyz="-0.93969 0 0.34202" />
       <limit lower="${roll_joint_min_pos}" upper="${roll_joint_max_pos}" effort="100" velocity="3.87" />
     </joint>
-
-    <link name="${side}_sole_link"/>
-
-    <joint name="${side}_sole_fix_joint" type="fixed">
-      <parent link="leg_${side}_${roll_joint}_link" />
-      <child link="${side}_sole_link" />
-      <xacro:unless value="${ft_sensors}">
-        <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
-      </xacro:unless>
-      <xacro:if value="${ft_sensors}">
-        <origin xyz="0.028 0.0 -0.074" rpy="0 0 0" />
-      </xacro:if>
-    </joint>
     
     <link name="leg_${side}_${roll_joint}_aligned_link"/>
     <joint name="leg_${side}_${roll_joint}_aligned_joint" type="fixed">
       <parent link="leg_${side}_${roll_joint}_link" />
       <child link="leg_${side}_${roll_joint}_aligned_link" />
       <origin xyz="0.0 0.0 0.0" rpy="0 ${20.0 * deg_to_rad} 0" />
+    </joint>
+
+    <xacro:if value="${ft_sensors}">
+
+      <link name="${side}_ft_sensor_link"/>
+      
+      <joint name="${side}_ft_sensor_fix_joint" type="fixed">
+        <parent link="leg_${side}_${roll_joint}_aligned_link" />
+        <child link="${side}_ft_sensor_link" />
+        <origin xyz="0.0161604517721356 0 -0.0444004763321373" rpy="1.57079632679488 -0.349065850398857 0" />
+      </joint>
+
+    </xacro:if>
+
+    <link name="${side}_sole_link"/>
+
+    <joint name="${side}_sole_fix_joint" type="fixed">
+      <xacro:unless value="${ft_sensors}">
+        <parent link="leg_${side}_${roll_joint}_link" />
+        <child link="${side}_sole_link" />
+        <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
+      </xacro:unless>
+      <xacro:if value="${ft_sensors}">
+        <parent link="${side}_ft_sensor_link" />
+        <child link="${side}_sole_link" />
+        <origin xyz="0.0345 -0.0272 0" rpy="0 0 0" />
+      </xacro:if>
     </joint>
     
     <xacro:kangaroo_foot_frames side="${side}" parent="${side}_sole_link" offset_x="0.01"/>
