@@ -16,6 +16,19 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'ft_robot' into 'master'
+  Argument to launch robot with F/T sensors or not
+  See merge request robots/kangaroo_robot!35
+* Remove fixed from sole & ft_sensor joints
+* Fix ft sensor transformations
+* Add sensor and sole link transformations
+* Update homing and launch force_torque_sensor_controller when ft_sensors is true
+* Rotate leg_7_link_ft mesh origin
+* Argument to launch robot with F/T sensors or not
+* Contributors: Adria Roig, Adrià Roig, saikishor
+
 0.0.25 (2023-01-12)
 -------------------
 * Merge branch 'add_joy_teleop' into 'master'

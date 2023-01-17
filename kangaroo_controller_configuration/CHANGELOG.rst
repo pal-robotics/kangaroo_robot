@@ -24,6 +24,14 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'ft_robot' into 'master'
+  Argument to launch robot with F/T sensors or not
+  See merge request robots/kangaroo_robot!35
+* Update homing and launch force_torque_sensor_controller when ft_sensors is true
+* Contributors: Adrià Roig, saikishor
+
 0.0.25 (2023-01-12)
 -------------------
 * Merge branch 'add_joy_teleop' into 'master'

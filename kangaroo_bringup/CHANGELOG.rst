@@ -17,6 +17,16 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'ft_robot' into 'master'
+  Argument to launch robot with F/T sensors or not
+  See merge request robots/kangaroo_robot!35
+* Remove fixed from sole & ft_sensor joints
+* Fix ft sensor transformations
+* Update homing and launch force_torque_sensor_controller when ft_sensors is true
+* Contributors: Adria Roig, Adrià Roig, saikishor
+
 0.0.25 (2023-01-12)
 -------------------
 * Merge branch 'add_joy_teleop' into 'master'
