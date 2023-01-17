@@ -6,8 +6,8 @@ imu:
 force_torque:
   left_ankle_ft:
     sensor_joint: leg_left_5_joint
-    frame: leg_left_5_link
+    frame: left_sensor_link
   right_ankle_ft:
     sensor_joint: leg_right_5_joint
-    frame: leg_right_5_link
+    frame: right_sensor_link
 
