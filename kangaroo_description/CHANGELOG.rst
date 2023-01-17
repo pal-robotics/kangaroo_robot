@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.0.26 (2023-01-17)
+-------------------
 * Merge branch 'ft_robot' into 'master'
   Argument to launch robot with F/T sensors or not
   See merge request robots/kangaroo_robot!35
