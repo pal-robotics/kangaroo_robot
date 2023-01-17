@@ -77,7 +77,13 @@ def homing():
 
     rospy.loginfo("homing done!")
     #4. reset pose
-    position = rospy.get_param("~xyz", [0., 0., 0.96])
+    ft_sensors = rospy.get_param('~ft_sensors', False)
+    if ft_sensors is True:
+        rospy.loginfo("Robot equipped with F/T sensors") 
+        position = rospy.get_param("~xyz", [0., 0., 1.0])
+    else:
+        position = rospy.get_param("~xyz", [0., 0., 0.96])
+
     orientation = rospy.get_param("~rpy", [0., 0., 0.])
     quat = quaternion_from_euler(orientation[0], orientation[1], orientation[2])
     rospy.loginfo("Spawning at position: " + ''.join(map(str, position)) + " [m] and orientation: " + ''.join(map(str, orientation)) + "[rad]")

@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <!--
     If true, shutdown timeout for spawner is set to 1.0 due to this issue:
       https://github.com/ros-controls/ros_control/issues/195
   -->
   <arg name="enable_unloading_workaround" default="false" />
+  <arg name="ft_sensors" default="false"/>
 
   <!-- Load Transmission Parameters -->
   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/transmission_parameters.yaml" />
@@ -13,6 +15,10 @@
 
   <!-- IMU sensors controller -->
   <rosparam command="load" file="$(find imu_sensor_controller)/imu_sensor_controller.yaml" />
+
+  <group if="$(arg ft_sensors)">
+    <include file="$(find force_torque_sensor_controller)/force_torque_sensor_controller.launch"/>
+  </group>
 
   <arg if="$(arg enable_unloading_workaround)"
       name="extra_args"

@@ -7,12 +7,13 @@
   <arg name="fixed_base" default="false"/>
   <arg name="use_mimic" default="false"/>
   <arg name="use_cage" default="true"/>
+  <arg name="ft_sensors" default="false"/>
   <!-- Robot description -->
   <param
       name="$(arg parameter_name)"
       command=" $(find xacro)/xacro --inorder
                 '$(find kangaroo_description)/robots/kangaroo.urdf.xacro'
-                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic) use_cage:=$(arg use_cage)"/>
+                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic) use_cage:=$(arg use_cage) ft_sensors:=$(arg ft_sensors)"/>
 
   <rosparam command="load" file="$(find kangaroo_description)/config/collision_parameters.yaml" />
   <rosparam command="load" file="$(find kangaroo_description)/config/default_configuration_locomotion.yaml" />

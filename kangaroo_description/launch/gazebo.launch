@@ -8,7 +8,7 @@
   <arg name="fixed_base" default="false"/>
   <arg name="world" default="kangaroo"/>
   <arg name="use_mimic" default="false"/>
-  
+  <arg name="ft_sensors" default="false"/>
 
   <include file="$(find pal_gazebo_worlds)/launch/pal_gazebo.launch" >
     <arg name="debug" value="$(arg debug)"/>
@@ -23,7 +23,8 @@
     <arg name="enable_crane" value="$(arg enable_crane)"/> 
     <arg name="simulation" value="$(arg simulation)"/> 
     <arg name="fixed_base" value="$(arg fixed_base)"/> 
-    <arg name="use_mimic" value="$(arg use_mimic)"/> 
+    <arg name="use_mimic" value="$(arg use_mimic)"/>
+    <arg name="ft_sensors" value="$(arg ft_sensors)"/> 
   </include>
 
   <!-- define initial joints position values when spawned: 
@@ -65,6 +66,7 @@
   <node pkg="kangaroo_description" type="homing" name="homing" output="screen">
     <param name="robot_name" type="string" value="kangaroo"/>
     <rosparam param="controllers">["left_leg_controller", "right_leg_controller"]</rosparam>
+    <param name="ft_sensors" type="bool" value="$(arg ft_sensors)"/>
   </node>
   <!-- /HOMING  -->
   
@@ -74,6 +76,8 @@
 
  <rosparam command="load" file="$(find kangaroo_bringup)/config/sensors/sensors.yaml" />
 
-  <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch" />
+  <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch">
+    <arg name="ft_sensors" value="$(arg ft_sensors)"/>
+  </include>
 
 </launch>
