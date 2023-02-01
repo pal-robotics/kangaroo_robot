@@ -1,0 +1,3 @@
+kangaroo_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: leg_left_length_joint

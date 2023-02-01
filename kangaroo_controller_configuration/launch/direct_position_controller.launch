@@ -1,0 +1,25 @@
+<launch>
+  <!--
+    If true, shutdown timeout for spawner is set to 1.0 due to this issue:
+      https://github.com/ros-controls/ros_control/issues/195
+  -->
+  <arg name="enable_unloading_workaround" default="false" />
+  <arg name="type" />
+
+  <arg name="controllers" default="" /> <!-- override default controllers -->
+
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/position/$(arg type).yaml" />
+
+  <arg if="$(arg enable_unloading_workaround)"
+      name="extra_args"
+      value="--shutdown-timeout 1.0" />
+  <arg unless="$(arg enable_unloading_workaround)"
+      name="extra_args"
+      value="" />
+
+  <node name="body_controllers_spawner"
+      pkg="controller_manager" type="spawner" output="screen"
+      args="$(arg extra_args) kangaroo_position_controller" />
+
+</launch>
+
