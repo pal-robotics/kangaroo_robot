@@ -1,0 +1,3 @@
+kangaroo_current_controller:
+  type: "effort_controllers/JointEffortController"
+  joint: leg_left_length_joint
