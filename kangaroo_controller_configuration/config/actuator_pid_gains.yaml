@@ -1,0 +1,51 @@
+actuator_gains:
+  leg_left_1_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_left_2_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_left_3_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_left_4_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0004}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_left_5_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_left_length_motor:
+    current: {kd: 0.0, ki: 4000.0, kp: 0.8}
+    position: {kd: 0.0001, ki: 0.003, kp: 0.025}
+    velocity: {kd: 3.0e-05, ki: 12.0, kp: 1.5}
+  leg_right_1_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_right_2_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_right_3_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_right_4_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_right_5_motor:
+    current: {kd: 0.0, ki: 12000, kp: 1.5}
+    position: {kd: 2.5e-07, ki: 0.0, kp: 0.0003}
+    velocity: {kd: 2.5e-05, ki: 12.0, kp: 1.2}
+  leg_right_length_motor:
+    current: {kd: 0.0, ki: 4000.0, kp: 0.8}
+    position: {kd: 0.0001, ki: 0.003, kp: 0.025}
+    velocity: {kd: 4.0e-05, ki: 12.0, kp: 1.5}
+type: pal::ActuatorPIDCommandController
+

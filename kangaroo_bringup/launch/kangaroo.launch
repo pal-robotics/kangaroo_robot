@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <arg name="use_cage" default="true"/>
+  <arg name="ft_sensors" default="false"/>
 
   <!-- Hardware configuration -->
-  <rosparam command="load" file="$(find kangaroo_bringup)/config/kangaroo_common_hardware.yaml" />
+  <rosparam command="load" file="$(find kangaroo_bringup)/config/kangaroo_common_hardware.yaml" unless="$(arg ft_sensors)"/>
+  <rosparam command="load" file="$(find kangaroo_bringup)/config/kangaroo_common_hardware_with_ft.yaml" if="$(arg ft_sensors)"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
-    <arg name="use_cage" default="$(arg use_cage)"/> 
+    <arg name="use_cage"   value="$(arg use_cage)"/>
+    <arg name="ft_sensors" value="$(arg ft_sensors)"/>
   </include>
 
-  <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch" />
+  <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch">
+    <arg name="ft_sensors" value="$(arg ft_sensors)"/>
+  </include>
 
   <!-- Hardware specific bringup -->
   <include file="$(find kangaroo_controller_configuration)/launch/bringup_controllers_hardware.launch" />
