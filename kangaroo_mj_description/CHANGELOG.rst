@@ -2,6 +2,9 @@
 Changelog for package kangaroo_mj_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.26 (2023-01-17)
 -------------------
 

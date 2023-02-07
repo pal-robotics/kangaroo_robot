@@ -24,6 +24,19 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'kangaroo_deployed_changes' into 'master'
+  Kangaroo deployed changes
+  See merge request robots/kangaroo_robot!36
+* added direct_position_control config and launch files
+* added direct_current_control files
+* Update the actuator and safety parameters of the joints
+* Update the inertia shaping analytic parameters from the robot
+* use direct_torque_control instead of no_control in the force_control launch files
+* add new bringup controllers and use common hardware file based on ft_sensors argument
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.26 (2023-01-17)
 -------------------
 * Merge branch 'ft_robot' into 'master'

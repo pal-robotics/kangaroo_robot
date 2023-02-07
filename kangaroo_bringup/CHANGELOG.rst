@@ -17,6 +17,15 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'kangaroo_deployed_changes' into 'master'
+  Kangaroo deployed changes
+  See merge request robots/kangaroo_robot!36
+* added the proper configuration of the bota FTs
+* add new bringup controllers and use common hardware file based on ft_sensors argument
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.26 (2023-01-17)
 -------------------
 * Merge branch 'ft_robot' into 'master'
