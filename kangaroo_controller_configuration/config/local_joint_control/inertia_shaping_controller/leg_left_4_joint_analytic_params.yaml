@@ -47,6 +47,6 @@ torque_derivative_filter_parameters:
 
 feedback_acceleration_compensation_gain: 0.0
 feedforward_acceleration_gain: 0.0
-torque_feedback_gain: 1.5
-torque_derivative_feedback_gain: 0.0
-observer_feedback_gain: 0.8 # 0.85
+torque_feedback_gain:  1.5 # 1.5 # 2.2
+torque_derivative_feedback_gain: 0.02
+observer_feedback_gain: 0.6 # 0.7 # 0.75
