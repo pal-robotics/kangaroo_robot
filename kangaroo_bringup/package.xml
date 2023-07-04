@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>kangaroo_bringup</name>
-  <version>0.0.27</version>
+  <version>0.0.28</version>
   <description>The kangaroo_bringup package</description>
 
   <maintainer email="luca.marchionni@pal-robotics.com">Luca Marchionni</maintainer>
