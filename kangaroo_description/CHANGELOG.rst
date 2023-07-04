@@ -16,6 +16,11 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* fix the ft link frame as per the datasheet
+* Contributors: Sai Kishor Kothakota
+
 0.0.27 (2023-02-07)
 -------------------
 
