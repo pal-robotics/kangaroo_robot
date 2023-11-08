@@ -24,6 +24,16 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'smooth_position_control' into 'master'
+  Add parameters for direct_position_control
+  See merge request robots/kangaroo_robot!38
+* Modify parameters for direct_position_control
+* Modify parameters for direct_position_control
+* Add parameters for direct_position_control
+* Contributors: Adria Roig, Adrià Roig, Sai Kishor Kothakota
+
 0.0.28 (2023-07-04)
 -------------------
 
