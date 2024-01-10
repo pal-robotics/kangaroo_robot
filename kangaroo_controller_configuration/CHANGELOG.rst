@@ -24,8 +24,8 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
-Forthcoming
------------
+0.0.30 (2024-01-10)
+-------------------
 * Merge branch 'added_parameterized_hipz_model_parameters' into 'master'
   Parameterize the version of Hip Z installed on the robot and update the parameters
   See merge request robots/kangaroo_robot!39
