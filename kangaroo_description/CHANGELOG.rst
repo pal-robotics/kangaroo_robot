@@ -16,6 +16,14 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'added_parameterized_hipz_model_parameters' into 'master'
+  Parameterize the version of Hip Z installed on the robot and update the parameters
+  See merge request robots/kangaroo_robot!39
+* Parameterize the version of Hip Z installed on the robot and update the parameters
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.29 (2023-11-08)
 -------------------
 
