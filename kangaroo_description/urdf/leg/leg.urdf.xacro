@@ -40,7 +40,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin simulation:=false use_mimic:=true ft_sensors:=false">
+  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin hipz_model simulation:=false use_mimic:=true ft_sensors:=false">
     <link name="leg_${side}_1_link">
       <inertial>
         <origin xyz="0.0461079574284527 ${reflect * -0.000826631128234001} 0.00897630312181676" rpy="0 0 0" />
@@ -264,7 +264,7 @@
 
     <!-- Load corresponding transmission info -->
     <xacro:unless value="${simulation}">
-      <xacro:hip_transmission_yaw side="${side}" params_ns="/${side}_hip_z_params" />
+      <xacro:hip_transmission_yaw side="${side}" params_ns="/${side}_hip_z_${hipz_model}_params" />
       <xacro:hip_transmission_roll_pitch side="${side}" roll_joint="3" pitch_joint="2" />
       <xacro:kangaroo_leg_length_actuator_transmission side="${side}" number1="4" number2="5" params_ns="/leg_params" />
     </xacro:unless>
