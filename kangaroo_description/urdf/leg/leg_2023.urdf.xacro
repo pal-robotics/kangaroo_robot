@@ -43,9 +43,10 @@
   <xacro:macro name="kangaroo_leg" params="side reflect parent *origin hipz_model simulation:=false use_mimic:=true ft_sensors:=false">
     <link name="leg_${side}_1_link">
       <inertial>
-        <origin xyz="0.0461079574284527 ${reflect * -0.000826631128234001} 0.00897630312181676" rpy="0 0 0" />
-        <mass value="2.49954419149183" />
-        <inertia ixx="0.00151181747940305" ixy="${reflect * 8.83298140320242E-06}" ixz="${reflect * 2.17752660615735E-05}" iyy="0.00154876023440654" iyz="${reflect * -1.94449871986378E-05}" izz="0.00136106613590181" />
+        <origin xyz="0.00567848436743906 ${reflect *0.00485639369944225} 0.0095021298057529" rpy="0 0 0" />
+        <mass value="2.65497387095349" />
+        <inertia ixx="0.00149978199388072" ixy="${reflect * 9.84571170148762E-06}" ixz="${reflect * 2.47542814609499E-05}"
+          iyy="0.00145455726255875" iyz="${reflect * -1.83660235416355E-05}" izz="0.00128461512366971" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -59,7 +60,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl" scale="1 ${reflect} 1"/>
+          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl"  scale="1 ${reflect} 1"/>
         </geometry>
       </collision>
     </link>
