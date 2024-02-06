@@ -11,7 +11,9 @@
 
   <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
   <xacro:arg name="hipz_model" default="2023"/>
+  <xacro:arg name="version" default="2023"/>
   <xacro:property name="hipz_model" value="$(arg hipz_model)" />
+  <xacro:property name="version" value="$(arg version)" />
 
   <xacro:include filename="$(find kangaroo_description)/urdf/sensors/imu.urdf.xacro" />
 
@@ -33,7 +35,7 @@
       <child link="base_link" />
     </joint>
   </xacro:if>
-  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg_$(arg version).urdf.xacro" />
 
   <xacro:kangaroo_imu name="imu" parent="base_link" update_rate="100.0">
     <origin xyz="-0.07075 0.0 0.012" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${0.0*deg_to_rad}"/>
