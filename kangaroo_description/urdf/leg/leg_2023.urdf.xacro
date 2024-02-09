@@ -157,6 +157,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
+          <!-- The ballscrews are removed from the meshes for better visualization, but they are used for inertia computation etc -->
           <mesh filename="package://kangaroo_description/meshes/leg_femur_link.stl" />
         </geometry>
         <material name="">
@@ -166,6 +167,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
+          <!-- The ballscrews are removed from the meshes for better visualization, but they are used for inertia computation etc -->
           <mesh filename="package://kangaroo_description/meshes/leg_femur_link.stl" />
         </geometry>
       </collision>
