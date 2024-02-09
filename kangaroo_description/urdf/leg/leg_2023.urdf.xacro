@@ -139,22 +139,25 @@
       <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="150" velocity="3.87" />
     </joint>
     <link name="leg_${side}_femur_link">
+<!--       <xacro:if value="${use_mimic}">
+              <mass value="0.1" />
+              <inertia ixx="1.E-5" ixy="0.0" ixz="0.0" iyy="1.E-5" iyz="0.0" izz="1.E-5" />
+      </xacro:if>
+      <xacro:unless value="${use_mimic}">
+        <mass value="3.57408268817521" />
+              <inertia ixx="0.00247170768644724" ixy="2.87874888621229E-05" ixz="0.00247469186737281"
+                iyy="0.0126050262407564" iyz="1.01404330133204E-05" izz="0.0116319632922522" />
+      </xacro:unless> -->
       <inertial>
-        <origin xyz="0.114702002010089 0.000182856660852354 -0.0143986490691173" rpy="0 0 0" />
-<xacro:if value="${use_mimic}">
-        <mass value="0.1" />
-        <inertia ixx="1.E-5" ixy="0.0" ixz="0.0" iyy="1.E-5" iyz="0.0" izz="1.E-5" />
-</xacro:if>
-<xacro:unless value="${use_mimic}">
-	<mass value="3.57408268817521" />
-        <inertia ixx="0.00247170768644724" ixy="2.87874888621229E-05" ixz="0.00247469186737281"
-          iyy="0.0126050262407564" iyz="1.01404330133204E-05" izz="0.0116319632922522" />
-</xacro:unless>
+        <origin xyz="0.0527475093314697 0.000135688427874925 -0.146959283149568" rpy="0 0 0" />
+        <mass value="3.94567187082779" />
+        <inertia ixx="0.0111010751306264" ixy="2.24256967982894E-05" ixz="0.0025879993168672"
+          iyy="0.0121128398206334" iyz="-1.93362671261787E-05" izz="0.0025734913670898" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_4_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/leg_femur_link.stl" />
         </geometry>
         <material name="">
           <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -163,27 +166,30 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_4_link.stl"/>
+          <mesh filename="package://kangaroo_description/meshes/leg_femur_link.stl" />
         </geometry>
       </collision>
     </link>
     <link name="leg_${side}_knee_link">
+<!--       <xacro:if value="${use_mimic}">
+              <mass value="0.1" />
+              <inertia ixx="1.E-5" ixy="0.0" ixz="0.0" iyy="1.E-5" iyz="0.0" izz="1.E-5" />
+      </xacro:if>
+      <xacro:unless value="${use_mimic}">
+              <mass value="0.87223211672797" />
+              <inertia ixx="0.000350603269949793" ixy="6.37793331536252E-07" ixz="-0.000461550351107159"
+                iyy="0.00242184402988972" iyz="5.09327556678297E-07" izz="0.0022368624903808" />
+      </xacro:unless> -->
       <inertial>
-        <origin xyz="-0.158662729273678 -8.28192764317226E-05 -0.0337468261967321" rpy="0 0 0" />
-<xacro:if value="${use_mimic}">
-        <mass value="0.1" />
-        <inertia ixx="1.E-5" ixy="0.0" ixz="0.0" iyy="1.E-5" iyz="0.0" izz="1.E-5" />
-</xacro:if>
-<xacro:unless value="${use_mimic}">
-        <mass value="0.87223211672797" />
-        <inertia ixx="0.000350603269949793" ixy="6.37793331536252E-07" ixz="-0.000461550351107159"
-          iyy="0.00242184402988972" iyz="5.09327556678297E-07" izz="0.0022368624903808" />
-</xacro:unless>
+        <origin xyz="-0.0569664873635563 -5.41309796184553E-05 -0.148820781933269" rpy="0 0 0" />
+        <mass value="1.02238189690276" />
+        <inertia ixx="0.00193955870555937" ixy="-7.22330237538467E-08" ixz="-0.000472475893337071"
+          iyy="0.00215347079183119" iyz="1.36520012214457E-06" izz="0.000391378760186175" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_5_collision_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/leg_tibia_link.stl" />
         </geometry>
         <material name="">
           <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -192,7 +198,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_5_collision_link.stl"/>
+          <mesh filename="package://kangaroo_description/meshes/leg_tibia_link.stl" />
         </geometry>
       </collision>
     </link>
@@ -233,7 +239,7 @@
     </joint>
 
     <joint name="leg_${side}_femur_joint" type="revolute">
-      <origin xyz="0 ${reflect * 0.0669} -0.09" rpy="0 ${-10.0 * deg_to_rad} 0" />
+      <origin xyz="0 ${reflect * 0.0669} -0.09" rpy="0 ${-70.0 * deg_to_rad} 0" />
       <parent link="leg_${side}_3_link" />
       <child link="leg_${side}_femur_link" />
       <axis xyz="0 1 0" />
@@ -244,7 +250,8 @@
     </joint>
 
     <joint name="leg_${side}_knee_joint" type="revolute">
-      <origin xyz="0.37413 0 -0.066509" rpy="0 ${20.0 * deg_to_rad} 0" />
+      <origin xyz="0.129944529468438 0 -0.357091611860635" rpy="0 ${140.0 * deg_to_rad} 0" />
+      <!-- <origin xyz="0.37413 0 -0.066509" rpy="0 ${-70.0 * deg_to_rad} 0" /> -->
       <parent link="leg_${side}_femur_link" />
       <child link="leg_${side}_knee_link" />
       <axis xyz="0 -1 0" />
@@ -258,7 +265,7 @@
     <joint name="leg_${side}_knee_straight_joint" type="fixed">
     	<parent link="leg_${side}_knee_link"/>
     	<child link="leg_${side}_knee_straight"/>
-    	<origin rpy="0 ${-10.0 * deg_to_rad} 0" xyz="0 0 0"/>
+    	<origin rpy="0 ${-70.0 * deg_to_rad} 0" xyz="0 0 0"/>
     </joint>
     <link name="leg_${side}_knee_lower_bearing"/>
     <joint name="leg_${side}_knee_lower_bearing_joint" type="fixed">
