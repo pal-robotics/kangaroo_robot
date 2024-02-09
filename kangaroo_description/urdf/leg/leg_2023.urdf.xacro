@@ -78,10 +78,12 @@
     </joint>
     <link name="leg_${side}_2_link">
       <inertial>
-        <origin xyz="-0.00299642516878475 -0.000101293190038279 6.76277450706309E-10" rpy="0 0 0" />
-        <mass value="0.0907287903783648" />
-        <inertia ixx="6.10402208807908E-06" ixy="3.54403077254796E-08" ixz="-3.0910293306339E-13"
-          iyy="3.90470919341026E-05" iyz="-1.14069181428674E-12" izz="3.64238433670963E-05" />
+        <origin
+          xyz="-0.00292779640030026 -9.62074367728827E-05 1.0865936483917E-09"
+          rpy="0 0 0" />
+        <mass value="0.0905312454913012" />
+        <inertia ixx="6.10166860944865E-06" ixy="4.64490555644666E-08" ixz="4.07017223451518E-13"
+          iyy="3.88541683636482E-05" iyz="-1.04538188015163E-12" izz="3.6228659424845E-05" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -89,12 +91,18 @@
           <mesh filename="package://kangaroo_description/meshes/leg_2_link.stl" scale="1 ${reflect} 1"/>
         </geometry>
         <material name="">
-          <color rgba="0.894117647058823 0.913725490196078 0.929411764705882 1" />
+          <color rgba="0.894117647058823 0.913725490196078 0.929411764705882 1"/>
         </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/leg_2_link.stl" scale="1 ${reflect} 1"/>
+        </geometry>
+      </collision>
     </link>
     <joint name="leg_${side}_2_joint" type="revolute">
-      <origin xyz="0.016042 0 -0.0925" rpy="0 0 0" />
+      <origin xyz="0.015024 0 -0.0925" rpy="0 0 0" />
       <parent link="leg_${side}_1_link" />
       <child link="leg_${side}_2_link" />
       <axis xyz="0 1 0" />
@@ -102,10 +110,10 @@
     </joint>
     <link name="leg_${side}_3_link">
       <inertial>
-        <origin xyz="-0.042791492019428 ${reflect * 0.0477271400490046} -0.0411219993940296" rpy="0 0 0" />
-        <mass value="3.66987205802361" />
-        <inertia ixx="0.00226579365890287" ixy="${reflect * 0.000186528466622377}" ixz="${reflect * -9.4464170720752E-05}"
-          iyy="0.00347844100338387" iyz="${reflect * 4.48424073671215E-05}" izz="0.00335571040406776" />
+        <origin xyz="-0.0331126340475435 ${reflect * 0.0492000964734808} -0.0300270306298204" rpy="0 0 0" />
+        <mass value="3.45187520713338" />
+        <inertia ixx="0.0021995228245877" ixy="${reflect * 0.000142021792686858}" ixz="${reflect * -0.000114089540435782}"
+          iyy="0.00286983872145199" iyz="${reflect * 3.27704238559214E-05}" izz="0.00273461620254835" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
