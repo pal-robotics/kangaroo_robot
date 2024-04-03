@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
-<xacro:macro name="base_link" params="with_cage:=true">
+<xacro:macro name="base_link" params="with_cage:=true version:=${version}">
 
 <xacro:if value="${with_cage}">
 <link name="base_link">
@@ -15,7 +15,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://kangaroo_description/meshes/base_link_with_cage.stl" />
+        <mesh filename="package://kangaroo_description/meshes/${version}/base_link_with_cage.stl" />
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1" />
@@ -24,7 +24,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://kangaroo_description/meshes/base_link_convex_hull.stl" />
+        <mesh filename="package://kangaroo_description/meshes/${version}/base_link_convex_hull.stl" />
       </geometry>
     </collision>
 </link>
@@ -41,7 +41,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://kangaroo_description/meshes/base_link.stl" />
+        <mesh filename="package://kangaroo_description/meshes/${version}/base_link.stl" />
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1" />
@@ -50,7 +50,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://kangaroo_description/meshes/base_link.stl" />
+        <mesh filename="package://kangaroo_description/meshes/${version}/base_link.stl" />
       </geometry>
     </collision>
 </link>
