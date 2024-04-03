@@ -70,9 +70,10 @@
       </xacro:unless>
       <xacro:if value="${ft_sensors}">
         <inertial>
-          <origin xyz="0.022204 -8.11751E-06 -0.042186" rpy="0 0 0" />
+          <origin xyz="0.0056012722847415 -8.11751E-06 -0.062005508" rpy="0 0 0" />
           <mass value="0.826924" />
-          <inertia ixx="0.0004094" ixy="2.2E-08" ixz="-0.000244" iyy="0.0009742" iyz="-1.25E-09" izz="0.0011036" />
+          <inertia ixx="0.000511104633992357" ixy="2.29520535343244E-08" ixz="-0.000504403659563376"
+            iyy="0.00170802543470207" iyz="-1.88812897159487E-09" izz="0.00181438717200554" />
         </inertial>
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
@@ -90,7 +91,7 @@
           </geometry>
         </collision>
         <collision>
-          <origin xyz="0.035 0 -0.06" rpy="0 0 0" />
+          <origin xyz="0.035 0 -0.065" rpy="0 0 0" />
           <geometry>
             <box size="0.21 0.09 0.025"/>
           </geometry>
