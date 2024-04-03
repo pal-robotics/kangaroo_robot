@@ -40,7 +40,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin hipz_model simulation:=false use_mimic:=true ft_sensors:=false">
+  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin hipz_model:=2022 simulation:=false use_mimic:=true ft_sensors:=false">
     <link name="leg_${side}_1_link">
       <inertial>
         <origin xyz="0.0461079574284527 ${reflect * -0.000826631128234001} 0.00897630312181676" rpy="0 0 0" />
