@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.1.0 (2024-04-04)
+------------------
 * Merge branch 'update/urdf/022024' into 'master'
   Update the Kangaroo URDF to 2023 version
   See merge request robots/kangaroo_robot!41
