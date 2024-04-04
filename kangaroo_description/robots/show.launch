@@ -1,5 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <launch>
-  <include file="$(find kangaroo_description)/robots/upload.launch" />
+  <arg name="version" default="2023"/>
+  <arg name="ft_sensors" default="false"/>
+
+  <include file="$(find kangaroo_description)/robots/upload.launch">
+    <arg name="version" value="$(arg version)"/>
+    <arg name="ft_sensors" value="$(arg ft_sensors)"/>
+  </include>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="_use_gui:=True" />

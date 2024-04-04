@@ -27,11 +27,25 @@ collision_model_parameters:
         second: leg_right_knee_link
       - first: leg_left_3_link
         second: leg_left_knee_link
+      - first: leg_right_4_link
+        second: leg_right_knee_link
       - first: leg_right_5_link
         second: leg_right_knee_link
+      - first: leg_left_4_link
+        second: leg_left_knee_link
       - first: leg_left_5_link
         second: leg_left_knee_link
       - first: leg_right_1_link
         second: leg_right_femur_link
       - first: leg_left_1_link
         second: leg_left_femur_link
+      - first: base_link
+        second: torso_link
+      - first: torso_link
+        second: leg_right_1_link
+      - first: torso_link
+        second: leg_left_1_link
+      - first: base_link
+        second: leg_right_1_link
+      - first: base_link
+        second: leg_left_1_link
