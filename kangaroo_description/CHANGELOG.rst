@@ -16,6 +16,29 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'update/urdf/022024' into 'master'
+  Update the Kangaroo URDF to 2023 version
+  See merge request robots/kangaroo_robot!41
+* remove the torso link convex copy
+* parse the kangaroo version from the upload.launch directly
+* update the leg collision links without bars for the new leg description
+* Update the collision parameters of the new kangaroo description
+* update the ankle inertia and collision info when considering the ft_sensor
+* fix the version hardcoded value of macro
+* hardcode hipz model inside the leg urdf xacros
+* added the new version of the base link and torso
+* add version argument into the base link xacro
+* move the base link to use the version 2022
+* update the ankle links mass, inertia and meshes
+* update link 3 without the ball screws just for visualization purpose
+* update femur and tibia link properties information (mass, inertia and meshes)
+* update hip roll and pitch inertia, mass properties and meshes
+* update hip z inertia, mass properties and the mesh file
+* added version arg to the URDF and create different leg URDFs
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.0.30 (2024-01-10)
 -------------------
 * Merge branch 'added_parameterized_hipz_model_parameters' into 'master'
