@@ -3,7 +3,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.transmission.xacro" />
-  <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle.urdf.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle_2022.urdf.xacro" />
 
   <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
   <xacro:property name="eps_radians"      value="0.008" /> <!-- 0.45deg -->
