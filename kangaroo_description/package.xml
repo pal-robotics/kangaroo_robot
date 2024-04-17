@@ -14,6 +14,12 @@
   <exec_depend>force_torque_sensor_controller</exec_depend>
   <exec_depend>kangaroo_transmissions</exec_depend>
 
+  <!-- Gazebo related dependencies -->
+  <exec_depend>gazebo_plugins</exec_depend>
+  <exec_depend>pal_gazebo_plugins</exec_depend>
+  <exec_depend>pal_hardware_gazebo</exec_depend>
+  <exec_depend>pal_hardware_interfaces</exec_depend>
+
   <test_depend>rostest</test_depend>
   <test_depend>urdf_test</test_depend>
 
