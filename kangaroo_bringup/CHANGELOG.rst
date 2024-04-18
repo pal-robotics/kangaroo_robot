@@ -17,6 +17,14 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'fix/urdf/02024/foot' into 'master'
+  Fix/urdf/02024/foot
+  See merge request robots/kangaroo_robot!42
+* add version argument to all launch files using upload.launch
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.0 (2024-04-04)
 ------------------
 

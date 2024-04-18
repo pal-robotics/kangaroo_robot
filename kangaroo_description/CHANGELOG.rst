@@ -16,6 +16,18 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'fix/urdf/02024/foot' into 'master'
+  Fix/urdf/02024/foot
+  See merge request robots/kangaroo_robot!42
+* Dependencies needed for the gazebo simulation of both the versions
+* add version argument to all launch files using upload.launch
+* add version to the testing of URDF
+* added new ankle version changes to the URDF
+* move the original ankle.urdf.xacro to be version 2022
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.0 (2024-04-04)
 ------------------
 * Merge branch 'update/urdf/022024' into 'master'
