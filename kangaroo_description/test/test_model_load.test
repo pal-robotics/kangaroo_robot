@@ -3,11 +3,13 @@
   <arg name="enable_crane"/>
   <arg name="simulation"/>
   <arg name="fixed_base"/>
+  <arg name="version"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
-    <arg name="enable_crane" value="$(arg enable_crane)"/>
-    <arg name="simulation" value="$(arg simulation)"/>
-    <arg name="fixed_base" value="$(arg fixed_base)"/>
+    <arg name="enable_crane"  value="$(arg enable_crane)"/>
+    <arg name="simulation"    value="$(arg simulation)"/>
+    <arg name="fixed_base"    value="$(arg fixed_base)"/>
+    <arg name="version"       value="$(arg version)"/>
   </include>
 
   <include file="$(find urdf_test)/launch/test_urdf.launch">

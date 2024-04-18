@@ -5,12 +5,14 @@
   <arg name="fixed_base" default="true"/>
   <arg name="use_mimic" default="false"/>
   <arg name="ft_sensors" default="false"/>
+  <arg name="version" default="2023"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
-    <arg name="simulation" value="$(arg simulation)"/> 
-    <arg name="fixed_base" default="$(arg fixed_base)"/>
-    <arg name="use_mimic" value="$(arg use_mimic)"/>
-    <arg name="ft_sensors" value="$(arg ft_sensors)"/>
+    <arg name="simulation"  value="$(arg simulation)"/> 
+    <arg name="fixed_base"  value="$(arg fixed_base)"/>
+    <arg name="use_mimic"   value="$(arg use_mimic)"/>
+    <arg name="ft_sensors"  value="$(arg ft_sensors)"/>
+    <arg name="version"     value="$(arg version)"/>
   </include>
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
