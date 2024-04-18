@@ -24,8 +24,8 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
-Forthcoming
------------
+0.1.1 (2024-04-18)
+------------------
 
 0.1.0 (2024-04-04)
 ------------------

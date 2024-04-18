@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.1.1 (2024-04-18)
+------------------
 * Merge branch 'fix/urdf/02024/foot' into 'master'
   Fix/urdf/02024/foot
   See merge request robots/kangaroo_robot!42
