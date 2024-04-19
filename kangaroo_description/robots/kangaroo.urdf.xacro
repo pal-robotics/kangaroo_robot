@@ -9,8 +9,41 @@
         xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
+  <xacro:arg name="version" default="2023" />
+  <xacro:arg name="simulation" default="false" />
+  <xacro:arg name="torso_front_camera_model" default="realsense-D435i" />
+  <xacro:arg name="torso_back_camera_model" default="realsense-D435i" />
+  <xacro:arg name="wrist_front_camera_model" default="realsense-D435i" />
+  <xacro:arg name="wrist_back_camera_model" default="realsense-D435i" />
+ 
   <xacro:property name="version" value="$(arg version)" />
+  <xacro:property name="simulation" value="$(arg simulation)" />
+  <xacro:property name="torso_front_camera_model" value="$(arg torso_front_camera_model)" />
+  <xacro:property name="torso_back_camera_model" value="$(arg torso_back_camera_model)" />
+  <xacro:property name="wrist_front_camera_model" value="$(arg wrist_front_camera_model)" />
+  <xacro:property name="wrist_back_camera_model" value="$(arg wrist_back_camera_model)" />
+  
+  <xacro:if value="${version not in ['2022','2023']}">
+    <xacro:wrong_version/>
+  </xacro:if>
+  
+  <xacro:if value="${torso_front_camera_model not in ['realsense-D435i']}">
+    <xacro:wrong_torso_front_camera_model/>
+  </xacro:if>
+  
+  <xacro:if value="${torso_back_camera_model not in ['realsense-D435i']}">
+    <xacro:wrong_torso_back_camera_model/>
+  </xacro:if>
+
+  <xacro:if value="${wrist_front_camera_model not in ['realsense-D435i']}">
+    <xacro:wrong_wrist_front_camera_model/>
+  </xacro:if>
+  
+  <xacro:if value="${wrist_back_camera_model not in ['realsense-D435i']}">
+    <xacro:wrong_wrist_back_camera_model/>
+  </xacro:if>
+
+  <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" />
 
   <!--************************-->
   <!--        BASE_LINK       -->
@@ -39,8 +72,13 @@
     <origin xyz="-0.01602 -0.08 -0.0585" rpy="0 0 0"/>
   </xacro:kangaroo_leg>
   <!-- Generic simulator_gazebo plugins -->
-  <xacro:include filename="$(find kangaroo_description)/gazebo/gazebo.urdf.xacro" />
   <!-- Materials for visualization -->
   <xacro:include filename="$(find kangaroo_description)/urdf/materials.urdf.xacro" />
+
+  <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
+  <xacro:kangaroo_torso parent="base_link"/>
+
+  <xacro:include filename="$(find kangaroo_description)/urdf/wrist/wrist.urdf.xacro" />
+  <xacro:kangaroo_wrist parent="base_link"/>
 
 </robot>
