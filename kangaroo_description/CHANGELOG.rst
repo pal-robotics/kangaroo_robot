@@ -16,6 +16,14 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'fix/urdf/042024/hip_z' into 'master'
+  Update the hipz with new version
+  See merge request robots/kangaroo_robot!43
+* update the hipz with new version
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.1 (2024-04-18)
 ------------------
 * Merge branch 'fix/urdf/02024/foot' into 'master'
