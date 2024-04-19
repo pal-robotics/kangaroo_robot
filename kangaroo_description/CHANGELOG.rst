@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.1.2 (2024-04-19)
+------------------
 * Merge branch 'fix/urdf/042024/hip_z' into 'master'
   Update the hipz with new version
   See merge request robots/kangaroo_robot!43
