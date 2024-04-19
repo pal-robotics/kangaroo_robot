@@ -50,7 +50,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl" scale="1 ${reflect} 1"/>
+          <mesh filename="package://kangaroo_description/meshes/2022/leg_1_link.stl" scale="1 ${reflect} 1"/>
         </geometry>
         <material name="">
           <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -59,7 +59,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl" scale="1 ${reflect} 1"/>
+          <mesh filename="package://kangaroo_description/meshes/2022/leg_1_link.stl" scale="1 ${reflect} 1"/>
         </geometry>
       </collision>
     </link>
@@ -72,7 +72,7 @@
         <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="150" velocity="3.87" />
       </xacro:if>
       <xacro:if value="${reflect == -1}">
-        <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="500" velocity="3.87" />
+        <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="150" velocity="3.87" />
       </xacro:if>
     </joint>
     <link name="leg_${side}_2_link">
