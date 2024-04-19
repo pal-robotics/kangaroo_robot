@@ -43,15 +43,15 @@
   <xacro:macro name="kangaroo_leg" params="side reflect parent *origin hipz_model:=2023 simulation:=false use_mimic:=true ft_sensors:=false">
     <link name="leg_${side}_1_link">
       <inertial>
-        <origin xyz="0.00567848436743906 ${reflect *0.00485639369944225} 0.0095021298057529" rpy="0 0 0" />
-        <mass value="2.65497387095349" />
-        <inertia ixx="0.00149978199388072" ixy="${reflect * 9.84571170148762E-06}" ixz="${reflect * 2.47542814609499E-05}"
-          iyy="0.00145455726255875" iyz="${reflect * -1.83660235416355E-05}" izz="0.00128461512366971" />
+        <origin xyz="0.00643148180089947 ${reflect * 0.00470584363523306} -0.0104315706390075" rpy="0 0 0" />
+        <mass value="2.89547106393921" />
+        <inertia ixx="0.002373067757357" ixy="${reflect * 1.0458682341421E-05}" ixz="${reflect * 7.10544668703563E-05}"
+          iyy="0.00215576778669813" iyz="${reflect * -1.24262445397793E-05}" izz="0.00155640461041179" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl" scale="1 ${reflect} 1"/>
+          <mesh filename="package://kangaroo_description/meshes/2023/leg_1_link.stl" scale="1 ${reflect} 1"/>
         </geometry>
         <material name="">
           <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -60,7 +60,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl"  scale="1 ${reflect} 1"/>
+          <mesh filename="package://kangaroo_description/meshes/2023/leg_1_link.stl"  scale="1 ${reflect} 1"/>
         </geometry>
       </collision>
     </link>
@@ -73,7 +73,7 @@
         <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="150" velocity="3.87" />
       </xacro:if>
       <xacro:if value="${reflect == -1}">
-        <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="500" velocity="3.87" />
+        <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="150" velocity="3.87" />
       </xacro:if>
     </joint>
     <link name="leg_${side}_2_link">
