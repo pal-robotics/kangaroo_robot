@@ -67,5 +67,6 @@
         xyz="-0.1056 0 0.40767"
         rpy="0 -0.5236 ${180.0*deg_to_rad}"/>
     </xacro:sensor_d435>
+  </xacro:macro>
 
 </robot>

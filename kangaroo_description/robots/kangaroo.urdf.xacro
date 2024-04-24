@@ -15,7 +15,7 @@
   <xacro:arg name="torso_back_camera_model" default="realsense-D435i" />
   <xacro:arg name="wrist_front_camera_model" default="realsense-D435i" />
   <xacro:arg name="wrist_back_camera_model" default="realsense-D435i" />
- 
+
   <xacro:property name="version" value="$(arg version)" />
   <xacro:property name="simulation" value="$(arg simulation)" />
   <xacro:property name="torso_front_camera_model" value="$(arg torso_front_camera_model)" />
@@ -23,7 +23,7 @@
   <xacro:property name="wrist_front_camera_model" value="$(arg wrist_front_camera_model)" />
   <xacro:property name="wrist_back_camera_model" value="$(arg wrist_back_camera_model)" />
   
-  <xacro:if value="${version not in ['2022','2023']}">
+  <xacro:if value="${version not in [2022,2023]}">
     <xacro:wrong_version/>
   </xacro:if>
   
