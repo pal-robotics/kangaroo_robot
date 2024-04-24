@@ -14,28 +14,30 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" />
   <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
 
-  <xacro:macro name="kangaroo_wrist" params="parent">
+  <xacro:macro name="kangaroo_waist" params="parent">
 
-  <!-- Wrist front rgbd camera -->
+  <!-- Waist front rgbd camera -->
     <xacro:sensor_d435
-      name="wrist_front_rgbd_camera"
+      name="waist_front_rgbd_camera"
       parent="${parent}"
-      topics_ns="wrist_front_rgbd_camera"
+      topics_ns="waist_front_rgbd_camera"
       use_nominal_extrinsics="${simulation}">
       <origin
         xyz="0.11998 0 -0.0085"
         rpy="0 1.0472 0"/>
     </xacro:sensor_d435>
 
-  <!-- Wrist back rgbd camera -->
+  <!-- Waist back rgbd camera -->
     <xacro:sensor_d435
-      name="wrist_back_rgbd_camera"
+      name="waist_back_rgbd_camera"
       parent="${parent}"
-      topics_ns="wrist_back_rgbd_camera"
+      topics_ns="waist_back_rgbd_camera"
       use_nominal_extrinsics="${simulation}">
       <origin
         xyz="-0.20238 0 0.05049"
         rpy="0 -1.0472 ${180.0*deg_to_rad}"/>
     </xacro:sensor_d435>
-
+  
+  </xacro:macro>
+  
 </robot>

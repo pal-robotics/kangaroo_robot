@@ -13,15 +13,15 @@
   <xacro:arg name="simulation" default="false" />
   <xacro:arg name="torso_front_camera_model" default="realsense-D435i" />
   <xacro:arg name="torso_back_camera_model" default="realsense-D435i" />
-  <xacro:arg name="wrist_front_camera_model" default="realsense-D435i" />
-  <xacro:arg name="wrist_back_camera_model" default="realsense-D435i" />
+  <xacro:arg name="waist_front_camera_model" default="realsense-D435i" />
+  <xacro:arg name="waist_back_camera_model" default="realsense-D435i" />
 
   <xacro:property name="version" value="$(arg version)" />
   <xacro:property name="simulation" value="$(arg simulation)" />
   <xacro:property name="torso_front_camera_model" value="$(arg torso_front_camera_model)" />
   <xacro:property name="torso_back_camera_model" value="$(arg torso_back_camera_model)" />
-  <xacro:property name="wrist_front_camera_model" value="$(arg wrist_front_camera_model)" />
-  <xacro:property name="wrist_back_camera_model" value="$(arg wrist_back_camera_model)" />
+  <xacro:property name="waist_front_camera_model" value="$(arg waist_front_camera_model)" />
+  <xacro:property name="waist_back_camera_model" value="$(arg waist_back_camera_model)" />
   
   <xacro:if value="${version not in [2022,2023]}">
     <xacro:wrong_version/>
@@ -35,12 +35,12 @@
     <xacro:wrong_torso_back_camera_model/>
   </xacro:if>
 
-  <xacro:if value="${wrist_front_camera_model not in ['realsense-D435i']}">
-    <xacro:wrong_wrist_front_camera_model/>
+  <xacro:if value="${waist_front_camera_model not in ['realsense-D435i']}">
+    <xacro:wrong_waist_front_camera_model/>
   </xacro:if>
   
-  <xacro:if value="${wrist_back_camera_model not in ['realsense-D435i']}">
-    <xacro:wrong_wrist_back_camera_model/>
+  <xacro:if value="${waist_back_camera_model not in ['realsense-D435i']}">
+    <xacro:wrong_waist_back_camera_model/>
   </xacro:if>
 
   <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" />
@@ -78,7 +78,7 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
   <xacro:kangaroo_torso parent="base_link"/>
 
-  <xacro:include filename="$(find kangaroo_description)/urdf/wrist/wrist.urdf.xacro" />
-  <xacro:kangaroo_wrist parent="base_link"/>
+  <xacro:include filename="$(find kangaroo_description)/urdf/waist/waist.urdf.xacro" />
+  <xacro:kangaroo_waist parent="base_link"/>
 
 </robot>
