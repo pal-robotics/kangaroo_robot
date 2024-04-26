@@ -11,7 +11,7 @@
   <xacro:property name="leg_1_min_pos"   value="${-15.0 *deg_to_rad}" />
   <xacro:property name="leg_1_max_pos"   value="${40.0 *deg_to_rad}" />
   <xacro:property name="leg_2_min_pos"   value="${-42.5 *deg_to_rad}" />
-  <xacro:property name="leg_2_max_pos"   value="${42.5 *deg_to_rad}" />
+  <xacro:property name="leg_2_max_pos"   value="${38.0 *deg_to_rad}" />
   <xacro:property name="leg_3_min_pos"   value="${-27.0 *deg_to_rad}" />
   <xacro:property name="leg_3_max_pos"   value="${27.0 *deg_to_rad}" />
   <xacro:property name="leg_femur_min_pos"   value="${10.0 *deg_to_rad}" />
