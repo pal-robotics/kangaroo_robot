@@ -8,7 +8,7 @@
   <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
   <xacro:property name="eps_radians"      value="0.008" /> <!-- 0.45deg -->
   <xacro:property name="pitch_joint_min_pos"   value="${-42.5 *deg_to_rad}" />
-  <xacro:property name="pitch_joint_max_pos"   value="${42.5 *deg_to_rad}" />
+  <xacro:property name="pitch_joint_max_pos"   value="${38.0 *deg_to_rad}" />
   <xacro:property name="roll_joint_min_pos"   value="${-27.0 *deg_to_rad}" />
   <xacro:property name="roll_joint_max_pos"   value="${27.0 *deg_to_rad}" />
 
