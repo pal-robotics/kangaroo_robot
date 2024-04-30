@@ -16,6 +16,17 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'urdf/update/042024' into 'master'
+  add IMU configuration and reduce the hip pitch and ankle pitch range
+  See merge request robots/kangaroo_robot!47
+* reduce the range of the ankle
+* Set the proper IMU transform for the new model 2023
+* Set the IMU definition for base version 2022
+* reduce the hip pitch range
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.2 (2024-04-19)
 ------------------
 * Merge branch 'fix/urdf/042024/hip_z' into 'master'
