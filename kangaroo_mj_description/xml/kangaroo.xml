@@ -1,194 +1,52 @@
 <mujoco model="kangaroo">
-  <compiler angle="radian" meshdir="../meshes/"/>
-  <size njmax="500" nconmax="100"/>
-  <default/>
-  <option integrator="RK4"/>
-  <visual>
-    <headlight diffuse="0.6 0.6 0.6"  ambient="0.3 0.3 0.3" specular="0 0 0"/>
-    <rgba haze="0.15 0.25 0.35 1"/>
-    <global azimuth="150" elevation="-20"/>
-  </visual>
-  <asset>
-    <mesh name="base_link_with_cage" file="base_link_with_cage.stl"/>
-    <mesh name="leg_1_link" file="leg_1_link.stl"/>
-    <mesh name="leg_2_link" file="leg_2_link.stl"/>
-    <mesh name="leg_3_link" file="leg_3_link.stl"/>
-    <mesh name="leg_4_link" file="leg_4_link.stl"/>
-    <mesh name="leg_5_collision_link" file="leg_5_collision_link.stl"/>
-    <mesh name="leg_6_link" file="leg_6_link.stl"/>
-    <mesh name="leg_7_link" file="leg_7_link.stl"/>
-    <mesh name="leg_1_link1" file="leg_1_link.stl" scale="1 -1 1"/>
-    <mesh name="leg_2_link1" file="leg_2_link.stl" scale="1 -1 1"/>
-    <mesh name="leg_3_link1" file="leg_3_link.stl" scale="1 -1 1"/>
-    <mesh name="leg_4_link1" file="leg_4_link.stl"/>
-    <mesh name="leg_5_collision_link1" file="leg_5_collision_link.stl"/>
-    <mesh name="leg_6_link1" file="leg_6_link.stl"/>
-    <mesh name="leg_7_link1" file="leg_7_link.stl"/>
-    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
-    <texture builtin="checker" height="100" name="texplane" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" type="2d" width="200"/>
-    <material name="MatPlane" reflectance="0.1" shininess="0.4" specular="1" texrepeat="5 5" texuniform="true" texture="texplane"/>
-  </asset>
-  <worldbody>
-    <geom name="floor" pos="0 0 -0.99" size="0 0 1" type="plane" material="MatPlane"/> 
-  
-    <body name="base_link" pos="0 0 0">
-      <inertial pos="-0.062235 0.00069557 0.1604" quat="0.706285 -0.0274958 -0.0295916 0.706775" mass="18.363" diaginertia="0.146201 0.104715 0.0855155"/>
-      <joint name="reference" type="free"/>
-      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.75294 0.75294 0.75294 1" mesh="base_link_with_cage"/>
-      <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="base_link_with_cage"/>
-      <geom size="0.005 0.005 0.005" pos="-0.07075 0 0.012" quat="0 1 0 0" type="box" contype="0" conaffinity="0" group="1" density="0"/>
-      <body name="leg_left_1_link" pos="-0.01602 0.08 -0.0585">
-        <inertial pos="0.046108 -0.000826631 0.0089763" quat="0.760772 -0.0869795 -0.020704 0.642831" mass="2.49954" diaginertia="0.0015519 0.00151393 0.00135581"/>
-        <joint name="leg_left_1_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-0.261799 0.698132"/>
-        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_1_link"/>
-        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="leg_1_link"/>
-        <body name="leg_left_2_link" pos="0.016042 0 -0.0925">
-          <inertial pos="-0.00299643 -0.000101293 6.76277e-10" quat="0.500269 0.500269 0.499731 0.499731" mass="0.0907288" diaginertia="3.90471e-05 3.64238e-05 6.10398e-06"/>
-          <joint name="leg_left_2_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-0.741765 0.741765"/>
-          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.894118 0.913725 0.929412 1" mesh="leg_2_link"/>
-          <body name="leg_left_3_link" pos="0 0 0">
-            <inertial pos="-0.0427915 0.0477271 -0.041122" quat="0.508468 0.553686 0.386227 0.534529" mass="3.66987" diaginertia="0.00351264 0.00335845 0.00222886"/>
-            <joint name="leg_left_3_joint" pos="0 0 0" axis="1 0 0" limited="true" range="-0.471239 0.471239"/>
-            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_3_link"/>
-            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="leg_3_link"/>
-            <body name="leg_left_length_link" pos="0 0.0669 -0.09" quat="0 0 1 0">
-            <!--body name="leg_left_length_link" pos="0 0.0669 -0.8041659999999999" quat="0 0 1 0"-->
-              <inertial pos="0 0 0" mass="0.1" diaginertia="8.58333e-05 8.58333e-05 5e-06"/>
-              <joint name="leg_left_length_joint" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0.131973 0.714166"/>
-              <!--joint name="leg_left_length_joint" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0. 0.582193"/-->
-              <geom size="5e-05 0.291097" pos="0 0 -0.291097" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.2 0.2 0.2 1"/>
-              <body name="leg_left_4_link" pos="0 0 0" quat="0 0 1 0">
-                <inertial pos="-0.0071416 4.83113e-09 0.00259941" quat="7.77884e-06 0.819153 1.11094e-05 0.573576" mass="0.0905837" diaginertia="2.98863e-05 2.92762e-05 4.05262e-06"/>
-                <joint name="leg_left_4_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-0.741765 0.741765"/>
-                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_6_link"/>
-                <body name="leg_left_5_link" pos="0 0 0">
-                  <inertial pos="0.0177426 -3.6795e-05 -0.0172695" quat="-0.000112134 0.720991 9.87839e-05 0.692945" mass="0.394418" diaginertia="0.00126601 0.00108654 0.000226749"/>
-                  <joint name="leg_left_5_joint" pos="0 0 0" axis="-0.939692 0 0.342021" limited="true" range="-0.471239 0.471239"/>
-                  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_7_link"/>
-                  <geom size="0.105 0.045 0.0125" pos="0.035 0 -0.02" type="box" rgba="0.752941 0.752941 0.752941 1"/>
-                </body>
-              </body>
-            </body>
-            <body name="leg_left_femur_link" pos="0 0.0669 -0.09" quat="0.996195 0 -0.0871557 0">
-              <inertial pos="0.114702 0.000182857 -0.0143986" quat="0.424428 0.571791 0.543723 0.444164" mass="3.57408" diaginertia="0.0126059 0.0122569 0.00184585"/>
-              <joint name="leg_left_femur_joint" pos="0 0 0" axis="0 1 0" limited="true" range="0.174533 1.22173"/>
-              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_4_link"/>
-              <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="leg_4_link"/>
-              <body name="leg_left_knee_link" pos="0.37413 0 -0.066509" quat="0.984808 0 0.173648 0">
-                <inertial pos="-0.158663 -8.28193e-05 -0.0337468" quat="0.552359 0.441085 0.438913 0.554707" mass="0.872232" diaginertia="0.00242185 0.00234374 0.000243722"/>
-                <joint name="leg_left_knee_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="0.349066 2.44346"/>
-                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_5_collision_link"/>
-                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="leg_5_collision_link"/>
-              </body>
-            </body>
-          </body>
-        </body>
-      </body>
-      <body name="leg_right_1_link" pos="-0.01602 -0.08 -0.0585">
-        <inertial pos="0.046108 0.000826631 0.0089763" quat="0.600032 0.0814751 0.00262962 0.795812" mass="2.49954" diaginertia="0.0015538 0.00151155 0.00135629"/>
-        <joint name="leg_right_1_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-0.698132 0.261799"/>
-        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_1_link1"/>
-        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="leg_1_link1"/>
-        <body name="leg_right_2_link" pos="0.016042 0 -0.0925">
-          <inertial pos="-0.00299643 -0.000101293 6.76277e-10" quat="0.500269 0.500269 0.499731 0.499731" mass="0.0907288" diaginertia="3.90471e-05 3.64238e-05 6.10398e-06"/>
-          <joint name="leg_right_2_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-0.741765 0.741765"/>
-          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.894118 0.913725 0.929412 1" mesh="leg_2_link1"/>
-          <body name="leg_right_3_link" pos="0 0 0">
-            <inertial pos="-0.0427915 -0.0477271 -0.041122" quat="0.524687 0.378887 0.62848 0.431464" mass="3.66987" diaginertia="0.00352708 0.00334182 0.00223104"/>
-            <joint name="leg_right_3_joint" pos="0 0 0" axis="1 0 0" limited="true" range="-0.471239 0.471239"/>
-            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_3_link1"/>
-            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="leg_3_link1"/>
-            <body name="leg_right_length_link" pos="0 -0.0669 -0.09" quat="0 0 1 0">
-            <!--body name="leg_right_length_link" pos="0 -0.0669 -0.8041659999999999" quat="0 0 1 0"-->
-              <inertial pos="0 0 0" mass="0.1" diaginertia="8.58333e-05 8.58333e-05 5e-06"/>
-              <joint name="leg_right_length_joint" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0.131973 0.714166"/>
-              <!--joint name="leg_right_length_joint" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0. 0.582193"/-->
-              <geom size="5e-05 0.291097" pos="0 0 -0.291097" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.2 0.2 0.2 1"/>
-              <body name="leg_right_4_link" pos="0 0 0" quat="0 0 1 0">
-                <inertial pos="-0.0071416 4.83113e-09 0.00259941" quat="7.77884e-06 0.819153 1.11094e-05 0.573576" mass="0.0905837" diaginertia="2.98863e-05 2.92762e-05 4.05262e-06"/>
-                <joint name="leg_right_4_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-0.741765 0.741765"/>
-                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_6_link1"/>
-                <body name="leg_right_5_link" pos="0 0 0">
-                  <inertial pos="0.0177426 -3.6795e-05 -0.0172695" quat="-0.000112134 0.720991 9.87839e-05 0.692945" mass="0.394418" diaginertia="0.00126601 0.00108654 0.000226749"/>
-                  <joint name="leg_right_5_joint" pos="0 0 0" axis="-0.939692 0 0.342021" limited="true" range="-0.471239 0.471239"/>
-                  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_7_link1"/>
-                  <geom size="0.105 0.045 0.0125" pos="0.035 0 -0.02" type="box" rgba="0.752941 0.752941 0.752941 1"/>
-                </body>
-              </body>
-            </body>
-            <body name="leg_right_femur_link" pos="0 -0.0669 -0.09" quat="0.996195 0 -0.0871557 0">
-              <inertial pos="0.114702 0.000182857 -0.0143986" quat="0.424428 0.571791 0.543723 0.444164" mass="3.57408" diaginertia="0.0126059 0.0122569 0.00184585"/>
-              <joint name="leg_right_femur_joint" pos="0 0 0" axis="0 1 0" limited="true" range="0.174533 1.22173"/>
-              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_4_link1"/>
-              <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="leg_4_link1"/>
-              <body name="leg_right_knee_link" pos="0.37413 0 -0.066509" quat="0.984808 0 0.173648 0">
-                <inertial pos="-0.158663 -8.28193e-05 -0.0337468" quat="0.552359 0.441085 0.438913 0.554707" mass="0.872232" diaginertia="0.00242185 0.00234374 0.000243722"/>
-                <joint name="leg_right_knee_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="0.349066 2.44346"/>
-                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.752941 0.752941 0.752941 1" mesh="leg_5_collision_link1"/>
-                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="leg_5_collision_link1"/>
-              </body>
-            </body>
-          </body>
-        </body>
-      </body>
-    </body>
-  </worldbody>
-  
-  <equality>
-  	<connect anchor="0. 0. 0." body1="leg_right_4_link" active="true" body2="leg_right_knee_link" name="leg_right_closed_chain"/>
-  	<connect anchor="0. 0. 0." body1="leg_left_4_link" active="true" body2="leg_left_knee_link" name="leg_left_closed_chain"/>
-  </equality>
-  
-  <actuator>
-        <motor name="left_joint_1_motor" joint="leg_left_1_joint"/>
-        <position name="left_position_1_servo" joint="leg_left_1_joint" kp="500"/>
-        <velocity name="left_velocity_1_servo" joint="leg_left_1_joint" kv="10"/>
+    <include file="common.xml" />
+    
+    <!-- POSITION CONTROLLERS -->
+    <!-- <include file="controllers/kangaroo.left_leg.position_controllers.xml"/>
+    <include file="controllers/kangaroo.right_leg.position_controllers.xml"/> -->
+    <!-- TORQUE CONTROLLERS -->
+    <include file="controllers/kangaroo.left_leg.motor_controllers.xml"/>
+    <include file="controllers/kangaroo.right_leg.motor_controllers.xml"/>
+    
+    <asset>
+	<include file="assets/kangaroo.collision_assets.xml"/>
+	<include file="assets/kangaroo.visual_assets.xml"/>
+    </asset>
+    
+    <contact>
+	<include file="assets/kangaroo.left_leg.excluded_contacts.xml"/>
+	<include file="assets/kangaroo.right_leg.excluded_contacts.xml"/>
+    </contact>
+    
+    
+    <worldbody>
+        <body name="base_link" pos="0 0 1.">
+            <joint name="reference" type="free" />
+            <inertial pos="-0.051356 3.5728E-05 -0.029169" mass="2.6996"
+                fullinertia="0.0058581 0.008435 0.012803 0.00011344 0.00017192 2.6065E-05" />
+	        <geom class="visual" rgba="0.15625 0.15625 0.15625 1" mesh="base_link" />
+	        <geom class="collision" mesh="base_link_collision" />
         
-        <motor name="left_joint_2_motor" joint="leg_left_2_joint"/>
-        <position name="left_position_2_servo" joint="leg_left_2_joint" kp="1500"/>
-        <velocity name="left_velocity_2_servo" joint="leg_left_2_joint" kv="20"/>
-        
-        <motor name="left_joint_3_motor" joint="leg_left_3_joint"/>
-        <position name="left_position_3_servo" joint="leg_left_3_joint" kp="2000"/>
-        <velocity name="left_velocity_3_servo" joint="leg_left_3_joint" kv="20"/>
-        
-        <motor name="left_joint_lenght_motor" joint="leg_left_length_joint"/>
-        <position name="left_position_length_servo" joint="leg_left_length_joint" kp="1500"/>
-        <velocity name="left_velocity_length_servo" joint="leg_left_length_joint" kv="20"/>
-        
-        <motor name="left_joint_4_motor" joint="leg_left_4_joint"/>
-        <position name="left_position_4_servo" joint="leg_left_4_joint" kp="500"/>
-        <velocity name="left_velocity_4_servo" joint="leg_left_4_joint" kv="0.1"/>
-        
-        <motor name="left_joint_5_motor" joint="leg_left_5_joint"/>
-        <position name="left_position_5_servo" joint="leg_left_5_joint" kp="500"/>
-        <velocity name="left_velocity_5_servo" joint="leg_left_5_joint" kv="0.1"/> 
-        
-        
-        
-        <motor name="right_joint_1_motor" joint="leg_right_1_joint"/>
-        <position name="right_position_1_servo" joint="leg_right_1_joint" kp="500"/>
-        <velocity name="right_velocity_1_servo" joint="leg_right_1_joint" kv="10"/>
-        
-        <motor name="right_joint_2_motor" joint="leg_right_2_joint"/>
-        <position name="right_position_2_servo" joint="leg_right_2_joint" kp="1500"/>
-        <velocity name="right_velocity_2_servo" joint="leg_right_2_joint" kv="20"/>
-        
-        <motor name="right_joint_3_motor" joint="leg_right_3_joint"/>
-        <position name="right_position_3_servo" joint="leg_right_3_joint" kp="2000"/>
-        <velocity name="right_velocity_3_servo" joint="leg_right_3_joint" kv="20"/>
-        
-        <motor name="right_joint_lenght_motor" joint="leg_right_length_joint"/>
-        <position name="right_position_length_servo" joint="leg_right_length_joint" kp="1500"/>
-        <velocity name="right_velocity_length_servo" joint="leg_right_length_joint" kv="20"/>
-        
-        <motor name="right_joint_4_motor" joint="leg_right_4_joint"/>
-        <position name="right_position_4_servo" joint="leg_right_4_joint" kp="500"/>
-        <velocity name="right_velocity_4_servo" joint="leg_right_4_joint" kv="0.1"/>
-        
-        <motor name="right_joint_5_motor" joint="leg_right_5_joint"/>
-        <position name="right_position_5_servo" joint="leg_right_5_joint" kp="500"/>
-        <velocity name="right_velocity_5_servo" joint="leg_right_5_joint" kv="0.1"/>
-        
-  </actuator>
+        	<!-- TORSO -->
+        	<body name="torso" pos="-0.0918 0 0.0075"> 
+                    <inertial pos="-0.0085193 -0.00033267 0.22824" mass="13.843" fullinertia="0.087431 0.072736 0.032695 1.1038E-05 -9.0502E-06 2.6862E-05" />
+                    <geom class="visual" rgba="0.15625 0.15625 0.15625 1" mesh="torso" />
+                    <geom class="collision" mesh="torso_collision" />				
+        	</body>
+        	
+            <!-- LEFT LEG-->
+            <include file="parts/kangaroo.left_leg.xml"/>
+            
+            <!-- RIGHT LEG-->
+            <include file="parts/kangaroo.right_leg.xml"/>
+	    </body>
+    </worldbody>
+    
+    <include file="constraints/kangaroo.left_leg.equality_constraints.xml"/>
+    <include file="constraints/kangaroo.right_leg.equality_constraints.xml"/>
+    
+    <keyframe>
+        <key name="test" ctrl="0 0.05 0 0.6832 0.3 0   0 0.05 0 0.6832 0.3 0" />
+    </keyframe>
+       
 </mujoco>
