@@ -1,0 +1,29 @@
+<mujoco model="kangaroo_left_leg_excluded_contacts">
+
+	<exclude body1="base_link" body2="torso" />
+	<exclude body1="base_link" body2="leg_left_1_link" />
+	<exclude body1="base_link" body2="leg_left_2_link" />
+	<exclude body1="base_link" body2="leg_left_3_link" />
+
+	<exclude body1="leg_left_1_link" body2="leg_left_3_link" />
+	<exclude body1="leg_left_1_link" body2="torso" />
+
+	<exclude body1="leg_left_2_link" body2="leg_left_3_link" />
+	<exclude body1="leg_left_2_link" body2="leg_left_1_link" />
+
+	<exclude body1="leg_left_3_link" body2="leg_left_4_link" />	
+	<exclude body1="leg_left_3_link" body2="leg_left_5_link" />
+	<exclude body1="leg_left_3_link" body2="leg_left_knee_link" />
+
+	<exclude body1="leg_left_femur_link" body2="leg_left_3_link" />	
+	<exclude body1="leg_left_femur_link" body2="leg_left_1_link" />	
+	<exclude body1="leg_left_femur_link" body2="leg_left_knee_link" />	
+	<exclude body1="leg_left_femur_link" body2="leg_left_4_link" />	
+	<exclude body1="leg_left_femur_link" body2="leg_left_5_link" />
+
+	<exclude body1="leg_left_knee_link" body2="leg_left_4_link" />	
+	<exclude body1="leg_left_knee_link" body2="leg_left_5_link" />	
+
+	<exclude body1="leg_left_4_link" body2="leg_left_5_link" />	
+	
+</mujoco>
