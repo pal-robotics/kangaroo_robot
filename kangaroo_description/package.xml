@@ -10,6 +10,8 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <depend>realsense2_description</depend>
+  
   <exec_depend>imu_sensor_controller</exec_depend>
   <exec_depend>force_torque_sensor_controller</exec_depend>
   <exec_depend>kangaroo_transmissions</exec_depend>
