@@ -34,7 +34,7 @@
       topics_ns="waist_back_rgbd_camera"
       use_nominal_extrinsics="${simulation}">
       <origin
-        xyz="-2.20238 0 -0.05049"
+        xyz="-0.20238 0 -0.05049"
         rpy="${180.0*deg_to_rad} 2.0944 0"/>
     </xacro:sensor_d435>
   
