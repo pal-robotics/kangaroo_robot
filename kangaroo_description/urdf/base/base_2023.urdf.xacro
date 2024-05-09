@@ -27,37 +27,5 @@
       </geometry>
     </collision>
   </link>
-  <link name="torso_link">
-    <inertial>
-      <origin xyz="-0.0085193 -0.00033267 0.22824" rpy="0 0 0" />
-      <mass value="13.843" />
-      <inertia ixx="0.087431" ixy="1.1038E-05" ixz="-9.0502E-06"
-        iyy="0.072736" iyz="2.6862E-05" izz="0.032695" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://kangaroo_description/meshes/${version}/torso_link.stl" />
-      </geometry>
-      <material name="">
-        <color rgba="0.75294 0.75294 0.75294 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://kangaroo_description/meshes/${version}/torso_link_convex.stl" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="torso_link" type="fixed">
-    <origin xyz="-0.0918000000000001 0 0.0074999999999998" rpy="0 0 0" />
-    <parent link="base_link" />
-    <child link="torso_link" />
-    <axis xyz="0 0 0" />
-  </joint>
-  <xacro:kangaroo_imu name="imu" parent="torso_link" update_rate="100.0">
-    <origin xyz="0.071 -0.0014 0.02" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${-90.0*deg_to_rad}"/>
-  </xacro:kangaroo_imu>
 </xacro:macro>
 </robot>

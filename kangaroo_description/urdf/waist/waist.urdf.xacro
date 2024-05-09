@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2024, PAL Robotics, S.L.
+  All rights reserved.
+
+  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
+  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+-->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!--File includes-->
+  <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" />
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+
+  <xacro:macro name="kangaroo_waist" params="parent">
+
+  <!-- Waist front rgbd camera -->
+    <xacro:sensor_d435
+      name="waist_front_rgbd_camera"
+      parent="${parent}"
+      topics_ns="waist_front_rgbd_camera"
+      use_nominal_extrinsics="${simulation}">
+      <origin
+        xyz="0.11998 0 -0.0085"
+        rpy="0 1.0472 0"/>
+    </xacro:sensor_d435>
+
+  <!-- Waist back rgbd camera -->
+    <xacro:sensor_d435
+      name="waist_back_rgbd_camera"
+      parent="${parent}"
+      topics_ns="waist_back_rgbd_camera"
+      use_nominal_extrinsics="${simulation}">
+      <origin
+        xyz="-0.20238 0 -0.05049"
+        rpy="${180.0*deg_to_rad} 2.0944 0"/>
+    </xacro:sensor_d435>
+  
+  </xacro:macro>
+</robot>

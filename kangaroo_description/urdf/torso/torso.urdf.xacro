@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2024, PAL Robotics, S.L.
+  All rights reserved.
+
+  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
+  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+-->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!--File includes-->
+  <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" />
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+
+  <xacro:macro name="kangaroo_torso" params="parent">
+
+  <link name="torso_link">
+    <inertial>
+      <origin xyz="-0.0085193 -0.00033267 0.22824" rpy="0 0 0" />
+      <mass value="13.843" />
+      <inertia ixx="0.087431" ixy="1.1038E-05" ixz="-9.0502E-06"
+        iyy="0.072736" iyz="2.6862E-05" izz="0.032695" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://kangaroo_description/meshes/2023/torso_link.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://kangaroo_description/meshes/2023/torso_link_convex.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="torso_link" type="fixed">
+    <origin xyz="-0.0918000000000001 0 0.0175" rpy="0 0 0" />
+    <parent link="${parent}" />
+    <child link="torso_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- Torso front rgbd camera -->
+    <xacro:sensor_d435
+      name="torso_front_rgbd_camera"
+      parent="torso_link"
+      topics_ns="torso_front_rgbd_camera"
+      use_nominal_extrinsics="${simulation}">
+      <origin
+        xyz="0.1056 0 0.40767"
+        rpy="0 0.5236 0"/>
+    </xacro:sensor_d435>
+
+  <!-- Torso back rgbd camera -->
+    <xacro:sensor_d435
+      name="torso_back_rgbd_camera"
+      parent="torso_link"
+      topics_ns="torso_back_rgbd_camera"
+      use_nominal_extrinsics="${simulation}">
+      <origin
+        xyz="-0.1056 0 0.40767"
+        rpy="0 0.5236 ${180.0*deg_to_rad}"/>
+    </xacro:sensor_d435>
+  </xacro:macro>
+
+</robot>
