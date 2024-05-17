@@ -165,8 +165,8 @@
         </limits>
         <configuration>
           <offset_x> 0.035 </offset_x>
-          <offset_y> 0.051 </offset_y>
-          <projected_distance> 0.17650 </projected_distance>
+          <offset_y> 0.0475 </offset_y>
+          <projected_distance> 0.10412 </projected_distance>
           <dx> 0.035 </dx>
           <dy> 0.060 </dy>
         </configuration>
