@@ -68,7 +68,7 @@
           </geometry>
         </collision>
         <collision>
-          <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
+          <origin xyz="0.0 0.0 -0.03" rpy="0 ${-20.0 * deg_to_rad} 0" />
           <geometry>
             <!-- The length of the sole is around 24cm, but with the attached rubber sole it would be 24.9cm -->
             <box size="0.249 0.10 0.025"/> 
