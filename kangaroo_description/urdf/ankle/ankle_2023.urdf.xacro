@@ -140,12 +140,12 @@
       <xacro:unless value="${ft_sensors}">
         <parent link="leg_${side}_${roll_joint}_aligned_link" />
         <child link="${side}_sole_link" />
-        <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
+        <origin xyz="0.0 0.0 -0.029" rpy="0 0 0" />
       </xacro:unless>
       <xacro:if value="${ft_sensors}">
         <parent link="${side}_ft_sensor_link" />
         <child link="${side}_sole_link" />
-        <origin xyz="0.034889 0 -0.0495" rpy="0 0 0" />
+        <origin xyz="0.006889 0 -0.0495" rpy="0 0 0" />
       </xacro:if>
     </joint>
     
