@@ -277,7 +277,7 @@
     </joint>
 
     <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_length_link" reflect="${reflect}" roll_joint="5" pitch_joint="4" read_actuator="leg_${side}_length_motor" ft_sensors="$(arg ft_sensors)">
-      <origin xyz="0.0 0 0.0" rpy="0 ${180 *deg_to_rad} 0" />
+      <origin xyz="0.0 0 0.0" rpy="0 ${200 *deg_to_rad} 0" />
     </xacro:kangaroo_ankle>
 
     <!-- Load corresponding transmission info -->
