@@ -68,7 +68,7 @@
           </geometry>
         </collision>
         <collision>
-          <origin xyz="0.01 0.0 -0.0325" rpy="0 ${-20.0 * deg_to_rad} 0" />
+          <origin xyz="0.01 0.0 -0.028" rpy="0 ${-20.0 * deg_to_rad} 0" />
           <geometry>
             <!-- The length of the sole is around 24cm, but with the attached rubber sole it would be 24.9cm -->
             <box size="0.249 0.10 0.025"/> 
@@ -117,7 +117,7 @@
     
     <link name="leg_${side}_${roll_joint}_aligned_link"/>
     <joint name="leg_${side}_${roll_joint}_aligned_joint" type="fixed">
-      <parent link="leg_${side}_${pitch_joint}_link" />
+      <parent link="leg_${side}_${roll_joint}_link" />
       <child link="leg_${side}_${roll_joint}_aligned_link" />
       <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
     </joint>
