@@ -78,10 +78,4 @@
   <!-- Materials for visualization -->
   <xacro:include filename="$(find kangaroo_description)/urdf/materials.urdf.xacro" />
 
-  <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
-  <xacro:kangaroo_torso parent="base_link"/>
-
-  <xacro:include filename="$(find kangaroo_description)/urdf/waist/waist.urdf.xacro" />
-  <xacro:kangaroo_waist parent="base_link"/>
-
 </robot>

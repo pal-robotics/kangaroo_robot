@@ -22,7 +22,7 @@
           iyy="2.92762581820543E-05" iyz="6.24254988575372E-12" izz="2.98863057177445E-05" />
       </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
         <geometry>
           <mesh filename="package://kangaroo_description/meshes/leg_6_link.stl" />
         </geometry>
@@ -31,7 +31,7 @@
         </material>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
         <geometry>
           <mesh filename="package://kangaroo_description/meshes/leg_6_link.stl" />
         </geometry>
@@ -53,7 +53,7 @@
             iyy="0.00170802543470207" iyz="-1.88812897159487E-09" izz="0.00181438717200554" />
         </inertial>
         <visual>
-          <origin xyz="0 0 0" rpy="0 0.349065850398867 0" />
+          <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
             <mesh filename="package://kangaroo_description/meshes/${version}/leg_7_link.stl" />
           </geometry>
@@ -62,13 +62,13 @@
           </material>
         </visual>
         <collision>
-          <origin xyz="0 0 0" rpy="0 0.349065850398867 0" />
+          <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
             <mesh filename="package://kangaroo_description/meshes/${version}/leg_7_link.stl" />
           </geometry>
         </collision>
         <collision>
-          <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
+          <origin xyz="0.01 0.0 -0.028" rpy="0 ${-20.0 * deg_to_rad} 0" />
           <geometry>
             <!-- The length of the sole is around 24cm, but with the attached rubber sole it would be 24.9cm -->
             <box size="0.249 0.10 0.025"/> 
@@ -111,7 +111,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="leg_${side}_${pitch_joint}_link" />
       <child link="leg_${side}_${roll_joint}_link" />
-      <axis xyz="-0.93969 0 0.34202" />
+      <axis xyz="-1 0 0" />
       <limit lower="${roll_joint_min_pos}" upper="${roll_joint_max_pos}" effort="100" velocity="3.87" />
     </joint>
     
@@ -119,7 +119,7 @@
     <joint name="leg_${side}_${roll_joint}_aligned_joint" type="fixed">
       <parent link="leg_${side}_${roll_joint}_link" />
       <child link="leg_${side}_${roll_joint}_aligned_link" />
-      <origin xyz="0.0 0.0 0.0" rpy="0 ${20.0 * deg_to_rad} 0" />
+      <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
     </joint>
 
     <xacro:if value="${ft_sensors}">
@@ -129,7 +129,7 @@
       <joint name="${side}_ft_sensor_joint" type="fixed">
         <parent link="leg_${side}_${roll_joint}_aligned_link" />
         <child link="${side}_ft_sensor_link" />
-        <origin xyz="0.00855050358313864 0 -0.023492315519661" rpy="0 -0.349065850398857 0" />
+        <origin xyz="0.00855050358313864 0 -0.023492315519661" rpy="0 ${-20.0 * deg_to_rad} 0" />
       </joint>
 
     </xacro:if>
@@ -138,14 +138,14 @@
 
     <joint name="${side}_sole_joint" type="fixed">
       <xacro:unless value="${ft_sensors}">
-        <parent link="leg_${side}_${roll_joint}_link" />
+        <parent link="leg_${side}_${roll_joint}_aligned_link" />
         <child link="${side}_sole_link" />
-        <origin xyz="0.028 0.0 -0.029" rpy="0 0 0" />
+        <origin xyz="0.0 0.0 -0.0425" rpy="0 0 0" />
       </xacro:unless>
       <xacro:if value="${ft_sensors}">
         <parent link="${side}_ft_sensor_link" />
         <child link="${side}_sole_link" />
-        <origin xyz="0.034889 0 -0.0495" rpy="0 0 0" />
+        <origin xyz="0.006889 0 -0.0495" rpy="0 0 0" />
       </xacro:if>
     </joint>
     
