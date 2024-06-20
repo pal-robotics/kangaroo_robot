@@ -12,6 +12,7 @@ ankle_params:
   fbl_long: 0.380
   ball_screw_lead: 0.005
   ball_screw_efficiency: 0.9
+  absolute_encoder_offset_angle: !degrees 65.06
   roll_min_angle: !degrees -25.0
   roll_max_angle: !degrees 25.0
   pitch_min_angle: !degrees -42.5
