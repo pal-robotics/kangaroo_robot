@@ -24,7 +24,7 @@
       use_nominal_extrinsics="${simulation}">
       <origin
         xyz="0.11998 0 -0.0085"
-        rpy="0 1.0472 0"/>
+        rpy="0 1.125 0"/>
     </xacro:sensor_d435>
 
   <!-- Waist back rgbd camera -->
