@@ -12,7 +12,7 @@ observer_filter_parameters:
       type: LowPass
       composition_type: Sequence
 
-      cutoff1: 30.0
+      cutoff1: 3.0
       cutoff2: 0.0
 
 torque_filter_type: ButterworthFilterd
@@ -22,7 +22,7 @@ torque_filter_parameters:
       type: LowPass
       composition_type: Sequence
 
-      cutoff1: 30.0
+      cutoff1: 3.0
       cutoff2: 0.0
 
 feedback_acceleration_filter_type: ButterworthFilterd
@@ -42,11 +42,11 @@ torque_derivative_filter_parameters:
       type: LowPass
       composition_type: Sequence
 
-      cutoff1: 200.0
+      cutoff1: 20.0
       cutoff2: 0.0
 
 feedback_acceleration_compensation_gain: 0.0
-feedforward_acceleration_gain: 0.0
-torque_feedback_gain: 0.15
-torque_derivative_feedback_gain: 0.0008
-observer_feedback_gain: 0.15
+feedforward_acceleration_gain: 1.0
+torque_feedback_gain: 0.6
+torque_derivative_feedback_gain: 0.00008
+observer_feedback_gain: 0.4
