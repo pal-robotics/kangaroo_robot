@@ -2,11 +2,11 @@
     <include file="common.xml" />
     
     <!-- POSITION CONTROLLERS -->
-    <!-- <include file="controllers/kangaroo.left_leg.position_controllers.xml"/>
-    <include file="controllers/kangaroo.right_leg.position_controllers.xml"/> -->
+    <include file="controllers/kangaroo.left_leg.position_controllers.xml"/>
+    <include file="controllers/kangaroo.right_leg.position_controllers.xml"/>
     <!-- TORQUE CONTROLLERS -->
-    <include file="controllers/kangaroo.left_leg.motor_controllers.xml"/>
-    <include file="controllers/kangaroo.right_leg.motor_controllers.xml"/>
+    <!-- <include file="controllers/kangaroo.left_leg.motor_controllers.xml"/>
+    <include file="controllers/kangaroo.right_leg.motor_controllers.xml"/> -->
     
     <asset>
 	<include file="assets/kangaroo.collision_assets.xml"/>
