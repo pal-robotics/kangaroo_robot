@@ -1,4 +1,4 @@
-enable_safety: false
+enable_safety: true
 allow_recovery: true
 max_collision_impulse_estimate: 0.1
 max_distance_impulse: 15.0
