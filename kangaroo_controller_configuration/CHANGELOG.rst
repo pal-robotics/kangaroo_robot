@@ -24,6 +24,11 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* add missing controller dependencies
+* Contributors: Sai Kishor Kothakota
+
 0.1.4 (2024-07-09)
 ------------------
 * Merge branch 'kangaroo_3' into 'master'
