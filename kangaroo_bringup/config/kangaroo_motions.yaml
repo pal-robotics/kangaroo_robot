@@ -121,3 +121,58 @@ play_motion:
         name: homing
         usage: ""
         description: Move to home configuration
+    fake_walking:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint]
+      points:
+        - time_from_start: 2.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., 0.05, 0., 0.62, -0.05, 0.]
+        - time_from_start: 4.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., -0.22, 0., 0.4, 0.2, 0.]
+        - time_from_start: 6.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., -0.36, 0., 0.66, 0.36, 0.]
+        - time_from_start: 8.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., -0.36, 0., 0.66, 0.36, 0.]
+        - time_from_start: 10.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., -0.22, 0., 0.4, 0.2, 0.]
+        - time_from_start: 12.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., 0.05, 0., 0.62, -0.05, 0.]
+      meta:
+        name: fake_walking
+        usage: ""
+        description: Step forward with right leg (no balance)
+    fake_walking2:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint]
+      points:
+        - time_from_start: 2.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., 0.05, 0., 0.62, -0.05, 0.]
+        - time_from_start: 4.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., 0.1, 0., 0.4, -0.1, 0.]
+        - time_from_start: 6.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., 0.41, 0., 0.68, -0.4, 0.]
+        - time_from_start: 8.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., 0.41, 0., 0.68, -0.4, 0.]
+        - time_from_start: 10.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., 0.05, 0., 0.4, -0.05, 0.]
+        - time_from_start: 12.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., -0.36, 0., 0.66, 0.36, 0.]
+        - time_from_start: 14.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., -0.36, 0., 0.66, 0.36, 0.]
+        - time_from_start: 16.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., -0.22, 0., 0.4, 0.2, 0.]
+        - time_from_start: 18.
+          positions: [0., 0.05, 0., 0.63, -0.05, 0., 0., 0.05, 0., 0.62, -0.05, 0.]
+      meta:
+        name: fake_walking2
+        usage: ""
+        description: Step back and large step forward with right leg (no balance)
+    box:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint]
+      points:
+        - time_from_start: 2.
+          positions: [0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 5.
+          positions: [0., 0.0, 0., 0.13, 0.0, 0., 0., 0.0, 0., 0.13, 0.0, 0.]
+      meta:
+        name: box
+        usage: ""
+        description: Move to boxing configuration
