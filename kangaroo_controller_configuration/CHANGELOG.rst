@@ -24,6 +24,34 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'kangaroo_3' into 'master'
+  Update configuration files from latest value tested on Kangaroo 3
+  See merge request robots/kangaroo_robot!52
+* Don't use integral factors for the Hip RPY joints
+* Remove extra unused args
+* Add FT sensor estimator directly to launch on startup
+* Set the zeros properly
+* update the leg length position PID gains tuned at TUWien
+* Put back all joint torque/force sensor offset to 0 in actuator_parameters_specific_params.yaml
+* Enable default safety
+* Update configuration files from latest value tested on Kangaroo 3
+* Merge branch 'kangaroo_3_changes' into 'master'
+  Kangaroo 3 changes
+  See merge request robots/kangaroo_robot!50
+* Add arguments to enable / disable torque control for specific transmissions
+* Fix wrong impedance gain in leg_left_1_joint
+* Add new transmission parameters after fix ankle transmission
+* delete gravity compensation parameters on restart of controller
+* Add torque control gains of kangaroo-3
+* Reduce by factor of 100 the integral gain of the position loop for hip actuators
+* reduce the position Kp of the leg right 1 motor
+* fix the PID parameters to be double
+* add actuator_pid_controllers dependency
+* added the gains corresponding to the kangaroo 3
+* Contributors: Adria Roig, Pierre Fernbach, Sai Kishor Kothakota
+
 0.1.3 (2024-04-30)
 ------------------
 

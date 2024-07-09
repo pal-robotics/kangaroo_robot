@@ -17,6 +17,23 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
+Forthcoming
+-----------
+* Merge branch 'kangaroo_3' into 'master'
+  Update configuration files from latest value tested on Kangaroo 3
+  See merge request robots/kangaroo_robot!52
+* Add fake_walking and fake_walking2 play_motion motions
+* Merge branch 'kangaroo_3_changes' into 'master'
+  Kangaroo 3 changes
+  See merge request robots/kangaroo_robot!50
+* Open ref_velocity port and change IMU Hw transformation
+* Fix the enu transformation of the imu
+* Merge branch 'fix_play_motion_ranges' into 'master'
+  fix play_motion range for leg_exploration
+  See merge request robots/kangaroo_robot!49
+* fix play_motion range for leg_exploration
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.3 (2024-04-30)
 ------------------
 

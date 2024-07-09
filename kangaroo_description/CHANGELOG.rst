@@ -16,6 +16,38 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'kangaroo_3_waist_front_camera' into 'master'
+  calibrated camera position for better overlapping with torso front camera
+  See merge request robots/kangaroo_robot!51
+* calibrated camera position for better overlapping with torso front camera
+* Merge branch 'kangaroo_3_changes' into 'master'
+  Kangaroo 3 changes
+  See merge request robots/kangaroo_robot!50
+* Add velocity interface
+* use the roll joint as the parent to the roll aligned joint
+* change the ankle pitch joint to be aligned with the ankle roll link
+* Fix the leg sole link parent link
+* Fix the ankle sole link position for the new soles
+* Fix the collision link orientation
+* Set the link 5 to the aligned one by default
+* apply angle with macro
+* fix the hip roll-pitch transmission parameters
+* Add the new collision pairs with the cameras into blacklist
+* Add removed imu link and modify the placement of macros torso and waist
+* Merge branch 'smd/feat/cameras' into 'master'
+  Smd/feat/cameras
+  See merge request robots/kangaroo_robot!46
+* Fix typo in waist
+* Added gazebo simulator plugins
+* Added realsense2 description dependency
+* Fix back cameras tf
+* Change wrist to waist
+* Fix xacro macro urdf
+* Added the kangaroo cameras
+* Contributors: Adria Roig, Luca Marchionni, Sai Kishor Kothakota, sergiomoyano
+
 0.1.3 (2024-04-30)
 ------------------
 * Merge branch 'urdf/update/042024' into 'master'
