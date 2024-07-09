@@ -24,8 +24,8 @@ Changelog for package kangaroo_controller_configuration
 * added IK plugin
 * Contributors: Sai Kishor Kothakota, saikishor
 
-Forthcoming
------------
+0.1.4 (2024-07-09)
+------------------
 * Merge branch 'kangaroo_3' into 'master'
   Update configuration files from latest value tested on Kangaroo 3
   See merge request robots/kangaroo_robot!52

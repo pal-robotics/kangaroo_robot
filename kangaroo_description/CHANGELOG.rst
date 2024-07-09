@@ -16,8 +16,8 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
-Forthcoming
------------
+0.1.4 (2024-07-09)
+------------------
 * Merge branch 'kangaroo_3_waist_front_camera' into 'master'
   calibrated camera position for better overlapping with torso front camera
   See merge request robots/kangaroo_robot!51

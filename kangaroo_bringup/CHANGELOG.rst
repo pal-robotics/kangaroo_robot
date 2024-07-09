@@ -17,8 +17,8 @@ Changelog for package kangaroo_bringup
 * Adapt motion home to real robot limits
 * Contributors: Adria Roig, Sai Kishor Kothakota, saikishor
 
-Forthcoming
------------
+0.1.4 (2024-07-09)
+------------------
 * Merge branch 'kangaroo_3' into 'master'
   Update configuration files from latest value tested on Kangaroo 3
   See merge request robots/kangaroo_robot!52
