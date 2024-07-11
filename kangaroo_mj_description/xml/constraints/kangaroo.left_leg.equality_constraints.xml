@@ -1,0 +1,7 @@
+<mujoco model="kangaroo_left_leg_equality_constraints">
+
+<equality>
+	<connect anchor="0.0 0.0 0.0" body1="leg_left_4_link" body2="leg_left_knee_link" name="leg_left_closed_kin_joint" solref="0.002 1"/>
+</equality>
+
+</mujoco>

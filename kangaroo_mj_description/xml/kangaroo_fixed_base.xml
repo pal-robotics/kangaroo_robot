@@ -2,11 +2,11 @@
     <include file="common.xml" />
     
     <!-- POSITION CONTROLLERS -->
-    <include file="controllers/kangaroo.left_leg.position_controllers.xml"/>
-    <include file="controllers/kangaroo.right_leg.position_controllers.xml"/>
+    <!-- <include file="controllers/kangaroo.left_leg.position_controllers.xml"/>
+    <include file="controllers/kangaroo.right_leg.position_controllers.xml"/> -->
     <!-- TORQUE CONTROLLERS -->
-    <!-- <include file="controllers/kangaroo.left_leg.motor_controllers.xml"/>
-    <include file="controllers/kangaroo.right_leg.motor_controllers.xml"/> -->
+    <include file="controllers/kangaroo.left_leg.motor_controllers.xml"/>
+    <include file="controllers/kangaroo.right_leg.motor_controllers.xml"/>
     
     <asset>
 	<include file="assets/kangaroo.collision_assets.xml"/>
@@ -21,7 +21,6 @@
     
     <worldbody>
         <body name="base_link" pos="0 0 1.">
-            <joint name="reference" type="free" />
             <inertial pos="-0.051356 3.5728E-05 -0.029169" mass="2.6996"
                 fullinertia="0.0058581 0.008435 0.012803 0.00011344 0.00017192 2.6065E-05" />
 	        <geom class="visual" rgba="0.15625 0.15625 0.15625 1" mesh="base_link" />
@@ -48,5 +47,4 @@
     <keyframe>
         <key name="test" ctrl="0 0.05 0 0.6832 0.3 0   0 0.05 0 0.6832 0.3 0" />
     </keyframe>
-       
 </mujoco>

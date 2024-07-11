@@ -1,0 +1,28 @@
+<mujoco model="kangaroo_right_leg_excluded_contacts">
+
+	<exclude body1="base_link" body2="leg_right_1_link" />
+	<exclude body1="base_link" body2="leg_right_2_link" />
+	<exclude body1="base_link" body2="leg_right_3_link" />
+
+	<exclude body1="leg_right_1_link" body2="leg_right_3_link" />
+	<exclude body1="leg_right_1_link" body2="torso" />
+
+	<exclude body1="leg_right_2_link" body2="leg_right_3_link" />
+	<exclude body1="leg_right_2_link" body2="leg_right_1_link" />
+
+	<exclude body1="leg_right_3_link" body2="leg_right_4_link" />	
+	<exclude body1="leg_right_3_link" body2="leg_right_5_link" />
+	<exclude body1="leg_right_3_link" body2="leg_right_knee_link" />
+
+	<exclude body1="leg_right_femur_link" body2="leg_right_3_link" />	
+	<exclude body1="leg_right_femur_link" body2="leg_right_1_link" />	
+	<exclude body1="leg_right_femur_link" body2="leg_right_knee_link" />	
+	<exclude body1="leg_right_femur_link" body2="leg_right_4_link" />	
+	<exclude body1="leg_right_femur_link" body2="leg_right_5_link" />
+
+	<exclude body1="leg_right_knee_link" body2="leg_right_4_link" />	
+	<exclude body1="leg_right_knee_link" body2="leg_right_5_link" />	
+
+	<exclude body1="leg_right_4_link" body2="leg_right_5_link" />	
+
+</mujoco>

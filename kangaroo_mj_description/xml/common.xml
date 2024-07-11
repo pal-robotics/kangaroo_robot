@@ -1,0 +1,22 @@
+<mujoco model="common">
+
+    <compiler angle="radian" meshdir="../meshes" />
+    <size njmax="500" nconmax="100" />
+    <option timestep="0.0005" iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="pyramidal" />
+    <default>
+        <!--geom contype="0" conaffinity="1" size="0.1"/-->
+        <joint damping="6" frictionloss="1" limited="true"/>
+        
+        <default class="collision">
+      		<geom group="3" rgba="1. 0.65 0. 0.1" type="mesh" />
+    	</default>
+    	<default class="box_collision">
+      		<geom group="3" rgba="1. 0.65 0. 0.1" type="box" />
+    	</default>
+        <default class="visual">
+      		<geom group="1" conaffinity="0" contype="0" type="mesh" />
+    	</default>
+	  	
+    </default>
+    
+</mujoco>
