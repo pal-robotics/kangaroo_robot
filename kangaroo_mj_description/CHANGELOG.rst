@@ -2,8 +2,8 @@
 Changelog for package kangaroo_mj_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.7 (2024-07-11)
+------------------
 * Merge branch 'fix-collision-model' into 'master'
   Fix collision model
   See merge request robots/kangaroo_robot!54
