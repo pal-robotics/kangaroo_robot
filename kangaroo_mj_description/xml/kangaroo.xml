@@ -46,7 +46,7 @@
     <include file="constraints/kangaroo.right_leg.equality_constraints.xml"/>
     
     <keyframe>
-        <key name="test" ctrl="0 0.05 0 0.6832 0.3 0   0 0.05 0 0.6832 0.3 0" />
+        <key name="test" ctrl="0 0.05 0 0.6 0.3 0   0 0.05 0 0.6 0.3 0" />
     </keyframe>
        
 </mujoco>
