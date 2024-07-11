@@ -2,6 +2,29 @@
 Changelog for package kangaroo_mj_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix-collision-model' into 'master'
+  Fix collision model
+  See merge request robots/kangaroo_robot!54
+* removed collision feet asset
+* set box as feet collision
+* update default keyframe
+* fix collision angle offset
+* Merge branch 'mujoco-v2' into 'master'
+  Mujoco v2
+  See merge request robots/kangaroo_robot!48
+* changed default control to position
+* kangaroo version with fixed base
+* separated left and right leg models
+* kangaroo model including separeted files
+* separated actuator types
+* separated constraints
+* created global file that loads the robot, light and ground
+* set all common parameters in separated file
+* split assest loading xml files
+* Contributors: Adria Roig, Sai Kishor Kothakota, sergiacosta
+
 0.1.6 (2024-07-11)
 ------------------
 
