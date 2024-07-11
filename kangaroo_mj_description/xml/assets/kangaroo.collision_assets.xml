@@ -4,15 +4,15 @@
     <mesh name="leg_1_link_collision" file="2023/leg_1_link.stl" />
     <mesh name="leg_2_link_collision" file="leg_2_link.stl" />
     <mesh name="leg_3_link_collision" file="leg_3_link.stl" />
-    <mesh name="leg_femur_link_collision" file="leg_4_collision_link.stl" />
-    <mesh name="leg_tibia_link_collision" file="leg_5_collision_link.stl" />
+    <mesh name="leg_femur_link_collision" file="leg_4_collision_link.stl" refquat="0.8660254 0 -0.5 0" />
+    <mesh name="leg_tibia_link_collision" file="leg_5_collision_link.stl" refquat="0.8660254 0 0.5 0"/>
     <mesh name="leg_6_link_collision" file="leg_6_link.stl" />
     <mesh name="leg_7_link_collision" file="2023/leg_7_link.stl" />
     <mesh name="leg_1_link1_collision" file="2023/leg_1_link.stl" scale="1 -1 1" />
     <mesh name="leg_2_link1_collision" file="leg_2_link.stl" scale="1 -1 1" />
     <mesh name="leg_3_link1_collision" file="leg_3_link.stl" scale="1 -1 1" />
-    <mesh name="leg_femur_link1_collision" file="leg_4_collision_link.stl" />
-    <mesh name="leg_tibia_link1_collision" file="leg_5_collision_link.stl" />
+    <mesh name="leg_femur_link1_collision" file="leg_4_collision_link.stl" refquat="0.8660254 0 -0.5 0"/>
+    <mesh name="leg_tibia_link1_collision" file="leg_5_collision_link.stl" refquat="0.8660254 0 0.5 0"/>
     <mesh name="leg_6_link1_collision" file="leg_6_link.stl" />
     <mesh name="leg_7_link1_collision" file="2023/leg_7_link.stl" />
 </mujoco>
