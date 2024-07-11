@@ -16,6 +16,14 @@ Changelog for package kangaroo_description
 0.0.19 (2022-05-04)
 -------------------
 
+Forthcoming
+-----------
+* Merge branch 'propagate/ankle_angle_to_old_feet' into 'master'
+  Add 20 deg angle change to the old ankle model
+  See merge request robots/kangaroo_robot!53
+* Add 20 deg angle change to the old ankle model
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.5 (2024-07-09)
 ------------------
 
