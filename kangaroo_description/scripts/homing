@@ -82,7 +82,7 @@ def homing():
         rospy.loginfo("Robot equipped with F/T sensors") 
         position = rospy.get_param("~xyz", [0., 0., 1.0])
     else:
-        position = rospy.get_param("~xyz", [0., 0., 0.96])
+        position = rospy.get_param("~xyz", [0., 0., 0.94])
 
     orientation = rospy.get_param("~rpy", [0., 0., 0.])
     quat = quaternion_from_euler(orientation[0], orientation[1], orientation[2])
