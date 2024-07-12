@@ -19,8 +19,8 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.1.8 (2024-07-12)
+------------------
 * Merge branch 'fix/gazebo/simulation' into 'master'
   Fix/gazebo/simulation
   See merge request robots/kangaroo_robot!55

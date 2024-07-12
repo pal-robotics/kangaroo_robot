@@ -25,8 +25,8 @@ Changelog for package kangaroo_mj_description
 * split assest loading xml files
 * Contributors: Adria Roig, Sai Kishor Kothakota, sergiacosta
 
-Forthcoming
------------
+0.1.8 (2024-07-12)
+------------------
 * 0.1.7
 * Update Changelog
 * Merge branch 'fix-collision-model' into 'master'
