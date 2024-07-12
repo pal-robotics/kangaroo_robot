@@ -27,6 +27,16 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'fix/gazebo/simulation' into 'master'
+  Fix/gazebo/simulation
+  See merge request robots/kangaroo_robot!55
+* Fix gazebo PID contact gains
+* 0.1.7
+* Update Changelog
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.6 (2024-07-11)
 ------------------
 

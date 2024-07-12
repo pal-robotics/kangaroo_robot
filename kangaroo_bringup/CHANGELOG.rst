@@ -20,6 +20,12 @@ Changelog for package kangaroo_bringup
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* 0.1.7
+* Update Changelog
+* Contributors: Sai Kishor Kothakota
+
 0.1.6 (2024-07-11)
 ------------------
 
