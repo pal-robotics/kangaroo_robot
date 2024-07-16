@@ -27,6 +27,9 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+
 0.1.8 (2024-07-12)
 ------------------
 * Merge branch 'fix/gazebo/simulation' into 'master'

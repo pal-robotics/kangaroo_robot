@@ -19,6 +19,14 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'fix/make_tests_run' into 'master'
+  update the order of switching controllers in homing script of Gazebo
+  See merge request robots/kangaroo_robot!56
+* update the order of switching controllers in homing script of Gazebo
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.8 (2024-07-12)
 ------------------
 * Merge branch 'fix/gazebo/simulation' into 'master'
