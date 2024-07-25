@@ -27,6 +27,14 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'add/initialization_tolerance' into 'master'
+  add initialization tolerance to the ankle transmission parameters
+  See merge request robots/kangaroo_robot!57
+* add initialization tolerance to the ankle transmission parameters
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.9 (2024-07-16)
 ------------------
 
