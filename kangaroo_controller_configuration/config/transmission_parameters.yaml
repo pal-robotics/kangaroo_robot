@@ -17,6 +17,7 @@ ankle_params:
   roll_max_angle: !degrees 25.0
   pitch_min_angle: !degrees -42.5
   pitch_max_angle: !degrees 42.5
+  initialization_tolerance: 0.001
 
 leg_params:
   femur_length: 0.380
