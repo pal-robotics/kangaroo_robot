@@ -19,6 +19,9 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+
 0.1.10 (2024-07-25)
 -------------------
 

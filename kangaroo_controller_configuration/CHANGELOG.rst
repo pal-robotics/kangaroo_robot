@@ -27,6 +27,14 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'disable/safety' into 'master'
+  change the default safety parameter for kangaroo-3 as they need tuning
+  See merge request robots/kangaroo_robot!58
+* change the default safety parameter for kangaroo-3 as they need tuning
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.1.10 (2024-07-25)
 -------------------
 * Merge branch 'add/initialization_tolerance' into 'master'
