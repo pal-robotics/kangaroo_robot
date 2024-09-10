@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>kangaroo_controller_configuration</name>
-  <version>0.1.11</version>
+  <version>0.1.12</version>
   <description>The kangaroo_controller_configuration package</description>
 
   <maintainer email="luca.marchionni@pal-robotics.com">Luca Marchionni</maintainer>

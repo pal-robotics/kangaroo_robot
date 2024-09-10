@@ -19,8 +19,8 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.1.12 (2024-09-10)
+-------------------
 * Merge branch 'hipz' into 'master'
   Update changes in Hip Z
   See merge request robots/kangaroo_robot!60
