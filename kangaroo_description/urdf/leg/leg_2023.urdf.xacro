@@ -43,10 +43,10 @@
   <xacro:macro name="kangaroo_leg" params="side reflect parent *origin hipz_model:=2023 simulation:=false use_mimic:=true ft_sensors:=false">
     <link name="leg_${side}_1_link">
       <inertial>
-        <origin xyz="0.00643148180089947 ${reflect * 0.00470584363523306} -0.0104315706390075" rpy="0 0 0" />
-        <mass value="2.89547106393921" />
-        <inertia ixx="0.002373067757357" ixy="${reflect * 1.0458682341421E-05}" ixz="${reflect * 7.10544668703563E-05}"
-          iyy="0.00215576778669813" iyz="${reflect * -1.24262445397793E-05}" izz="0.00155640461041179" />
+        <origin xyz="0.0063167 ${reflect * 0.0045949} -0.0083828" rpy="0 0 0" />
+        <mass value="2.7478" />
+        <inertia ixx="0.0019336" ixy="${reflect * 8.5058E-06}" ixz="${reflect * 4.8385E-05}"
+          iyy="0.0018225" iyz="${reflect * -7.282E-06}" izz="0.001426" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -79,7 +79,7 @@
     <link name="leg_${side}_2_link">
       <inertial>
         <origin
-          xyz="-0.00292779640030026 -9.62074367728827E-05 1.0865936483917E-09"
+          xyz="-0.0029278 -9.6207E-05 1.0866E-09"
           rpy="0 0 0" />
         <mass value="0.0905312454913012" />
         <inertia ixx="6.10166860944865E-06" ixy="4.64490555644666E-08" ixz="4.07017223451518E-13"
@@ -102,7 +102,7 @@
       </collision>
     </link>
     <joint name="leg_${side}_2_joint" type="revolute">
-      <origin xyz="0.015024 0 -0.0925" rpy="0 0 0" />
+      <origin xyz="0.015024 0 -0.1175" rpy="0 0 0" />
       <parent link="leg_${side}_1_link" />
       <child link="leg_${side}_2_link" />
       <axis xyz="0 1 0" />
@@ -110,10 +110,10 @@
     </joint>
     <link name="leg_${side}_3_link">
       <inertial>
-        <origin xyz="-0.0331126340475435 ${reflect * 0.0492000964734808} -0.0300270306298204" rpy="0 0 0" />
-        <mass value="3.45187520713338" />
-        <inertia ixx="0.0021995228245877" ixy="${reflect * 0.000142021792686858}" ixz="${reflect * -0.000114089540435782}"
-          iyy="0.00286983872145199" iyz="${reflect * 3.27704238559214E-05}" izz="0.00273461620254835" />
+        <origin xyz="-0.033949 ${reflect * 0.049989} -0.030543" rpy="0 0 0" />
+        <mass value="3.658" />
+        <inertia ixx="0.0025968" ixy="${reflect * 0.00018723}" ixz="${reflect * -0.00014976}"
+          iyy="0.0031521" iyz="${reflect * 3.7258E-05}" izz="0.0032376" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />

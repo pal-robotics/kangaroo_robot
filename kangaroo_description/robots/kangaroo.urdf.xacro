@@ -66,10 +66,10 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg_$(arg version).urdf.xacro" />
 
   <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)" use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
-    <origin xyz="-0.01602 0.08 -0.0585" rpy="0 0 0"/>
+    <origin xyz="-0.0150025976417119 0.08 -0.0585" rpy="0 0 0"/>
   </xacro:kangaroo_leg>
   <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" simulation="$(arg simulation)"  use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
-    <origin xyz="-0.01602 -0.08 -0.0585" rpy="0 0 0"/>
+    <origin xyz="-0.0150025976417119 -0.08 -0.0585" rpy="0 0 0"/>
   </xacro:kangaroo_leg>
   
   <!-- Generic simulator_gazebo plugins -->
