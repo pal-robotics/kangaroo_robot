@@ -19,8 +19,8 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.1.13 (2024-09-10)
+-------------------
 * Merge branch 'fix_torso_pose' into 'master'
   (fix) correct torso position w.r.t. base link
   See merge request robots/kangaroo_robot!61
