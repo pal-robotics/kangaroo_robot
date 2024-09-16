@@ -19,6 +19,14 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'fix/unstable/simulation' into 'master'
+  revert the meshes to version 0.1.11 to fix unstable simulation behaviour
+  See merge request robots/kangaroo_robot!62
+* revert the meshes to version 0.1.11 to fix unstable simulation behaviour
+* Contributors: Sai Kishor Kothakota
+
 0.1.13 (2024-09-10)
 -------------------
 * Merge branch 'fix_torso_pose' into 'master'
