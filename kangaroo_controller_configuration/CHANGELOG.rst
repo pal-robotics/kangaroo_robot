@@ -27,6 +27,14 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'change/transmission_parameters' into 'master'
+  Change transmission parameters of the leg length
+  See merge request robots/kangaroo_robot!64
+* Change transmission parameters of the leg length
+* Contributors: Sai Kishor Kothakota
+
 0.1.14 (2024-09-16)
 -------------------
 
