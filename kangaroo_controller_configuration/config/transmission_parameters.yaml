@@ -33,8 +33,8 @@ leg_params:
   shin_offset_angle: 0.0
   connection_fbl_offset_angle: -0.785398163397448 
   shin_fbl11_offset_angle: -0.261799387799149
-  knee_angle_min: !degrees 15.0 # 5 degrees less than actual
-  knee_angle_max: !degrees 145.0 # 5 degrees more than actual
+  knee_angle_min: !degrees 20.0
+  knee_angle_max: !degrees 140.0
 
 left_hip_z_2023_params:
   Ly: &hipz_ly 0.10187
