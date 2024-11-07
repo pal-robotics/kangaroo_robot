@@ -5,7 +5,6 @@
 	<exclude body1="base_link" body2="leg_right_3_link" />
 
 	<exclude body1="leg_right_1_link" body2="leg_right_3_link" />
-	<exclude body1="leg_right_1_link" body2="torso" />
 
 	<exclude body1="leg_right_2_link" body2="leg_right_3_link" />
 	<exclude body1="leg_right_2_link" body2="leg_right_1_link" />
