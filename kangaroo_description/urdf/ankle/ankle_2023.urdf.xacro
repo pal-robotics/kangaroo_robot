@@ -42,7 +42,7 @@
       <parent link="${parent}" />
       <child link="leg_${side}_${pitch_joint}_link" />
       <axis xyz="0 1 0" />
-      <limit lower="${pitch_joint_min_pos}" upper="${pitch_joint_max_pos}" effort="100" velocity="3.87" />
+      <limit lower="${pitch_joint_min_pos}" upper="${pitch_joint_max_pos}" effort="140" velocity="3.87" />
     </joint>
     <link name="leg_${side}_${roll_joint}_link">
       <xacro:unless value="${ft_sensors}">
@@ -112,7 +112,7 @@
       <parent link="leg_${side}_${pitch_joint}_link" />
       <child link="leg_${side}_${roll_joint}_link" />
       <axis xyz="-1 0 0" />
-      <limit lower="${roll_joint_min_pos}" upper="${roll_joint_max_pos}" effort="100" velocity="3.87" />
+      <limit lower="${roll_joint_min_pos}" upper="${roll_joint_max_pos}" effort="82" velocity="3.87" />
     </joint>
     
     <link name="leg_${side}_${roll_joint}_aligned_link"/>

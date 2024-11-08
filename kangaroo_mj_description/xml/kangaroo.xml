@@ -2,11 +2,11 @@
     <include file="common.xml" />
     
     <!-- POSITION CONTROLLERS -->
-    <include file="controllers/kangaroo.left_leg.position_controllers.xml"/>
-    <include file="controllers/kangaroo.right_leg.position_controllers.xml"/>
+    <!-- <include file="controllers/kangaroo.left_leg.position_controllers.xml"/>
+    <include file="controllers/kangaroo.right_leg.position_controllers.xml"/> -->
     <!-- TORQUE CONTROLLERS -->
-    <!-- <include file="controllers/kangaroo.left_leg.motor_controllers.xml"/>
-    <include file="controllers/kangaroo.right_leg.motor_controllers.xml"/> -->
+    <include file="controllers/kangaroo.left_leg.motor_controllers.xml"/>
+    <include file="controllers/kangaroo.right_leg.motor_controllers.xml"/>
     
     <asset>
 	<include file="assets/kangaroo.collision_assets.xml"/>
@@ -20,19 +20,17 @@
     
     
     <worldbody>
-        <body name="base_link" pos="0 0 1.">
+        <body name="base_link" pos="0 0 1." quat="1 0 0 0">
             <joint name="reference" type="free" />
-            <inertial pos="-0.051356 3.5728E-05 -0.029169" mass="2.6996"
-                fullinertia="0.0058581 0.008435 0.012803 0.00011344 0.00017192 2.6065E-05" />
 	        <geom class="visual" rgba="0.15625 0.15625 0.15625 1" mesh="base_link" />
 	        <geom class="collision" mesh="base_link_collision" />
-        
-        	<!-- TORSO -->
-        	<body name="torso" pos="-0.0918 0 0.0075"> 
-                    <inertial pos="-0.0085193 -0.00033267 0.22824" mass="13.843" fullinertia="0.087431 0.072736 0.032695 1.1038E-05 -9.0502E-06 2.6862E-05" />
-                    <geom class="visual" rgba="0.15625 0.15625 0.15625 1" mesh="torso" />
-                    <geom class="collision" mesh="torso_collision" />				
-        	</body>
+            <geom class="visual" rgba="0.15625 0.15625 0.15625 1" mesh="torso" />
+            <geom class="collision" mesh="torso_collision" />	
+            <inertial
+                mass="16.76803373"
+                pos="-0.07045985 0.00170303 0.16346082"
+                fullinertia="0.50865644 0.46730047 0.19754589 0.0001341 0.00025753 0.02558984"
+            />
         	
             <!-- LEFT LEG-->
             <include file="parts/kangaroo.left_leg.xml"/>
@@ -46,7 +44,7 @@
     <include file="constraints/kangaroo.right_leg.equality_constraints.xml"/>
     
     <keyframe>
-        <key name="test" ctrl="0 0.05 0 0.6 0.3 0   0 0.05 0 0.6 0.3 0" />
+        <key name="init" qpos="0. 0. 1. 1 0 0 0 0. 0. 0.01 0.69 0.34 0.0282 1.14 2.29 0. 0. 0.01 0.69 0.34 0.0283 1.14 2.29" />
     </keyframe>
        
 </mujoco>

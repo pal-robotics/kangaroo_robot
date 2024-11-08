@@ -70,10 +70,10 @@
       <child link="leg_${side}_1_link" />
       <axis xyz="0 0 1" />
       <xacro:if value="${reflect == 1}">
-        <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="150" velocity="3.87" />
+        <limit lower="${leg_1_min_pos}" upper="${leg_1_max_pos}" effort="80" velocity="3.87" />
       </xacro:if>
       <xacro:if value="${reflect == -1}">
-        <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="150" velocity="3.87" />
+        <limit lower="${reflect * leg_1_max_pos}" upper="${reflect * leg_1_min_pos}" effort="80" velocity="3.87" />
       </xacro:if>
     </joint>
     <link name="leg_${side}_2_link">
@@ -106,7 +106,7 @@
       <parent link="leg_${side}_1_link" />
       <child link="leg_${side}_2_link" />
       <axis xyz="0 1 0" />
-      <limit lower="${leg_2_min_pos}" upper="${leg_2_max_pos}" effort="150" velocity="3.87" />
+      <limit lower="${leg_2_min_pos}" upper="${leg_2_max_pos}" effort="230" velocity="3.87" />
     </joint>
     <link name="leg_${side}_3_link">
       <inertial>
@@ -136,7 +136,7 @@
       <parent link="leg_${side}_2_link" />
       <child link="leg_${side}_3_link" />
       <axis xyz="1 0 0" />
-      <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="150" velocity="3.87" />
+      <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="139" velocity="3.87" />
     </joint>
     <link name="leg_${side}_femur_link">
 <!--       <xacro:if value="${use_mimic}">
@@ -237,7 +237,7 @@
       <parent link="leg_${side}_3_link" />
       <child link="leg_${side}_length_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${leg_min_length}" upper="${leg_max_length}" effort="1500" velocity="10" />
+      <limit lower="${leg_min_length}" upper="${leg_max_length}" effort="1100" velocity="10" />
     </joint>
 
     <joint name="leg_${side}_femur_joint" type="revolute">

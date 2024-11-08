@@ -2,12 +2,12 @@
 	<compiler angle="radian"/>
 	
 	<actuator>
-    	<motor name="leg_left_1_actuator_torque" joint="leg_left_1_joint" ctrllimited="true" ctrlrange="-2000. 2000."/> <!-- N -->
-		<motor name="leg_left_2_actuator_torque" joint="leg_left_2_joint" ctrllimited="true" ctrlrange="-2000. 2000."/>
-		<motor name="leg_left_3_actuator_torque" joint="leg_left_3_joint" ctrllimited="true" ctrlrange="-2000. 2000."/>
-		<motor name="leg_left_length_actuator_torque" joint="leg_left_length_joint" ctrllimited="true" ctrlrange="-5000. 5000."/>
-		<motor name="leg_left_4_actuator_torque" joint="leg_left_4_joint" ctrllimited="true" ctrlrange="-2000. 2000."/>
-		<motor name="leg_left_5_actuator_torque" joint="leg_left_5_joint" ctrllimited="true" ctrlrange="-2000. 2000."/>
+    	<motor name="leg_left_1_actuator_torque" joint="leg_left_1_joint" ctrllimited="true" ctrlrange="-80. 80."/> <!-- YAW Nm -->
+		<motor name="leg_left_2_actuator_torque" joint="leg_left_2_joint" ctrllimited="true" ctrlrange="-230. 230."/> <!-- Pitch Nm -->
+		<motor name="leg_left_3_actuator_torque" joint="leg_left_3_joint" ctrllimited="true" ctrlrange="-139. 139."/> <!-- Roll Nm -->
+		<motor name="leg_left_length_actuator_torque" joint="leg_left_length_joint" ctrllimited="true" ctrlrange="-1100. 1100."/> <!-- N Force. NOT TORQUE! -->
+		<motor name="leg_left_4_actuator_torque" joint="leg_left_4_joint" ctrllimited="true" ctrlrange="-140. 140."/> <!-- Ankle Pitch Nm -->
+		<motor name="leg_left_5_actuator_torque" joint="leg_left_5_joint" ctrllimited="true" ctrlrange="-82. 82."/> <!-- Ankle Roll Nm -->
   	</actuator>
 
 </mujoco>

@@ -19,7 +19,7 @@
   </asset>
 
   <worldbody>
-        <light name="spotlight" mode="targetbodycom" target="torso" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="0 -6 4" cutoff="30"/>
+        <light name="spotlight" mode="targetbodycom" target="base_link" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="0 -6 4" cutoff="30"/>
   	<geom name="floor" size="0 0 .05" type="plane" material="grid" condim="3"/>
   </worldbody>
 
