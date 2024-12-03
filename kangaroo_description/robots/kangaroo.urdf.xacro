@@ -10,6 +10,7 @@
         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
   <xacro:arg name="with_pelvis" default="false" />
+  <xacro:arg name="with_arms" default="false" />
   <xacro:arg name="simulation" default="false" />
   <xacro:arg name="torso_front_camera_model" default="realsense-D435i" />
   <xacro:arg name="torso_back_camera_model" default="realsense-D435i" />
@@ -17,6 +18,7 @@
   <xacro:arg name="waist_back_camera_model" default="realsense-D435i" />
 
   <xacro:property name="with_pelvis" value="$(arg with_pelvis)" />
+  <xacro:property name="with_arms" value="$(arg with_arms)" />
   <xacro:property name="simulation" value="$(arg simulation)" />
   <xacro:property name="torso_front_camera_model" value="$(arg torso_front_camera_model)" />
   <xacro:property name="torso_back_camera_model" value="$(arg torso_back_camera_model)" />
@@ -60,8 +62,11 @@
       <child link="base_link" />
     </joint>
   </xacro:if>
+  
+  <!--************************-->
+  <!--           LEGS         -->
+  <!--************************-->
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
-
   <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)" use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
     <origin xyz="-0.0150025976417119 0.08 -0.0585" rpy="0 0 0"/>
   </xacro:kangaroo_leg>
@@ -69,15 +74,19 @@
     <origin xyz="-0.0150025976417119 -0.08 -0.0585" rpy="0 0 0"/>
   </xacro:kangaroo_leg>
   
-  <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.urdf.xacro" />
-  <xacro:kangaroo_arm name="arm" side="left" reflect="1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
-   <origin xyz="0 0.105954 0.384396" rpy="1.5708 0 0" />
-  </xacro:kangaroo_arm>
+  <!--************************-->
+  <!--          ARMS          -->
+  <!--************************-->
+  <xacro:if value="$(arg with_arms)">
+    <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.urdf.xacro" />
+    <xacro:kangaroo_arm name="arm" side="left" reflect="1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
+      <origin xyz="0 0.105954 0.384396" rpy="1.5708 0 0" />
+    </xacro:kangaroo_arm>
 
-  <xacro:kangaroo_arm name="arm" side="right" reflect="-1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
-   <origin xyz="0 -0.105954 0.384396" rpy="1.5708 0 3.14159" />
-  </xacro:kangaroo_arm>
-
+    <xacro:kangaroo_arm name="arm" side="right" reflect="-1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
+      <origin xyz="0 -0.105954 0.384396" rpy="1.5708 0 3.14159" />
+    </xacro:kangaroo_arm>
+  </xacro:if>
 
   <!-- Generic simulator_gazebo plugins -->
   <xacro:include filename="$(find kangaroo_description)/gazebo/gazebo.urdf.xacro" />
