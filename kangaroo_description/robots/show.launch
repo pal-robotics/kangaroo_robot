@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
-  <arg name="version" default="2023"/>
+  <arg name="with_pelvis" default="false"/>
   <arg name="ft_sensors" default="false"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
-    <arg name="version" value="$(arg version)"/>
+    <arg name="with_pelvis" value="$(arg with_pelvis)"/>
     <arg name="ft_sensors" value="$(arg ft_sensors)"/>
   </include>
 

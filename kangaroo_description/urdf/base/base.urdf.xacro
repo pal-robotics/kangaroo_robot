@@ -4,7 +4,7 @@
 <xacro:include filename="$(find kangaroo_description)/urdf/sensors/imu.urdf.xacro"/>
 <xacro:include filename="$(find kangaroo_description)/urdf/pelvis/pelvis.urdf.xacro" />
 
-<xacro:macro name="base_link" params="version:=2023 with_cage:=true">
+<xacro:macro name="base_link" params="with_pelvis:=false">
   <link name="base_link">
     <inertial>
       <origin xyz="-0.051356 3.5728E-05 -0.029169" rpy="0 0 0" />
@@ -15,7 +15,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://kangaroo_description/meshes/${version}/base_link.stl" />
+        <mesh filename="package://kangaroo_description/meshes/base_link.stl" />
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1" />
@@ -24,7 +24,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://kangaroo_description/meshes/${version}/base_link_convex.stl" />
+        <mesh filename="package://kangaroo_description/meshes/base_link_convex.stl" />
       </geometry>
     </collision>
   </link>
@@ -33,13 +33,26 @@
     <origin xyz="0.071 -0.0014 0.02" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${-90.0*deg_to_rad}"/>
   </xacro:kangaroo_imu>
 
+    <!-- -->
+    
 
+<xacro:if value="${with_pelvis}">
   <xacro:kangaroo_pelvis name="pelvis" parent="base_link" pelvis_1_offset="0" pelvis_2_offset="0">
    <origin xyz="-0.0918000000000001 0 -0.0455" rpy="0 0 0" />
   </xacro:kangaroo_pelvis>  
 
   <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
-  <xacro:kangaroo_torso parent="pelvis_2_link"/> <!-- base_link -->
+  <xacro:kangaroo_torso parent="pelvis_2_link">
+    <origin xyz="0 0 0.0061" rpy="0 0 0" />
+  </xacro:kangaroo_torso> <!-- base_link -->
+</xacro:if>
+
+<xacro:unless value="${with_pelvis}">
+  <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
+  <xacro:kangaroo_torso parent="base_link">
+    <origin xyz="-0.0918000000000001 0 0.0075" rpy="0 0 0" />
+  </xacro:kangaroo_torso>
+</xacro:unless>
 
   <!-- waist cameras -->
   <xacro:include filename="$(find kangaroo_description)/urdf/waist/waist.urdf.xacro" />

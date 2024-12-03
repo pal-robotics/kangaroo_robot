@@ -9,23 +9,20 @@
         xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <xacro:arg name="version" default="2023" />
+  <xacro:arg name="with_pelvis" default="false" />
   <xacro:arg name="simulation" default="false" />
   <xacro:arg name="torso_front_camera_model" default="realsense-D435i" />
   <xacro:arg name="torso_back_camera_model" default="realsense-D435i" />
   <xacro:arg name="waist_front_camera_model" default="realsense-D435i" />
   <xacro:arg name="waist_back_camera_model" default="realsense-D435i" />
 
-  <xacro:property name="version" value="$(arg version)" />
+  <xacro:property name="with_pelvis" value="$(arg with_pelvis)" />
   <xacro:property name="simulation" value="$(arg simulation)" />
   <xacro:property name="torso_front_camera_model" value="$(arg torso_front_camera_model)" />
   <xacro:property name="torso_back_camera_model" value="$(arg torso_back_camera_model)" />
   <xacro:property name="waist_front_camera_model" value="$(arg waist_front_camera_model)" />
   <xacro:property name="waist_back_camera_model" value="$(arg waist_back_camera_model)" />
-  
-  <xacro:if value="${version not in [2022,2023]}">
-    <xacro:wrong_version/>
-  </xacro:if>
+ 
   
   <xacro:if value="${torso_front_camera_model not in ['realsense-D435i']}">
     <xacro:wrong_torso_front_camera_model/>
@@ -48,8 +45,8 @@
   <!--************************-->
   <!--        BASE_LINK       -->
   <!--************************-->
-  <xacro:include filename="$(find kangaroo_description)/urdf/base/base_$(arg version).urdf.xacro"/>
-  <xacro:base_link with_cage="$(arg use_cage)"/>
+  <xacro:include filename="$(find kangaroo_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:base_link with_pelvis="$(arg with_pelvis)"/>
 
   <xacro:if value="$(arg enable_crane)">
     <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
@@ -63,7 +60,7 @@
       <child link="base_link" />
     </joint>
   </xacro:if>
-  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg_$(arg version).urdf.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
 
   <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)" use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
     <origin xyz="-0.0150025976417119 0.08 -0.0585" rpy="0 0 0"/>

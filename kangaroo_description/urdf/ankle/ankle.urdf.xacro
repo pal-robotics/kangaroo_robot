@@ -13,7 +13,7 @@
   <xacro:property name="roll_joint_max_pos"   value="${27.0 *deg_to_rad}" />
 
 
-  <xacro:macro name="kangaroo_ankle" params="side reflect parent *origin pitch_joint roll_joint read_actuator simulation:=false ft_sensors:=false version:=2023">
+  <xacro:macro name="kangaroo_ankle" params="side reflect parent *origin pitch_joint roll_joint read_actuator simulation:=false ft_sensors:=false">
     <link name="leg_${side}_${pitch_joint}_link">
       <inertial>
         <origin xyz="-0.00759994843981759 -6.94997526196062E-09 5.88281323654627E-08" rpy="0 0 0" />
@@ -55,7 +55,7 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://kangaroo_description/meshes/${version}/leg_7_link.stl" />
+            <mesh filename="package://kangaroo_description/meshes/leg_7_link.stl" />
           </geometry>
           <material name="">
             <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -64,7 +64,7 @@
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://kangaroo_description/meshes/${version}/leg_7_link.stl" />
+            <mesh filename="package://kangaroo_description/meshes/leg_7_link.stl" />
           </geometry>
         </collision>
         <collision>
@@ -86,7 +86,7 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
           <geometry>
-            <mesh filename="package://kangaroo_description/meshes/${version}/leg_7_link_ft.stl" />
+            <mesh filename="package://kangaroo_description/meshes/leg_7_link_ft.stl" />
           </geometry>
           <material name="">
             <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -95,7 +95,7 @@
         <collision>
           <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
           <geometry>
-            <mesh filename="package://kangaroo_description/meshes/${version}/leg_7_link_ft.stl" />
+            <mesh filename="package://kangaroo_description/meshes/leg_7_link_ft.stl" />
           </geometry>
         </collision>
         <collision>
