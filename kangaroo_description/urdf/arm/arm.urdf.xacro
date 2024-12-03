@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+<xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.transmission.xacro" />
+
+<xacro:property name="arm_friction"       value="1.0" />
+<xacro:property name="arm_damping"        value="1.0" />
+
+<xacro:property name="arm_1_max_velocity"      value="1.95" />
+<xacro:property name="arm_2_max_velocity"      value="1.95" />
+<xacro:property name="arm_3_max_velocity"      value="2.35" />
+<xacro:property name="arm_4_max_velocity"      value="2.35" />
+
+
+<xacro:property name="arm_1_max_effort"   value="43.0" />
+<xacro:property name="arm_2_max_effort"   value="43.0" />
+<xacro:property name="arm_3_max_effort"   value="26" />
+<xacro:property name="arm_4_max_effort"   value="26" />
+
+
+<xacro:macro name="kangaroo_arm" params="name side reflect parent *origin arm_1_offset arm_2_offset arm_3_offset arm_4_offset">
+  <xacro:property name="arm_eps"       value="${0.00 if no_safety_eps else 0.07}"/>
+  <link
+    name="${name}_${side}_base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_arm/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_arm/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${name}_${side}_fixed_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}" />
+      <child link="${name}_${side}_base_link" />
+ </joint>
+
+  <!-- ARM 1 LINK -->
+  <link name="${name}_${side}_1_link">
+    <inertial>
+      <origin
+        xyz="-0.0065019 -0.002469 -0.040465" rpy="0 0 0" />
+      <mass
+        value="0.84824" />
+      <inertia
+        ixx="0.0023255"
+        ixy="5.09E-05"
+        ixz="0.0004503"
+        iyy="0.002368"
+        iyz="0.0001919"
+        izz="0.0008637" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_1_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="${name}_${side}_1_joint" type="revolute">
+    <origin
+      xyz="0 0 -0.01511"
+      rpy="0 0 0" />
+    <parent
+      link="${name}_${side}_base_link" />
+    <child
+      link="${name}_${side}_1_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.618"
+      upper="2.618"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="${name}_${side}_2_link">
+    <inertial>
+      <origin
+        xyz="-0.0295938 0.0049455 -0.024457"
+        rpy="0 0 0" />
+      <mass
+        value="0.9441753" />
+      <inertia
+        ixx="0.0010045"
+        ixy="-0.0004266"
+        ixz="-0.0001257"
+        iyy="0.0036599"
+        iyz="3.26E-05"
+        izz="0.0037326" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_2_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${name}_${side}_2_joint" type="revolute">
+    <origin
+      xyz="-0.028337 -0.02 -0.155"
+      rpy="0 -1.5708 0" />
+    <parent
+      link="${name}_${side}_1_link" />
+    <child
+      link="${name}_${side}_2_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.1345"
+      upper="2.4435"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="${name}_${side}_3_link">
+    <inertial>
+      <origin
+        xyz="0.0055739 0.0021181 -0.0345099"
+        rpy="0 0 0" />
+      <mass
+        value="0.9891903" />
+      <inertia
+        ixx="0.0025603"
+        ixy="5.28E-05"
+        ixz="-0.0004831"
+        iyy="0.0026076"
+        iyz="-0.0002044"
+        izz="0.0010274" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_3_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${name}_${side}_3_joint"
+    type="revolute">
+    <origin
+      xyz="-0.175 0.02 -0.028337"
+      rpy="0 1.5708 0" />
+    <parent
+      link="${name}_${side}_2_link" />
+    <child
+      link="${name}_${side}_3_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.618"
+      upper="2.618"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="${name}_${side}_4_link">
+    <inertial>
+      <origin
+        xyz="0.0752641 -0.0079317 -0.023427"
+        rpy="0 0 0" />
+      <mass
+        value="1.4353488" />
+      <inertia
+        ixx="0.0012553"
+        ixy="-0.0012835"
+        ixz="9.49E-05"
+        iyy="0.0209442"
+        iyz="-1.1E-06"
+        izz="0.0210127" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_${side}_4_link.stl" scale="1 1 1"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_${side}_4_link.stl" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${name}_${side}_4_joint"
+    type="revolute">
+    <origin
+      xyz="0.0283 0.02 -0.155"
+      rpy="0 1.5708 0" />
+    <parent
+      link="${name}_${side}_3_link" />
+    <child
+      link="${name}_${side}_4_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.1345"
+      upper="2.4435"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+<!-- TRANSMISSIONS -->
+    <xacro:arm_simple_transmission name="${name}" number="1" reduction="1.0" offset_value="${arm_1_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="2" reduction="1.0" offset_value="${arm_2_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="3" reduction="1.0" offset_value="${arm_3_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="4" reduction="1.0" offset_value="${arm_4_offset}"/>
+
+ </xacro:macro>
+</robot>
