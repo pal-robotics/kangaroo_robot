@@ -11,14 +11,17 @@
 
   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/leg_left.yaml"/>
   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/leg_right.yaml"/>
-
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/pelvis.yaml"/>
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/arm_left.yaml"/>
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/arm_right.yaml"/>
 
   <arg name="controllers_to_load"
       value="left_leg_controller right_leg_controller" />
 
-  <arg unless="$(eval arg('controllers') == '')"
+<!--  <arg unless="$(eval arg('controllers') == '')"
       name="controllers_to_load"
       value="$(arg controllers)" />
+-->
 
   <arg if="$(arg enable_unloading_workaround)"
       name="extra_args"
@@ -29,6 +32,6 @@
 
   <node name="body_controllers_spawner"
       pkg="controller_manager" type="spawner" output="screen"
-      args="$(arg extra_args) $(arg controllers_to_load)" />
+      args="$(arg extra_args) $(arg controllers_to_load) $(arg controllers)"/>
 
 </launch>

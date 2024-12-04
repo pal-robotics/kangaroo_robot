@@ -57,3 +57,64 @@ collision_model_parameters:
         second: torso_front_rgbd_camera_link
       - first: torso_link
         second: torso_back_rgbd_camera_link
+    pelvis_joints:
+      - first: base_link
+        second: pelvis_base_link
+      - first: base_link
+        second: pelvis_1_link
+      - first: base_link
+        second: pelvis_2_link
+      - first: pelvis_base_link
+        second: pelvis_1_link
+      - first: pelvis_base_link
+        second: pelvis_2_link
+      - first: pelvis_base_link
+        second: torso_link
+      - first: pelvis_1_link
+        second: pelvis_2_link
+      - first: pelvis_1_link
+        second: torso_link
+      - first: pelvis_2_link
+        second: torso_link
+      - first: leg_right_1_link
+        second: pelvis_base_link
+      - first: leg_right_2_link
+        second: pelvis_base_link
+      - first: leg_left_1_link
+        second: pelvis_base_link
+      - first: leg_left_2_link
+        second: pelvis_base_link
+      - first: leg_right_1_link
+        second: pelvis_1_link
+      - first: leg_right_2_link
+        second: pelvis_1_link
+      - first: leg_left_1_link
+        second: pelvis_1_link
+      - first: leg_left_2_link
+        second: pelvis_1_link
+    arms_joints:
+      - first: torso_link
+        second: arm_left_base_link
+      - first: torso_link
+        second: arm_right_base_link
+      - first: torso_link
+        second: arm_right_1_link
+      - first: torso_link
+        second: arm_left_1_link
+      - first: arm_left_base_link
+        second: arm_left_1_link
+      - first: arm_left_1_link
+        second: arm_left_2_link
+      - first: arm_left_2_link
+        second: arm_left_3_link
+      - first: arm_left_3_link
+        second: arm_left_4_link
+      - first: arm_right_base_link
+        second: arm_right_1_link
+      - first: arm_right_1_link
+        second: arm_right_2_link
+      - first: arm_right_2_link
+        second: arm_right_3_link
+      - first: arm_right_3_link
+        second: arm_right_4_link
+

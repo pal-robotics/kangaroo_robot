@@ -1,0 +1,18 @@
+pelvis_controller:
+  type: "position_controllers/JointTrajectoryController"
+  check_mode: True
+  joints:
+    - pelvis_1_joint
+    - pelvis_2_joint
+  actuators:
+    - pelvis_1_motor
+    - pelvis_2_motor
+  constraints:
+    goal_time: &goal_time_constraint 0.6
+    stopped_velocity_tolerance: &stopped_velocity_constraint 0.05
+    pelvis_1_joint:
+      goal: &goal_pos_constraint 0.02
+    pelvis_2_joint:
+      goal: *goal_pos_constraint
+
+  stop_trajectory_duration: 0.0

@@ -119,8 +119,8 @@
     <limit
       lower="-2.618"
       upper="2.618"
-      effort="0"
-      velocity="0" />
+      effort="${arm_1_max_effort}"
+      velocity="${arm_1_max_velocity}" />
   </joint>
   <link
     name="${name}_${side}_2_link">
@@ -176,8 +176,8 @@
     <limit
       lower="-1.1345"
       upper="2.4435"
-      effort="0"
-      velocity="0" />
+      effort="${arm_2_max_effort}"
+      velocity="${arm_2_max_velocity}" />
   </joint>
   <link
     name="${name}_${side}_3_link">
@@ -234,8 +234,8 @@
     <limit
       lower="-2.618"
       upper="2.618"
-      effort="0"
-      velocity="0" />
+      effort="${arm_3_max_effort}"
+      velocity="${arm_3_max_velocity}" />
   </joint>
   <link
     name="${name}_${side}_4_link">
@@ -292,15 +292,15 @@
     <limit
       lower="-1.1345"
       upper="2.4435"
-      effort="0"
-      velocity="0" />
+      effort="${arm_4_max_effort}"
+      velocity="${arm_4_max_velocity}" />
   </joint>
 
 <!-- TRANSMISSIONS -->
-    <xacro:arm_simple_transmission name="${name}" number="1" reduction="1.0" offset_value="${arm_1_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="2" reduction="1.0" offset_value="${arm_2_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="3" reduction="1.0" offset_value="${arm_3_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="4" reduction="1.0" offset_value="${arm_4_offset}"/>
+    <xacro:arm_simple_transmission name="${name}_${side}" number="1" reduction="1.0" offset_value="${arm_1_offset}"/>
+    <xacro:arm_simple_transmission name="${name}_${side}" number="2" reduction="1.0" offset_value="${arm_2_offset}"/>
+    <xacro:arm_simple_transmission name="${name}_${side}" number="3" reduction="1.0" offset_value="${arm_3_offset}"/>
+    <xacro:arm_simple_transmission name="${name}_${side}" number="4" reduction="1.0" offset_value="${arm_4_offset}"/>
 
  </xacro:macro>
 </robot>
