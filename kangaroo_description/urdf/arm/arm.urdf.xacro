@@ -5,7 +5,7 @@
 
 <xacro:property name="arm_friction"       value="1.0" />
 <xacro:property name="arm_damping"        value="1.0" />
-
+s
 <xacro:property name="arm_1_max_velocity"      value="1.95" />
 <xacro:property name="arm_2_max_velocity"      value="1.95" />
 <xacro:property name="arm_3_max_velocity"      value="2.35" />
@@ -27,14 +27,14 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <mass
-        value="0" />
+        value="0.1" />
       <inertia
-        ixx="0"
+        ixx="0.0000001"
         ixy="0"
         ixz="0"
-        iyy="0"
+        iyy="0.0000001"
         iyz="0"
-        izz="0" />
+        izz="0.0000001" />
     </inertial>
     <visual>
       <origin
@@ -42,7 +42,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://kangaroo_arm/meshes/base_link.STL" />
+          filename="package://kangaroo_description/meshes/arm_base_link.stl" />
       </geometry>
       <material
         name="">
@@ -56,7 +56,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://kangaroo_arm/meshes/base_link.STL" />
+          filename="package://kangaroo_description/meshes/arm_base_link.stl" />
       </geometry>
     </collision>
   </link>

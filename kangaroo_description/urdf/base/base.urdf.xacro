@@ -32,10 +32,8 @@
   <xacro:kangaroo_imu name="imu" parent="torso_link" update_rate="100.0">
     <origin xyz="0.071 -0.0014 0.02" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${-90.0*deg_to_rad}"/>
   </xacro:kangaroo_imu>
-
-    <!-- -->
     
-
+<!-- with pelvis DoF -->
 <xacro:if value="${with_pelvis}">
   <xacro:kangaroo_pelvis name="pelvis" parent="base_link" pelvis_1_offset="0" pelvis_2_offset="0">
    <origin xyz="-0.0918000000000001 0 -0.0455" rpy="0 0 0" />
@@ -44,9 +42,10 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
   <xacro:kangaroo_torso parent="pelvis_2_link">
     <origin xyz="0 0 0.0061" rpy="0 0 0" />
-  </xacro:kangaroo_torso> <!-- base_link -->
+  </xacro:kangaroo_torso> 
 </xacro:if>
 
+<!-- without pelvis DoF -->
 <xacro:unless value="${with_pelvis}">
   <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
   <xacro:kangaroo_torso parent="base_link">
