@@ -1,0 +1,25 @@
+play_motion:
+  motions:
+    left_wave:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.3208, 1.5699, 0.79906, -0.2481, 1.3212, -1.5701, 0.79906]
+        - time_from_start: 3
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, -0.24622, 1.3225, -1.5702, 0.79804]
+        - time_from_start: 4
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, -0.24623, 1.3225, -1.5702, 0.79804]
+        - time_from_start: 5
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, -0.24622, 1.3225, -1.5702, 0.79804]
+        - time_from_start: 6
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, -0.24623, 1.3225, -1.5702, 0.79804]
+        - time_from_start: 7
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, -0.24622, 1.3225, -1.5702, 0.79804]
+        - time_from_start: 8
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, -0.24623, 1.3225, -1.5702, 0.79804]
+        - time_from_start: 11
+          positions: [0.24776, 1.3208, 1.5699, 0.79906, -0.2481, 1.3212, -1.5701, 0.79906]
+      meta:
+        name: left_wave
+        usage: ""
+        description: wave with left arm hand

@@ -13,6 +13,9 @@
   <arg name="local_joint_control_hip_z" default="$(arg local_joint_control_type)"/>
   <arg name="local_joint_control_leg_length" default="$(arg local_joint_control_type)"/>
 
+  <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_left.launch" />
+  <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_right.launch" />
+
   <group if="$(eval arg('local_joint_control_type') == 'inertia_shaping_kangaroo_analytic_dob_control')">
     <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_left_force_control.launch" pass_all_args="true" />
     <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_right_force_control.launch" pass_all_args="true" />

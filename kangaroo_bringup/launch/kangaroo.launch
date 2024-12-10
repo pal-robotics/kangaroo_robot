@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-  <arg name="use_cage" default="true"/>
   <arg name="ft_sensors" default="false"/>
-  <arg name="version" default="2023"/>
+  <arg name="with_pelvis" default="false"/>
+  <arg name="with_arms" default="true"/>
 
   <!-- Hardware configuration -->
   <rosparam command="load" file="$(find kangaroo_bringup)/config/kangaroo_common_hardware.yaml" unless="$(arg ft_sensors)"/>
   <rosparam command="load" file="$(find kangaroo_bringup)/config/kangaroo_common_hardware_with_ft.yaml" if="$(arg ft_sensors)"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
-    <arg name="use_cage"   value="$(arg use_cage)"/>
     <arg name="ft_sensors" value="$(arg ft_sensors)"/>
-    <arg name="version"    value="$(arg version)"/>
+    <arg name="with_pelvis"    value="$(arg with_pelvis)"/>
+    <arg name="with_arms"    value="$(arg with_arms)"/>
   </include>
 
   <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch">

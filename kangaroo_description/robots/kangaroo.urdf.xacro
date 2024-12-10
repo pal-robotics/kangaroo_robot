@@ -80,11 +80,11 @@
   <xacro:if value="$(arg with_arms)">
     <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.urdf.xacro" />
     <xacro:kangaroo_arm name="arm" side="left" reflect="1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
-      <origin xyz="0 0.105954 0.384396" rpy="1.5708 0 0" />
+      <origin xyz="0 0.105954 0.384396" rpy="1.3963 0 0" />
     </xacro:kangaroo_arm>
 
     <xacro:kangaroo_arm name="arm" side="right" reflect="-1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
-      <origin xyz="0 -0.105954 0.384396" rpy="1.5708 0 3.14159" />
+      <origin xyz="0 -0.105954 0.384396" rpy="1.3963 0 3.14159" />
     </xacro:kangaroo_arm>
   </xacro:if>
 

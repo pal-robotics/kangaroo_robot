@@ -1,0 +1,37 @@
+play_motion:
+  motions:
+    arms_dance:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.5708, 1.5699, 0.79906, -0.2481, 1.5712, -1.5701, 0.79906]
+        - time_from_start: 2
+          positions: [0.67072, 1.2314, 2.4082, 0.19051, 0.64939, 1.2346, -2.4105, 0.23235]
+        - time_from_start: 4
+          positions: [0.68027, 1.8959, 2.409, 0.49985, 0.62202, 1.9733, -2.566, 0.54535]
+        - time_from_start: 6
+          positions: [0.67072, 1.2314, 2.4082, 0.19051, 0.64939, 1.2346, -2.4105, 0.23235]
+        - time_from_start: 9
+          positions: [-0.67024, 1.2442, 2.4106, 0.18937, -0.67134, 1.2445, -2.4099, 0.23107]
+        - time_from_start: 11
+          positions: [-0.65965, 1.9426, 2.463, 0.54243, -0.67142, 1.8321, -2.4092, 0.51125]
+        - time_from_start: 13
+          positions: [-0.67024, 1.2442, 2.4106, 0.18937, -0.67134, 1.2445, -2.4099, 0.23107]
+        - time_from_start: 16
+          positions: [0.67072, 1.2314, 2.4082, 0.19051, 0.64939, 1.2346, -2.4105, 0.23235]
+        - time_from_start: 18
+          positions: [0.68027, 1.8959, 2.409, 0.49985, 0.62202, 1.9733, -2.566, 0.54535]
+        - time_from_start: 20
+          positions: [0.67072, 1.2314, 2.4082, 0.19051, 0.64939, 1.2346, -2.4105, 0.23235]
+        - time_from_start: 23
+          positions: [-0.67024, 1.2442, 2.4106, 0.18937, -0.67134, 1.2445, -2.4099, 0.23107]
+        - time_from_start: 25
+          positions: [-0.65965, 1.9426, 2.463, 0.54243, -0.67142, 1.8321, -2.4092, 0.51125]
+        - time_from_start: 27
+          positions: [-0.67024, 1.2442, 2.4106, 0.18937, -0.67134, 1.2445, -2.4099, 0.23107]
+        - time_from_start: 29
+          positions: [0.24776, 1.5708, 1.5699, 0.79906, -0.2481, 1.5712, -1.5701, 0.79906]
+      meta:
+        name: arms_dance
+        usage: ""
+        description: arms moving front and back as in a dance

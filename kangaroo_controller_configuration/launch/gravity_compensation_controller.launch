@@ -20,7 +20,7 @@
   </group>
 
   <group unless="$(arg simulation)">
-	  <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/no_control_partial/leg_left_force_control.launch">
+    <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/no_control_partial/leg_left_force_control.launch">
       <arg name="local_joint_control_type" value="inertia_shaping_kangaroo_analytic_dob_control"/>
       <arg name="local_joint_control_pkg" value="inertia_shaping_effort_control" />
       <arg name="ns" value="$(arg controller_name)"/>

@@ -1,0 +1,15 @@
+play_motion:
+  motions:
+    arms_box_2:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.5708, 1.5699, 0.79906, -0.2481, 1.5712, -1.5701, 0.79906]
+        - time_from_start: 5
+          positions: [-0.25582, 1.4429, 2.0951, 1.5469, 0.25524, 1.4433, -2.095, 1.5469]
+        - time_from_start: 10
+          positions: [-0.5696, 1.9362, 1.5694, 1.188, 0.56522, 1.9391, -1.5699, 1.1892]
+      meta:
+        name: arms_box_2
+        usage: ""
+        description: both arms forward to hold a box

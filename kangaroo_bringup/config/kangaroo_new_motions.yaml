@@ -1,0 +1,106 @@
+play_motion:
+  motions:
+    home_arms:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.32, 1.5699, 0.79906, -0.2481, 1.32, -1.5701, 0.79906]
+      meta:
+        name: home_arms
+        usage: ""
+        description: arms symmetrical on the side of the torso
+    arms_box_1:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.32, 1.5699, 0.79906, -0.2481, 1.32, -1.5701, 0.79906]
+        - time_from_start: 3
+          positions: [-0.25582, 1.2684, 2.0951, 1.5469, 0.25524, 1.2684, -2.095, 1.5469]
+      meta:
+        name: arms_box_1
+        usage: ""
+        description: both arms forward to hold a box
+    arms_box_2:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.32, 1.5699, 0.79906, -0.2481, 1.32, -1.5701, 0.79906]
+        - time_from_start: 3
+          positions: [-0.25582, 1.2184, 2.0951, 1.5469, 0.25524, 1.2184, -2.095, 1.5469]
+        - time_from_start: 5
+          positions: [-0.5696, 1.71, 1.5694, 1.188, 0.56522, 1.71, -1.5699, 1.1892]
+      meta:
+        name: arms_box_2
+        usage: ""
+        description: both arms forward to hold a box
+    arms_dance:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.32, 1.5699, 0.79906, -0.2481, 1.32, -1.5701, 0.79906]
+        - time_from_start: 2
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.64939, 1.0, -2.4105, 0.23235]
+        - time_from_start: 4
+          positions: [0.68027, 1.5959, 2.409, 0.49985, 0.62202, 1.6733, -2.566, 0.54535]
+        - time_from_start: 6
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.64939, 1.0, -2.4105, 0.23235]
+        - time_from_start: 9
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, -0.67134, 1.0, -2.4099, 0.23107]
+        - time_from_start: 11
+          positions: [-0.65965, 1.6426, 2.463, 0.54243, -0.67142, 1.5321, -2.4092, 0.51125]
+        - time_from_start: 13
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, -0.67134, 1.0, -2.4099, 0.23107]
+        - time_from_start: 16
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.64939, 1.0, -2.4105, 0.23235]
+        - time_from_start: 18
+          positions: [0.68027, 1.5959, 2.409, 0.49985, 0.62202, 1.6733, -2.566, 0.54535]
+        - time_from_start: 20
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.64939, 1.0, -2.4105, 0.23235]
+        - time_from_start: 23
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, -0.67134, 1.0, -2.4099, 0.23107]
+        - time_from_start: 25
+          positions: [-0.65965, 1.6426, 2.463, 0.54243, -0.67142, 1.5321, -2.4092, 0.51125]
+        - time_from_start: 27
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, -0.67134, 1.0, -2.4099, 0.23107]
+        - time_from_start: 29
+          positions: [0.24776, 1.32, 1.5699, 0.79906, -0.2481, 1.32, -1.5701, 0.79906]
+      meta:
+        name: arms_dance
+        usage: ""
+        description: arms moving front and back as in a dance
+    flying_arms:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.3208, 1.5699, 0.79906, -0.2481, 1.3212, -1.5701, 0.79906]
+        - time_from_start: 3
+          positions: [0.37165, 0.014362, 1.1215, 0.80005, -0.36289, 0.014376, -1.1229, 0.80036]
+        - time_from_start: 5
+          positions: [0.24776, 1.3208, 1.5699, 0.79906, -0.2481, 1.3212, -1.5701, 0.79906]
+        - time_from_start: 7
+          positions: [0.37165, 0.014362, 1.1215, 0.80005, -0.36289, 0.014376, -1.1229, 0.80036]
+        - time_from_start: 10
+          positions: [0.24776, 1.3208, 1.5699, 0.79906, -0.2481, 1.3212, -1.5701, 0.79906]
+      meta:
+        name: flying_arms
+        usage: ""
+        description: arms moving as wings
+    arms_run:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.3208, 1.4699, 0.79906, -0.2481, 1.3212, -1.5701, 0.79906]
+        - time_from_start: 2
+          positions: [0.89041, 1.3205, 1.4698, 2.148, 0.88703, 1.3209, -1.5698, 2.1496]
+        - time_from_start: 4
+          positions: [-0.88027, 1.3205, 1.4702, 2.1496, -0.89066, 1.3208, -1.5702, 2.148]
+        - time_from_start: 6
+          positions: [0.89041, 1.3205, 1.4698, 2.148, 0.88703, 1.3209, -1.5698, 2.1496]
+        - time_from_start: 8
+          positions: [-0.88027, 1.3205, 1.4702, 2.1496, -0.89066, 1.3208, -1.5702, 2.148]
+        - time_from_start: 10
+          positions: [0.24776, 1.3208, 1.4699, 0.79906, -0.2481, 1.3212, -1.5701, 0.79906]
+      meta:
+        name: arms_run
+        usage: ""
+        description: arms moving as running

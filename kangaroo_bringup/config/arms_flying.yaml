@@ -1,0 +1,19 @@
+play_motion:
+  motions:
+    flying_arms:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.5708, 1.5699, 0.79906, -0.2481, 1.5712, -1.5701, 0.79906]
+        - time_from_start: 3
+          positions: [0.37165, 0.014362, 1.1215, 0.80005, -0.36289, 0.014376, -1.1229, 0.80036]
+        - time_from_start: 6
+          positions: [0.24776, 1.5708, 1.5699, 0.79906, -0.2481, 1.5712, -1.5701, 0.79906]
+        - time_from_start: 9
+          positions: [0.37165, 0.014362, 1.1215, 0.80005, -0.36289, 0.014376, -1.1229, 0.80036]
+        - time_from_start: 12
+          positions: [0.24776, 1.5708, 1.5699, 0.79906, -0.2481, 1.5712, -1.5701, 0.79906]
+      meta:
+        name: flying_arms
+        usage: ""
+        description: arms moving as wings
