@@ -14,8 +14,8 @@ s
 
 <xacro:property name="arm_1_max_effort"   value="43.0" />
 <xacro:property name="arm_2_max_effort"   value="43.0" />
-<xacro:property name="arm_3_max_effort"   value="26" />
-<xacro:property name="arm_4_max_effort"   value="26" />
+<xacro:property name="arm_3_max_effort"   value="43.0" />
+<xacro:property name="arm_4_max_effort"   value="43.0" />
 
 
 <xacro:macro name="kangaroo_arm" params="name side reflect parent *origin arm_1_offset arm_2_offset arm_3_offset arm_4_offset">
