@@ -25,8 +25,8 @@ Changelog for package kangaroo_mj_description
 * split assest loading xml files
 * Contributors: Adria Roig, Sai Kishor Kothakota, sergiacosta
 
-Forthcoming
------------
+0.1.16 (2025-02-03)
+-------------------
 * Merge branch 'fixed-effort-limits' into 'master'
   Fixed effort limits
   See merge request robots/kangaroo_robot!65
