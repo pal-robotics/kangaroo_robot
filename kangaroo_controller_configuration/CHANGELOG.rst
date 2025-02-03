@@ -27,6 +27,9 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+
 0.1.15 (2024-09-30)
 -------------------
 * Merge branch 'change/transmission_parameters' into 'master'

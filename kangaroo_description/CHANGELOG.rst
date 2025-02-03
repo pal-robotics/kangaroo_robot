@@ -19,6 +19,14 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'fixed-effort-limits' into 'master'
+  Fixed effort limits
+  See merge request robots/kangaroo_robot!65
+* Set correct effort joint limits
+* Contributors: Adria Roig, sergiacosta
+
 0.1.15 (2024-09-30)
 -------------------
 
