@@ -18,10 +18,18 @@
 
   <link name="torso_link">
     <inertial>
-      <origin xyz="-0.0085193 -0.00033267 0.22824" rpy="0 0 0" />
-      <mass value="13.843" />
-      <inertia ixx="0.087431" ixy="1.1038E-05" ixz="-9.0502E-06"
-        iyy="0.072736" iyz="2.6862E-05" izz="0.032695" />
+      <origin
+        xyz="-0.01 -0.00074 0.22222"
+        rpy="0 0 0" />
+      <mass
+        value="13.33642" />
+      <inertia
+        ixx="0.28794"
+        ixy="-0.00047"
+        ixz="-0.00161"
+        iyy="0.26647"
+        iyz="0.00368"
+        izz="0.11215" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -35,7 +43,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://kangaroo_description/meshes/torso_link_convex.stl" />
+        <mesh filename="package://kangaroo_description/meshes/torso_link_collision.stl" />
       </geometry>
     </collision>
   </link>

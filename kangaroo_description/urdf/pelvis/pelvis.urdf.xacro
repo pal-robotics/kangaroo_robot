@@ -23,13 +23,13 @@
           <mesh filename="package://kangaroo_description/meshes/${name}_base_link.stl" />
         </geometry>
         <material name="">
-          <color rgba="0.75294 0.75294 0.75294 1" />
+          <color rgba="0.25098 0.25098 0.25098 1" />
         </material>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_base_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/${name}_base_link_collision.stl" />
         </geometry>
       </collision>
     </link>
@@ -58,13 +58,13 @@
           <mesh filename="package://kangaroo_description/meshes/${name}_1_link.stl" />
         </geometry>
         <material name="">
-          <color rgba="0.75294 0.75294 0.75294 1" />
+          <color rgba="0.25098 0.25098 0.25098 1" />
         </material>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_1_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/${name}_1_link_collision.stl" />
         </geometry>
       </collision>
     </link>
@@ -97,13 +97,13 @@
           <mesh filename="package://kangaroo_description/meshes/${name}_2_link.stl" />
         </geometry>
         <material name="">
-          <color rgba="0.75294 0.75294 0.75294 1" />
+          <color rgba="0.25098 0.25098 0.25098 1" />
         </material>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_2_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/${name}_2_link_collision.stl" />
         </geometry>
       </collision>
     </link>

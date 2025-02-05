@@ -48,7 +48,7 @@
   <!--        BASE_LINK       -->
   <!--************************-->
   <xacro:include filename="$(find kangaroo_description)/urdf/base/base.urdf.xacro"/>
-  <xacro:base_link with_pelvis="$(arg with_pelvis)"/>
+  <xacro:base_link with_pelvis="${with_pelvis}"/>
 
   <xacro:if value="$(arg enable_crane)">
     <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
@@ -77,7 +77,7 @@
   <!--************************-->
   <!--          ARMS          -->
   <!--************************-->
-  <xacro:if value="$(arg with_arms)">
+  <xacro:if value="${with_arms}">
     <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.urdf.xacro" />
     <xacro:kangaroo_arm name="arm" side="left" reflect="1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
       <origin xyz="0 0.105954 0.384396" rpy="1.3963 0 0" />
@@ -88,6 +88,18 @@
     </xacro:kangaroo_arm>
   </xacro:if>
 
+  <!--************************-->
+  <!--         WITHOUT ARMS   -->
+  <!--************************-->
+ <xacro:unless value="${with_arms}">
+   <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm_cover.urdf.xacro" />
+   <xacro:kangaroo_arm_cover name="arm_cover" side="left" reflect="1" parent="torso_link">  
+     <origin xyz="0 0.105954 0.384396" rpy="1.3963 0 0" />
+   </xacro:kangaroo_arm_cover>
+   <xacro:kangaroo_arm_cover name="arm_cover" side="right" reflect="-1" parent="torso_link">  
+     <origin xyz="0 -0.105954 0.384396" rpy="1.3963 0 3.14159" />
+   </xacro:kangaroo_arm_cover>
+ </xacro:unless>
   <!-- Generic simulator_gazebo plugins -->
   <xacro:include filename="$(find kangaroo_description)/gazebo/gazebo.urdf.xacro" />
 
