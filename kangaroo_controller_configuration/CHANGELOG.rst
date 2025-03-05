@@ -27,8 +27,8 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.1.17 (2025-03-05)
+-------------------
 * Merge branch 'kangaroo_4_changes' into 'master'
   add parameters of kangaroo-4 tests
   See merge request robots/kangaroo_robot!68
