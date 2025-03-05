@@ -27,6 +27,14 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'kangaroo_4_changes' into 'master'
+  add parameters of kangaroo-4 tests
+  See merge request robots/kangaroo_robot!68
+* add parameters of kangaroo-4 tests
+* Contributors: Sai Kishor Kothakota
+
 0.1.16 (2025-02-03)
 -------------------
 

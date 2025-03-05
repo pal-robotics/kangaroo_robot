@@ -19,6 +19,9 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+
 0.1.16 (2025-02-03)
 -------------------
 * Merge branch 'fixed-effort-limits' into 'master'
