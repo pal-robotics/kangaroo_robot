@@ -9,6 +9,7 @@
         xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
+  <xacro:arg name="with_legs" default="true" />
   <xacro:arg name="with_pelvis" default="false" />
   <xacro:arg name="with_arms" default="false" />
   <xacro:arg name="simulation" default="false" />
@@ -17,6 +18,7 @@
   <xacro:arg name="waist_front_camera_model" default="realsense-D435i" />
   <xacro:arg name="waist_back_camera_model" default="realsense-D435i" />
 
+  <xacro:property name="with_legs" value="$(arg with_legs)" />
   <xacro:property name="with_pelvis" value="$(arg with_pelvis)" />
   <xacro:property name="with_arms" value="$(arg with_arms)" />
   <xacro:property name="simulation" value="$(arg simulation)" />
@@ -66,14 +68,16 @@
   <!--************************-->
   <!--           LEGS         -->
   <!--************************-->
-  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
-  <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)" use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
-    <origin xyz="-0.0150025976417119 0.08 -0.0585" rpy="0 0 0"/>
-  </xacro:kangaroo_leg>
-  <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" simulation="$(arg simulation)"  use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
-    <origin xyz="-0.0150025976417119 -0.08 -0.0585" rpy="0 0 0"/>
-  </xacro:kangaroo_leg>
-  
+  <xacro:if value="${with_legs}">
+    <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
+    <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)" use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
+      <origin xyz="-0.0150025976417119 0.08 -0.0585" rpy="0 0 0"/>
+    </xacro:kangaroo_leg>
+    <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" simulation="$(arg simulation)"  use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
+      <origin xyz="-0.0150025976417119 -0.08 -0.0585" rpy="0 0 0"/>
+    </xacro:kangaroo_leg>
+  </xacro:if>
+ 
   <!--************************-->
   <!--          ARMS          -->
   <!--************************-->

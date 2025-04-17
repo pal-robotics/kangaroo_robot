@@ -48,13 +48,15 @@ actuator_gains:
     position: {kd: 0.00003, ki: 0.002, kp: 0.015}
     velocity: {kd: 4.0e-05, ki: 12.0, kp: 1.5}
   pelvis_1_motor:
-    current: {kd: 0.0, ki: 12500.0, kp: 1.51}
-    position: {kd: 6.0e-07, ki: 0.0003, kp: 0.0006}
-    velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
+    current: {kd: 0.0, ki: 520.0, kp: 1.3}
+    force: {kd: 0.0, ki: 0.0, kp: 0.0}
+    position: {kd: 2.e-08, ki: 0.0, kp: 7.e-05}
+    velocity: {kd: 1.25e-05, ki: 0.4, kp: 0.05}
   pelvis_2_motor:
-    current: {kd: 0.0, ki: 12500.0, kp: 1.51}
-    position: {kd: 6.0e-07, ki: 0.0003, kp: 0.0006}
-    velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
+    current: {kd: 0.0, ki: 520.0, kp: 1.3}
+    force: {kd: 0.0, ki: 0.0, kp: 0.0}
+    position: {kd: 2.e-08, ki: 0.0, kp: 7.e-05}
+    velocity: {kd: 1.25e-05, ki: 0.4, kp: 0.05}
   arm_left_1_motor:
     current: {kd: 0.0, ki: 520.0, kp: 1.3}
     force: {kd: 0.0, ki: 0.0, kp: 0.0}

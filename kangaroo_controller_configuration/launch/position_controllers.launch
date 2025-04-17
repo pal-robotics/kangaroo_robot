@@ -17,7 +17,7 @@
 
   <arg if="$(eval arg('controllers') == '')"
       name="controllers_to_load"
-      value="left_leg_controller right_leg_controller left_arm_controller right_arm_controller" />
+      value="left_leg_controller right_leg_controller left_arm_controller right_arm_controller pelvis_controller" />
 
   <arg unless="$(eval arg('controllers') == '')"
       name="controllers_to_load"

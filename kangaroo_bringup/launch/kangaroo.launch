@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <arg name="ft_sensors" default="false"/>
-  <arg name="with_pelvis" default="false"/>
+  <arg name="with_legs" default="true"/>
+  <arg name="with_pelvis" default="true"/>
   <arg name="with_arms" default="true"/>
 
   <!-- Hardware configuration -->
@@ -10,6 +11,7 @@
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
     <arg name="ft_sensors" value="$(arg ft_sensors)"/>
+    <arg name="with_legs"    value="$(arg with_legs)"/>
     <arg name="with_pelvis"    value="$(arg with_pelvis)"/>
     <arg name="with_arms"    value="$(arg with_arms)"/>
   </include>
