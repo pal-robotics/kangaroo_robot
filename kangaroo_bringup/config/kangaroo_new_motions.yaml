@@ -1,5 +1,14 @@
 play_motion:
   motions:
+    full_homing:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint]
+      points:
+        - time_from_start: 3.
+          positions: [0.24776, 1.32, 1.5699, 0.79906, -0.2481, 1.32, -1.5701, 0.79906, 0., 0., 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+      meta:
+        name: full_body_homing
+        usage: ""
+        description: Move to home configuration of full body
     arms_home:
       joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint]
       points:
