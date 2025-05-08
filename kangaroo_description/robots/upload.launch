@@ -20,4 +20,29 @@
 
   <rosparam command="load" file="$(find kangaroo_description)/config/collision_parameters.yaml" />
   <rosparam command="load" file="$(find kangaroo_description)/config/default_configuration_locomotion.yaml" />
+
+   <group if="$(arg with_arms)">
+     <group unless="$(arg with_pelvis)">
+       <node pkg="kangaroo_description" type="robot_type" name="robot_type" output="screen" args="arms_no_pelvis"/>
+    </group>
+  </group>
+
+  <group if="$(arg with_pelvis)">
+    <group unless="$(arg with_arms)">
+      <node pkg="kangaroo_description" type="robot_type" name="robot_type" output="screen" args="pelvis_no_arms"/>  
+    </group>
+  </group>
+
+  <group unless="$(arg with_arms)">
+    <group unless="$(arg with_pelvis)">
+      <node pkg="kangaroo_description" type="robot_type" name="robot_type" output="screen" args="lowerbody"/>  
+    </group>
+  </group>
+
+  <group if="$(arg with_arms)">
+    <group if="$(arg with_pelvis)">
+      <node pkg="kangaroo_description" type="robot_type" name="robot_type" output="screen" args="full"/>
+    </group>
+  </group>
+
 </launch>

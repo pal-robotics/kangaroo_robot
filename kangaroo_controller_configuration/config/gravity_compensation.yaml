@@ -1,5 +1,5 @@
 type: "force_control/GravityCompensation"
-robot_model_chains: []
+robot_model_chains: ["left_sole_link", "right_sole_link", "leg_left_knee_link", "leg_right_knee_link"]
 dt: 0.0005
 controller_dt: 0.002
 spawn_controller_thread: true

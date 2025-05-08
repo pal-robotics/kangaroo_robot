@@ -10,7 +10,15 @@
       file="$(find kangaroo_controller_configuration)/config/gravity_compensation.yaml" ns="$(arg controller_name)"/>
 
   <group if="$(arg simulation)">
-    <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/launcher.launch">
+    <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_left.launch">
+      <arg name="local_joint_control_type" value="direct_torque_control"/>
+      <arg name="local_joint_control_pkg" value="pal_local_joint_control" />
+      <arg name="ns" value="$(arg controller_name)"/>
+      <arg name="safety_override" value="$(arg safety_override)"/>
+      <arg name="disable_safety_for_joints" value="$(arg disable_safety_for_joints)"/>
+    </include>
+
+    <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_right.launch">
       <arg name="local_joint_control_type" value="direct_torque_control"/>
       <arg name="local_joint_control_pkg" value="pal_local_joint_control" />
       <arg name="ns" value="$(arg controller_name)"/>

@@ -18,6 +18,7 @@ endforeach(dir)
 install(
     PROGRAMS
         scripts/homing
+	scripts/robot_type
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

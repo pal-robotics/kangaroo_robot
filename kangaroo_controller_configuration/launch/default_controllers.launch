@@ -1,7 +1,30 @@
 <launch>
-  <arg name="controllers" default=""/>
-  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
-    <arg name="controllers" value="$(arg controllers)"/>
+
+  <arg name="robot_type" default="$(eval open('/tmp/robot_type.yaml').read().split(':')[1].strip())"/>
+  
+  <include if="$(eval str(robot_type) in ['full'])" file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
+    <arg name="with_pelvis" value="true" />
+    <arg name="with_legs" value="true"/>
+    <arg name="with_arms" value="true"/>
   </include>
+
+  <include if="$(eval str(robot_type) in ['lowerbody'])" file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
+    <arg name="with_pelvis" value="false" />
+    <arg name="with_legs" value="true"/>
+    <arg name="with_arms" value="false"/>
+  </include>
+
+  <include if="$(eval str(robot_type) in ['arms_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
+    <arg name="with_pelvis" value="false" />
+    <arg name="with_legs" value="true"/>
+    <arg name="with_arms" value="true"/>
+  </include>
+
+  <include if="$(eval str(robot_type) in ['pelvis_no_arms'])" file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
+    <arg name="with_pelvis" value="true" />
+    <arg name="with_legs" value="true"/>
+    <arg name="with_arms" value="false"/>
+  </include>
+
 </launch>
 

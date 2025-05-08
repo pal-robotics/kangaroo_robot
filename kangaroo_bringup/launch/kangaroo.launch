@@ -17,6 +17,8 @@
   </include>
 
   <include file="$(find kangaroo_bringup)/launch/kangaroo_bringup.launch">
+    <arg name="with_pelvis"    value="$(arg with_pelvis)"/>
+    <arg name="with_arms"    value="$(arg with_arms)"/>
     <arg name="ft_sensors" value="$(arg ft_sensors)"/>
   </include>
 

@@ -2,22 +2,71 @@
 
 <launch>
   <arg name="ft_sensors" default="false"/>
+  <arg name="with_pelvis" default="true"/>
+  <arg name="with_arms" default="true"/>
+
+  <group if="$(arg with_arms)">
+    <group unless="$(arg with_pelvis)">
+      <include file="$(find kangaroo_moveit_config)/launch/move_group.launch">
+        <arg name="robot_type" value="arms_no_pelvis"/>
+      </include>
+
+      <!-- Launch play_motion -->
+      <include file="$(find kangaroo_bringup)/launch/play_motion.launch">
+        <arg name="robot_type" value="arms_no_pelvis"/>
+      </include>
+    </group>
+  </group>
+
+  <group if="$(arg with_pelvis)">
+    <group unless="$(arg with_arms)">
+      <include file="$(find kangaroo_moveit_config)/launch/move_group.launch">
+        <arg name="robot_type" value="pelvis_no_arms"/>
+      </include>
+
+      <!-- Launch play_motion -->
+      <include file="$(find kangaroo_bringup)/launch/play_motion.launch">
+        <arg name="robot_type" value="pelvis_no_arms"/>
+      </include>
+    </group>
+  </group>
+
+  <group unless="$(arg with_pelvis)">
+    <group unless="$(arg with_arms)">
+      <include file="$(find kangaroo_moveit_config)/launch/move_group.launch">
+        <arg name="robot_type" value="lowerbody"/>
+      </include>
+
+      <!-- Launch play_motion -->
+      <include file="$(find kangaroo_bringup)/launch/play_motion.launch">
+        <arg name="robot_type" value="lowerbody"/>
+      </include>
+    </group>
+  </group>
+
+  <group if="$(arg with_pelvis)">
+    <group if="$(arg with_arms)">
+      <include file="$(find kangaroo_moveit_config)/launch/move_group.launch">
+        <arg name="robot_type" value="full"/>
+      </include>
+
+      <!-- Launch play_motion -->
+      <include file="$(find kangaroo_bringup)/launch/play_motion.launch">
+        <arg name="robot_type" value="full"/>
+      </include>
+    </group>
+  </group>
 
   <!-- Load default controllers -->
   <include file="$(find kangaroo_controller_configuration)/launch/bringup_controllers.launch">
     <arg name="ft_sensors" value="$(arg ft_sensors)"/>
   </include>
 
-  <include file="$(find kangaroo_moveit_config)/launch/move_group.launch" />
-
   <!-- Robot state publisher -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0"/>
     <param name="tf_prefix" type="string" value=""/>
   </node>
-
-  <!-- Launch play_motion -->
-  <include file="$(find kangaroo_bringup)/launch/play_motion.launch" />
 
   <!-- Twist mux -->
   <include file="$(find kangaroo_bringup)/launch/twist_mux.launch" />
