@@ -13,9 +13,6 @@
   <!-- Joint state controller -->
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
 
-  <!-- Fake FT Sensor Estimator -->
-  <include file="$(find ft_sensor_estimator)/launch/ft_sensor_estimator.launch"/>
- 
   <!-- Introspection controller -->
   <include file="$(find introspection_controller)/introspection_controller.launch"/>
 
