@@ -7,14 +7,11 @@
   <arg name="enable_unloading_workaround" default="false" />
   <arg name="ft_sensors" default="false"/>
 
-  <!-- Load Transmission Parameters -->
+  <!-- Load Legs' Transmission Parameters -->
   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/transmission_parameters.yaml" />
 
   <!-- Joint state controller -->
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
-
-  <!-- Fake FT Sensor Estimator -->
-  <include file="$(find ft_sensor_estimator)/launch/ft_sensor_estimator.launch"/>
 
   <!-- Introspection controller -->
   <include file="$(find introspection_controller)/introspection_controller.launch"/>

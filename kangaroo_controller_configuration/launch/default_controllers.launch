@@ -1,4 +1,15 @@
 <launch>
-  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch"/>
+
+  <arg name="robot_type" default="$(eval open('/tmp/robot_type.yaml').read().split(':')[1].strip())"/>
+  <arg name="with_pelvis" value="$(eval arg('robot_type') in ['full', 'pelvis_no_arms'])"/>
+  <arg name="with_legs" value="$(eval arg('robot_type') in ['full', 'lowerbody', 'arms_no_pelvis', 'pelvis_no_arms'])"/>
+  <arg name="with_arms" value="$(eval arg('robot_type') in ['full', 'arms_no_pelvis'])"/>
+  
+  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
+    <arg name="with_pelvis" value="$(arg with_pelvis)" />
+    <arg name="with_legs" value="$(arg with_legs)" />
+    <arg name="with_arms" value="$(arg with_arms)" />
+  </include>
+
 </launch>
 

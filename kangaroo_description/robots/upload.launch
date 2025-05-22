@@ -6,16 +6,23 @@
   <arg name="simulation" default="false"/>
   <arg name="fixed_base" default="false"/>
   <arg name="use_mimic" default="false"/>
-  <arg name="use_cage" default="true"/>
   <arg name="ft_sensors" default="false"/>
-  <arg name="version" default="2023"/>
+  <arg name="with_legs" default="true"/>
+  <arg name="with_pelvis" default="false"/>
+  <arg name="with_arms"   default="false"/>
+
   <!-- Robot description -->
   <param
       name="$(arg parameter_name)"
       command=" $(find xacro)/xacro --inorder
                 '$(find kangaroo_description)/robots/kangaroo.urdf.xacro'
-                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic) use_cage:=$(arg use_cage) ft_sensors:=$(arg ft_sensors) version:=$(arg version)"/>
+                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic) ft_sensors:=$(arg ft_sensors) with_legs:=$(arg with_legs) with_pelvis:=$(arg with_pelvis) with_arms:=$(arg with_arms)"/>
 
   <rosparam command="load" file="$(find kangaroo_description)/config/collision_parameters.yaml" />
   <rosparam command="load" file="$(find kangaroo_description)/config/default_configuration_locomotion.yaml" />
+
+  <arg name="robot_type" value="$(eval 'full' if arg('with_pelvis') and arg('with_arms') else ('pelvis_no_arms' if arg('with_pelvis') and not arg('with_arms') else ('arms_no_pelvis' if not arg('with_pelvis') and arg('with_arms') else 'lowerbody')))"/>
+
+  <node pkg="kangaroo_description" type="robot_type" name="robot_type" output="screen" args="$(arg robot_type)"/>
+
 </launch>

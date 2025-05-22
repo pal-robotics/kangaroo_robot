@@ -5,6 +5,6 @@
   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_state_controller.yaml" />
 
   <!-- Controllers that come up started -->
-  <node name="kangaroo_lower_body_joint_state_controllers_spawner" pkg="controller_manager" type="spawner" output="screen"
+  <node name="kangaroo_joint_state_controllers_spawner" pkg="controller_manager" type="spawner" output="screen"
         args="joint_state_controller" />
 </launch>

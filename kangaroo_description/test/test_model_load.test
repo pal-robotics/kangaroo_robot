@@ -3,13 +3,19 @@
   <arg name="enable_crane"/>
   <arg name="simulation"/>
   <arg name="fixed_base"/>
-  <arg name="version"/>
+  <arg name="use_mimic"/>
+  <arg name="ft_sensors"/>
+  <arg name="with_pelvis"/>
+  <arg name="with_arms"/>
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
     <arg name="enable_crane"  value="$(arg enable_crane)"/>
     <arg name="simulation"    value="$(arg simulation)"/>
     <arg name="fixed_base"    value="$(arg fixed_base)"/>
-    <arg name="version"       value="$(arg version)"/>
+    <arg name="use_mimic"     value="$(arg use_mimic)"/>
+    <arg name="ft_sensors"    value="$(arg ft_sensors)"/>
+    <arg name="with_pelvis"   value="$(arg with_pelvis)"/>
+    <arg name="with_arms"     value="$(arg with_arms)"/>
   </include>
 
   <include file="$(find urdf_test)/launch/test_urdf.launch">

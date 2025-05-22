@@ -1,0 +1,29 @@
+play_motion:
+  motions:
+    erf_box_kinesthetic:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 0
+          positions: [-0.082859, 1.2867, 1.7183, 1.2985, 0.12279, 1.2387, -1.8234, 1.2396, 0.018408, 0.017744]
+        - time_from_start: 5
+          positions: [-0.31793, 1.4839, 1.7669, 1.32, -0.043862, 1.1581, -1.3849, 1.9452, -0.00080725, 0.59031]
+        - time_from_start: 10
+          positions: [-0.50117, 1.4752, 2.1919, 1.0906, -0.15929, 1.1955, -1.4909, 1.6744, -0.075656, 1.1309]
+        - time_from_start: 15
+          positions: [-0.56951, 1.6386, 2.6215, 0.74075, -0.083962, 1.1811, -1.8926, 1.4888, -0.33816, 1.195]
+        - time_from_start: 20
+          positions: [-0.47217, 1.5265, 2.3394, 1.2693, 0.039892, 1.2996, -1.924, 1.7373, -0.00083211, 0.96317]
+        - time_from_start: 25
+          positions: [-0.19247, 1.4286, 1.9622, 1.5032, 0.21971, 1.5517, -2.057, 1.3746, 0.03393, 0.029529]
+        - time_from_start: 30
+          positions: [0.010216, 1.4212, 1.649, 1.6584, 0.36128, 1.7234, -2.2358, 0.99319, 0.082235, -0.90558]
+        - time_from_start: 35
+          positions: [0.07727, 1.1444, 1.9192, 1.5502, 0.52552, 1.6325, -2.6339, 0.66585, 0.36551, -1.0735]
+        - time_from_start: 40
+          positions: [-0.047357, 0.97572, 1.5933, 1.9387, 0.39103, 1.4883, -2.2944, 1.094, 0.071462, -0.64576]
+        - time_from_start: 45
+          positions: [-0.082859, 1.2867, 1.7183, 1.2985, 0.12279, 1.2387, -1.8234, 1.2396, 0.018408, 0.017744]
+      meta:
+        name: erf_box_kinesthetic
+        usage: box_picking
+        description: box picking right to left
