@@ -27,6 +27,24 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'lm/pelvis_arms_rebased' into 'master'
+  Lm/pelvis arms rebased
+  See merge request robots/kangaroo_robot!70
+* Simplify the default_controllers launch file
+* Remove ft_sensor_estimator from the bringup controller
+* Set old impedance gains
+* Set arguments and launch files for different robot configurations
+* 0.1.17
+* Update Changelog
+* add parameters of kangaroo-4 tests
+* adding parameters for pelvis and legs
+* Add torso.launch
+* Testing on the robot
+* tested with pal_physics_simulator
+* Contributors: Adria Roig, Luca Marchionni, Sai Kishor Kothakota, ileniaperrella
+
 0.1.17 (2025-03-05)
 -------------------
 * Merge branch 'kangaroo_4_changes' into 'master'

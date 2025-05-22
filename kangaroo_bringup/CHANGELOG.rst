@@ -20,6 +20,23 @@ Changelog for package kangaroo_bringup
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'lm/pelvis_arms_rebased' into 'master'
+  Lm/pelvis arms rebased
+  See merge request robots/kangaroo_robot!70
+* update the robot_type arg
+* optimize the bringup with the launch argument robot_type
+* Set arguments and launch files for different robot configurations
+* 0.1.17
+* Update Changelog
+* Add pelvis and full_homing play_motion configurations
+* adding parameters for pelvis and legs
+* remove duplicated motions
+* tested motions on the robot for standing up from ground
+* Testing on the robot
+* Contributors: Adria Roig, Luca Marchionni, Sai Kishor Kothakota, ileniaperrella
+
 0.1.17 (2025-03-05)
 -------------------
 

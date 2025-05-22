@@ -25,6 +25,12 @@ Changelog for package kangaroo_mj_description
 * split assest loading xml files
 * Contributors: Adria Roig, Sai Kishor Kothakota, sergiacosta
 
+Forthcoming
+-----------
+* 0.1.17
+* Update Changelog
+* Contributors: Sai Kishor Kothakota
+
 0.1.17 (2025-03-05)
 -------------------
 

@@ -19,6 +19,31 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'lm/pelvis_arms_rebased' into 'master'
+  Lm/pelvis arms rebased
+  See merge request robots/kangaroo_robot!70
+* update the robot_type arg
+* Set old impedance gains
+* Set arguments and launch files for different robot configurations
+* 0.1.17
+* Update Changelog
+* adding parameters for pelvis and legs
+* Add torso.launch
+* differential transmission gear ration tested on robot kangaroo-2
+* fix tests
+* different base_link with and without pelvis, split torso from arm covers
+* tested motions on the robot for standing up from ground
+* Testing on the robot
+* fix urdf for arm mesh and inertia
+* rexported mesh from mechanics
+* tested with pal_physics_simulator
+* Arms param and added pelvis transmission
+* pelvis param and removed version 2022, default to 2023
+* Added torso and pelvis without params
+* Contributors: Adria Roig, Luca Marchionni, Sai Kishor Kothakota, ileniaperrella
+
 0.1.17 (2025-03-05)
 -------------------
 

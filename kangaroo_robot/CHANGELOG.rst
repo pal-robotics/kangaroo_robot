@@ -14,6 +14,12 @@ Changelog for package kangaroo_robot
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* 0.1.17
+* Update Changelog
+* Contributors: Sai Kishor Kothakota
+
 0.1.17 (2025-03-05)
 -------------------
 
