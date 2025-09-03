@@ -4,7 +4,7 @@
 <xacro:include filename="$(find kangaroo_description)/urdf/sensors/imu.urdf.xacro"/>
 <xacro:include filename="$(find kangaroo_description)/urdf/pelvis/pelvis.urdf.xacro" />
 
-<xacro:macro name="base_link" params="with_pelvis:=false">
+<xacro:macro name="base_link" params="with_pelvis:=false with_belt:=false torso_2024:=false" >
   
 
   <xacro:kangaroo_imu name="imu" parent="torso_link" update_rate="100.0">
@@ -95,6 +95,14 @@
       </geometry>
     </collision>
   </link>
+  <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
+  <xacro:kangaroo_torso parent="base_link">
+    <origin xyz="-0.0918000000000001 0 0.0075" rpy="0 0 0" />
+  </xacro:kangaroo_torso>
+  </xacro:unless>
+
+   <!-- belt waist protector and cameras-->
+  <xacro:if value="${with_belt}">
   <link name="waist_protector">
      <inertial>
       <origin
@@ -139,14 +147,60 @@
       <parent link="base_link" />
       <child link="waist_protector" />
   </joint>
-  <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
-  <xacro:kangaroo_torso parent="base_link">
-    <origin xyz="-0.0918000000000001 0 0.0075" rpy="0 0 0" />
-  </xacro:kangaroo_torso>
   <!-- waist cameras -->
   <xacro:include filename="$(find kangaroo_description)/urdf/waist/waist.urdf.xacro" />
   <xacro:kangaroo_waist parent="base_link"/>
-</xacro:unless>
+</xacro:if>
+    
+  <!-- with back handle -->
+  <xacro:unless value="${with_belt}">
+  <link name="back_handle">
+     <inertial>
+      <origin
+        xyz="-0.1 0 0.02479"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="0.01972"
+        ixy="-1E-05"
+        ixz="-0.00037"
+        iyy="0.01996"
+        iyz="0"
+        izz="0.03879" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/handle.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+           rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/handle.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="back_handle_fixed_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="base_link" />
+      <child link="back_handle" />
+  </joint>
+  </xacro:unless>
+
+ 
 
 </xacro:macro>
 </robot>

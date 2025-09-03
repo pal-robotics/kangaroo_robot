@@ -12,6 +12,8 @@
   <arg name="with_legs"   default="true"/>
   <arg name="with_pelvis" default="false"/>
   <arg name="with_arms"   default="false"/>
+  <arg name="with_belt"     default="false" />
+  <arg name="torso_2024"    default="false" />
 
   <include file="$(find pal_gazebo_worlds)/launch/pal_gazebo.launch" >
     <arg name="debug" value="$(arg debug)"/>
@@ -31,6 +33,8 @@
     <arg name="with_legs"     value="$(arg with_legs)"/>
     <arg name="with_pelvis"   value="$(arg with_pelvis)"/>
     <arg name="with_arms"     value="$(arg with_arms)"/> 
+    <arg name="with_belt"     value="$(arg with_belt)"/>
+    <arg name="torso_2024"    value="$(arg torso_2024)"/>
   </include>
 
   <!-- define initial joints position values when spawned: 
