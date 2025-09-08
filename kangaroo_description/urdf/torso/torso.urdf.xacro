@@ -41,9 +41,7 @@
           <mesh filename="package://kangaroo_description/meshes/torso_link.stl" />
         </xacro:unless>
       </geometry>
-      <material name="">
-        <color rgba="0.75294 0.75294 0.75294 1" />
-      </material>
+      <material name="DarkGrey"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />

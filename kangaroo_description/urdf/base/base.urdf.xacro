@@ -178,10 +178,7 @@
           filename="package://kangaroo_description/meshes/handle.stl" />
       </geometry>
       <material
-        name="">
-        <color
-           rgba="0.25098 0.25098 0.25098 1" />
-      </material>
+        name="DarkGrey"/>
     </visual>
     <collision>
       <origin
