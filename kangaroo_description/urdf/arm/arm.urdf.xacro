@@ -5,7 +5,7 @@
 
 <xacro:property name="arm_friction"       value="1.0" />
 <xacro:property name="arm_damping"        value="1.0" />
-s
+
 <xacro:property name="arm_1_max_velocity"      value="1.95" />
 <xacro:property name="arm_2_max_velocity"      value="1.95" />
 <xacro:property name="arm_3_max_velocity"      value="2.35" />
@@ -45,7 +45,6 @@ s
           filename="package://kangaroo_description/meshes/arm_base_link.stl" />
       </geometry>
       <material name="DarkGrey"/>
-      </material>
     </visual>
     <collision>
       <origin
