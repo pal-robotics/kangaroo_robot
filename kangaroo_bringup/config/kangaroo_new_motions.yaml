@@ -349,3 +349,18 @@ play_motion:
         name: ground_to_crouch_2
         usage: ""
         description: Move to crouched configuration from ground
+    sumo_pose:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_5_joint, leg_left_4_joint, leg_right_1_joint, leg_right_3_joint, leg_right_2_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.49597, -0.18697, -0.051218, 0.2565, -0.0066392, 0.13778, -0.59451, 0.04802, -0.26023, 0.2549, 0.17464, 0.02503, 0.14493, 1.2005, 1.6418, 0.92466, -0.089535, 1.2742, -1.5511, 0.87885, 0.04443, 0.0048525]
+    run_pose:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_5_joint, leg_left_4_joint, leg_right_1_joint, leg_right_3_joint, leg_right_2_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 0
+          positions: [-0.17868, 0.57984, -0.078389, 0.70929, 0.019816, 0.49726, -0.17438, 0.070536, -0.73269, 0.67342, 0.21572, 0.070781, -0.78764, 1.32, 1.57, 1.3984, -1.0998, 1.2696, -1.44, 1.26, 0.028373, 0.044475]
+    run_pose2:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_5_joint, leg_left_4_joint, leg_right_1_joint, leg_right_3_joint, leg_right_2_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 0
+          positions: [-0.18, 0.66325, -0.080002, 0.71, 0.020035, 0.21361, -0.16996, 0.070001, -0.72996, 0.67, 0.38214, 0.069781, -0.78764, 1.32, 1.57, 1.3984, -1.2076, 1.2985, -1.44, 0.86918, 0.028373, 0.044475]
