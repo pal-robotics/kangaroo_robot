@@ -4,6 +4,7 @@
       https://github.com/ros-controls/ros_control/issues/195
   -->
   <arg name="enable_unloading_workaround" default="false"/>
+  <arg name="start_controllers" default="true" />
 
   <arg name="with_pelvis" default="true"/>
   <arg name="with_arms" default="true"/>
@@ -16,24 +17,31 @@
       name="extra_args"
       value="" />
 
+  <arg if="$(arg start_controllers)"
+      name="start_args"
+      value="" />
+  <arg unless="$(arg start_controllers)"
+      name="start_args"
+      value="--stopped" />
+
   <group if="$(arg with_pelvis)">
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/pelvis.yaml"/>
     <arg name="pelvis_controller" value="pelvis_controller" />
-    <node name="pelvis_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg pelvis_controller)"/>
+    <node name="pelvis_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg start_args) $(arg pelvis_controller)"/>
   </group>
 
   <group if="$(arg with_arms)">
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/arm_left.yaml"/>
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/arm_right.yaml"/>
     <arg name="arms_controllers" value="left_arm_controller right_arm_controller" />
-    <node name="arms_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg arms_controllers)"/>
+    <node name="arms_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg start_args) $(arg arms_controllers)"/>
   </group>
 
   <group if="$(arg with_legs)">
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/leg_left.yaml"/>
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/leg_right.yaml"/>
     <arg name="legs_controllers" value="left_leg_controller right_leg_controller" />
-    <node name="legs_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg legs_controllers)"/>
+    <node name="legs_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg start_args) $(arg legs_controllers)"/>
   </group>
 
 </launch>

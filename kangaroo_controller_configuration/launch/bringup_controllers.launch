@@ -13,6 +13,18 @@
   <!-- Joint state controller -->
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
 
+  <!-- Fake FT Sensor Estimator -->
+  <include file="$(find ft_sensor_estimator)/launch/ft_sensor_estimator.launch"/>
+ 
+  <!-- Position Controllers -->
+  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
+     <arg name="start_controllers" value="false"/>
+  </include>
+
+  <include file="$(find pal_lip_mpc_actions)/launch/kangaroo_reactive_walk_kinematic_controller.launch">
+     <arg name="start_controller" value="false"/>
+  </include>
+
   <!-- Introspection controller -->
   <include file="$(find introspection_controller)/introspection_controller.launch"/>
 

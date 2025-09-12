@@ -1,7 +1,4 @@
-stiffness_factor: 3000.
-damping_factor: 800.0
-# Full body
-# stiffness_factor: 12000.
-# damping_factor: 1100.0
+stiffness_factor: 7000.0 # 11000.0
+damping_factor: 600.0 # 1100.0
 feedforward_prev_cmd: true
 integral_factor: 0.0
