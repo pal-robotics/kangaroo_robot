@@ -53,9 +53,7 @@
         <geometry>
           <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl" scale="1 ${reflect} 1"/>
         </geometry>
-        <material name="">
-          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-        </material>
+        <material name="DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -90,9 +88,7 @@
         <geometry>
           <mesh filename="package://kangaroo_description/meshes/leg_2_link.stl" scale="1 ${reflect} 1"/>
         </geometry>
-        <material name="">
-          <color rgba="0.894117647058823 0.913725490196078 0.929411764705882 1"/>
-        </material>
+        <material name="DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -120,9 +116,7 @@
         <geometry>
           <mesh filename="package://kangaroo_description/meshes/leg_3_link.stl" scale="1 ${reflect} 1"/>
         </geometry>
-        <material name="">
-          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-        </material>
+        <material name="DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -160,9 +154,7 @@
           <!-- The ballscrews are removed from the meshes for better visualization, but they are used for inertia computation etc -->
           <mesh filename="package://kangaroo_description/meshes/leg_femur_link.stl" />
         </geometry>
-        <material name="">
-          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-        </material>
+        <material name="DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 ${60.0 * deg_to_rad} 0" />
@@ -193,9 +185,7 @@
         <geometry>
           <mesh filename="package://kangaroo_description/meshes/leg_tibia_link.stl" />
         </geometry>
-        <material name="">
-          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-        </material>
+        <material name="DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 ${-60.0 * deg_to_rad} 0" />

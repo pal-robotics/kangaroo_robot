@@ -26,9 +26,7 @@
         <geometry>
           <mesh filename="package://kangaroo_description/meshes/leg_6_link.stl" />
         </geometry>
-        <material name="">
-          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-        </material>
+        <material name="DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
@@ -57,9 +55,7 @@
           <geometry>
             <mesh filename="package://kangaroo_description/meshes/leg_7_link.stl" />
           </geometry>
-          <material name="">
-            <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-          </material>
+          <material name="DarkGrey"/>
         </visual>
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0" />
@@ -88,9 +84,7 @@
           <geometry>
             <mesh filename="package://kangaroo_description/meshes/leg_7_link_ft.stl" />
           </geometry>
-          <material name="">
-            <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-          </material>
+          <material name="DarkGrey"/>
         </visual>
         <collision>
           <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />

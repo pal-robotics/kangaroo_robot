@@ -53,7 +53,7 @@
   </xacro:macro>
 
     <material name="CraneMaterial">
-        <color rgba="0.2 0.2 0.2 0.5"/>
+        <color rgba="0.7 0.7 0.7 0.5"/>
     </material>
 
 </robot>

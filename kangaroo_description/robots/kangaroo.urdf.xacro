@@ -12,6 +12,8 @@
   <xacro:arg name="with_legs" default="true" />
   <xacro:arg name="with_pelvis" default="false" />
   <xacro:arg name="with_arms" default="false" />
+  <xacro:arg name="with_belt" default="false" />
+  <xacro:arg name="torso_2024" default="false" />
   <xacro:arg name="simulation" default="false" />
   <xacro:arg name="torso_front_camera_model" default="realsense-D435i" />
   <xacro:arg name="torso_back_camera_model" default="realsense-D435i" />
@@ -21,6 +23,8 @@
   <xacro:property name="with_legs" value="$(arg with_legs)" />
   <xacro:property name="with_pelvis" value="$(arg with_pelvis)" />
   <xacro:property name="with_arms" value="$(arg with_arms)" />
+  <xacro:property name="with_belt" value="$(arg with_belt)" />
+  <xacro:property name="torso_2024" value="$(arg torso_2024)" />
   <xacro:property name="simulation" value="$(arg simulation)" />
   <xacro:property name="torso_front_camera_model" value="$(arg torso_front_camera_model)" />
   <xacro:property name="torso_back_camera_model" value="$(arg torso_back_camera_model)" />
@@ -50,7 +54,8 @@
   <!--        BASE_LINK       -->
   <!--************************-->
   <xacro:include filename="$(find kangaroo_description)/urdf/base/base.urdf.xacro"/>
-  <xacro:base_link with_pelvis="${with_pelvis}"/>
+  <xacro:base_link with_pelvis="${with_pelvis}" with_belt="${with_belt}" torso_2024="${torso_2024}"/>
+
 
   <xacro:if value="$(arg enable_crane)">
     <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />

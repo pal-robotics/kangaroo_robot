@@ -8,6 +8,8 @@
   <arg name="with_legs" default="true"/>
   <arg name="with_pelvis" default="false"/>
   <arg name="with_arms"   default="false"/>
+  <arg name="with_belt" default="false" />
+  <arg name="torso_2024" default="false" />
 
   <include file="$(find kangaroo_description)/robots/upload.launch">
     <arg name="simulation"  value="$(arg simulation)"/> 
@@ -17,6 +19,8 @@
     <arg name="with_legs" value="$(arg with_legs)"/>
     <arg name="with_pelvis" value="$(arg with_pelvis)"/>
     <arg name="with_arms" value="$(arg with_arms)"/>
+    <arg name="with_belt" value="$(arg with_belt)"/>
+    <arg name="torso_2024" value="$(arg torso_2024)"/>
   </include>
 
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />

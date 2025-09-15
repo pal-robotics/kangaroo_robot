@@ -5,7 +5,7 @@
 
 <xacro:property name="arm_friction"       value="1.0" />
 <xacro:property name="arm_damping"        value="1.0" />
-s
+
 <xacro:property name="arm_1_max_velocity"      value="1.95" />
 <xacro:property name="arm_2_max_velocity"      value="1.95" />
 <xacro:property name="arm_3_max_velocity"      value="2.35" />
@@ -44,11 +44,7 @@ s
         <mesh
           filename="package://kangaroo_description/meshes/arm_base_link.stl" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
+      <material name="DarkGrey"/>
     </visual>
     <collision>
       <origin
@@ -90,11 +86,7 @@ s
         <mesh
           filename="package://kangaroo_description/meshes/arm_1_link.stl" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
+      <material name="DarkGrey"/>
     </visual>
     <collision>
       <origin
@@ -146,11 +138,7 @@ s
         <mesh
           filename="package://kangaroo_description/meshes/arm_2_link.stl" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
+      <material name="DarkGrey"/>
     </visual>
     <collision>
       <origin
@@ -203,11 +191,7 @@ s
         <mesh
           filename="package://kangaroo_description/meshes/arm_3_link.stl" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
+      <material name="DarkGrey"/>
     </visual>
     <collision>
       <origin
@@ -261,11 +245,7 @@ s
         <mesh
           filename="package://kangaroo_description/meshes/arm_${side}_4_link.stl" scale="1 1 1"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.75294 0.75294 0.75294 1" />
-      </material>
+      <material name="DarkGrey"/>
     </visual>
     <collision>
       <origin

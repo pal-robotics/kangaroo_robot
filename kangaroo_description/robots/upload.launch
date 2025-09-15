@@ -10,13 +10,15 @@
   <arg name="with_legs" default="true"/>
   <arg name="with_pelvis" default="false"/>
   <arg name="with_arms"   default="false"/>
-
+  <arg name="with_belt" default="false" />
+  <arg name="torso_2024" default="false" />
   <!-- Robot description -->
   <param
       name="$(arg parameter_name)"
       command=" $(find xacro)/xacro --inorder
                 '$(find kangaroo_description)/robots/kangaroo.urdf.xacro'
-                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic) ft_sensors:=$(arg ft_sensors) with_legs:=$(arg with_legs) with_pelvis:=$(arg with_pelvis) with_arms:=$(arg with_arms)"/>
+                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic) ft_sensors:=$(arg ft_sensors) 
+              with_legs:=$(arg with_legs) with_pelvis:=$(arg with_pelvis) with_arms:=$(arg with_arms) with_belt:=$(arg with_belt) torso_2024:=$(arg torso_2024)"/>
 
   <rosparam command="load" file="$(find kangaroo_description)/config/collision_parameters.yaml" />
   <rosparam command="load" file="$(find kangaroo_description)/config/default_configuration_locomotion.yaml" />
