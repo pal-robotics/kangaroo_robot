@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>kangaroo_description</name>
-  <version>0.1.18</version>
+  <version>0.2.0</version>
   <description>The kangaroo_description package</description>
 
   <maintainer email="luca.marchionni@pal-robotics.com">Luca Marchionni</maintainer>

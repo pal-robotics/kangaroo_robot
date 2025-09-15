@@ -27,8 +27,8 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.2.0 (2025-09-15)
+------------------
 
 0.1.18 (2025-05-22)
 -------------------

@@ -19,8 +19,8 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.2.0 (2025-09-15)
+------------------
 * Merge branch 'lm/new_handle_and_torso_rgbds' into 'master'
   Lm/new handle and torso rgbds
   See merge request robots/kangaroo_robot!72
