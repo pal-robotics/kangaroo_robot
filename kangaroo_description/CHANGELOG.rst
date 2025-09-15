@@ -19,6 +19,18 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'lm/new_handle_and_torso_rgbds' into 'master'
+  Lm/new handle and torso rgbds
+  See merge request robots/kangaroo_robot!72
+* Small typo fix
+* Fix torso mesh normals
+* Fix torso mesh and add material for better coloring in rviz
+* first draft
+* Disable waist protector collisions
+* Contributors: Luca Marchionni, Sai Kishor Kothakota, antoniomartinez, ileniaperrella
+
 0.1.18 (2025-05-22)
 -------------------
 * Merge branch 'lm/pelvis_arms_rebased' into 'master'

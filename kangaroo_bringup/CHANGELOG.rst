@@ -20,6 +20,18 @@ Changelog for package kangaroo_bringup
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'lm/new_handle_and_torso_rgbds' into 'master'
+  Lm/new handle and torso rgbds
+  See merge request robots/kangaroo_robot!72
+* Merge branch 'add/run_and_sumo/pose' into 'master'
+  Add run pose and sumo pose of the photoshoot
+  See merge request robots/kangaroo_robot!73
+* Add run pose and sumo pose of the photoshoot
+* first draft
+* Contributors: Luca Marchionni, Sai Kishor Kothakota
+
 0.1.18 (2025-05-22)
 -------------------
 * Merge branch 'lm/pelvis_arms_rebased' into 'master'
