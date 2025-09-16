@@ -8,13 +8,6 @@ left_leg_controller:
     - leg_left_length_joint
     - leg_left_4_joint
     - leg_left_5_joint
-  actuators:
-    - leg_left_1_motor
-    - leg_left_2_motor
-    - leg_left_3_motor
-    - leg_left_length_motor
-    - leg_left_4_motor
-    - leg_left_5_motor
   constraints:
     goal_time: &goal_time_constraint 0.6
     stopped_velocity_tolerance: &stopped_velocity_constraint 0.05
