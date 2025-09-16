@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-  <arg name = "simulation" default="false"/>
+  <arg name="simulation" default="false"/>
   <arg name="controller_name" default="gravity_compensation"/>
   <arg name="safety_override" default=""/>
   <arg name="disable_safety_for_joints" default=""/>
