@@ -18,6 +18,7 @@
   <!-- Load default controllers -->
   <include file="$(find kangaroo_controller_configuration)/launch/bringup_controllers.launch">
     <arg name="ft_sensors" value="$(arg ft_sensors)"/>
+    <arg name="robot_type" value="$(arg robot_type)"/>
   </include>
 
   <!-- Robot state publisher -->

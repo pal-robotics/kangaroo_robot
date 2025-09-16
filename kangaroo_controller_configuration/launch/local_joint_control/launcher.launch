@@ -14,8 +14,7 @@
   <arg name="local_joint_control_leg_length" default="$(arg local_joint_control_type)"/>
   <arg name="local_joint_control_pelvis" default="$(arg local_joint_control_type)"/>
   <arg name="local_joint_control_arms" default="$(arg local_joint_control_type)"/>
-
-  <arg name="robot_type" default="$(eval open('/tmp/robot_type.yaml').read().split(':')[1].strip())"/>
+  <arg name="robot_type"/>
 
   <include if="$(eval str(robot_type) in ['full', 'pelvis_no_arms'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/pelvis.launch" pass_all_args="true"/>
   <include if="$(eval str(robot_type) in ['full', 'arms_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_left.launch" pass_all_args="true"/>

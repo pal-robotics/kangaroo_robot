@@ -6,6 +6,7 @@
   -->
   <arg name="enable_unloading_workaround" default="false" />
   <arg name="ft_sensors" default="false"/>
+  <arg name="robot_type"/>
 
   <!-- Load Legs' Transmission Parameters -->
   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/transmission_parameters.yaml" />
@@ -14,7 +15,9 @@
   <include file="$(find kangaroo_controller_configuration)/launch/joint_state_controller.launch"/>
 
   <!-- Fake FT Sensor Estimator -->
-  <include file="$(find ft_sensor_estimator)/launch/ft_sensor_estimator.launch"/>
+  <include file="$(find ft_sensor_estimator)/launch/ft_sensor_estimator.launch">
+    <arg name="robot_type"  value="$(arg robot_type)"/>
+  </include>
  
   <!-- Position Controllers -->
   <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
@@ -22,7 +25,8 @@
   </include>
 
   <include file="$(find pal_lip_mpc_actions)/launch/kangaroo_reactive_walk_kinematic_controller.launch">
-     <arg name="start_controller" value="false"/>
+    <arg name="start_controllers" value="false"/>
+    <arg name="robot_type"  value="$(arg robot_type)"/>
   </include>
 
   <!-- Introspection controller -->
