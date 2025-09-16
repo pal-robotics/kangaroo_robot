@@ -278,12 +278,7 @@
 
   <link name="ef_${side}_link"/>
   <joint name="ef_${side}_joint" type="fixed">
-      <xacro:if value="${side == 'left'}">
-        <origin xyz="0.415 -0.02 -0.015" rpy="0 0 0"/>
-      </xacro:if>
-      <xacro:if value="${side == 'right'}">
-       <origin xyz="0.415 -0.015 -0.039" rpy="0 0 0"/>
-      </xacro:if>
+      <origin xyz="0.415 -0.015 ${-0.025 + reflect * 0.015}" rpy="0 0 0" />
     <parent link="${name}_${side}_4_link" />
     <child link="ef_${side}_link" />
     </joint>
