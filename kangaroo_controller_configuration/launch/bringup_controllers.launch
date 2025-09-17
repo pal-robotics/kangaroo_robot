@@ -5,7 +5,8 @@
       https://github.com/ros-controls/ros_control/issues/195
   -->
   <arg name="enable_unloading_workaround" default="false" />
-  <arg name="ft_sensors" default="false"/>
+  <arg name="ft_sensors"  default="false"/>
+  <arg name="demo_mode"   default="true" />
   <arg name="robot_type"/>
 
   <!-- Load Legs' Transmission Parameters -->
@@ -19,15 +20,17 @@
     <arg name="robot_type"  value="$(arg robot_type)"/>
   </include>
  
-  <!-- Position Controllers -->
-  <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
-     <arg name="start_controllers" value="false"/>
-  </include>
+  <group if="$(arg demo_mode)">
+    <!-- Position Controllers -->
+    <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
+       <arg name="start_controllers" value="false"/>
+    </include>
 
-  <include file="$(find pal_lip_mpc_actions)/launch/kangaroo_reactive_walk_kinematic_controller.launch">
-    <arg name="start_controllers" value="false"/>
-    <arg name="robot_type"  value="$(arg robot_type)"/>
-  </include>
+    <include file="$(find pal_lip_mpc_actions)/launch/kangaroo_reactive_walk_kinematic_controller.launch">
+      <arg name="start_controllers" value="false"/>
+      <arg name="robot_type"  value="$(arg robot_type)"/>
+    </include>
+  </group>
 
   <!-- Introspection controller -->
   <include file="$(find introspection_controller)/introspection_controller.launch"/>

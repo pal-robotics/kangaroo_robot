@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
-  <arg name="ft_sensors" default="false"/>
+  <arg name="ft_sensors"  default="false"/>
   <arg name="with_pelvis" default="true"/>
-  <arg name="with_arms" default="true"/>
-  <arg name="robot_type" value="$(eval 'full' if arg('with_pelvis') and arg('with_arms') else ('pelvis_no_arms' if arg('with_pelvis') and not arg('with_arms') else ('arms_no_pelvis' if not arg('with_pelvis') and arg('with_arms') else 'lowerbody')))"/>
+  <arg name="with_arms"   default="true"/>
+  <arg name="demo_mode"   default="true" />
+  <arg name="robot_type"  value="$(eval 'full' if arg('with_pelvis') and arg('with_arms') else ('pelvis_no_arms' if arg('with_pelvis') and not arg('with_arms') else ('arms_no_pelvis' if not arg('with_pelvis') and arg('with_arms') else 'lowerbody')))"/>
 
   <include file="$(find kangaroo_moveit_config)/launch/move_group.launch">
     <arg name="robot_type" value="$(arg robot_type)"/>
@@ -19,6 +20,7 @@
   <include file="$(find kangaroo_controller_configuration)/launch/bringup_controllers.launch">
     <arg name="ft_sensors" value="$(arg ft_sensors)"/>
     <arg name="robot_type" value="$(arg robot_type)"/>
+    <arg name="demo_mode"  value="$(arg demo_mode)"/>
   </include>
 
   <!-- Robot state publisher -->
