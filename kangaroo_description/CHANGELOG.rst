@@ -19,6 +19,17 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'humanoids' into 'master'
+  Humanoids and more recent changes on parameters
+  See merge request robots/kangaroo_robot!74
+* Cleaner way to set ef_frames
+* Setting properly ef frames (hardcoded way prior fix on parent tfs)
+* Propagate changes from VIVE teleoperation + Automatica + RL
+* Add ef frames for the WBC
+* Contributors: Adria Roig, Sai Kishor Kothakota, antoniomartinez, ileniaperrella
+
 0.2.0 (2025-09-15)
 ------------------
 * Merge branch 'lm/new_handle_and_torso_rgbds' into 'master'

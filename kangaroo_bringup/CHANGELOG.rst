@@ -20,6 +20,17 @@ Changelog for package kangaroo_bringup
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'humanoids' into 'master'
+  Humanoids and more recent changes on parameters
+  See merge request robots/kangaroo_robot!74
+* Add demos_mode argument defaulting to true
+* define and parse robot_type argument downstream
+* Add meta information for the new motions
+* Propagate changes from VIVE teleoperation + Automatica + RL
+* Contributors: Adria Roig, Sai Kishor Kothakota
+
 0.2.0 (2025-09-15)
 ------------------
 * Merge branch 'lm/new_handle_and_torso_rgbds' into 'master'

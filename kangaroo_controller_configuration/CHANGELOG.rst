@@ -27,6 +27,23 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'humanoids' into 'master'
+  Humanoids and more recent changes on parameters
+  See merge request robots/kangaroo_robot!74
+* Change the rate limiter of the leg 1 joints
+* Change the  impedance gains of the leg length
+* Use the default stiffness and damping used for the walking
+* Add demos_mode argument defaulting to true
+* Fix the spacing
+* Apply 1 suggestion(s) to 1 file(s)
+* Try to find the robot_type with path checking
+* define and parse robot_type argument downstream
+* Propagate changes from VIVE teleoperation + Automatica + RL
+* Add ef frames for the WBC
+* Contributors: Adria Roig, Sai Kishor Kothakota, ileniaperrella
+
 0.2.0 (2025-09-15)
 ------------------
 
