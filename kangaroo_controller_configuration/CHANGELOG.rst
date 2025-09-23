@@ -27,8 +27,8 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.2.1 (2025-09-23)
+------------------
 * Merge branch 'humanoids' into 'master'
   Humanoids and more recent changes on parameters
   See merge request robots/kangaroo_robot!74
