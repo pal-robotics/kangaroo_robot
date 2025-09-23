@@ -1,2 +1,2 @@
-limiter_max_rate: 1
+limiter_max_rate: 0.5
 circular_buffer_capacity: 10

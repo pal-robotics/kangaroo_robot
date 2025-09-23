@@ -276,6 +276,13 @@
       velocity="${arm_4_max_velocity}" />
   </joint>
 
+  <link name="ef_${side}_link"/>
+  <joint name="ef_${side}_joint" type="fixed">
+      <origin xyz="0.415 -0.015 ${-0.025 + reflect * 0.015}" rpy="0 0 0" />
+    <parent link="${name}_${side}_4_link" />
+    <child link="ef_${side}_link" />
+    </joint>
+
 <!-- TRANSMISSIONS -->
     <xacro:arm_simple_transmission name="${name}_${side}" number="1" reduction="1.0" offset_value="${arm_1_offset}"/>
     <xacro:arm_simple_transmission name="${name}_${side}" number="2" reduction="1.0" offset_value="${arm_2_offset}"/>
