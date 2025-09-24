@@ -27,6 +27,15 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'fix/launch/impedance_control' into 'master'
+  Add missing pelvis joint impedance params + fix arm_right launch file arg
+  See merge request robots/kangaroo_robot!75
+* Fix the arm_right launch local joint control launch file
+* Add missing pelvis joints impedance control parameters
+* Contributors: Sai Kishor Kothakota
+
 0.2.1 (2025-09-23)
 ------------------
 * Merge branch 'humanoids' into 'master'

@@ -19,6 +19,9 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+
 0.2.1 (2025-09-23)
 ------------------
 * Merge branch 'humanoids' into 'master'
