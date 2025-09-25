@@ -155,20 +155,17 @@
   <!-- with back handle -->
   <xacro:unless value="${with_belt}">
   <link name="back_handle">
-     <inertial>
-      <origin
-        xyz="-0.1 0 0.02479"
-        rpy="0 0 0" />
-      <mass
-        value="0.2" />
+    <inertial>
+      <origin xyz="-0.1742 2.256E-05 -0.0026718" rpy="0 0 3.14159" />
+      <mass value="0.32489" />
       <inertia
-        ixx="0.01972"
-        ixy="-1E-05"
-        ixz="-0.00037"
-        iyy="0.01996"
-        iyz="0"
-        izz="0.03879" />
-    </inertial>
+        ixx="0.0054596"
+        ixy="-2.9277E-08"
+        ixz="-0.00058382"
+        iyy="0.0015135"
+        iyz="1.3465E-08"
+        izz="0.006106" />
+    </inertial>	  
     <visual>
       <origin
         xyz="0 0 0"
