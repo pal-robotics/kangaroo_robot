@@ -41,6 +41,20 @@ collision_model_parameters:
         second: leg_left_femur_link
       - first: base_link
         second: torso_link
+      - first: base_link
+        second: back_handle
+      - first: torso_link
+        second: back_handle
+      - first: leg_left_1_link
+        second: back_handle
+      - first: leg_right_1_link
+        second: back_handle
+      - first: pelvis_base_link
+        second: back_handle
+      - first: pelvis_1_link
+        second: back_handle
+      - first: pelvis_2_link 
+        second: back_handle
       - first: torso_link
         second: leg_right_1_link
       - first: torso_link
