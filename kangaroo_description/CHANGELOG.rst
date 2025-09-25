@@ -19,6 +19,15 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'fix/handle_inertia_and_collisions' into 'master'
+  Fix/handle inertia and collisions
+  See merge request robots/kangaroo_robot!76
+* updated handle inertia
+* updated exclude collision list
+* Contributors: Sai Kishor Kothakota, sergiacosta
+
 0.2.2 (2025-09-24)
 ------------------
 
