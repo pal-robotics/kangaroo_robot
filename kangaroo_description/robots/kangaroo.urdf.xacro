@@ -9,6 +9,8 @@
         xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
+  <!-- 4dof, 7dof -->
+  <xacro:arg name="arm_type" default="4dof" />
   <xacro:arg name="with_legs" default="true" />
   <xacro:arg name="with_pelvis" default="false" />
   <xacro:arg name="with_arms" default="false" />
@@ -20,6 +22,7 @@
   <xacro:arg name="waist_front_camera_model" default="realsense-D435i" />
   <xacro:arg name="waist_back_camera_model" default="realsense-D435i" />
 
+  <xacro:property name="arm_type" value="$(arg arm_type)" />
   <xacro:property name="with_legs" value="$(arg with_legs)" />
   <xacro:property name="with_pelvis" value="$(arg with_pelvis)" />
   <xacro:property name="with_arms" value="$(arg with_arms)" />
@@ -88,20 +91,34 @@
   <!--************************-->
   <xacro:if value="${with_arms}">
     <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.urdf.xacro" />
-    <xacro:kangaroo_arm name="arm" side="left" reflect="1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
-      <origin xyz="0 0.105954 0.384396" rpy="1.3963 0 0" />
+    <!-- Left Arm -->
+    <xacro:kangaroo_arm name="arm" type="${arm_type}" side="left" reflect="1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
+      <origin xyz="0 0.105954 0.384396" rpy="1.3963 3.14159 3.14159" />
     </xacro:kangaroo_arm>
 
-    <xacro:kangaroo_arm name="arm" side="right" reflect="-1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
-      <origin xyz="0 -0.105954 0.384396" rpy="1.3963 0 3.14159" />
+    <!-- Right Arm -->
+    <xacro:kangaroo_arm name="arm" type="${arm_type}" side="right" reflect="-1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
+      <origin xyz="0 -0.105954 0.384396" rpy="1.3963 3.14159 0" />
     </xacro:kangaroo_arm>
+
+    <xacro:if value="${arm_type=='4dof'}">
+      <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/fake_forearm.urdf.xacro" />
+      <!-- Left Fake Forearm -->
+      <xacro:fake-forearm name="arm" side="left" reflect="1" parent="arm_left_3_link">
+        <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
+      </xacro:fake-forearm>
+      <!-- Right Fake Forearm -->
+      <xacro:fake-forearm name="arm" side="right" reflect="-1" parent="arm_right_3_link">
+        <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
+      </xacro:fake-forearm>
+    </xacro:if>
   </xacro:if>
 
   <!--************************-->
   <!--         WITHOUT ARMS   -->
   <!--************************-->
  <xacro:unless value="${with_arms}">
-   <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm_cover.urdf.xacro" />
+   <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm_cover/arm_cover.urdf.xacro" />
    <xacro:kangaroo_arm_cover name="arm_cover" side="left" reflect="1" parent="torso_link">  
      <origin xyz="0 0.105954 0.384396" rpy="1.3963 0 0" />
    </xacro:kangaroo_arm_cover>
