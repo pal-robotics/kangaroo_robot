@@ -5,8 +5,15 @@
 
   <!-- pre-recorded motions -->
   <rosparam file="$(find kangaroo_bringup)/config/kangaroo_motions.yaml" command="load" />
-  <rosparam file="$(find kangaroo_bringup)/config/kangaroo_new_motions.yaml" command="load" />
-  <rosparam file="$(find kangaroo_bringup)/config/kangaroo_automatica.yaml" command="load" />
+
+  <group if="$(eval arg('robot_type') in ['arm_4dof_no_pelvis', 'full_4dof'])">
+    <rosparam file="$(find kangaroo_bringup)/config/kangaroo_new_motions.yaml" command="load" />
+    <rosparam file="$(find kangaroo_bringup)/config/kangaroo_automatica.yaml" command="load" />
+  </group>
+  <group if="$(eval arg('robot_type') in ['arm_7dof_no_pelvis', 'full_7dof'])">
+    <rosparam file="$(find kangaroo_bringup)/config/kangaroo_7dof_new_motions.yaml" command="load" />
+    <rosparam file="$(find kangaroo_bringup)/config/kangaroo_7dof_automatica.yaml" command="load" />
+  </group>
   
   <node pkg="play_motion" type="play_motion" name="play_motion">
     <rosparam file="$(find kangaroo_bringup)/config/$(arg robot_type)_planner.yaml" command="load" />

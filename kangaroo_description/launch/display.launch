@@ -8,6 +8,7 @@
   <arg name="with_legs" default="true"/>
   <arg name="with_pelvis" default="false"/>
   <arg name="with_arms"   default="false"/>
+  <arg name="arm_type"   default="4dof"/>
   <arg name="with_belt" default="false" />
   <arg name="torso_2024" default="false" />
 
@@ -19,6 +20,7 @@
     <arg name="with_legs" value="$(arg with_legs)"/>
     <arg name="with_pelvis" value="$(arg with_pelvis)"/>
     <arg name="with_arms" value="$(arg with_arms)"/>
+    <arg name="arm_type" value="$(arg arm_type)"/>
     <arg name="with_belt" value="$(arg with_belt)"/>
     <arg name="torso_2024" value="$(arg torso_2024)"/>
   </include>
