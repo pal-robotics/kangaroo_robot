@@ -1,0 +1,38 @@
+play_motion:
+  motions:
+    crouch_boxing:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_5_joint, leg_left_4_joint, leg_right_1_joint, leg_right_3_joint, leg_right_2_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 2
+          positions: [-0.0099999, 0.05, 0.040001, 0.14836, 0.049999, -0.050001, 0.0099999, -0.039981, 0.049989, 0.14253, -0.049999, -0.040002, 0.25, 1.32, 1.57, 1.6921, 0.0, 0.0, 0.0, -0.24976, 1.3197, -1.57, 1.6921, 0.0, 0.0, 0.0, -0.0021149, -1.2541]
+        - time_from_start: 2.7
+          positions: [-0.0099999, 0.05, 0.04, 0.13836, 0.05, -0.05, 0.0099997, -0.040011, 0.050007, 0.13253, -0.05, -0.04, 0.25, 1.32, 1.57, 1.87, 0.0, 0.0, 0.0, -0.24979, 1.3197, -1.57, 1.87, 0.0, 0.0, 0.0, 0.341, -1.2038]
+        - time_from_start: 3.4
+          positions: [-0.0099992, 0.05, 0.040001, 0.13836, 0.05, -0.05, 0.0099994, -0.039995, 0.049996, 0.13254, -0.05, -0.04, -0.6063, 1.0, 1.8852, 1.0, 0.0, 0.0, 0.0, 0.8597, 1.1417, -2.4079, 0.64711, 0.0, 0.0, 0.0, 0.35095, -1.2038]
+        - time_from_start: 4.2
+          positions: [-0.0099999, 0.05, 0.039999, 0.13836, 0.05, -0.05, 0.0099999, -0.039993, 0.049997, 0.13254, -0.05, -0.04, -0.30965, 1.45, 1.8851, 0.83342, 0.0, 0.0, 0.0, 0.77597, 1.55, -2.4088, 0.14724, 0.0, 0.0, 0.0, 0.35095, -1.2038]
+        - time_from_start: 6.2
+          positions: [0.0, 0.05, 0.0, 0.655, 0.0, -0.05, 0.0, 0.0, 0.05, 0.655, -0.05, 0.0, -0.30998, 1.45, 1.885, 0.8334, 0.0, 0.0, 0.0, 0.57596, 1.45, -2.4086, 0.44716, 0.0, 0.0, 0.0, 0.0, -0.8]
+        - time_from_start: 6.6
+          positions: [-0.012, 0.054, 0.04, 0.6, 0.0, -0.053, 0.012, -0.04, 0.054, 0.6, -0.053, 0.0, -0.30998, 1.4, 1.885, 0.8334, 0.0, 0.0, 0.0, 0.57596, 1.4, -2.4086, 0.54716, 0.0, 0.0, 0.0, 0.0, 0.0]
+      meta:
+        name: crouch_boxing
+        usage: Automatica
+        description: Grasp a box from the ground
+    crouch_unboxing:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_5_joint, leg_left_4_joint, leg_right_1_joint, leg_right_3_joint, leg_right_2_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 2
+          positions: [-0.0099992, 0.05, 0.040001, 0.14836, 0.05, -0.05, 0.0099994, -0.039995, 0.049996, 0.14254, -0.05, -0.04, -0.30998, 1.4, 1.885, 0.8334, 0.0, 0.0, 0.0, 0.57596, 1.4015, -2.4086, 0.54716, 0.0, 0.0, 0.0, 0.0021149, -1.2541]
+        - time_from_start: 2.7
+          positions: [-0.0099992, 0.05, 0.040001, 0.14836, 0.05, -0.05, 0.0099994, -0.039995, 0.049996, 0.14254, -0.05, -0.04, -0.30998, 1.4, 1.885, 0.8334, 0.0, 0.0, 0.0, 0.57596, 1.4015, -2.4086, 0.54716, 0.0, 0.0, 0.0, 0.34095, -1.2038]
+        - time_from_start: 3.2
+          positions: [-0.0099992, 0.05, 0.040001, 0.14836, 0.05, -0.05, 0.0099994, -0.039995, 0.049996, 0.14254, -0.05, -0.04, -0.30998, 1.0, 1.885, 0.8334, 0.0, 0.0, 0.0, 0.57596, 1.1415, -2.4086, 0.54716, 0.0, 0.0, 0.0, 0.34095, -1.2038]
+        - time_from_start: 3.7
+          positions: [-0.0099992, 0.05, 0.040001, 0.14836, 0.05, -0.05, 0.0099994, -0.039995, 0.049996, 0.14254, -0.05, -0.04, -0.30998, 1.0, 1.885, 0.8334, 0.0, 0.0, 0.0, 0.57596, 1.1415, -2.4086, 0.54716, 0.0, 0.0, 0.0, 0.0021149, -1.2541]
+        - time_from_start: 5.7
+          positions: [-0.012, 0.054, 0.04, 0.6, 0.0, -0.053, 0.012, -0.04, 0.054, 0.6, -0.053, 0.0, -0.30998, 1.4, 1.885, 0.8334, 0.0, 0.0, 0.0, 0.57596, 1.4, -2.4086, 0.54716, 0.0, 0.0, 0.0, 0.0, 0.0]
+      meta:
+        name: crouch_unboxing
+        usage: Automatica
+        description: Place a box in the ground
