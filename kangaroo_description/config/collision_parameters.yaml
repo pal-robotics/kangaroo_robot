@@ -76,6 +76,10 @@ collision_model_parameters:
       - first: leg_right_1_link
         second: waist_protector
       - first: torso_link
+        second: waist_front_rgbd_camera_link
+      - first: torso_link
+        second: waist_back_rgbd_camera_link
+      - first: torso_link
         second: waist_protector
       - first: waist_front_rgbd_camera_link
         second: waist_protector
