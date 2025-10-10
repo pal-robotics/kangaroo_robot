@@ -10,7 +10,7 @@
     <rosparam file="$(find kangaroo_bringup)/config/kangaroo_new_motions.yaml" command="load" />
     <rosparam file="$(find kangaroo_bringup)/config/kangaroo_automatica.yaml" command="load" />
   </group>
-  <group if="$(eval arg('robot_type') in ['arm_7dof_no_pelvis', 'full_7dof'])">
+  <group if="$(eval arg('robot_type') in ['arm_7dof_no_pelvis', 'arm_7dof_gripper_no_pelvis', 'full_7dof', 'full_7dof_gripper'])">
     <rosparam file="$(find kangaroo_bringup)/config/kangaroo_7dof_new_motions.yaml" command="load" />
     <rosparam file="$(find kangaroo_bringup)/config/kangaroo_7dof_automatica.yaml" command="load" />
   </group>
