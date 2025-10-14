@@ -44,6 +44,15 @@
     <node name="arms_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg start_args) $(arg arms_controllers)"/>
   </group>
 
+  <group if="$(eval arg('robot_type') in ['full_7dof_gripper', 'arms_7dof_gripper_no_pelvis'])">
+    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/arm_7dof_left.yaml"/>
+    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/arm_7dof_right.yaml"/>
+    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/gripper_controller.yaml"/>
+    <arg name="arms_controllers" value="left_arm_controller right_arm_controller" />
+    <arg name="gripper_controllers" value="gripper_left_controller gripper_right_controller" />
+    <node name="arms_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg start_args) $(arg arms_controllers) $(arg gripper_controllers)"/>
+  </group>
+
   <group if="$(arg with_legs)">
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/leg_left.yaml"/>
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/leg_right.yaml"/>

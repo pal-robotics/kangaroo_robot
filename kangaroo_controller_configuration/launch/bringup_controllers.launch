@@ -51,6 +51,9 @@
   <group if="$(eval arg('robot_type') in ['full_7dof', 'arms_7dof_no_pelvis'])">
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/actuator_7dof_pid_gains.yaml" ns="actuator_pid_command_controller" />
   </group>
+  <group if="$(eval arg('robot_type') in ['full_7dof_gripper', 'arms_7dof_gripper_no_pelvis'])">
+    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/actuator_7dof_gripper_pid_gains.yaml" ns="actuator_pid_command_controller" />
+  </group>
   <arg if="$(arg enable_unloading_workaround)"
       name="extra_args"
       value="--shutdown-timeout 1.0" />
