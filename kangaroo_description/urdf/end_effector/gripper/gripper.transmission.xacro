@@ -18,12 +18,25 @@ limitations under the License.
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="pal_pro_gripper_transmission" params="name">
-    <transmission name="${name}_trans">
+    <!-- <transmission name="${name}_trans">
         <plugin>transmission_interface/SimpleTransmission</plugin>
         <actuator name="${name}_actuator" role="actuator1"/>
         <joint name="${name}_joint" role="joint1">
             <mechanical_reduction>1</mechanical_reduction>          
         </joint>
+    </transmission> -->
+
+    <transmission name="${name}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="${name}_motor" >
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="${name}_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/JointStateInterface</hardwareInterface>
+      </joint>
     </transmission>
   </xacro:macro>
 

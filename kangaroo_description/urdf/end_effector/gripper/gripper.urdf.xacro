@@ -191,6 +191,9 @@
       <provideFeedback>1</provideFeedback>
     </gazebo>
 
+    <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/gripper/gripper.ros_control.xacro" />
+    <xacro:ros_control_pal_pro_gripper name="${name}" reduction="1.0" />
+
   </xacro:macro>
 
 </robot>
