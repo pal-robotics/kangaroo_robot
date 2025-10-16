@@ -1,48 +1,48 @@
 actuator_gains:
   leg_left_1_motor:
-    current: {kd: 0.0, ki: 12000.0, kp: 1.5}
-    position: {kd: 0.0, ki: 0.00042, kp: 0.00047}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.47}
+    position: {kd: 1.0e-7, ki: 0.00035, kp: 0.00039}
     velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
   leg_left_2_motor:
-    current: {kd: 0.0, ki: 12000.0, kp: 1.5}
-    position: {kd: 0.0, ki: 0.0005, kp: 0.0004}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.47}
+    position: {kd: 8.5e-7, ki: 0.0004, kp: 0.0004}
     velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
   leg_left_3_motor:
-    current: {kd: 0.0, ki: 11000.0, kp: 1.5}
-    position: {kd: 5.0e-08, ki: 0.0003, kp: 0.0005}
-    velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.5}
+    position: {kd: 5.0e-07, ki: 0.0004, kp: 0.0004}
+    velocity: {kd: 6.0e-04, ki: 11.8, kp: 1.15}
   leg_left_4_motor:
-    current: {kd: 0.0, ki: 12000.0, kp: 1.47}
-    position: {kd: 0.0, ki: 0.00045, kp: 0.00046}
-    velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.18}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.51}
+    position: {kd: 5.0e-7, ki: 0.00046, kp: 0.00049}
+    velocity: {kd: 6.0e-04, ki: 11.8, kp: 1.0}
   leg_left_5_motor:
     current: {kd: 0.0, ki: 12000.0, kp: 1.5}
-    position: {kd: 0.0, ki: 0.00046, kp: 0.00049}
+    position: {kd: 8.0e-8, ki: 0.00046, kp: 0.00049}
     velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
   leg_left_length_motor:
     current: {kd: 0.0, ki: 3500.0, kp: 0.75}
     position: {kd: 0.00003, ki: 0.002, kp: 0.015}
     velocity: {kd: 3.0e-05, ki: 12.0, kp: 1.5}
   leg_right_1_motor:
-    current: {kd: 0.0, ki: 11500.0, kp: 1.48}
-    position: {kd: 0.0, ki: 0.00065, kp: 0.0005}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.47}
+    position: {kd: 2.0e-7, ki: 0.00046, kp: 0.00049}
     velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
   leg_right_2_motor:
-    current: {kd: 0.0, ki: 12000.0, kp: 1.45}
-    position: {kd: 0.0, ki: 0.0004, kp: 0.00045}
-    velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.52}
+    position: {kd: 8.0e-7, ki: 0.00046, kp: 0.00049}
+    velocity: {kd: 4.5e-04, ki: 11.8, kp: 1.0}
   leg_right_3_motor:
-    current: {kd: 0.0, ki: 12000.0, kp: 1.5}
-    position: {kd: 0.0, ki: 0.00045, kp: 0.00045}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.52}
+    position: {kd: 4.0e-7, ki: 0.00003, kp: 0.0004}
     velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
   leg_right_4_motor:
-    current: {kd: 0.0, ki: 11500.0, kp: 1.48}
-    position: {kd: 3.2e-08, ki: 0.00039, kp: 0.00045}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.47}
+    position: {kd: 6.5e-07, ki: 0.00046, kp: 0.00049}
     velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
   leg_right_5_motor:
-    current: {kd: 0.0, ki: 12000.0, kp: 1.47}
-    position: {kd: 0.0, ki: 0.00046, kp: 0.00049}
-    velocity: {kd: 6.0e-04, ki: 12.0, kp: 1.2}
+    current: {kd: 0.0, ki: 12000.0, kp: 1.52}
+    position: {kd: 2.0e-07, ki: 0.0004, kp: 0.00045}
+    velocity: {kd: 6.0e-04, ki: 11.9, kp: 1.05}
   leg_right_length_motor:
     current: {kd: 0.0, ki: 3500.0, kp: 0.75}
     position: {kd: 0.00003, ki: 0.002, kp: 0.015}
