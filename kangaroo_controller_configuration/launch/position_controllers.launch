@@ -24,7 +24,7 @@
       value="--stopped" />
 
 
-  <group if="$(eval arg('robot_type') in ['full_4dof', 'full_7dof', 'pelvis_no_arms'])">
+  <group if="$(eval arg('robot_type') in ['full_4dof', 'full_7dof', 'full_7dof_gripper', 'pelvis_no_arms'])">
     <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/joint_trajectory_controllers/position/pelvis.yaml"/>
     <arg name="pelvis_controller" value="pelvis_controller" />
     <node name="pelvis_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="$(arg extra_args) $(arg start_args) $(arg pelvis_controller)"/>
