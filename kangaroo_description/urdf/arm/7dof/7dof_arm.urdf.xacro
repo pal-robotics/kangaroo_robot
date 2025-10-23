@@ -43,12 +43,13 @@
       <parent link="${parent}" />
       <child link="${name}_${side}_5_link" />
       <axis xyz="0 0 1" />
-      <xacro:if value="${side == 'right'}">
+      <limit lower="${deg_to_rad * -150}" upper="${deg_to_rad * 150}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+      <!-- <xacro:if value="${side == 'right'}">
         <limit lower="${deg_to_rad * -210}" upper="${deg_to_rad * 90}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
       </xacro:if>
       <xacro:if value="${side == 'left'}">
         <limit lower="${deg_to_rad * -90}" upper="${deg_to_rad * 210}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
-      </xacro:if>
+      </xacro:if> -->
     </joint>
 
     <!-- ARM 6 LINK -->
