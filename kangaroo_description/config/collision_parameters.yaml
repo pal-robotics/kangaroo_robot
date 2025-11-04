@@ -76,6 +76,10 @@ collision_model_parameters:
       - first: leg_right_1_link
         second: waist_protector
       - first: torso_link
+        second: waist_front_rgbd_camera_link
+      - first: torso_link
+        second: waist_back_rgbd_camera_link
+      - first: torso_link
         second: waist_protector
       - first: waist_front_rgbd_camera_link
         second: waist_protector
@@ -133,6 +137,45 @@ collision_model_parameters:
         second: arm_left_3_link
       - first: arm_left_3_link
         second: arm_left_4_link
+      - first: arm_left_4_link
+        second: arm_left_5_link
+      - first: arm_left_5_link
+        second: arm_left_6_link
+      - first: arm_left_6_link
+        second: arm_left_7_link
+
+      - first: arm_left_7_link
+        second: gripper_left_base_link
+      - first: gripper_left_fingertip_right_link
+        second: gripper_left_fingertip_left_link
+      - first: gripper_left_fingertip_right_link
+        second: gripper_left_inner_finger_right_link
+      - first: gripper_left_fingertip_right_link
+        second: gripper_left_outer_finger_right_link
+      - first: gripper_left_fingertip_right_link
+        second: gripper_left_base_link
+      - first: gripper_left_inner_finger_right_link
+        second: gripper_left_outer_finger_right_link
+      - first: gripper_left_inner_finger_right_link
+        second: gripper_left_base_link
+      - first: gripper_left_base_link
+        second: gripper_left_outer_finger_right_link
+
+      - first: gripper_left_fingertip_right_link
+        second: gripper_left_fingertip_left_link
+      - first: gripper_left_fingertip_left_link
+        second: gripper_left_inner_finger_left_link
+      - first: gripper_left_fingertip_left_link
+        second: gripper_left_outer_finger_left_link
+      - first: gripper_left_fingertip_left_link
+        second: gripper_left_base_link
+      - first: gripper_left_inner_finger_left_link
+        second: gripper_left_outer_finger_left_link
+      - first: gripper_left_inner_finger_left_link
+        second: gripper_left_base_link
+      - first: gripper_left_base_link
+        second: gripper_left_outer_finger_left_link
+
       - first: arm_right_base_link
         second: arm_right_1_link
       - first: arm_right_1_link
@@ -141,4 +184,42 @@ collision_model_parameters:
         second: arm_right_3_link
       - first: arm_right_3_link
         second: arm_right_4_link
+      - first: arm_right_4_link
+        second: arm_right_5_link
+      - first: arm_right_5_link
+        second: arm_right_6_link
+      - first: arm_right_6_link
+        second: arm_right_7_link
+      - first: arm_right_7_link
+        second: gripper_right_base_link
+
+      - first: gripper_right_fingertip_right_link
+        second: gripper_right_fingertip_left_link
+      - first: gripper_right_fingertip_right_link
+        second: gripper_right_inner_finger_right_link
+      - first: gripper_right_fingertip_right_link
+        second: gripper_right_outer_finger_right_link
+      - first: gripper_right_fingertip_right_link
+        second: gripper_right_base_link
+      - first: gripper_right_inner_finger_right_link
+        second: gripper_right_outer_finger_right_link
+      - first: gripper_right_inner_finger_right_link
+        second: gripper_right_base_link
+      - first: gripper_right_base_link
+        second: gripper_right_outer_finger_right_link
+
+      - first: gripper_right_fingertip_right_link
+        second: gripper_right_fingertip_left_link
+      - first: gripper_right_fingertip_left_link
+        second: gripper_right_inner_finger_left_link
+      - first: gripper_right_fingertip_left_link
+        second: gripper_right_outer_finger_left_link
+      - first: gripper_right_fingertip_left_link
+        second: gripper_right_base_link
+      - first: gripper_right_inner_finger_left_link
+        second: gripper_right_outer_finger_left_link
+      - first: gripper_right_inner_finger_left_link
+        second: gripper_right_base_link
+      - first: gripper_right_base_link
+        second: gripper_right_outer_finger_left_link
 

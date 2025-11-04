@@ -23,7 +23,8 @@
   <group if="$(arg demo_mode)">
     <!-- Position Controllers -->
     <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
-       <arg name="start_controllers" value="false"/>
+      <arg name="robot_type" value="$(arg robot_type)" />
+      <arg name="start_controllers" value="false"/>
     </include>
 
     <include file="$(find pal_lip_mpc_actions)/launch/kangaroo_reactive_walk_kinematic_controller.launch">
@@ -45,6 +46,7 @@
 
   <!-- Actuator PID controller -->
   <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/actuator_pid_gains.yaml" ns="actuator_pid_command_controller" />
+
   <arg if="$(arg enable_unloading_workaround)"
       name="extra_args"
       value="--shutdown-timeout 1.0" />

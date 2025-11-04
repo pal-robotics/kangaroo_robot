@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+  <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.transmission.xacro" />
+  <xacro:property name="arm_4_max_velocity"      value="2.35" />
+  <xacro:property name="arm_4_max_effort"   value="43.0" />
+  
+  <xacro:macro name="fake-forearm" params="name side reflect parent *origin arm_4_offset:=0.0">
+    <link name="${name}_${side}_4_link">
+      <inertial>
+        <origin xyz="0.0752641 -0.0079317 -0.023427" rpy="0 0 0" />
+        <mass value="1.4353488" />
+        <inertia
+          ixx="0.0012553"
+          ixy="-0.0012835"
+          ixz="9.49E-05"
+          iyy="0.0209442"
+          iyz="-1.1E-06"
+          izz="0.0210127" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/arm/fake_forearm_${side}_link.stl" scale="1 1 1"/>
+        </geometry>
+        <material name="pal/DarkGrey" />
+      </visual>
+      <collision>
+      <origin  xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/arm/arm3_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_${side}_4_joint" type="revolute">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}" />
+      <child link="${name}_${side}_4_link" />
+      <axis xyz="0 0 1" />
+      <limit
+        lower="${deg_to_rad * -65}"
+        upper="${deg_to_rad * 140}"
+        effort="${arm_4_max_effort}"
+        velocity="${arm_4_max_velocity}" />
+    </joint>
+
+    <!-- TRANSMISSIONS -->
+    <xacro:arm_simple_transmission name="${name}_${side}" number="4" reduction="1.0" offset_value="${arm_4_offset}"/>
+
+ </xacro:macro>
+</robot>

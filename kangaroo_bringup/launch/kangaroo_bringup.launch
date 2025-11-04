@@ -4,8 +4,12 @@
   <arg name="ft_sensors"  default="false"/>
   <arg name="with_pelvis" default="true"/>
   <arg name="with_arms"   default="true"/>
-  <arg name="demo_mode"   default="true" />
-  <arg name="robot_type"  value="$(eval 'full' if arg('with_pelvis') and arg('with_arms') else ('pelvis_no_arms' if arg('with_pelvis') and not arg('with_arms') else ('arms_no_pelvis' if not arg('with_pelvis') and arg('with_arms') else 'lowerbody')))"/>
+  <arg name="arm_type"    default="4dof"/>
+  <arg name="demo_mode"   default="false" />
+  <arg name="robot_type" value="$(eval 'full_'+arg('arm_type') if arg('with_pelvis') and arg('with_arms')
+                            else ('pelvis_no_arms' if arg('with_pelvis') and not arg('with_arms') 
+                            else ('arms_'+arg('arm_type')+'_no_pelvis' if not arg('with_pelvis') and arg('with_arms') 
+                            else 'lowerbody')))"/>
 
   <include file="$(find kangaroo_moveit_config)/launch/move_group.launch">
     <arg name="robot_type" value="$(arg robot_type)"/>

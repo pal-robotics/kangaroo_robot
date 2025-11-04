@@ -1,0 +1,434 @@
+play_motion:
+  motions:
+    full_homing:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint, pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint]
+      points:
+        - time_from_start: 3.
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0, 0.0, 0., -0.012, 0.054, 0.04, 0.6, -0.053, 0.0, 0.012, 0.054, -0.04, 0.6, -0.053, 0.0]
+      meta:
+        name: full_body_homing
+        usage: ""
+        description: Move to home configuration of full body
+    arms_home:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+      meta:
+        name: arms_home
+        usage: ""
+        description: arms symmetrical on the side of the torso
+    arms_box_1:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+        - time_from_start: 3
+          positions: [-0.25582, 1.2684, 2.03, 1.5469, 0.0, 0.0, 0.0, 0.25524, 1.2684, -2.03, 1.5469, 0.0, 0.0, 0.0]
+      meta:
+        name: arms_box_1
+        usage: ""
+        description: both arms forward to hold a box
+    arms_box_2:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+        - time_from_start: 3
+          positions: [-0.25582, 1.2184, 2.0951, 1.5469, 0.0, 0.0, 0.0, 0.25524, 1.2184, -2.095, 1.5469, 0.0, 0.0, 0.0]
+        - time_from_start: 5
+          positions: [-0.5696, 1.71, 1.6694, 1.188, 0.0, 0.0, 0.0, 0.56522, 1.71, -1.6699, 1.1892, 0.0, 0.0, 0.0]
+      meta:
+        name: arms_box_2
+        usage: ""
+        description: both arms forward to hold a box
+    arms_dance:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+        - time_from_start: 2
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0]
+        - time_from_start: 4
+          positions: [0.68027, 1.5959, 2.409, 0.49985, 0.0, 0.0, 0.0, 0.62202, 1.6733, -2.566, 0.54535, 0.0, 0.0, 0.0]
+        - time_from_start: 6
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0]
+        - time_from_start: 9
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0]
+        - time_from_start: 11
+          positions: [-0.65965, 1.6426, 2.463, 0.54243, 0.0, 0.0, 0.0, -0.67142, 1.5321, -2.4092, 0.51125, 0.0, 0.0, 0.0]
+        - time_from_start: 13
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0]
+        - time_from_start: 16
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0]
+        - time_from_start: 18
+          positions: [0.68027, 1.5959, 2.409, 0.49985, 0.0, 0.0, 0.0, 0.62202, 1.6733, -2.566, 0.54535, 0.0, 0.0, 0.0]
+        - time_from_start: 20
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0]
+        - time_from_start: 23
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0]
+        - time_from_start: 25
+          positions: [-0.65965, 1.6426, 2.463, 0.54243, 0.0, 0.0, 0.0, -0.67142, 1.5321, -2.4092, 0.51125, 0.0, 0.0, 0.0]
+        - time_from_start: 27
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0]
+        - time_from_start: 29
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+      meta:
+        name: arms_dance
+        usage: ""
+        description: arms moving front and back as in a dance
+    arms_dance_squat:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.32, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.79906, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 1
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 3
+          positions: [0.68027, 1.5959, 2.409, 0.49985, 0.0, 0.0, 0.0, 0.62202, 1.6733, -2.566, 0.54535, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.635, -0.05, 0., 0., 0.05, 0., 0.635, -0.05, 0.]
+        - time_from_start: 5
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 6
+          positions: [0.24776, 1.32, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.79906, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 7
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 9
+          positions: [-0.65965, 1.6426, 2.463, 0.54243, 0.0, 0.0, 0.0, -0.67142, 1.5321, -2.4092, 0.51125, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.635, -0.05, 0., 0., 0.05, 0., 0.635, -0.05, 0.]
+        - time_from_start: 11
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 12
+          positions: [0.24776, 1.32, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.79906, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 13
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 15
+          positions: [0.68027, 1.5959, 2.409, 0.49985, 0.0, 0.0, 0.0, 0.62202, 1.6733, -2.566, 0.54535, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.635, -0.05, 0., 0., 0.05, 0., 0.635, -0.05, 0.]
+        - time_from_start: 17
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 18
+          positions: [0.24776, 1.32, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.79906, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 19
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 21
+          positions: [-0.65965, 1.6426, 2.463, 0.54243, 0.0, 0.0, 0.0, -0.67142, 1.5321, -2.4092, 0.51125, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.635, -0.05, 0., 0., 0.05, 0., 0.635, -0.05, 0.]
+        - time_from_start: 23
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 24
+          positions: [0.24776, 1.32, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.79906, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+      meta:
+        name: arms_dance_squat
+        usage: ""
+        description: arms moving front and back as in a dance using also legs for squatting
+    arms_dance_squat_2:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.32, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.79906, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 4
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 8
+          positions: [0.68027, 1.5959, 2.409, 0.49985, 0.0, 0.0, 0.0, 0.62202, 1.6733, -2.566, 0.54535, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.635, -0.05, 0., 0., 0.05, 0., 0.635, -0.05, 0.]
+        - time_from_start: 12
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 16
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 20
+          positions: [-0.65965, 1.6426, 2.463, 0.54243, 0.0, 0.0, 0.0, -0.67142, 1.5321, -2.4092, 0.51125, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.635, -0.05, 0., 0., 0.05, 0., 0.635, -0.05, 0.]
+        - time_from_start: 24
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 28
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 32
+          positions: [0.68027, 1.5959, 2.409, 0.49985, 0.0, 0.0, 0.0, 0.62202, 1.6733, -2.566, 0.54535, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.635, -0.05, 0., 0., 0.05, 0., 0.635, -0.05, 0.]
+        - time_from_start: 36
+          positions: [0.67072, 1.0, 2.4082, 0.19051, 0.0, 0.0, 0.0, 0.64939, 1.0, -2.4105, 0.23235, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 40
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+        - time_from_start: 44
+          positions: [-0.65965, 1.6426, 2.463, 0.54243, 0.0, 0.0, 0.0, -0.67142, 1.5321, -2.4092, 0.51125, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.635, -0.05, 0., 0., 0.05, 0., 0.635, -0.05, 0.]
+        - time_from_start: 48
+          positions: [-0.67024, 1.0, 2.4106, 0.18937, 0.0, 0.0, 0.0, -0.67134, 1.0, -2.4099, 0.23107, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.665, -0.05, 0., 0., 0.05, 0., 0.665, -0.05, 0.]
+        - time_from_start: 52
+          positions: [0.24776, 1.32, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.79906, 0.0, 0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0.]
+      meta:
+        name: arms_dance_squat_2
+        usage: ""
+        description: arms moving front and back as in a dance using also legs for squatting
+    arms_flying:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.3208, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.3212, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+        - time_from_start: 3
+          positions: [0.37165, 0.014362, 1.1215, 0.80005, 0.0, 0.0, 0.0, -0.36289, 0.014376, -1.1229, 0.80036, 0.0, 0.0, 0.0]
+        - time_from_start: 5
+          positions: [0.24776, 1.3208, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.3212, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+        - time_from_start: 7
+          positions: [0.37165, 0.014362, 1.1215, 0.80005, 0.0, 0.0, 0.0, -0.36289, 0.014376, -1.1229, 0.80036, 0.0, 0.0, 0.0]
+        - time_from_start: 10
+          positions: [0.24776, 1.3208, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.3212, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+      meta:
+        name: arms_flying
+        usage: ""
+        description: arms moving as wings
+    arms_run:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.3208, 1.4699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.3212, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+        - time_from_start: 2
+          positions: [0.89041, 1.3205, 1.4698, 2.148, 0.0, 0.0, 0.0, 0.88703, 1.3209, -1.5698, 2.1496, 0.0, 0.0, 0.0]
+        - time_from_start: 4
+          positions: [-0.88027, 1.3205, 1.4702, 2.1496, 0.0, 0.0, 0.0, -0.89066, 1.3208, -1.5702, 2.148, 0.0, 0.0, 0.0]
+        - time_from_start: 6
+          positions: [0.89041, 1.3205, 1.4698, 2.148, 0.0, 0.0, 0.0, 0.88703, 1.3209, -1.5698, 2.1496, 0.0, 0.0, 0.0]
+        - time_from_start: 8
+          positions: [-0.88027, 1.3205, 1.4702, 2.1496, 0.0, 0.0, 0.0, -0.89066, 1.3208, -1.5702, 2.148, 0.0, 0.0, 0.0]
+        - time_from_start: 10
+          positions: [0.24776, 1.3208, 1.4699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.3212, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+      meta:
+        name: arms_run
+        usage: ""
+        description: arms moving as running
+    left_wave:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+        - time_from_start: 3
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, 0.0, 0.0, 0.0, -0.24622, 1.3225, -1.5702, 0.79804, 0.0, 0.0, 0.0]
+        - time_from_start: 4
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, 0.0, 0.0, 0.0, -0.24623, 1.3225, -1.5702, 0.79804, 0.0, 0.0, 0.0]
+        - time_from_start: 5
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, 0.0, 0.0, 0.0, -0.24622, 1.3225, -1.5702, 0.79804, 0.0, 0.0, 0.0]
+        - time_from_start: 6
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, 0.0, 0.0, 0.0, -0.24623, 1.3225, -1.5702, 0.79804, 0.0, 0.0, 0.0]
+        - time_from_start: 7
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, 0.0, 0.0, 0.0, -0.24622, 1.3225, -1.5702, 0.79804, 0.0, 0.0, 0.0]
+        - time_from_start: 8
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, 0.0, 0.0, 0.0, -0.24623, 1.3225, -1.5702, 0.79804, 0.0, 0.0, 0.0]
+        - time_from_start: 11
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+      meta:
+        name: left_wave
+        usage: ""
+        description: wave with left arm hand
+    both_wave:
+      joints: [arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.2481, 1.26, -1.5701, 0.79906, 0.0, 0.0, 0.0]
+        - time_from_start: 3
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, 0.0, 0.0, 0.0, 0.051791, -0.58632, -0.57696, 0.83302, 0.0, 0.0, 0.0]
+        - time_from_start: 4
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, 0.0, 0.0, 0.0, 0.051162, -0.26353, -0.57746, 1.7905, 0.0, 0.0, 0.0]
+        - time_from_start: 5
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, 0.0, 0.0, 0.0, 0.051791, -0.58632, -0.57696, 0.83302, 0.0, 0.0, 0.0]
+        - time_from_start: 6
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, 0.0, 0.0, 0.0, 0.051162, -0.26353, -0.57746, 1.7905, 0.0, 0.0, 0.0]
+        - time_from_start: 7
+          positions: [-0.051791, -0.58632, 0.57696, 0.83302, 0.0, 0.0, 0.0, 0.051791, -0.58632, -0.57696, 0.83302, 0.0, 0.0, 0.0]
+        - time_from_start: 8
+          positions: [-0.051162, -0.26353, 0.57746, 1.7905, 0.0, 0.0, 0.0, 0.051162, -0.26353, -0.57746, 1.7905, 0.0, 0.0, 0.0]
+        - time_from_start: 11
+          positions: [0.24776, 1.26, 1.5699, 0.79906, 0.0, 0.0, 0.0, -0.24776, 1.26, -1.5699, 0.79906, 0.0, 0.0, 0.0]
+      meta:
+        name: both_wave
+        usage: ""
+        description: wave with both arms
+    crouch:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 1.5
+          positions: [0.0, 0.0, 0., 0.05, 0., 0.355, -0.05, 0., 0., 0.05, 0., 0.355, -0.05, 0., 0.24776, 1.32, 1.5699, 1.57, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 1.57, 0.0, 0.0, 0.0]
+        - time_from_start: 3.
+          positions: [0.0, 0.0, 0., 0.05, 0., 0.18, -0.05, 0., 0., 0.05, 0., 0.18, -0.05, 0., 0.24776, 1.32, 1.5699, 0.57, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.57, 0.0, 0.0, 0.0]
+      meta:
+        name: crouch
+        usage: ""
+        description: Move to crouched configuration
+    standup:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.
+          positions: [0.0, 0.0, 0., 0.05, 0., 0.18, -0.05, 0., 0., 0.05, 0., 0.18, -0.05, 0., 0.24776, 1.32, 1.5699, 0.57, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.57, 0.0, 0.0, 0.0]
+        - time_from_start: 1.5
+          positions: [0.0, 0.0, 0., 0.05, 0., 0.355, -0.05, 0., 0., 0.05, 0., 0.355, -0.05, 0., 0.24776, 0.7, 1.5699, 1.57, 0.0, 0.0, 0.0, -0.2481, 0.7, -1.5701, 1.57, 0.0, 0.0, 0.0]
+        - time_from_start: 3.
+          positions: [0.0, 0.0, 0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0., 0.24776, 1.32, 1.5699, 0.79, 0.0, 0.0, 0.0, -0.2481, 1.32, -1.5701, 0.79, 0.0, 0.0, 0.0]
+      meta:
+        name: standup
+        usage: ""
+        description: Move to standup configuration
+    crouch_box:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.
+          positions: [0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0., -0.5696, 1.71, 1.6694, 1.188, 0.0, 0.0, 0.0, 0.56522, 1.71, -1.6699, 1.1892, 0.0, 0.0, 0.0]
+        - time_from_start: 3
+          positions: [0., 0.05, 0., 0.355, -0.05, 0., 0., 0.05, 0., 0.355, -0.05, 0., -0.5696, 1.71, 1.6694, 1.188, 0.0, 0.0, 0.0, 0.56522, 1.71, -1.6699, 1.1892, 0.0, 0.0, 0.0]
+        - time_from_start: 6
+          positions: [0., 0.05, 0., 0.18, -0.05, 0., 0., 0.05, 0., 0.18, -0.05, 0.,-0.5696, 1.71, 1.6694, 1.188, 0.0, 0.0, 0.0, 0.56522, 1.71, -1.6699, 1.1892, 0.0, 0.0, 0.0]
+      meta:
+        name: crouch_box
+        usage: ""
+        description: crouch with a box
+    standup_box:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.
+          positions: [0., 0.05, 0., 0.18, -0.05, 0., 0., 0.05, 0., 0.18, -0.05, 0., -0.5696, 1.71, 1.6694, 1.188, 0.0, 0.0, 0.0, 0.56522, 1.71, -1.6699, 1.1892, 0.0, 0.0, 0.0]
+        - time_from_start: 3.
+          positions: [0., 0.05, 0., 0.355, -0.05, 0., 0., 0.05, 0., 0.355, -0.05, 0., -0.5696, 1.71, 1.6694, 1.188, 0.0, 0.0, 0.0, 0.56522, 1.71, -1.6699, 1.1892, 0.0, 0.0, 0.0]
+        - time_from_start: 6.
+          positions: [0., 0.05, 0., 0.655, -0.05, 0., 0., 0.05, 0., 0.655, -0.05, 0., -0.5696, 1.71, 1.6694, 1.188, 0.0, 0.0, 0.0, 0.56522, 1.71, -1.6699, 1.1892, 0.0, 0.0, 0.0]
+      meta:
+        name: standup_box
+        usage: ""
+        description: Move to standup configuration with box
+    crouch_to_ground:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 3.
+          positions: [0.0, 0.0, 0., 0.05, 0., 0.18, -0.05, 0., 0., 0.05, 0., 0.18, -0.05, 0., 0.1, 1.32, -1.5699, 0.57, 0.0, 0.0, 0.0, -0.1, 1.32, 1.5701, 0.57, 0.0, 0.0, 0.0]
+        - time_from_start: 5.
+          positions: [0.0, 0.0, 0., 0.0, 0., 0.135, 0.0, 0., 0., 0.0, 0., 0.135, 0.0, 0., 0.1, 1.32, -1.5699, 0.35, 0.0, 0.0, 0.0, -0.1, 1.32, 1.5701, 0.35, 0.0, 0.0, 0.0]
+        - time_from_start: 6.
+          positions: [0.0, 0.0, 0., 0.1, 0., 0.135, 0.0, 0., 0., 0.1, 0., 0.135, 0.0, 0., 0.3, 1.32, -1.5699, 0.55, 0.0, 0.0, 0.0, -0.3, 1.32, 1.5701, 0.55, 0.0, 0.0, 0.0]
+        - time_from_start: 8.
+          positions: [0.0, 0.0, 0., 0.2, 0., 0.135, 0.0, 0., 0., 0.2, 0., 0.135, 0.0, 0., 0.3, 1.32, -1.5699, 0.6, 0.0, 0.0, 0.0, -0.3, 1.32, 1.5701, 0.6, 0.0, 0.0, 0.0]
+        - time_from_start: 9.
+          positions: [0.0, 0.0, 0., 0.3, 0., 0.135, 0.0, 0., 0., 0.3, 0., 0.135, 0.0, 0., 0.3, 1.32, -1.5699, 0.75, 0.0, 0.0, 0.0, -0.3, 1.32, 1.5701, 0.75, 0.0, 0.0, 0.0]
+        - time_from_start: 10.
+          positions: [0.0, 0.0, 0., 0.35, 0., 0.135, 0.0, 0., 0., 0.35, 0., 0.135, 0.0, 0., 0.3, 1.32, -1.5699, 0.95, 0.0, 0.0, 0.0, -0.3, 1.32, 1.5701, 0.95, 0.0, 0.0, 0.0]
+        - time_from_start: 11.
+          positions: [0.0, 0.0, 0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.3, 1.32, -1.5699, 1.1, 0.0, 0.0, 0.0, -0.3, 1.32, 1.5701, 1.1, 0.0, 0.0, 0.0]
+        - time_from_start: 12.
+          positions: [0.0, 0.0, 0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.3, 1.32, -1.5699, 1.5, 0.0, 0.0, 0.0, -0.3, 1.32, 1.5701, 1.5, 0.0, 0.0, 0.0]
+        - time_from_start: 13.
+          positions: [0.0, 0.0, 0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.7, 1.32, -1.5699, 2.0, 0.0, 0.0, 0.0, -0.7, 1.32, 1.5701, 2.0, 0.0, 0.0, 0.0]
+        - time_from_start: 14.
+          positions: [0.0, 0.0, 0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.4, 1.32, -1.5699, 2.4, 0.0, 0.0, 0.0, -0.4, 1.32, 1.5701, 2.4, 0.0, 0.0, 0.0]
+      meta:
+        name: crouch_to_ground
+        usage: ""
+        description: Move to ground configuration from crouch
+    ground_pushups:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:        
+        - time_from_start: 0.
+          positions: [0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.4, 1.32, -1.5707, 2.4, 0.0, 0.0, 0.0, -0.4, 1.32, 1.5701, 2.4, 0.0, 0.0, 0.0]
+        - time_from_start: 1.
+          positions: [0., 0.25, 0., 0.135, 0.0, 0., 0., 0.25, 0., 0.135, 0.0, 0., 0.6, 1.0, -2.2707, 2.0, 0.0, 0.0, 0.0, -0.6, 1.0, 2.2701, 2.0, 0.0, 0.0, 0.0]
+        - time_from_start: 2.
+          positions: [0., 0.25, 0., 0.135, 0.0, 0., 0., 0.25, 0., 0.135, 0.0, 0., 1.2, 1.0, -2.2707, 1.4, 0.0, 0.0, 0.0, -1.2, 1.0, 2.2701, 1.4, 0.0, 0.0, 0.0]
+        - time_from_start: 4.
+          positions: [0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.4, 1.0, -2.2707, 2.4, 0.0, 0.0, 0.0, -0.4, 1.0, 2.2701, 2.4, 0.0, 0.0, 0.0]
+        - time_from_start: 5.
+          positions: [0., 0.25, 0., 0.135, 0.0, 0., 0., 0.25, 0., 0.135, 0.0, 0., 0.6, 1.0, -2.2707, 2.0, 0.0, 0.0, 0.0, -0.6, 1.0, 2.2701, 2.0, 0.0, 0.0, 0.0]
+        - time_from_start: 6.
+          positions: [0., 0.25, 0., 0.135, 0.0, 0., 0., 0.25, 0., 0.135, 0.0, 0., 1.2, 1.0, -2.2707, 1.4, 0.0, 0.0, 0.0, -1.2, 1.0, 2.2701, 1.4, 0.0, 0.0, 0.0]
+        - time_from_start: 8.
+          positions: [0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.4, 1.32, -1.5707, 2.4, 0.0, 0.0, 0.0, -0.4, 1.32, 1.5701, 2.4, 0.0, 0.0, 0.0]
+      meta:
+        name: ground_pushups
+        usage: ""
+        description: Pushups from ground position
+    ground_to_crouch_0:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.1
+          positions: [0.0, 0.0, 0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.4, 1.32, -1.5699, 2.4, 0.0, 0.0, 0.0, -0.4, 1.32, 1.5701, 2.4, 0.0, 0.0, 0.0]
+      meta:
+        name: ground_to_crouch_0
+        usage: ""
+        description: Move to crouched configuration from ground   
+    ground_to_crouch_1:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.1
+          positions: [0.0, 0.0, 0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.4, 1.32, -1.5699, 2.4, 0.0, 0.0, 0.0, -0.4, 1.32, 1.5701, 2.4, 0.0, 0.0, 0.0]
+        - time_from_start: 1.0
+          positions: [0.0, 0.0, 0.3, 0.05, 0., 0.135, 0.15, 0., -0.3, 0.05, 0., 0.135, 0.15, 0., 1.0, 1.5, -1.5699, 0.1, 0.0, 0.0, 0.0, -1.0, 1.5, 1.5701, 0.1, 0.0, 0.0, 0.0]
+        - time_from_start: 3.0
+          positions: [0.0, 0.0, 0.3, -0.1, 0., 0.135, -0.05, 0., -0.3, -0.1, 0., 0.135, -0.05, 0., 0.2, 1.5, -1.57, 0.05, 0.0, 0.0, 0.0, -0.2, 1.5, 1.57, 0.05, 0.0, 0.0, 0.0]
+      meta:
+        name: ground_to_crouch_1
+        usage: ""
+        description: Move to crouched configuration from ground
+    ground_to_crouch_2:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.1
+          positions: [0.0, 0.0, 0.3, 0.05, 0., 0.135, 0.15, 0., -0.3, 0.05, 0., 0.135, 0.15, 0., 1.0, 1.5, -1.5699, 0.1, 0.0, 0.0, 0.0, -1.0, 1.5, 1.5701, 0.1, 0.0, 0.0, 0.0]
+        - time_from_start: 0.5
+          positions: [0.0, 0.0, 0.3, 0.0, 0., 0.135, 0.0, 0., -0.3, 0.0, 0., 0.135, 0.0, 0., 0.35, 1.5, -1.5699, 0.1, 0.0, 0.0, 0.0, -0.35, 1.5, 1.5701, 0.1, 0.0, 0.0, 0.0]
+      meta:
+        name: ground_to_crouch_2
+        usage: ""
+        description: Move to crouched configuration from ground
+    ground_to_crouch_3:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.1
+          positions: [0.0, 0.0, 0.3, 0.0, 0., 0.135, 0.0, 0., -0.3, 0.0, 0., 0.135, 0.0, 0., 0.35, 1.5, -1.5699, 0.1, 0.0, 0.0, 0.0, -0.35, 1.5, 1.5701, 0.1, 0.0, 0.0, 0.0]
+        - time_from_start: 0.5
+          positions: [0.0, 0.0, 0.3, -0.1, 0., 0.135, -0.05, 0., -0.3, -0.1, 0., 0.135, -0.05, 0., 0.2, 1.5, -1.57, 0.05, 0.0, 0.0, 0.0, -0.2, 1.5, 1.57, 0.05, 0.0, 0.0, 0.0]
+      meta:
+        name: ground_to_crouch_3
+        usage: ""
+        description: Move to crouched configuration from ground
+    ground_to_crouch_4:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.1
+          positions: [0.0, 0.0, 0.3, -0.1, 0., 0.135, -0.05, 0., -0.3, -0.1, 0., 0.135, -0.05, 0., 0.2, 1.5, -1.57, 0.05, 0.0, 0.0, 0.0, -0.2, 1.5, 1.57, 0.05, 0.0, 0.0, 0.0]
+        - time_from_start: 0.5
+          positions: [0.0, 0.0, 0.3, -0.05, 0., 0.135, -0.05, 0., -0.3, -0.05, 0., 0.135, -0.05, 0., 0.2, 1.35, -1.57, 0.05, 0.0, 0.0, 0.0, -0.2, 1.35, 1.57, 0.05, 0.0, 0.0, 0.0]
+      meta:
+        name: ground_to_crouch_4
+        usage: ""
+        description: Move to crouched configuration from ground
+    ground_to_crouch:
+      joints: [pelvis_1_joint, pelvis_2_joint, leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_4_joint, leg_left_5_joint, leg_right_1_joint, leg_right_2_joint, leg_right_3_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint]
+      points:
+        - time_from_start: 0.1
+          positions: [0.0, 0.0, 0., 0.45, 0., 0.135, 0.0, 0., 0., 0.45, 0., 0.135, 0.0, 0., 0.4, 1.32, -1.5699, 2.4, 0.0, 0.0, 0.0, -0.4, 1.32, 1.5701, 2.4, 0.0, 0.0, 0.0]
+        - time_from_start: 0.4
+          positions: [0.0, 0.0, 0.3, 0.05, 0., 0.135, 0.15, 0., -0.3, 0.05, 0., 0.135, 0.15, 0., 1.0, 1.5, -1.5699, 0.1, 0.0, 0.0, 0.0, -1.0, 1.5, 1.5701, 0.1, 0.0, 0.0, 0.0]
+        - time_from_start: 0.6
+          positions: [0.0, 0.0, 0.3, 0.0, 0., 0.135, 0.0, 0., -0.3, 0.0, 0., 0.135, 0.0, 0., 0.35, 1.5, -1.5699, 0.1, 0.0, 0.0, 0.0, -0.35, 1.5, 1.5701, 0.1, 0.0, 0.0, 0.0]
+        - time_from_start: 0.9
+          positions: [0.0, 0.0, 0.3, -0.1, 0., 0.135, -0.05, 0., -0.3, -0.1, 0., 0.135, -0.05, 0., 0.2, 1.5, -1.57, 0.05, 0.0, 0.0, 0.0, -0.2, 1.5, 1.57, 0.05, 0.0, 0.0, 0.0]
+        - time_from_start: 1.3
+          positions: [0.0, 0.0, 0.3, -0.05, 0., 0.135, -0.05, 0., -0.3, -0.05, 0., 0.135, -0.05, 0., 0.2, 1.35, -1.57, 0.05, 0.0, 0.0, 0.0, -0.2, 1.35, 1.57, 0.05, 0.0, 0.0, 0.0]
+      meta:
+        name: ground_to_crouch
+        usage: ""
+        description: Move to crouched configuration from ground
+    sumo_pose:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_5_joint, leg_left_4_joint, leg_right_1_joint, leg_right_3_joint, leg_right_2_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 0
+          positions: [0.49597, -0.18697, -0.051218, 0.2565, -0.0066392, 0.13778, -0.59451, 0.04802, -0.26023, 0.2549, 0.17464, 0.02503, 0.14493, 1.2005, 1.6418, 0.92466, 0.0, 0.0, 0.0, -0.089535, 1.2742, -1.5511, 0.87885, 0.0, 0.0, 0.0, 0.04443, 0.0048525]
+      meta:
+        name: sumo_pose
+        usage: ""
+        description: Move the lower body to the sumo posture
+    run_pose:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_5_joint, leg_left_4_joint, leg_right_1_joint, leg_right_3_joint, leg_right_2_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 0
+          positions: [-0.17868, 0.57984, -0.078389, 0.70929, 0.019816, 0.49726, -0.17438, 0.070536, -0.73269, 0.67342, 0.21572, 0.070781, -0.78764, 1.32, 1.57, 1.3984, 0.0, 0.0, 0.0, -1.0998, 1.2696, -1.44, 1.26, 0.0, 0.0, 0.0, 0.028373, 0.044475]
+      meta:
+        name: run_pose
+        usage: ""
+        description: Move to running pose with the front step lifting
+    run_pose2:
+      joints: [leg_left_1_joint, leg_left_2_joint, leg_left_3_joint, leg_left_length_joint, leg_left_5_joint, leg_left_4_joint, leg_right_1_joint, leg_right_3_joint, leg_right_2_joint, leg_right_length_joint, leg_right_4_joint, leg_right_5_joint, arm_left_1_joint, arm_left_2_joint, arm_left_3_joint, arm_left_4_joint, arm_left_5_joint, arm_left_6_joint, arm_left_7_joint, arm_right_1_joint, arm_right_2_joint, arm_right_3_joint, arm_right_4_joint, arm_right_5_joint, arm_right_6_joint, arm_right_7_joint, pelvis_1_joint, pelvis_2_joint]
+      points:
+        - time_from_start: 0
+          positions: [-0.18, 0.66325, -0.080002, 0.71, 0.020035, 0.21361, -0.16996, 0.070001, -0.72996, 0.67, 0.38214, 0.069781, -0.78764, 1.32, 1.57, 1.3984, 0.0, 0.0, 0.0, -1.2076, 1.2985, -1.44, 0.86918, 0.0, 0.0, 0.0, 0.028373, 0.044475]
+      meta:
+        name: run_pose2
+        usage: ""
+        description: Move to running pose with the back step lifting

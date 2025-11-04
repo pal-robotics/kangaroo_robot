@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <arg name="prefix" />
+  <arg name="arm_type" />
   <arg name="suffix" value=".yaml" />
 
   <rosparam command="load" file="$(arg prefix)leg_left$(arg suffix)" />
   <rosparam command="load" file="$(arg prefix)leg_right$(arg suffix)" />
-  <rosparam command="load" file="$(arg prefix)arm_left$(arg suffix)" />
-  <rosparam command="load" file="$(arg prefix)arm_right$(arg suffix)" />
+  <rosparam command="load" file="$(arg prefix)arm_left_$(arg arm_type)$(arg suffix)" />
+  <rosparam command="load" file="$(arg prefix)arm_right_$(arg arm_type)$(arg suffix)" />
   <rosparam command="load" file="$(arg prefix)pelvis$(arg suffix)" />
  
 

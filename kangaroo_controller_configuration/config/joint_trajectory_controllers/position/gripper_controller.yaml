@@ -1,0 +1,31 @@
+
+gripper_left_controller:
+  type: "position_controllers/JointTrajectoryController"
+  check_mode: True
+  joints:
+    - gripper_left_finger_joint
+  actuators:
+    - gripper_left_finger_motor
+  constraints:
+    goal_time: &goal_time_constraint 0.6
+    stopped_velocity_tolerance: &stopped_velocity_constraint 5.0
+    gripper_left_finger_joint:
+      goal: &goal_pos_constraint 0.02
+
+  stop_trajectory_duration: 0.0
+
+
+gripper_right_controller:
+  type: "position_controllers/JointTrajectoryController"
+  check_mode: True
+  joints:
+    - gripper_right_finger_joint
+  actuators:
+    - gripper_right_finger_motor
+  constraints:
+    goal_time: *goal_time_constraint
+    stopped_velocity_tolerance: *stopped_velocity_constraint
+    gripper_right_finger_joint:
+      goal: *goal_pos_constraint
+
+  stop_trajectory_duration: 0.0

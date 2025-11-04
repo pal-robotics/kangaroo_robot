@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+  <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.transmission.xacro" />
+
+  <xacro:property name="arm_4_max_velocity"      value="2.35" />
+  <xacro:property name="arm_5_max_velocity"      value="2.35" />
+
+  <xacro:property name="arm_4_max_effort"   value="43.0" />
+  <xacro:property name="arm_5_max_effort"   value="43.0" />
+
+  <xacro:macro name="kangaroo_5dof_arm" params="name side reflect parent *origin arm_1_offset:=0.0 arm_2_offset:=0.0 arm_3_offset:=0.0 arm_4_offset:=0.0">
+
+    <!-- ARM 4 LINK -->
+    <link name="${name}_${side}_4_link">
+      <inertial>
+        <origin xyz="-0.0666638543736833 0.010298516741368 -0.035110750875521" rpy="0 0 0" />
+        <mass value="1.80675534222693" />
+        <inertia
+          ixx="0.00149141525734987"
+          ixy="0.000172160534384209"
+          ixz="7.79652120979661E-05"
+          iyy="0.00242349373007114"
+          iyz="-1.67150654541957E-05"
+          izz="0.00263009102159448" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/arm/arm4_link.STL" />
+        </geometry>
+        <material name="pal/DarkGrey" />
+      </visual>
+      <collision>
+      <origin  xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/arm/arm4_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${name}_${side}_4_joint" type="revolute">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}" />
+      <child link="${name}_${side}_4_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="${deg_to_rad * -65}" upper="${deg_to_rad * 140}" effort="${arm_4_max_effort}" velocity="${arm_4_max_velocity}" />
+    </joint>
+
+    <!-- TRANSMISSIONS -->
+    <xacro:arm_simple_transmission name="${name}_${side}" number="4" reduction="1.0" offset_value="${arm_1_offset}"/>
+
+    <!-- ARM 5 LINK for EndEffector -->
+    <xacro:if value="${arm_type == '5dof'}">
+      <link name="${name}_${side}_5_link">
+        <inertial>
+          <origin xyz="0.00049925 0.00073867 0.013481" rpy="0 0 0" />
+          <mass value="0.25997" />
+          <inertia
+            ixx="9.6112E-05"
+            ixy="8.2458E-07"
+            ixz="-5.4924E-07"
+            iyy="9.9732E-05"
+            iyz="-1.8823E-07"
+            izz="0.00017887" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kangaroo_description/meshes/arm/arm5_tip_link.STL" />
+          </geometry>
+          <material name="pal/DarkGrey" />
+        </visual>
+        <collision>
+        <origin  xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kangaroo_description/meshes/arm/arm5_tip_link.STL" />
+          </geometry>
+        </collision>
+      </link>
+      <joint name="${name}_${side}_5_joint" type="revolute">
+        <origin xyz="-0.17011 0.02 -0.03711" rpy="0 -1.5708 0" />
+        <parent link="${name}_${side}_4_link" />
+        <child link="${name}_${side}_5_link" />
+        <axis xyz="0 0 -1" />
+        <limit
+          lower="-1.57"
+          upper="1.57"
+          effort="${arm_5_max_effort}"
+          velocity="${arm_5_max_velocity}" />
+      </joint>
+     
+      <!-- TRANSMISSIONS -->
+      <xacro:arm_simple_transmission name="${name}_${side}" number="5" reduction="1.0" offset_value="${arm_2_offset}"/>
+    </xacro:if>
+
+    <!-- TRANSMISSIONS -->
+  
+  </xacro:macro>
+</robot>

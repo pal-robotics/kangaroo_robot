@@ -29,6 +29,10 @@
  <material name="DarkGrey">
    <color rgba="0.3 0.3 0.3 1.0"/>
  </material>
+ 
+ <material name="pal/DarkGrey">
+   <color rgba="0.3 0.3 0.3 1.0"/>
+ </material>
 
   <material name="Red">
     <color rgba="0.8 0.0 0.0 1.0"/>

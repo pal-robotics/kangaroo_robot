@@ -10,6 +10,8 @@
   <arg name="with_legs" default="true"/>
   <arg name="with_pelvis" default="false"/>
   <arg name="with_arms"   default="false"/>
+  <arg name="arm_type"   default="4dof"/>
+  <arg name="end_effector_type"   default="fake-forearm"/>
   <arg name="with_belt" default="false" />
   <arg name="torso_2024" default="false" />
   <!-- Robot description -->
@@ -17,13 +19,19 @@
       name="$(arg parameter_name)"
       command=" $(find xacro)/xacro --inorder
                 '$(find kangaroo_description)/robots/kangaroo.urdf.xacro'
-                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic) ft_sensors:=$(arg ft_sensors) 
-              with_legs:=$(arg with_legs) with_pelvis:=$(arg with_pelvis) with_arms:=$(arg with_arms) with_belt:=$(arg with_belt) torso_2024:=$(arg torso_2024)"/>
+                enable_crane:=$(arg enable_crane) simulation:=$(arg simulation) fixed_base:=$(arg fixed_base) use_mimic:=$(arg use_mimic) ft_sensors:=$(arg ft_sensors) end_effector_type:=$(arg end_effector_type) 
+              with_legs:=$(arg with_legs) with_pelvis:=$(arg with_pelvis) arm_type:=$(arg arm_type) with_arms:=$(arg with_arms) with_belt:=$(arg with_belt) torso_2024:=$(arg torso_2024)"/>
 
   <rosparam command="load" file="$(find kangaroo_description)/config/collision_parameters.yaml" />
   <rosparam command="load" file="$(find kangaroo_description)/config/default_configuration_locomotion.yaml" />
 
-  <arg name="robot_type" value="$(eval 'full' if arg('with_pelvis') and arg('with_arms') else ('pelvis_no_arms' if arg('with_pelvis') and not arg('with_arms') else ('arms_no_pelvis' if not arg('with_pelvis') and arg('with_arms') else 'lowerbody')))"/>
+  <!-- <arg name="robot_type" value="$(eval 'full' if arg('with_pelvis') and arg('with_arms') else ('pelvis_no_arms' if arg('with_pelvis') and not arg('with_arms') else ('arms_no_pelvis' if not arg('with_pelvis') and arg('with_arms') else 'lowerbody')))"/> -->
+  <arg name="robot_type" value="$(eval 'full_'+arg('arm_type') if arg('with_pelvis') and arg('with_arms') and (arg('arm_type')=='4dof' or (arg('arm_type')=='7dof' and arg('end_effector_type')=='no-end-effector'))
+                            else ('full_'+arg('arm_type')+'_'+arg('end_effector_type') if arg('with_pelvis') and arg('with_arms') and (arg('arm_type')=='7dof' and arg('end_effector_type')=='gripper')
+                            else ('pelvis_no_arms' if arg('with_pelvis') and not arg('with_arms') 
+                            else ('arms_'+arg('arm_type')+'_no_pelvis' if not arg('with_pelvis') and arg('with_arms') and (arg('arm_type')=='4dof' or (arg('arm_type')=='7dof' and arg('end_effector_type')=='no-end-effector'))
+                            else ('arms_'+arg('arm_type')+'_'+arg('end_effector_type')+'_no_pelvis' if not arg('with_pelvis') and arg('with_arms') and (arg('arm_type')=='7dof' and arg('end_effector_type')=='gripper')
+                            else 'lowerbody')))))"/>
 
   <node pkg="kangaroo_description" type="robot_type" name="robot_type" output="screen" args="$(arg robot_type)"/>
 
