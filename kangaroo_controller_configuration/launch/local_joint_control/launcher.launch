@@ -22,10 +22,10 @@
   <include if="$(eval str(robot_type) in ['full_4dof', 'arms_4dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_left.launch" pass_all_args="true"/>
   <include if="$(eval str(robot_type) in ['full_4dof', 'arms_4dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_right.launch" pass_all_args="true"/>
   
-  <include if="$(eval str(robot_type) in ['full_7dof', 'full_7dof_gripper', 'arms_7dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_left_7dof.launch" pass_all_args="true"/>
-  <include if="$(eval str(robot_type) in ['full_7dof', 'full_7dof_gripper', 'arms_7dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_right_7dof.launch" pass_all_args="true"/>
+  <include if="$(eval str(robot_type) in ['full_7dof', 'full_7dof_gripper', 'arms_7dof_no_pelvis', 'arms_7dof_gripper_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_left_7dof.launch" pass_all_args="true"/>
+  <include if="$(eval str(robot_type) in ['full_7dof', 'full_7dof_gripper', 'arms_7dof_no_pelvis', 'arms_7dof_gripper_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_right_7dof.launch" pass_all_args="true"/>
   
-  <group if="$(eval arg('robot_type') == 'full_7dof_gripper')">
+  <group if="$(eval str(robot_type) in ['full_7dof_gripper', 'arms_7dof_gripper_no_pelvis'])">
 
     <include file="$(find pal_local_joint_control)/launch/no_control.launch" >
       <arg name="controller_pkg_name" value="$(arg controller_pkg_name)"/>
