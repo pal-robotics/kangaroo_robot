@@ -20,8 +20,8 @@ Changelog for package kangaroo_bringup
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.3.0 (2025-11-04)
+------------------
 * Merge branch 'sma/add_7dof_arm' into 'master'
   Add support for 7 dof arm with gripper
   See merge request robots/kangaroo_robot!77

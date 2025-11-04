@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>kangaroo_mj_description</name>
-  <version>0.2.3</version>
+  <version>0.3.0</version>
   <description>The kangaroo_mj_description package</description>
 
   <maintainer email="enrico.mingo@pal-robotics.com">Enrico Mingo Hoffman</maintainer>
