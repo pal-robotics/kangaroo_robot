@@ -19,6 +19,31 @@ Changelog for package kangaroo_description
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'sma/add_7dof_arm' into 'master'
+  Add support for 7 dof arm with gripper
+  See merge request robots/kangaroo_robot!77
+* Remove comment arm 5 reflection
+* Merge branch 'sma/add_gripper_on_7dof' into 'sma/add_7dof_arm'
+  Add pal pro gripper on 7dof arm
+  See merge request robots/kangaroo_robot!79
+* updated arm 5 joint limits
+* updated collision excludes for gripper
+* updated transmission tags for gripper
+* changed ros transmission sintax
+* set initial position for gripper joint
+* added gripper configuration parameters
+* changed initial position
+* fixed joint limits and directions
+* updated exclude collision list
+* added xacro arguments for 7dof arm
+* added 7dof arm
+* updated arm meshes
+* added arm_type and robot_type argument logic
+* updated config files for 7dof arm
+* Contributors: Sai Kishor Kothakota, sergiacosta
+
 0.2.3 (2025-09-25)
 ------------------
 * Merge branch 'fix/handle_inertia_and_collisions' into 'master'

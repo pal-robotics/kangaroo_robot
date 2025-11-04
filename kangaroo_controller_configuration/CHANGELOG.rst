@@ -27,6 +27,31 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'sma/add_7dof_arm' into 'master'
+  Add support for 7 dof arm with gripper
+  See merge request robots/kangaroo_robot!77
+* Add no control configuration for the gripper joints
+* add support for arms_7dof_gripper_no_pelvis in the launcher
+* Merge branch 'sma/add_gripper_on_7dof' into 'sma/add_7dof_arm'
+  Add pal pro gripper on 7dof arm
+  See merge request robots/kangaroo_robot!79
+* updated actuator_pids
+* Add missing full_7dof_gripper condition in the launcher.launch
+* fixed robot_type logic for pelvis controller
+* updated actuator PID gains
+* added controller parameters for gripper finger joint
+* added gripper configuration parameters
+* Remove the commented args
+* Change the motor torque constant
+* set test bench gains for leg motors
+* updated possible robot configurations
+* added local joint for 7dof arm
+* added arm_type and robot_type argument logic
+* updated config files for 7dof arm
+* Contributors: Sai Kishor Kothakota, sergiacosta
+
 0.2.3 (2025-09-25)
 ------------------
 
