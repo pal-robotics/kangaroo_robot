@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- A finger of the pal_pro_gripper -->
+  <xacro:macro name="pro_finger" params="name side reflect finger_offset:=0">
+
+    <!-- Inner finger -->
+    <link name="${name}_inner_finger_${side}_link">
+      <xacro:inertial_inner_finger_link />
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/gripper/inner_finger.stl" />
+        </geometry>
+        <material name="">
+          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/gripper/inner_finger.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_inner_finger_${side}_joint" type="revolute">
+      <xacro:origin_inner_finger_joint reflect="${reflect}" offset="${finger_offset}"/>
+      <parent link="${name}_base_link" />
+      <child link="${name}_inner_finger_${side}_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="0" upper="${46 * deg_to_rad}" velocity="2" effort="0.1" />
+      <mimic joint="${name}_finger_joint" multiplier="1" offset="0" />
+    </joint>
+
+    <!-- Outer finger -->
+    <link name="${name}_outer_finger_${side}_link">
+      <xacro:inertial_outer_finger_link />
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/gripper/outer_finger.stl" />
+        </geometry>
+        <material name="">
+          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/gripper/outer_finger.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!--  The left outer joint is set as gripper_finger_joint. All other joints are passive and will mimic this joint-->
+    <xacro:property name="outer_finger_joint_name" value="${name + '_finger_joint' if side == 'left' else name + '_outer_finger_' + side + '_joint'}" />
+
+    <joint name="${outer_finger_joint_name}" type="revolute">
+      <xacro:origin_outer_finger_joint reflect="${reflect}" offset="${finger_offset}"/>
+      <parent link="${name}_base_link" />
+      <child link="${name}_outer_finger_${side}_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="0" upper="${54.431 * deg_to_rad}" velocity="2" effort="0.1" />
+      <xacro:if value="${side == 'left'}">
+        <dynamics damping="0.03"/>
+      </xacro:if>
+      <xacro:unless value="${side == 'left'}">
+        <mimic joint="${name}_finger_joint" multiplier="1" offset="0" />
+      </xacro:unless>
+    </joint>
+
+    <!-- Fingertip -->
+    <link name="${name}_fingertip_${side}_link">
+      <xacro:inertial_fingertip_link />
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/gripper/fingertip.stl" />
+        </geometry>
+        <material name="">
+          <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/gripper/fingertip.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_fingertip_${side}_joint" type="revolute">
+      <xacro:origin_fingertip_joint reflect="${reflect}" />
+      <parent link="${name}_inner_finger_${side}_link" />
+      <child link="${name}_fingertip_${side}_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="${-46 * deg_to_rad}" upper="0" velocity="2" effort="0.1" />
+      <mimic joint="${name}_finger_joint" multiplier="-1" offset="0" />
+    </joint>
+
+  </xacro:macro>
+
+  <!-- GRIPPER DEFINITION -->
+  <xacro:macro name="pal_pro_gripper" params="tool_changer:=False name parent *origin">
+
+    <!-- Vesion name depending if it is a prototype -->
+    <xacro:property name="gripper_base_type" value="${'base_link_tc' if tool_changer else 'base_link_ntc'}" />
+    <xacro:property name="finger_offset" value="${0.0 if tool_changer else 0.006}" />
+
+    <!-- Properties files -->
+    <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/gripper/gripper.properties.xacro"/>
+
+    <!-- Base link -->
+    <link name="${name}_base_link">
+      <xacro:if value="${tool_changer}">
+        <xacro:inertial_base_link_tc />
+      </xacro:if>
+      <xacro:unless value="${tool_changer}">
+        <xacro:inertial_base_link_ntc />
+      </xacro:unless>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/gripper/${gripper_base_type}.stl" />
+        </geometry>
+        <material name="pal/DarkGrey" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kangaroo_description/meshes/gripper/${gripper_base_type}.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_base_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}" />
+      <child link="${name}_base_link" />
+      <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Fingers -->
+    <xacro:pro_finger name="${name}" side="left" reflect="-1" finger_offset="${finger_offset}"/>
+    <xacro:pro_finger name="${name}" side="right" reflect="1" finger_offset="${finger_offset}"/>
+
+    <!-- Gazebo config -->
+    <gazebo reference="${name}_inner_finger_left_link">
+      <material>Gazebo/White</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="${name}_inner_finger_right_link">
+      <material>Gazebo/White</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="${name}_outer_finger_left_link">
+      <material>Gazebo/White</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="${name}_outer_finger_right_link">
+      <material>Gazebo/White</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="${name}_fingertip_right_link">
+      <material>Gazebo/White</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="${name}_fingertip_left_link">
+      <material>Gazebo/White</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="${name}_base_link">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="${name}_finger_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+      <provideFeedback>1</provideFeedback>
+    </gazebo>
+    <gazebo reference="${name}_finger_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+      <provideFeedback>1</provideFeedback>
+    </gazebo>
+
+    <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/gripper/gripper.ros_control.xacro" />
+    <xacro:ros_control_pal_pro_gripper name="${name}" reduction="1.0" />
+
+  </xacro:macro>
+
+</robot>

@@ -17,14 +17,32 @@
   <arg name="robot_type" default="$(eval open('/tmp/robot_type.yaml').read().split(':')[1].strip() if eval('_' + '_import_' + '_(\'os\')').path.exists('/tmp/robot_type.yaml') else 'invalid')"/>
 
   <include if="$(eval str(robot_type) in ['invalid'])" file="$(find kangaroo_controller_configuration)/launch/invalid_configuration.launch" pass_all_args="true"/>
-  <include if="$(eval str(robot_type) in ['full_4dof', 'full_7dof', 'pelvis_no_arms'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/pelvis.launch" pass_all_args="true"/>
+  <include if="$(eval str(robot_type) in ['full_4dof', 'full_7dof', 'full_7dof_gripper', 'pelvis_no_arms'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/pelvis.launch" pass_all_args="true"/>
 
   <include if="$(eval str(robot_type) in ['full_4dof', 'arms_4dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_left.launch" pass_all_args="true"/>
   <include if="$(eval str(robot_type) in ['full_4dof', 'arms_4dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_right.launch" pass_all_args="true"/>
   
-  <include if="$(eval str(robot_type) in ['full_7dof', 'arms_7dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_left_7dof.launch" pass_all_args="true"/>
-  <include if="$(eval str(robot_type) in ['full_7dof', 'arms_7dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_right_7dof.launch" pass_all_args="true"/>
+  <include if="$(eval str(robot_type) in ['full_7dof', 'full_7dof_gripper', 'arms_7dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_left_7dof.launch" pass_all_args="true"/>
+  <include if="$(eval str(robot_type) in ['full_7dof', 'full_7dof_gripper', 'arms_7dof_no_pelvis'])" file="$(find kangaroo_controller_configuration)/launch/local_joint_control/arm_right_7dof.launch" pass_all_args="true"/>
   
+  <group if="$(eval arg('robot_type') == 'full_7dof_gripper')">
+
+    <include file="$(find pal_local_joint_control)/launch/no_control.launch" >
+      <arg name="controller_pkg_name" value="$(arg controller_pkg_name)"/>
+      <arg name="ns" value="$(arg ns)"/>
+      <arg name="joint_name" value="gripper_left_finger_joint"/>
+      <arg name="safety_override" value="$(eval ('' if not 'gripper_left_finger_joint' in arg('disable_safety_for_joints') else (arg('safety_override') if arg('safety_override') != '' else 'false')))"/>
+    </include>
+
+    <include file="$(find pal_local_joint_control)/launch/no_control.launch" >
+      <arg name="controller_pkg_name" value="$(arg controller_pkg_name)"/>
+      <arg name="ns" value="$(arg ns)"/>
+      <arg name="joint_name" value="gripper_right_finger_joint"/>
+      <arg name="safety_override" value="$(eval ('' if not 'gripper_right_finger_joint' in arg('disable_safety_for_joints') else (arg('safety_override') if arg('safety_override') != '' else 'false')))"/>
+    </include>
+
+  </group>
+
   <group if="$(eval arg('local_joint_control_type') == 'inertia_shaping_kangaroo_analytic_dob_control')">
     <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_left_force_control.launch" pass_all_args="true" />
     <include file="$(find kangaroo_controller_configuration)/launch/local_joint_control/leg_right_force_control.launch" pass_all_args="true" />

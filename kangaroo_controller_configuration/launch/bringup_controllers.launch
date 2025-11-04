@@ -45,12 +45,8 @@
   </group>
 
   <!-- Actuator PID controller -->
-  <group if="$(eval arg('robot_type') in ['full_4dof', 'arms_4dof_no_pelvis'])">
-    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/actuator_4dof_pid_gains.yaml" ns="actuator_pid_command_controller" />
-  </group>
-  <group if="$(eval arg('robot_type') in ['full_7dof', 'arms_7dof_no_pelvis'])">
-    <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/actuator_7dof_pid_gains.yaml" ns="actuator_pid_command_controller" />
-  </group>
+  <rosparam command="load" file="$(find kangaroo_controller_configuration)/config/actuator_pid_gains.yaml" ns="actuator_pid_command_controller" />
+
   <arg if="$(arg enable_unloading_workaround)"
       name="extra_args"
       value="--shutdown-timeout 1.0" />
