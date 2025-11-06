@@ -20,6 +20,11 @@ Changelog for package kangaroo_bringup
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Reduce rotational velocity of joystick
+* Contributors: Sai Kishor Kothakota
+
 0.3.1 (2025-11-06)
 ------------------
 
