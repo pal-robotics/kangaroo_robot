@@ -27,6 +27,14 @@ Changelog for package kangaroo_controller_configuration
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'update/impedance/control' into 'master'
+  Update leg length impedance control damping
+  See merge request robots/kangaroo_robot!80
+* Update leg length impedance control damping
+* Contributors: Sai Kishor Kothakota
+
 0.3.0 (2025-11-04)
 ------------------
 * Merge branch 'sma/add_7dof_arm' into 'master'
