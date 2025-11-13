@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="tiago_pro">
+
+    <!-- Default Dynamical value -->
+    <xacro:macro name="mj_robot_defaults">
+        <joint armature="0.01" damping="5" frictionloss="1" limited="true" />
+        <site size="0.01" rgba="1 0 0 1" group="5"/>
+    </xacro:macro>
+
+    <!-- Equality -->
+    <xacro:macro name="mj_robot_equality">
+      <xacro:if value="${legs_type != 'no-leg'}">
+        <connect anchor="0.0 0.0 0.0" body1="leg_left_4_link" body2="leg_left_knee_link" name="leg_left_closed_kin_joint" solref="0.002 1" />
+        <connect anchor="0.0 0.0 0.0" body1="leg_right_4_link" body2="leg_right_knee_link" name="leg_right_closed_kin_joint" solref="0.002 1" />
+      </xacro:if>
+    </xacro:macro>
+
+    <!-- Contacts -->
+    <xacro:macro name="mj_robot_contacts">
+      <xacro:if value="${legs_type != 'no-leg'}">
+        <xacro:if value="${has_pelvis}">
+          <exclude body1="base_link" body2="pelvis_1_link" />
+          <exclude body1="base_link" body2="pelvis_2_link" />
+          <exclude body1="leg_right_1_link" body2="pelvis_2_link" />
+          <exclude body1="leg_left_1_link" body2="pelvis_2_link" />
+          <exclude body1="leg_right_1_link" body2="pelvis_1_link" />
+          <exclude body1="leg_left_1_link" body2="pelvis_1_link" />
+        </xacro:if>  
+
+        <exclude body1="base_link" body2="leg_left_1_link" />
+        <exclude body1="base_link" body2="leg_left_2_link" />
+        <exclude body1="base_link" body2="leg_left_3_link" />
+
+        <exclude body1="leg_left_1_link" body2="leg_right_1_link" />
+
+        <exclude body1="leg_right_femur_link" body2="base_link" />
+        <exclude body1="leg_left_femur_link" body2="base_link" />
+
+        <exclude body1="leg_left_1_link" body2="leg_left_3_link" />
+        <exclude body1="leg_left_2_link" body2="leg_left_3_link" />
+        <exclude body1="leg_left_2_link" body2="leg_left_1_link" />
+        <exclude body1="leg_left_3_link" body2="leg_left_4_link" />
+        <exclude body1="leg_left_3_link" body2="leg_left_5_link" />
+        <exclude body1="leg_left_3_link" body2="leg_left_knee_link" />
+        <exclude body1="leg_left_femur_link" body2="leg_left_3_link" />
+        <exclude body1="leg_left_femur_link" body2="leg_left_1_link" />
+        <exclude body1="leg_left_femur_link" body2="leg_left_knee_link" />
+        <exclude body1="leg_left_femur_link" body2="leg_left_4_link" />
+        <exclude body1="leg_left_femur_link" body2="leg_left_5_link" />
+        <exclude body1="leg_left_knee_link" body2="leg_left_4_link" />
+        <exclude body1="leg_left_knee_link" body2="leg_left_5_link" />
+        <exclude body1="leg_left_4_link" body2="leg_left_5_link" />
+        
+        <exclude body1="base_link" body2="leg_right_1_link" />
+        <exclude body1="base_link" body2="leg_right_2_link" />
+        <exclude body1="base_link" body2="leg_right_3_link" />
+        <exclude body1="leg_right_1_link" body2="leg_right_3_link" />
+        <exclude body1="leg_right_2_link" body2="leg_right_3_link" />
+        <exclude body1="leg_right_2_link" body2="leg_right_1_link" />
+        <exclude body1="leg_right_3_link" body2="leg_right_4_link" />
+        <exclude body1="leg_right_3_link" body2="leg_right_5_link" />
+        <exclude body1="leg_right_3_link" body2="leg_right_knee_link" />
+        <exclude body1="leg_right_femur_link" body2="leg_right_3_link" />
+        <exclude body1="leg_right_femur_link" body2="leg_right_1_link" />
+        <exclude body1="leg_right_femur_link" body2="leg_right_knee_link" />
+        <exclude body1="leg_right_femur_link" body2="leg_right_4_link" />
+        <exclude body1="leg_right_femur_link" body2="leg_right_5_link" />
+        <exclude body1="leg_right_knee_link" body2="leg_right_4_link" />
+        <exclude body1="leg_right_knee_link" body2="leg_right_5_link" />
+        <exclude body1="leg_right_4_link" body2="leg_right_5_link" />
+      </xacro:if>
+    </xacro:macro>
+
+    <!-- Actuators -->
+    <xacro:macro name="mj_robot_actuators">
+
+        <xacro:if value="${mj_control == 'position' and has_pelvis}">
+          <position joint="pelvis_1_joint" kp="1000" ctrllimited="true" ctrlrange="-0.349066 0.349066" name="pelvis_1_actuator_position" />
+          <position joint="pelvis_2_joint" kp="1000" ctrllimited="true" ctrlrange="-1.309 1.309" name="pelvis_2_actuator_position" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'motor' and has_pelvis}">
+          <motor joint="pelvis_1_joint" ctrllimited="true" ctrlrange="-100 100" name="pelvis_1_actuator_motor" />
+          <motor joint="pelvis_2_joint" ctrllimited="true" ctrlrange="-100 100" name="pelvis_2_actuator_motor" />
+        </xacro:if>
+        
+        <!-- Left Arm -->
+        <xacro:if value="${mj_control == 'position' and (arm_type in ['4dof', '5dof', '7dof'])}">
+          <position joint="arm_left_1_joint" kp="1000" ctrllimited="true" ctrlrange="-2.618 2.618" name="arm_left_1_actuator_position" />
+          <position joint="arm_left_2_joint" kp="1000" ctrllimited="true" ctrlrange="-1.1345 2.4435" name="arm_left_2_actuator_position" />
+          <position joint="arm_left_3_joint" kp="1000" ctrllimited="true" ctrlrange="-2.618 2.618" name="arm_left_3_actuator_position" />
+          <position joint="arm_left_4_joint" kp="1000" ctrllimited="true" ctrlrange="-1.1345 2.4435" name="arm_left_4_actuator_position" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'motor' and (arm_type in ['4dof', '5dof', '7dof'])}">
+          <motor joint="arm_left_1_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_left_1_actuator_motor" />
+          <motor joint="arm_left_2_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_left_2_actuator_motor" />
+          <motor joint="arm_left_3_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_left_3_actuator_motor" />
+          <motor joint="arm_left_4_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_left_4_actuator_motor" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'position' and (arm_type in ['5dof', '7dof'])}">
+          <position joint="arm_left_5_joint" kp="1000" ctrllimited="true" ctrlrange="-3.6652 1.5708" name="arm_left_5_actuator_position" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'motor' and (arm_type in ['5dof', '7dof'])}">
+          <motor joint="arm_left_5_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_left_5_actuator_motor" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'position' and (arm_type in ['7dof'])}">
+          <position joint="arm_left_6_joint" kp="1000" ctrllimited="true" ctrlrange="-1.8849 3.002" name="arm_left_6_actuator_position" />
+          <position joint="arm_left_7_joint" kp="1000" ctrllimited="true" ctrlrange="-2.618 2.618" name="arm_left_7_actuator_position" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'motor' and (arm_type in ['7dof'])}">
+          <motor joint="arm_left_6_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_left_6_actuator_motor" />
+          <motor joint="arm_left_7_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_left_7_actuator_motor" />
+        </xacro:if>
+
+        <!-- Right Arm -->
+        <xacro:if value="${mj_control == 'position' and (arm_type in ['4dof', '5dof', '7dof'])}">
+          <position joint="arm_right_1_joint" kp="1000" ctrllimited="true" ctrlrange="-2.618 2.618" name="arm_right_1_actuator_position" />
+          <position joint="arm_right_2_joint" kp="1000" ctrllimited="true" ctrlrange="-1.1345 2.4435" name="arm_right_2_actuator_position" />
+          <position joint="arm_right_3_joint" kp="1000" ctrllimited="true" ctrlrange="-2.618 2.618" name="arm_right_3_actuator_position" />
+          <position joint="arm_right_4_joint" kp="1000" ctrllimited="true" ctrlrange="-1.1345 2.4435" name="arm_right_4_actuator_position" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'motor' and (arm_type in ['4dof', '5dof', '7dof'])}">
+          <motor joint="arm_right_1_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_right_1_actuator_motor" />
+          <motor joint="arm_right_2_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_right_2_actuator_motor" />
+          <motor joint="arm_right_3_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_right_3_actuator_motor" />
+          <motor joint="arm_right_4_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_right_4_actuator_motor" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'position' and (arm_type in ['5dof', '7dof'])}">
+          <position joint="arm_right_5_joint" kp="1000" ctrllimited="true" ctrlrange="-1.5708 3.6652" name="arm_right_5_actuator_position" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'motor' and (arm_type in ['5dof', '7dof'])}">
+          <motor joint="arm_right_5_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_right_5_actuator_motor" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'position' and (arm_type in ['7dof'])}">
+          <position joint="arm_right_6_joint" kp="1000" ctrllimited="true" ctrlrange="-1.8849 3.002" name="arm_right_6_actuator_position" />
+          <position joint="arm_right_7_joint" kp="1000" ctrllimited="true" ctrlrange="-2.618 2.618" name="arm_right_7_actuator_position" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'motor' and (arm_type in ['7dof'])}">
+          <motor joint="arm_right_6_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_right_6_actuator_motor" />
+          <motor joint="arm_right_7_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_right_7_actuator_motor" />
+        </xacro:if>
+
+        <xacro:if value="${mj_control == 'position' and legs_type != 'no-leg'}">
+          <position joint="leg_left_1_joint" kp="1000" ctrllimited="true" ctrlrange="-0.261799 0.698132" name="leg_left_1_actuator_position" />
+          <position joint="leg_left_2_joint" kp="1000" ctrllimited="true" ctrlrange="-0.741765 0.741765" name="leg_left_2_actuator_position" />
+          <position joint="leg_left_3_joint" kp="1000" ctrllimited="true" ctrlrange="-0.471239 0.471239" name="leg_left_3_actuator_position" />
+          <position joint="leg_left_length_joint" kp="10000" ctrllimited="true" ctrlrange="0.131973 0.714166" name="leg_left_length_actuator_position" />
+          <position joint="leg_left_4_joint" kp="1000" ctrllimited="true" ctrlrange="-0.741765 0.741765" name="leg_left_4_actuator_position" />
+          <position joint="leg_left_5_joint" kp="1000" ctrllimited="true" ctrlrange="-0.471239 0.471239" name="leg_left_5_actuator_position" />
+          <position joint="leg_right_1_joint" kp="1000" ctrllimited="true" ctrlrange="-0.261799 0.698132" name="leg_right_1_actuator_position" />
+          <position joint="leg_right_2_joint" kp="1000" ctrllimited="true" ctrlrange="-0.741765 0.741765" name="leg_right_2_actuator_position" />
+          <position joint="leg_right_3_joint" kp="1000" ctrllimited="true" ctrlrange="-0.471239 0.471239" name="leg_right_3_actuator_position" />
+          <position joint="leg_right_length_joint" kp="10000" ctrllimited="true" ctrlrange="0.131973 0.714166" name="leg_right_length_actuator_position" />
+          <position joint="leg_right_4_joint" kp="1000" ctrllimited="true" ctrlrange="-0.741765 0.741765" name="leg_right_4_actuator_position" />
+          <position joint="leg_right_5_joint" kp="1000" ctrllimited="true" ctrlrange="-0.471239 0.471239" name="leg_right_5_actuator_position" />
+        </xacro:if>
+        <xacro:if value="${mj_control == 'motor' and legs_type != 'no-leg'}">
+          <motor joint="leg_left_1_joint" ctrllimited="true" ctrlrange="-80 80" name="leg_left_1_actuator_motor" />
+          <motor joint="leg_left_2_joint" ctrllimited="true" ctrlrange="-230 230" name="leg_left_2_actuator_motor" />
+          <motor joint="leg_left_3_joint" ctrllimited="true" ctrlrange="-139 139" name="leg_left_3_actuator_motor" />
+          <motor joint="leg_left_length_joint" ctrllimited="true" ctrlrange="-1100 1100" name="leg_left_length_actuator_motor" />
+          <motor joint="leg_left_4_joint" ctrllimited="true" ctrlrange="-140 140" name="leg_left_4_actuator_motor" />
+          <motor joint="leg_left_5_joint" ctrllimited="true" ctrlrange="-82 82" name="leg_left_5_actuator_motor" />
+          <motor joint="leg_right_1_joint" ctrllimited="true" ctrlrange="-80 80" name="leg_right_1_actuator_motor" />
+          <motor joint="leg_right_2_joint" ctrllimited="true" ctrlrange="-230 230" name="leg_right_2_actuator_motor" />
+          <motor joint="leg_right_3_joint" ctrllimited="true" ctrlrange="-139 139" name="leg_right_3_actuator_motor" />
+          <motor joint="leg_right_length_joint" ctrllimited="true" ctrlrange="-1100 1100" name="leg_right_length_actuator_motor" />
+          <motor joint="leg_right_4_joint" ctrllimited="true" ctrlrange="-140 140" name="leg_right_4_actuator_motor" />
+          <motor joint="leg_right_5_joint" ctrllimited="true" ctrlrange="-82 82" name="leg_right_5_actuator_motor" />
+        </xacro:if>
+
+    </xacro:macro>
+
+    <!-- Keyframe -->
+    <xacro:macro name="keyframe_home">
+      <xacro:if value="${mj_control == 'position' and sim_type != 'mujoco-ros2-control'}">
+        <xacro:keyframe_position/>
+      </xacro:if>
+      <xacro:if value="${mj_control == 'motor' or sim_type == 'mujoco-ros2-control'}">
+        <xacro:keyframe_motor/>
+      </xacro:if>
+    </xacro:macro>
+
+    <!-- HOME POSE DEFINITION -->
+
+    <!-- base_position -->
+    <xacro:if value="${fixation_type == 'fixed'}">
+      <xacro:property name="floating_base_pose" 
+      value="" />
+    </xacro:if>
+    <xacro:unless value="${fixation_type == 'fixed'}">
+      <xacro:property name="floating_base_pose" 
+      value="
+      0 0 0.95
+      1 0 0 0" />
+    </xacro:unless>
+
+    <!-- head_position -->
+    <xacro:if value="${has_head}">
+      <xacro:property name="head_pose" 
+      value="0 0" />
+    </xacro:if>
+    <xacro:unless value="${has_head}">
+      <xacro:property name="head_pose" 
+      value="" />
+    </xacro:unless>
+
+    <!-- pelvis_position -->
+    <xacro:if value="${has_pelvis}">
+      <xacro:property name="pelvis_pose" 
+      value="0 0" />
+    </xacro:if>
+    <xacro:unless value="${has_pelvis}">
+      <xacro:property name="pelvis_pose" 
+      value="" />
+    </xacro:unless>
+
+    <!-- arms potitions -->
+    <xacro:if value="${arm_type == 'no-arm'}">
+      <xacro:property name="arm_left_pose" 
+      value="" />
+      <xacro:property name="arm_right_pose" 
+      value="" />
+    </xacro:if>
+    <xacro:if value="${arm_type == '4dof'}">
+      <xacro:property name="arm_left_pose" 
+      value="0.24 1.32 1.57 0.8" />
+      <xacro:property name="arm_right_pose" 
+      value="-0.24 1.32 -1.57 0.8" />
+    </xacro:if>
+    <xacro:if value="${arm_type == '5dof'}">
+      <xacro:property name="arm_left_pose" 
+      value="0.24 1.32 1.57 0.8 0.0" />
+      <xacro:property name="arm_right_pose" 
+      value="-0.24 1.32 -1.57 0.8 0.0" />
+    </xacro:if>
+    <xacro:if value="${arm_type == '7dof'}">
+      <xacro:property name="arm_left_pose" 
+      value="0.24 1.32 1.57 0.8 0 0 0" />
+      <xacro:property name="arm_right_pose" 
+      value="-0.24 1.32 -1.57 0.8 0 0 0" />
+    </xacro:if>
+
+    <!-- legs positions -->
+    <xacro:unless value="${legs_type == 'no-leg'}">
+      <xacro:property name="leg_left_pose" 
+        value="0 0.05 0
+              0.6
+              -0.07 0"/>
+      <!-- value="-0.012 0.054 0.04
+              0.6
+             -0.053 0" /> -->
+      <xacro:property name="leg_left_passive_pose" 
+      value="0.9 1.8" />
+      <xacro:property name="leg_right_pose" 
+      value="0 0.05 0
+              0.6
+              -0.07 0"/>
+      <!-- value="0.012 0.054 -0.04
+              0.6
+             -0.053 0" /> -->
+      <xacro:property name="leg_right_passive_pose" 
+      value="0.9 1.8" />
+    </xacro:unless>
+    <xacro:if value="${legs_type == 'no-leg'}">
+      <xacro:property name="leg_left_pose" value="" />
+      <xacro:property name="leg_left_passive_pose" value="" />
+      <xacro:property name="leg_right_pose" value="" />
+      <xacro:property name="leg_right_passive_pose" value="" />
+    </xacro:if>
+
+    <!-- End effector pose -->
+    <xacro:unless value="${end_effector_type in ['RH8D', 'gripper']}">
+      <xacro:property name="end_effector_actuator_pose" value="" />
+      <xacro:property name="end_effector_pose" value="" />
+    </xacro:unless>
+    <xacro:if value="${end_effector_type == 'RH8D'}">
+      <xacro:mj_hand_actuator_pose property_name="end_effector_actuator_pose"/>
+      <xacro:mj_hand_pose property_name="end_effector_pose"/>
+    </xacro:if>
+    <xacro:if value="${end_effector_type == 'gripper'}">
+      <xacro:mj_gripper_actuator_pose property_name="end_effector_actuator_pose"/>
+      <xacro:mj_gripper_pose property_name="end_effector_pose"/>
+    </xacro:if>
+
+    <!-- Keyframe Home using position actuators-->
+    <xacro:macro name="keyframe_position">
+      <keyframe>
+        <key name="home" 
+          ctrl="
+            ${pelvis_pose}  
+
+            ${arm_left_pose}
+            ${arm_right_pose}
+
+            ${leg_left_pose}
+            ${leg_right_pose}
+            
+            ${end_effector_actuator_pose} 
+            ${end_effector_actuator_pose}"
+
+          qpos="
+            ${floating_base_pose}
+
+            ${pelvis_pose}  
+
+            ${arm_left_pose}
+            ${end_effector_pose}
+
+            ${arm_right_pose}
+            ${end_effector_pose}
+
+            ${leg_left_pose}
+            ${leg_left_passive_pose}
+
+            ${leg_right_pose}
+            ${leg_right_passive_pose}" />
+
+      </keyframe>
+    </xacro:macro>
+
+    <!-- Keyframe Home using motor actuators -->
+    <xacro:macro name="keyframe_motor">
+      <keyframe>
+        <key name="home" 
+            qpos="
+              ${floating_base_pose}
+
+              ${pelvis_pose}  
+
+              ${arm_left_pose}
+              ${end_effector_pose}
+
+              ${arm_right_pose}
+              ${end_effector_pose}
+
+              ${leg_left_pose}
+              ${leg_left_passive_pose}
+
+              ${leg_right_pose}
+              ${leg_right_passive_pose}" />
+              
+      </keyframe>
+    </xacro:macro>
+
+</robot>
