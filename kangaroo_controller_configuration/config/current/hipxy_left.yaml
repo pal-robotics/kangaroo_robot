@@ -1,3 +1,0 @@
-kangaroo_current_controllers:
-  type: "effort_controllers/JointGroupEffortController"
-  joints: [ "leg_left_2_joint", "leg_left_3_joint" ]

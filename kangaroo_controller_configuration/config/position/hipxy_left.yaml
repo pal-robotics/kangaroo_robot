@@ -1,3 +1,0 @@
-kangaroo_position_controllers:
-  type: "position_controllers/JointGroupPositionController"
-  joints: [ "leg_left_2_joint", "leg_left_3_joint" ]

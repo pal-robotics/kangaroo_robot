@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if ! command -v simulate &> /dev/null
-then
-    echo -e "\033[0;31mUnable to launch the simulator. MuJoCo simulator is not found in the environment.\033[0m"
-    exit -1
-fi
-
-simulate $(rospack find kangaroo_mj_description)/xml/kangaroo.xml
