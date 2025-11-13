@@ -11,13 +11,13 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!--File includes-->
-  <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" />
-  <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+  <!-- <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" /> -->
+  <!-- <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" /> -->
 
   <xacro:macro name="kangaroo_waist" params="parent">
 
   <!-- Waist front rgbd camera -->
-    <xacro:sensor_d435
+    <!-- <xacro:sensor_d435
       name="waist_front_rgbd_camera"
       parent="${parent}"
       topics_ns="waist_front_rgbd_camera"
@@ -25,10 +25,10 @@
       <origin
         xyz="0.11998 0 -0.0085"
         rpy="0 1.125 0"/>
-    </xacro:sensor_d435>
+    </xacro:sensor_d435> -->
 
   <!-- Waist back rgbd camera -->
-    <xacro:sensor_d435
+    <!-- <xacro:sensor_d435
       name="waist_back_rgbd_camera"
       parent="${parent}"
       topics_ns="waist_back_rgbd_camera"
@@ -37,6 +37,6 @@
         xyz="-0.20238 0 -0.05049"
         rpy="${180.0*deg_to_rad} 2.0944 0"/>
     </xacro:sensor_d435>
-  
+   -->
   </xacro:macro>
 </robot>

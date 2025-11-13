@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
-  <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.transmission.xacro" />
   <xacro:property name="arm_4_max_velocity"      value="2.35" />
   <xacro:property name="arm_4_max_effort"   value="43.0" />
   
-  <xacro:macro name="fake-forearm" params="name side reflect parent *origin arm_4_offset:=0.0">
+  <xacro:macro name="fake-forearm" params="name side reflect parent *origin">
     <link name="${name}_${side}_4_link">
       <inertial>
         <origin xyz="0.0752641 -0.0079317 -0.023427" rpy="0 0 0" />
@@ -25,12 +24,24 @@
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-      <origin  xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm3_link.STL" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/arm/fake_forearm_${side}_link.stl"
+        scale="1 1 1"
+        capsule_radius="0.054849043041257713"
+        capsule_length="0.43843343404800533">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <!-- Fake forearm capsule origin/rotation definition -->
+            <xacro:if value="${side == 'left'}">
+              <xacro:origin xyz="0.210246 -0.0167497 -0.0171982" rpy="0.805655 1.46244 0.73029" condition="${collision_type == 'capsule'}"/>
+            </xacro:if>
+            <xacro:if value="${side == 'right'}">
+              <xacro:origin xyz="0.210649 -0.0172373 -0.0265895" rpy="1.18814 1.49122 1.11539" condition="${collision_type == 'capsule'}"/>
+            </xacro:if>
+          </properties>
+      </xacro:link_collision>
     </link>
 
     <joint name="${name}_${side}_4_joint" type="revolute">
@@ -39,14 +50,11 @@
       <child link="${name}_${side}_4_link" />
       <axis xyz="0 0 1" />
       <limit
-        lower="${deg_to_rad * -65}"
-        upper="${deg_to_rad * 140}"
+        lower="-1.1345"
+        upper="2.4435"
         effort="${arm_4_max_effort}"
         velocity="${arm_4_max_velocity}" />
     </joint>
-
-    <!-- TRANSMISSIONS -->
-    <xacro:arm_simple_transmission name="${name}_${side}" number="4" reduction="1.0" offset_value="${arm_4_offset}"/>
 
  </xacro:macro>
 </robot>

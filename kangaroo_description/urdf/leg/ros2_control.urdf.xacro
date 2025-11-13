@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- 
+  Copyright (c) 2024 PAL Robotics S.L. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ -->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+  <!-- INCLUDES -->
+  <xacro:include filename="$(find kangaroo_description)/ros2_control/joint.ros2_control.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/ros2_control/mimic_joint.ros2_control.xacro" />
+
+  <!-- MACRO DEFINITION-->
+  <xacro:macro name="leg_ros2_control" params="side">
+
+        <xacro:kangaroo_joint_ros2control name="leg_${side}_1" initial_position="0.0" />
+        <xacro:kangaroo_joint_ros2control name="leg_${side}_2" initial_position="0.05" />
+        <xacro:kangaroo_joint_ros2control name="leg_${side}_3" initial_position="0.0" />
+        <xacro:kangaroo_joint_ros2control name="leg_${side}_length" initial_position="0.6" />
+        <xacro:kangaroo_joint_ros2control name="leg_${side}_4" initial_position="-0.07" />
+        <xacro:kangaroo_joint_ros2control name="leg_${side}_5" initial_position="0.0" />
+        <xacro:mimic_joint_ros2control name="leg_${side}_femur" initial_position="0.9" />
+        <xacro:mimic_joint_ros2control name="leg_${side}_knee" initial_position="1.8" />
+   
+  </xacro:macro>
+
+</robot>

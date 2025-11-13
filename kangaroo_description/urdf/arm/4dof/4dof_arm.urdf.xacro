@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
-  <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.transmission.xacro" />
-
   <xacro:property name="arm_1_max_velocity"      value="1.95" />
   <xacro:property name="arm_2_max_velocity"      value="1.95" />
   <xacro:property name="arm_3_max_velocity"      value="2.35" />
@@ -32,13 +30,18 @@
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-      <origin  xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm_base_link.STL" />
-        </geometry>
-      </collision>
-      
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/arm/arm_base_link.STL"
+        scale="1 1 1"
+        capsule_radius="0"
+        capsule_length="0">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_${side}_fixed_joint" type="fixed">
       <xacro:insert_block name="origin"/>
@@ -66,12 +69,18 @@
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-      <origin  xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm1_link.STL" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/arm/arm1_link.STL"
+        scale="1 1 1"
+        capsule_radius="0"
+        capsule_length="0">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_${side}_1_joint" type="revolute">
       <origin xyz="0 0 0" rpy="3.1416 0 3.1416" />
@@ -101,12 +110,18 @@
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-      <origin  xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm2_link.STL" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/arm/arm2_link.STL"
+        scale="1 1 1"
+        capsule_radius="0"
+        capsule_length="0">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_${side}_2_joint" type="revolute">
       <origin xyz="0.03711 0.02 -0.17011" rpy="0 1.5708 0" />
@@ -114,7 +129,6 @@
       <child link="${name}_${side}_2_link" />
       <axis xyz="0 0 1" />
       <limit lower="${deg_to_rad * -65}" upper="${deg_to_rad * 140}" effort="${arm_2_max_effort}" velocity="${arm_2_max_velocity}" />
-      <!-- <limit lower="${deg_to_rad * -140}" upper="${deg_to_rad * 65}" effort="${arm_2_max_effort}" velocity="${arm_2_max_velocity}" /> -->
     </joint>
 
     <!-- ARM 3 LINK -->
@@ -137,12 +151,18 @@
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-      <origin  xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm3_link.STL" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/arm/arm3_link.STL"
+        scale="1 1 1"
+        capsule_radius="0"
+        capsule_length="0">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_${side}_3_joint" type="revolute">
       <origin xyz="0.15989 -0.02 -0.03711" rpy="0 -1.5708 0" />
@@ -152,11 +172,6 @@
       <limit lower="${deg_to_rad * -150}" upper="${deg_to_rad * 150}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
     </joint>
 
-
-    <!-- TRANSMISSIONS -->
-    <xacro:arm_simple_transmission name="${name}_${side}" number="1" reduction="1.0" offset_value="${arm_1_offset}"/>
-    <xacro:arm_simple_transmission name="${name}_${side}" number="2" reduction="1.0" offset_value="${arm_2_offset}"/>
-    <xacro:arm_simple_transmission name="${name}_${side}" number="3" reduction="1.0" offset_value="${arm_3_offset}"/>
 
   </xacro:macro>
 </robot>

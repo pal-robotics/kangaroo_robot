@@ -1,200 +1,209 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
-<xacro:include filename="$(find kangaroo_description)/urdf/sensors/imu.urdf.xacro"/>
-<xacro:include filename="$(find kangaroo_description)/urdf/pelvis/pelvis.urdf.xacro" />
+  <!-- USED GLOBAL PROPERTIES: [collision_type, sim_type] -->
 
-<xacro:macro name="base_link" params="with_pelvis:=false with_belt:=false torso_2024:=false" >
-  
+  <!-- INCLUDES -->
 
-  <xacro:kangaroo_imu name="imu" parent="torso_link" update_rate="100.0">
-    <origin xyz="0.071 -0.0014 0.02" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${-90.0*deg_to_rad}"/>
-  </xacro:kangaroo_imu>
-    
-<!-- with pelvis DoF -->
-<xacro:if value="${with_pelvis}">
-  <link name="base_link">
-    <inertial>
-      <origin
-        xyz="-0.098278 0.0050886 -0.0322547"
-        rpy="0 0 0" />
-      <mass
-        value="2.6738" />
-      <inertia
-        ixx="0.022825"
-        ixy="-0.00038658"
-        ixz="0.00034009"
-        iyy="0.008341"
-        iyz="-4.4033E-05"
-        izz="0.027837" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://kangaroo_description/meshes/base_link_with_pelvis.stl" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.25098 0.25098 0.25098 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://kangaroo_description/meshes/base_link_with_pelvis_collision.stl" />
-      </geometry>
-    </collision>
-  </link>
-  <xacro:kangaroo_pelvis name="pelvis" parent="base_link" pelvis_1_offset="0" pelvis_2_offset="0">
-   <origin xyz="-0.0918000000000001 0 -0.0455" rpy="0 0 0" />
-  </xacro:kangaroo_pelvis>  
-
+  <!-- Torso -->
   <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
-  <xacro:kangaroo_torso parent="pelvis_2_link">
-    <origin xyz="0 0 0.0061" rpy="0 0 0" />
-  </xacro:kangaroo_torso> 
-</xacro:if>
 
-<!-- without pelvis DoF -->
-  <xacro:unless value="${with_pelvis}">
-  <link name="base_link">
-    <inertial>
-      <origin
-        xyz="-0.0976652 0.0052196 -0.0319554"
-        rpy="0 0 0" />
-      <mass
-        value="2.5752" />
-      <inertia
-        ixx="0.022653"
-        ixy="-0.00037405"
-        ixz="0.00039289"
-        iyy="0.0079829"
-        iyz="-3.4044E-05"
-        izz="0.027412" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://kangaroo_description/meshes/base_link.stl" />
-      </geometry>
-      <material name="">
-        <color rgba="0.25098 0.25098 0.25098 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://kangaroo_description/meshes/base_link_collision.stl" />
-      </geometry>
-    </collision>
-  </link>
-  <xacro:include filename="$(find kangaroo_description)/urdf/torso/torso.urdf.xacro" />
-  <xacro:kangaroo_torso parent="base_link">
-    <origin xyz="-0.0918000000000001 0 0.0075" rpy="0 0 0" />
-  </xacro:kangaroo_torso>
+  <!-- Pelvis -->
+  <xacro:if value="${has_pelvis}">
+    <xacro:include filename="$(find kangaroo_description)/urdf/pelvis/pelvis.urdf.xacro" />
+  </xacro:if>
+
+  <!-- Waist -->
+  <xacro:unless value="${has_pelvis}">
+    <xacro:include filename="$(find kangaroo_description)/urdf/waist/waist.urdf.xacro" />
   </xacro:unless>
 
-   <!-- belt waist protector and cameras-->
-  <xacro:if value="${with_belt}">
-  <link name="waist_protector">
-     <inertial>
-      <origin
-        xyz="-0.06692 2E-05 -0.02479"
-        rpy="0 0 0" />
-      <mass
-        value="1.03458" />
-      <inertia
-        ixx="0.01972"
-        ixy="-1E-05"
-        ixz="-0.00037"
-        iyy="0.01996"
-        iyz="0"
-        izz="0.03879" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://kangaroo_description/meshes/waist_protector.stl" />
-      </geometry>
-      <material
-        name="">
-        <color
-           rgba="0.25098 0.25098 0.25098 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://kangaroo_description/meshes/waist_protector_collision.stl" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="waist_protector_fixed_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="base_link" />
-      <child link="waist_protector" />
-  </joint>
-  <!-- waist cameras -->
-  <xacro:include filename="$(find kangaroo_description)/urdf/waist/waist.urdf.xacro" />
-  <xacro:kangaroo_waist parent="base_link"/>
-</xacro:if>
-    
-  <!-- with back handle -->
-  <xacro:unless value="${with_belt}">
-  <link name="back_handle">
-    <inertial>
-      <origin xyz="-0.1742 2.256E-05 -0.0026718" rpy="0 0 3.14159" />
-      <mass value="0.32489" />
-      <inertia
-        ixx="0.0054596"
-        ixy="-2.9277E-08"
-        ixz="-0.00058382"
-        iyy="0.0015135"
-        iyz="1.3465E-08"
-        izz="0.006106" />
-    </inertial>	  
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://kangaroo_description/meshes/handle.stl" />
-      </geometry>
-      <material
-        name="DarkGrey"/>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://kangaroo_description/meshes/handle.stl" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="back_handle_fixed_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="base_link" />
-      <child link="back_handle" />
-  </joint>
-  </xacro:unless>
+  <!-- Sensors -->
+  <!-- <xacro:include filename="$(find kangaroo_description)/urdf/sensors/imu.urdf.xacro"/> -->
 
- 
+  <!-- BASE LINK MACRO -->
+  <xacro:macro name="base_link" params="has_pelvis:=false">
 
-</xacro:macro>
+    <!-- IMU -->
+    <!-- <xacro:kangaroo_imu name="imu" parent="torso_link" update_rate="100.0">
+      <origin xyz="0.071 -0.0014 0.02" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${-90.0*deg_to_rad}"/>
+    </xacro:kangaroo_imu> -->
+
+    <!-- has pelvis DoF -->
+    <xacro:if value="${has_pelvis}">
+      <link name="base_link">
+        <inertial>
+          <origin xyz="-0.098278 0.0050886 -0.0322547" rpy="0 0 0" />
+          <mass value="2.6738" />
+          <inertia
+            ixx="0.022825"
+            ixy="-0.00038658"
+            ixz="0.00034009"
+            iyy="0.008341"
+            iyz="-4.4033E-05"
+            izz="0.027837" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kangaroo_description/meshes/base/base_link_with_pelvis.stl" />
+          </geometry>
+          <material name="pal/DarkGrey" />
+        </visual>
+        <xacro:link_collision
+          mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+          collision_type="${collision_type}"
+          mesh_file="package://kangaroo_description/meshes/base/base_link_with_pelvis_collision.stl"
+          scale="1 1 1">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}" />
+            <xacro:origin xyz="0 0 0.2" rpy="0 0 0" condition="${collision_type == 'capsule'}" />
+          </properties>
+        </xacro:link_collision>
+      </link>
+
+      <link name="back_handle">
+        <inertial>
+          <origin xyz="-0.1742 2.256E-05 -0.0026718" rpy="0 0 3.14159" />
+          <mass value="0.32489" />
+          <inertia
+            ixx="0.0054596"
+            ixy="-2.9277E-08"
+            ixz="-0.00058382"
+            iyy="0.0015135"
+            iyz="1.3465E-08"
+            izz="0.006106" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kangaroo_description/meshes/base/handle.stl" />
+          </geometry>
+          <material name="pal/DarkGrey" />
+        </visual>
+        <xacro:link_collision 
+          mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+          collision_type="${collision_type}"
+          mesh_file="package://kangaroo_description/meshes/base/handle.stl"
+          scale="1 1 1"
+          capsule_radius="0"
+          capsule_length="0">
+            <properties>
+              <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+              <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+            </properties>
+        </xacro:link_collision>
+      </link>
+
+      <joint name="back_handle_fixed_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="back_handle" />
+      </joint>
+
+      <!-- PELVIS -->
+
+      <xacro:kangaroo_pelvis name="pelvis" parent="base_link" pelvis_1_offset="0"
+        pelvis_2_offset="0">
+        <origin xyz="-0.0918000000000001 0 -0.0455" rpy="0 0 0" />
+      </xacro:kangaroo_pelvis>
+
+      <!-- TORSO -->
+       
+      <xacro:kangaroo_torso parent="pelvis_2_link">
+        <origin xyz="0 0 0.0061" rpy="0 0 0" />
+      </xacro:kangaroo_torso>
+    </xacro:if>
+
+    <!-- without pelvis DoF -->
+    <xacro:unless value="${has_pelvis}">
+      <link name="base_link">
+        <inertial>
+          <origin
+            xyz="-0.0976652 0.0052196 -0.0319554"
+            rpy="0 0 0" />
+          <mass
+            value="2.5752" />
+          <inertia
+            ixx="0.022653"
+            ixy="-0.00037405"
+            ixz="0.00039289"
+            iyy="0.0079829"
+            iyz="-3.4044E-05"
+            izz="0.027412" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kangaroo_description/meshes/base/base_link.stl" />
+          </geometry>
+          <material name="">
+            <color rgba="0.25098 0.25098 0.25098 1" />
+          </material>
+        </visual>
+        <xacro:link_collision
+          mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+          collision_type="${collision_type}"
+          mesh_file="package://kangaroo_description/meshes/base/base_link_collision.stl"
+          scale="1 1 1">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}" />
+            <xacro:origin xyz="0 0 0.2" rpy="0 0 0" condition="${collision_type == 'capsule'}" />
+          </properties>
+        </xacro:link_collision>
+      </link>
+      <link name="waist_protector">
+        <inertial>
+          <origin
+            xyz="-0.06692 2E-05 -0.02479"
+            rpy="0 0 0" />
+          <mass
+            value="1.03458" />
+          <inertia
+            ixx="0.01972"
+            ixy="-1E-05"
+            ixz="-0.00037"
+            iyy="0.01996"
+            iyz="0"
+            izz="0.03879" />
+        </inertial>
+        <visual>
+          <origin
+            xyz="0 0 0"
+            rpy="0 0 0" />
+          <geometry>
+            <mesh
+              filename="package://kangaroo_description/meshes/waist/waist_protector.stl" />
+          </geometry>
+          <material
+            name="">
+            <color
+              rgba="0.25098 0.25098 0.25098 1" />
+          </material>
+        </visual>
+        <xacro:link_collision
+          mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+          collision_type="${collision_type}"
+          mesh_file="package://kangaroo_description/meshes/waist/waist_protector_collision.stl"
+          scale="1 1 1">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}" />
+            <xacro:origin xyz="0 0 0.2" rpy="0 0 0" condition="${collision_type == 'capsule'}" />
+          </properties>
+        </xacro:link_collision>
+      </link>
+      <joint name="waist_protector_fixed_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="waist_protector" />
+      </joint>
+
+      <xacro:kangaroo_torso parent="base_link">
+        <origin xyz="-0.0918000000000001 0 0.0075" rpy="0 0 0" />
+      </xacro:kangaroo_torso>
+      <!-- waist cameras -->
+      <xacro:kangaroo_waist parent="base_link" />
+    </xacro:unless>
+
+  </xacro:macro>
 </robot>

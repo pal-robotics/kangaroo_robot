@@ -3,9 +3,8 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
   <xacro:include filename="$(find kangaroo_description)/urdf/ankle/foot_frames.urdf.xacro" />
-  <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle.transmission.xacro" />
+  <!-- <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle.transmission.xacro" /> -->
 
-  <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
   <xacro:property name="eps_radians"      value="0.008" /> <!-- 0.45deg -->
   <xacro:property name="pitch_joint_min_pos"   value="${-42.5 *deg_to_rad}" />
   <xacro:property name="pitch_joint_max_pos"   value="${38.0 *deg_to_rad}" />
@@ -13,7 +12,7 @@
   <xacro:property name="roll_joint_max_pos"   value="${27.0 *deg_to_rad}" />
 
 
-  <xacro:macro name="kangaroo_ankle" params="side reflect parent *origin pitch_joint roll_joint read_actuator simulation:=false ft_sensors:=false">
+  <xacro:macro name="kangaroo_ankle" params="side reflect parent *origin pitch_joint roll_joint read_actuator">
     <link name="leg_${side}_${pitch_joint}_link">
       <inertial>
         <origin xyz="-0.00759994843981759 -6.94997526196062E-09 5.88281323654627E-08" rpy="0 0 0" />
@@ -24,16 +23,20 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_6_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/leg/leg_6_link.stl" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_6_link.stl" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/leg/leg_6_link.stl"
+        scale="1 ${reflect} 1">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="leg_${side}_${pitch_joint}_joint" type="revolute">
       <xacro:insert_block name="origin"/>
@@ -43,7 +46,7 @@
       <limit lower="${pitch_joint_min_pos}" upper="${pitch_joint_max_pos}" effort="140" velocity="3.87" />
     </joint>
     <link name="leg_${side}_${roll_joint}_link">
-      <xacro:unless value="${ft_sensors}">
+      <xacro:unless value="${legs_type in ['ft-leg']}">
         <inertial>
           <origin xyz="0.0056012722847415 -5.98528992629133E-06 -0.0297244079568318" rpy="0 0 0" />
           <mass value="0.61562973648731" />
@@ -53,17 +56,21 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://kangaroo_description/meshes/leg_7_link.stl" />
+            <mesh filename="package://kangaroo_description/meshes/leg/leg_7_link.stl" />
           </geometry>
-          <material name="DarkGrey"/>
+          <material name="pal/DarkGrey" />
         </visual>
-        <collision>
-          <origin xyz="0 0 0" rpy="0 0 0" />
-          <geometry>
-            <mesh filename="package://kangaroo_description/meshes/leg_7_link.stl" />
-          </geometry>
-        </collision>
-        <collision>
+        <xacro:link_collision 
+          mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+          collision_type="${collision_type}"
+          mesh_file="package://kangaroo_description/meshes/leg/leg_7_link.stl"
+          scale="1 ${reflect} 1">
+          <properties>
+              <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+              <xacro:origin xyz="0.0349999939117332 ${reflect * -2.55850040738657e-11} -0.0200000000271849" rpy="0 ${-110.0 * deg_to_rad} 0" condition="${collision_type == 'capsule'}"/>
+            </properties>
+        </xacro:link_collision>
+	      <collision>
           <origin xyz="0.01 0.0 -0.028" rpy="0 ${-20.0 * deg_to_rad} 0" />
           <geometry>
             <!-- The length of the sole is around 24cm, but with the attached rubber sole it would be 24.9cm -->
@@ -71,8 +78,8 @@
           </geometry>
         </collision>
       </xacro:unless>
-      <xacro:if value="${ft_sensors}">
-        <!-- Note: We donot have yet the mesh with the ft_sensors, so using the same mesh, but the collision mesh is updated to be the proper one -->
+      <!-- The FT sensors is still not available -->
+      <!-- <xacro:if value="${legs_type in ['ft-leg']}">
         <inertial>
           <origin xyz="0.0056012722847415 -8.11751E-06 -0.062005508" rpy="0 0 0" />
           <mass value="0.826924" />
@@ -82,24 +89,29 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
           <geometry>
-            <mesh filename="package://kangaroo_description/meshes/leg_7_link_ft.stl" />
+            <mesh filename="package://kangaroo_description/meshes/leg/leg_7_link_ft.stl" />
           </geometry>
-          <material name="DarkGrey"/>
+          <material name="">
+            <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+          </material>
         </visual>
+        <xacro:link_collision 
+          mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+          collision_type="${collision_type}"
+          mesh_file="package://kangaroo_description/meshes/leg/leg_7_link_ft.stl"
+          scale="1 ${reflect} 1">
+            <properties>
+              <xacro:origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" condition="${collision_type == 'mesh'}"/>
+              <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+            </properties>
+        </xacro:link_collision>
         <collision>
-          <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
+          <origin xyz="0.02 0.0 -0.056" rpy="0 ${-20.0 * deg_to_rad} 0" />
           <geometry>
-            <mesh filename="package://kangaroo_description/meshes/leg_7_link_ft.stl" />
-          </geometry>
-        </collision>
-        <collision>
-          <origin xyz="0.0 0.0 -0.065" rpy="0 ${-20.0 * deg_to_rad} 0" />
-          <geometry>
-            <!-- The length of the sole is around 24cm, but with the attached rubber sole it would be 24.9cm -->
             <box size="0.249 0.10 0.025"/>
           </geometry>
         </collision>
-      </xacro:if>
+      </xacro:if> -->
     </link>
     <joint name="leg_${side}_${roll_joint}_joint" type="revolute">
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -116,7 +128,8 @@
       <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 0" />
     </joint>
 
-    <xacro:if value="${ft_sensors}">
+    <!-- The FT sensors is still not available -->
+    <!-- <xacro:if value="${legs_type in ['ft-leg']}">
 
       <link name="${side}_ft_sensor_link"/>
       
@@ -126,112 +139,34 @@
         <origin xyz="0.00855050358313864 0 -0.023492315519661" rpy="0 ${-20.0 * deg_to_rad} 0" />
       </joint>
 
-    </xacro:if>
+    </xacro:if> -->
 
     <link name="${side}_sole_link"/>
 
     <joint name="${side}_sole_joint" type="fixed">
-      <xacro:unless value="${ft_sensors}">
+      <xacro:unless value="${legs_type in ['ft-leg']}">
         <parent link="leg_${side}_${roll_joint}_aligned_link" />
         <child link="${side}_sole_link" />
         <origin xyz="0.0 0.0 -0.0425" rpy="0 0 0" />
       </xacro:unless>
-      <xacro:if value="${ft_sensors}">
+      <!-- The FT sensors is still not available -->
+      <!-- <xacro:if value="${legs_type in ['ft-leg']}">
         <parent link="${side}_ft_sensor_link" />
         <child link="${side}_sole_link" />
         <origin xyz="0.006889 0 -0.0495" rpy="0 0 0" />
-      </xacro:if>
-    </joint>
-    
+      </xacro:if> -->
+    </joint>    
+
     <xacro:kangaroo_foot_frames side="${side}" parent="${side}_sole_link" offset_x="0.01"/>
 
-    <xacro:unless value="${simulation}">
+    <!-- <xacro:unless value="${simulation}">
       <xacro:kangaroo_ankle_transmission side="${side}" roll_joint="${roll_joint}" pitch_joint="${pitch_joint}" read_actuator="${read_actuator}" />
-    </xacro:unless>
-    <xacro:if value="${simulation}">
-      <xacro:kangaroo_ankle_simple_simulation_transmission side="${side}" roll_joint="${roll_joint}" pitch_joint="${pitch_joint}"/>
-    </xacro:if>
-   
-    <gazebo reference="leg_${side}_${pitch_joint}_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
+      </xacro:unless>
+      <xacro:if value="${simulation}">
+        <xacro:kangaroo_ankle_simple_simulation_transmission side="${side}" roll_joint="${roll_joint}" pitch_joint="${pitch_joint}"/>
+        </xacro:if> -->
     
-    </gazebo>
-    <gazebo reference="leg_${side}_${roll_joint}_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-      <provideFeedback>1</provideFeedback>
-     </gazebo>
 
-    <gazebo reference="leg_${side}_${pitch_joint}_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-      <implicitSpringDamper>1</implicitSpringDamper>
-      <material>Gazebo/FlatWhite</material>
-    </gazebo>
-
-   <!--
-   <gazebo reference="leg_${side}_${roll_joint}_link">
-     <mu1>0.9</mu1>
-     <mu2>0.9</mu2>
-     <implicitSpringDamper>1</implicitSpringDamper>
-     <material>Gazebo/FlatWhite</material>
-   </gazebo>  -->
-
-   <gazebo reference="leg_${side}_${roll_joint}_link">
-      <kp>1000000.0</kp> <!-- 1000000 -->
-      <kd>100.0</kd>
-      <mu1>10.0</mu1>
-      <mu2>10.0</mu2>
-      <fdir1>1 0 0</fdir1>
-      <maxVel>1.0</maxVel>
-      <minDepth>0.00</minDepth>
-      <implicitSpringDamper>1</implicitSpringDamper>
-      <provideFeedback>1</provideFeedback>
-      <material>Gazebo/FlatWhite</material>
-    </gazebo>
-
-    <!--
-    <gazebo reference="leg_{side}_${pitch_joint}_link">
-     <kp>1000.0</kp>
-      <kd>10.0</kd>
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
-      <fdir1>1 0 0</fdir1>
-      <fdir2>0 1 0</fdir2>
-      <maxVel>1.0</maxVel>
-      <minDepth>0.00</minDepth>
-      <implicitSpringDamper>1</implicitSpringDamper>
-      <provideFeedback>1</provideFeedback>
-      <material>Gazebo/FlatWhite</material>
-    </gazebo>
-    -->
-    <!--
-    <link name="${side}_pesa_link">
-      <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="5.0" />
-        <inertia ixx="0.015291667" ixy="0.0" ixz="0.0"
-          iyy="0.015291667" iyz="0.0" izz="0.0302" />
-      </inertial>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.02" radius="0.11"/>
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.02" radius="0.11"/>
-        </geometry>
-      </collision>
-    </link>
-
-    <joint name="${side}_pesa_joint" type="fixed">
-      <parent link="${side}_sole_link" />
-      <child link="${side}_pesa_link" />
-      <origin xyz="0.0 0.0 -0.01" rpy="0 0 0" />
-    </joint>
-  -->
   </xacro:macro>
 
 </robot>

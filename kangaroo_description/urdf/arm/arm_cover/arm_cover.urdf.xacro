@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
-  <xacro:macro name="kangaroo_arm_cover" params="name side reflect parent *origin">
-    <link name="${name}_${side}_cover_link">
-      <inertial>
-        <origin
-          xyz="-2E-05 -0.00021 -0.04402"
-          rpy="0 0 0" />
-        <mass
-          value="0.14355" />
-        <inertia
-          ixx="0.00012"
-          ixy="0"
-          ixz="0"
-          iyy="0.00021"
-          iyz="-1E-05"
-          izz="0.0003" />
-      </inertial>
-      <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://kangaroo_description/meshes/arm_cover_link.stl" />
-        </geometry>
-        <material name="pal/DarkGrey"/>
-      </visual>
-      <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://kangaroo_description/meshes/arm_cover_link_collision.stl" />
-        </geometry>
-      </collision>
-    </link>
+<xacro:macro name="kangaroo_arm_cover" params="name side reflect parent *origin">
+  <link
+    name="${name}_${side}_cover_link">
+    <inertial>
+      <origin
+        xyz="-2E-05 -0.00021 -0.04402"
+        rpy="0 0 0" />
+      <mass
+        value="0.14355" />
+      <inertia
+        ixx="0.00012"
+        ixy="0"
+        ixz="0"
+        iyy="0.00021"
+        iyz="-1E-05"
+        izz="0.0003" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kangaroo_description/meshes/arm_cover/arm_cover_link.stl" />
+      </geometry>
+      <material name="pal/DarkGrey"/>
+    </visual>
+    <xacro:link_collision 
+      mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+      collision_type="${collision_type}"
+      mesh_file="package://kangaroo_description/meshes/arm_cover/arm_cover_link_collision.stl"
+      scale="1 1 1">
+      <properties>
+        <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+        <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+      </properties>
+    </xacro:link_collision>
+  </link>
 
-    <joint name="${name}_${side}_fixed_joint" type="fixed">
-        <xacro:insert_block name="origin"/>
-        <parent link="${parent}" />
-        <child link="${name}_${side}_cover_link" />
-    </joint>
-  </xacro:macro>
+  <joint name="${name}_${side}_fixed_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}" />
+      <child link="${name}_${side}_cover_link" />
+ </joint>
+ </xacro:macro>
 </robot>

@@ -1,46 +1,32 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+  
+  <!-- USING GLOBAL PROPERTIES: [collision_type, sim_type] -->
+  <!-- LOCAL PROPERTIES -->
+  <xacro:property name="eps_radians" value="0.008" /> <!-- 0.45deg -->
+  <xacro:property name="eps_meters" value="0.005" />
+  <xacro:property name="leg_1_min_pos" value="${-15.0 *deg_to_rad}" />
+  <xacro:property name="leg_1_max_pos" value="${40.0 *deg_to_rad}" />
+  <xacro:property name="leg_2_min_pos" value="${-42.5 *deg_to_rad}" />
+  <xacro:property name="leg_2_max_pos" value="${38.0 *deg_to_rad}" />
+  <xacro:property name="leg_3_min_pos" value="${-27.0 *deg_to_rad}" />
+  <xacro:property name="leg_3_max_pos" value="${27.0 *deg_to_rad}" />
+  <xacro:property name="leg_femur_min_pos" value="${10.0 *deg_to_rad}" />
+  <xacro:property name="leg_femur_max_pos" value="${70.0 *deg_to_rad}" />
+  <xacro:property name="leg_knee_min_pos" value="${20.0 *deg_to_rad}" />
+  <xacro:property name="leg_knee_max_pos" value="${140.0 *deg_to_rad}" />
+  <xacro:property name="leg_min_length" value="0.131973" />
+  <xacro:property name="leg_max_length" value="0.71416639" />
+  
+  <!-- INCLUDES -->
 
-  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.transmission.xacro" />
+  <!-- <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.transmission.xacro" /> -->
   <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle.urdf.xacro" />
 
-  <xacro:property name="deg_to_rad"       value="0.01745329251994329577" />
-  <xacro:property name="eps_radians"      value="0.008" /> <!-- 0.45deg -->
-  <xacro:property name="eps_meters"       value="0.005" />
-  <xacro:property name="leg_1_min_pos"   value="${-15.0 *deg_to_rad}" />
-  <xacro:property name="leg_1_max_pos"   value="${40.0 *deg_to_rad}" />
-  <xacro:property name="leg_2_min_pos"   value="${-42.5 *deg_to_rad}" />
-  <xacro:property name="leg_2_max_pos"   value="${38.0 *deg_to_rad}" />
-  <xacro:property name="leg_3_min_pos"   value="${-27.0 *deg_to_rad}" />
-  <xacro:property name="leg_3_max_pos"   value="${27.0 *deg_to_rad}" />
-  <xacro:property name="leg_femur_min_pos"   value="${10.0 *deg_to_rad}" />
-  <xacro:property name="leg_femur_max_pos"   value="${70.0 *deg_to_rad}" />
-  <xacro:property name="leg_knee_min_pos"   value="${20.0 *deg_to_rad}" />
-  <xacro:property name="leg_knee_max_pos"   value="${140.0 *deg_to_rad}" />
-  <xacro:property name="leg_min_length"   value="0.131973" />
-  <xacro:property name="leg_max_length"   value="0.71416639" />
 
-  <xacro:macro name="mimic_joint_plugin_gazebo" params="name_prefix parent_joint mimic_joint has_pid:=false multiplier:=1.0 offset:=0 sensitiveness:=0.0 max_effort:=1.0 robot_namespace:=''">
-    <gazebo>
-      <plugin name="${name_prefix}mimic_joint_plugin" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
-        <joint>${parent_joint}</joint>
-        <mimicJoint>${mimic_joint}</mimicJoint>
-        <xacro:if value="${has_pid}">                     <!-- if set to true, PID parameters from "/gazebo_ros_control/pid_gains/${mimic_joint}" are loaded -->
-          <hasPID />
-        </xacro:if>
-        <multiplier>${multiplier}</multiplier>
-        <offset>${offset}</offset>
-        <sensitiveness>${sensitiveness}</sensitiveness>   <!-- if absolute difference between setpoint and process value is below this threshold, do nothing; 0.0 = disable [rad] -->
-        <maxEffort>${max_effort}</maxEffort>              <!-- only taken into account if has_pid:=true [Nm] -->
-        <xacro:unless value="${robot_namespace == ''}">
-          <robotNamespace>${robot_namespace}</robotNamespace>
-        </xacro:unless>
-      </plugin>
-    </gazebo>
-  </xacro:macro>
-
-  <xacro:macro name="kangaroo_leg" params="side reflect parent *origin hipz_model:=2023 simulation:=false use_mimic:=true ft_sensors:=false">
+  <xacro:macro name="kangaroo_leg"
+    params="side reflect parent *origin leg_type:=leg">
     <link name="leg_${side}_1_link">
       <inertial>
         <origin xyz="0.0063167 ${reflect * 0.0045949} -0.0083828" rpy="0 0 0" />
@@ -51,19 +37,26 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl" scale="1 ${reflect} 1"/>
+          <mesh filename="package://kangaroo_description/meshes/leg/leg_${side}_1_link.stl"
+            scale="1 1 1" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_1_link.stl"  scale="1 ${reflect} 1"/>
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/leg/leg_${side}_1_link.stl"
+        scale="1 1 1"
+        capsule_radius="0.0795723341519774"
+        capsule_length="0.0826993462928503">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0.0460974381954039 ${reflect * 2.61722121352298e-07} -0.0031296116923038" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="leg_${side}_1_joint" type="revolute">
-      <xacro:insert_block name="origin"/>
+      <xacro:insert_block name="origin" />
       <parent link="${parent}" />
       <child link="leg_${side}_1_link" />
       <axis xyz="0 0 1" />
@@ -86,16 +79,21 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_2_link.stl" scale="1 ${reflect} 1"/>
+          <mesh filename="package://kangaroo_description/meshes/leg/leg_${side}_2_link.stl"
+            scale="1 1 1" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_2_link.stl" scale="1 ${reflect} 1"/>
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/leg/leg_${side}_2_link.stl"
+        scale="1 1 1">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="leg_${side}_2_joint" type="revolute">
       <origin xyz="0.015024 0 -0.1175" rpy="0 0 0" />
@@ -114,16 +112,23 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_3_link.stl" scale="1 ${reflect} 1"/>
+          <mesh filename="package://kangaroo_description/meshes/leg/leg_${side}_3_link.stl"
+            scale="1 1 1" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_3_link.stl" scale="1 ${reflect} 1"/>
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/leg/leg_${side}_3_link.stl"
+        scale="1 1 1"
+        capsule_radius="0.107806017781018"
+        capsule_length="0.0968239136648226">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="-0.0336733479063389 ${reflect * 0.0385644774263234} -0.0356634521697478" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="leg_${side}_3_joint" type="revolute">
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -133,15 +138,6 @@
       <limit lower="${leg_3_min_pos}" upper="${leg_3_max_pos}" effort="139" velocity="3.87" />
     </joint>
     <link name="leg_${side}_femur_link">
-<!--       <xacro:if value="${use_mimic}">
-              <mass value="0.1" />
-              <inertia ixx="1.E-5" ixy="0.0" ixz="0.0" iyy="1.E-5" iyz="0.0" izz="1.E-5" />
-      </xacro:if>
-      <xacro:unless value="${use_mimic}">
-        <mass value="3.57408268817521" />
-              <inertia ixx="0.00247170768644724" ixy="2.87874888621229E-05" ixz="0.00247469186737281"
-                iyy="0.0126050262407564" iyz="1.01404330133204E-05" izz="0.0116319632922522" />
-      </xacro:unless> -->
       <inertial>
         <origin xyz="0.0527475093314697 0.000135688427874925 -0.146959283149568" rpy="0 0 0" />
         <mass value="3.94567187082779" />
@@ -151,29 +147,26 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <!-- The ballscrews are removed from the meshes for better visualization, but they are used for inertia computation etc -->
-          <mesh filename="package://kangaroo_description/meshes/leg_femur_link.stl" />
+          <!-- The ballscrews are removed from the meshes for better visualization, but they are
+        used for inertia computation etc -->
+          <mesh filename="package://kangaroo_description/meshes/leg/leg_femur_link.stl" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 ${60.0 * deg_to_rad} 0" />
-        <geometry>
-          <!-- The ballscrews are removed from the meshes for better visualization, but they are used for inertia computation etc -->
-          <mesh filename="package://kangaroo_description/meshes/leg_4_collision_link.stl" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/leg/leg_4_collision_link.stl"
+        scale="1 ${reflect} 1"
+        capsule_radius="0.0910718312767096"
+        capsule_length="0.391268198141901">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 ${60.0 * deg_to_rad} 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="${-0.0527475093314697 + 0.120708412192612} ${reflect * 0.0010415825568705} ${-0.146959283149568 + 0.0229981018461956}" rpy="0 ${-15.0 * deg_to_rad} 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <link name="leg_${side}_knee_link">
-<!--       <xacro:if value="${use_mimic}">
-              <mass value="0.1" />
-              <inertia ixx="1.E-5" ixy="0.0" ixz="0.0" iyy="1.E-5" iyz="0.0" izz="1.E-5" />
-      </xacro:if>
-      <xacro:unless value="${use_mimic}">
-              <mass value="0.87223211672797" />
-              <inertia ixx="0.000350603269949793" ixy="6.37793331536252E-07" ixz="-0.000461550351107159"
-                iyy="0.00242184402988972" iyz="5.09327556678297E-07" izz="0.0022368624903808" />
-      </xacro:unless> -->
       <inertial>
         <origin xyz="-0.0569664873635563 -5.41309796184553E-05 -0.148820781933269" rpy="0 0 0" />
         <mass value="1.02238189690276" />
@@ -183,16 +176,22 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_tibia_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/leg/leg_tibia_link.stl" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 ${-60.0 * deg_to_rad} 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/leg_5_collision_link.stl" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/leg/leg_5_collision_link.stl"
+        scale="1 ${reflect} 1"
+        capsule_radius="0.055"
+        capsule_length="0.3">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 ${-60.0 * deg_to_rad} 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="-0.0569664873635563 ${reflect * 7.99553099622616e-06} -0.148820781933269" rpy="0 ${30.0 * deg_to_rad} 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
 
     <!-- We approximate the virtual length link with a small cylinder mass and inertia -->
@@ -202,24 +201,24 @@
 
     <link name="leg_${side}_length_link">
       <inertial>
-<xacro:if value="${use_mimic}">
-        <origin rpy="0 0 0" xyz="0.0 0.0 -0.2"/>
-        <mass value="6.0" /> 
-        <inertia ixx="0.05" ixy="0.0" ixz="0.0" iyy="0.05" iyz="0.0" izz="0.016875" />
-</xacro:if>
-<xacro:unless value="${use_mimic}">
-        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-        <mass value="${m}" /> 
-        <inertia ixx="${(1./12.)*m*(3.*r*r + h*h)}" ixy="0.0" ixz="0.0" iyy="${(1./12.)*m*(3.*r*r + h*h)}" 
-		iyz="0.0" izz="${(1./2.)*m*r*r}" />
-</xacro:unless>
+        <xacro:if value="${use_mimic}">
+          <origin rpy="0 0 0" xyz="0.0 0.0 -0.2"/>
+          <mass value="6.0" /> 
+          <inertia ixx="0.05" ixy="0.0" ixz="0.0" iyy="0.05" iyz="0.0" izz="0.016875" />
+        </xacro:if>
+        <xacro:unless value="${use_mimic}">
+          <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+          <mass value="${m}" /> 
+          <inertia ixx="${(1./12.)*m*(3.*r*r + h*h)}" ixy="0.0" ixz="0.0" iyy="${(1./12.)*m*(3.*r*r + h*h)}" 
+            iyz="0.0" izz="${(1./2.)*m*r*r}" />
+        </xacro:unless>
       </inertial>
       <visual>
         <origin rpy="0 0 0" xyz="0 0 ${(leg_min_length - leg_max_length)/2}"/>
         <geometry>
           <cylinder length="${(leg_max_length - leg_min_length)}" radius="0.00005"/>
         </geometry>
-        <material name="DarkGrey" />
+        <material name="pal/DarkGrey" />
       </visual>
     </link>
     <joint name="leg_${side}_length_joint" type="prismatic">
@@ -227,7 +226,7 @@
       <parent link="leg_${side}_3_link" />
       <child link="leg_${side}_length_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${leg_min_length}" upper="${leg_max_length}" effort="1100" velocity="10" />
+      <limit lower="${leg_min_length}" upper="${leg_max_length}" effort="1100" velocity="10.0" />
     </joint>
 
     <joint name="leg_${side}_femur_joint" type="revolute">
@@ -243,7 +242,6 @@
 
     <joint name="leg_${side}_knee_joint" type="revolute">
       <origin xyz="0.129944529468438 0 -0.357091611860635" rpy="0 ${140.0 * deg_to_rad} 0" />
-      <!-- <origin xyz="0.37413 0 -0.066509" rpy="0 ${-70.0 * deg_to_rad} 0" /> -->
       <parent link="leg_${side}_femur_link" />
       <child link="leg_${side}_knee_link" />
       <axis xyz="0 -1 0" />
@@ -252,114 +250,25 @@
       	<mimic joint="leg_${side}_length_joint" multiplier="3.38877" offset="-0.19229"/>
       </xacro:if>
     </joint>
-    
-    <link name="leg_${side}_knee_straight"/>
+
+    <link name="leg_${side}_knee_straight" />
     <joint name="leg_${side}_knee_straight_joint" type="fixed">
-    	<parent link="leg_${side}_knee_link"/>
-    	<child link="leg_${side}_knee_straight"/>
-    	<origin rpy="0 ${-70.0 * deg_to_rad} 0" xyz="0 0 0"/>
+      <parent link="leg_${side}_knee_link" />
+      <child link="leg_${side}_knee_straight" />
+      <origin rpy="0 ${-70.0 * deg_to_rad} 0" xyz="0 0 0" />
     </joint>
-    <link name="leg_${side}_knee_lower_bearing"/>
+    <link name="leg_${side}_knee_lower_bearing" />
     <joint name="leg_${side}_knee_lower_bearing_joint" type="fixed">
-    	<parent link="leg_${side}_knee_straight"/>
-    	<child link="leg_${side}_knee_lower_bearing"/>
-    	<origin rpy="0 0 0" xyz="-0.38 0.0 0.0"/>
+      <parent link="leg_${side}_knee_straight" />
+      <child link="leg_${side}_knee_lower_bearing" />
+      <origin rpy="0 0 0" xyz="-0.38 0.0 0.0" />
     </joint>
 
-    <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_length_link" reflect="${reflect}" roll_joint="5" pitch_joint="4" read_actuator="leg_${side}_length_motor" ft_sensors="$(arg ft_sensors)">
+    <xacro:kangaroo_ankle side="${side}" parent="leg_${side}_length_link" reflect="${reflect}"
+      roll_joint="5" pitch_joint="4" read_actuator="leg_${side}_length_motor">
       <origin xyz="0.0 0 0.0" rpy="0 ${200 *deg_to_rad} 0" />
     </xacro:kangaroo_ankle>
 
-    <!-- Load corresponding transmission info -->
-    <xacro:unless value="${simulation}">
-      <xacro:hip_transmission_yaw side="${side}" params_ns="/${side}_hip_z_${hipz_model}_params" />
-      <xacro:hip_transmission_roll_pitch side="${side}" roll_joint="3" pitch_joint="2" />
-      <xacro:kangaroo_leg_length_actuator_transmission side="${side}" number1="4" number2="5" params_ns="/leg_params" />
-    </xacro:unless>
-    <xacro:if value="${simulation}">
-      <xacro:kangaroo_lower_body_simple_simulation_transmission side="${side}"/>
-    </xacro:if>
-
-    <gazebo reference="leg_${side}_1_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo>
-    <gazebo reference="leg_${side}_2_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo>
-    <gazebo reference="leg_${side}_3_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo>  
-    <gazebo reference="leg_${side}_length_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo>
-    <!-- <gazebo reference="leg_${side}_4_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo>
-    <gazebo reference="leg_${side}_5_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo> -->
-
-   <gazebo reference="leg_${side}_1_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-   </gazebo>
-   <gazebo reference="leg_${side}_2_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-   </gazebo>
-   <gazebo reference="leg_${side}_3_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-   </gazebo>
-    <!-- <gazebo reference="leg_${side}_4_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-   </gazebo>
-   <gazebo reference="leg_${side}_5_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-   </gazebo> -->
-   <gazebo reference="leg_${side}_length_link">
-      <implicitSpringDamper>1</implicitSpringDamper>
-   </gazebo>
-
-   <gazebo reference="leg_${side}_1_link">
-     <material>Gazebo/FlatWhite</material>
-   </gazebo>
-   <gazebo reference="leg_${side}_2_link">
-     <material>Gazebo/FlatWhite</material>
-   </gazebo>
-   <gazebo reference="leg_${side}_3_link">
-     <material>Gazebo/FlatWhite</material>
-   </gazebo>
-   <!-- <gazebo reference="leg_${side}_4_link">
-     <material>Gazebo/FlatBlack</material>
-   </gazebo>
-   <gazebo reference="leg_${side}_5_link">
-     <material>Gazebo/FlatBlack</material>
-   </gazebo> -->
-   <gazebo reference="leg_${side}_length_link">
-     <material>Gazebo/FlatBlack</material>
-   </gazebo>
-
-   <xacro:if value="${use_mimic}">
-   	<xacro:mimic_joint_plugin_gazebo name_prefix="" parent_joint="leg_${side}_length_joint" mimic_joint="leg_${side}_knee_joint" has_pid="false" multiplier="3.38877" offset="-0.19229" max_effort="100.0"/>
-   	<xacro:mimic_joint_plugin_gazebo name_prefix="" parent_joint="leg_${side}_length_joint" mimic_joint="leg_${side}_femur_joint" has_pid="false" multiplier="1.69435" offset="-0.096145" max_effort="100.0"/>
-   </xacro:if>
-   <xacro:unless value="${use_mimic}">
-	   <gazebo reference="">
-		<joint type="revolute" name="leg_${side}_closed_kin_joint">
-	              <pose>0 0 0 0 0 0</pose>
-		      <parent>leg_${side}_knee_link</parent>
-		      <child>leg_${side}_length_link</child>
-		      <axis>
-			<xyz>0 1 0</xyz>
-		      </axis>
-    		</joint>
-	   </gazebo> 
-   </xacro:unless>
-   
   </xacro:macro>
 
 </robot>

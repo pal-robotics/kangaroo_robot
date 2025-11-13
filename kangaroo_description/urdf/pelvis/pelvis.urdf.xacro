@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
-  <xacro:include filename="$(find kangaroo_description)/urdf/pelvis/pelvis.transmission.xacro" />
+  <!-- <xacro:include filename="$(find kangaroo_description)/urdf/pelvis/pelvis.transmission.xacro" /> -->
 
   <xacro:macro name="kangaroo_pelvis" params="name parent *origin pelvis_1_offset pelvis_2_offset">
     <xacro:property name="arm_eps"       value="${0.00 if no_safety_eps else 0.07}"/>
@@ -20,16 +20,21 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_base_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/pelvis/${name}_base_link.stl" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_base_link_collision.stl" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/pelvis/${name}_base_link_collision.stl"
+        scale="1 1 1">
+        <properties>
+          <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+          <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+        </properties>
+      </xacro:link_collision>
+
     </link>
  
     <joint name="${name}_fixed_joint" type="fixed">
@@ -53,16 +58,20 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_1_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/pelvis/${name}_1_link.stl" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_1_link_collision.stl" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/pelvis/${name}_1_link_collision.stl"
+        scale="1 1 1">
+        <properties>
+          <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+          <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+        </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_1_joint" type="revolute">
       <origin xyz="0 0 0.052" rpy="0 1.5708 0" />
@@ -90,16 +99,20 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_2_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/pelvis/${name}_2_link.stl" />
         </geometry>
-        <material name="DarkGrey"/>
+        <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/${name}_2_link_collision.stl" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/pelvis/${name}_2_link_collision.stl"
+        scale="1 1 1">
+        <properties>
+          <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+          <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+        </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_2_joint" type="revolute">
       <origin xyz="-0.0591 0 0" rpy="0 -1.5708 0" />
@@ -113,28 +126,9 @@
         velocity="3.14" />
     </joint>
 
-    <!-- transmissions -->
-    <gazebo reference="${name}_1_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo>
-    <gazebo reference="${name}_2_link">
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo>
-
-    <gazebo reference="${name}_1_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
-    <gazebo reference="${name}_2_joint">
-      <implicitSpringDamper>1</implicitSpringDamper>
-      <provideFeedback>1</provideFeedback>
-    </gazebo>
-
-
     <!-- extensions -->
-    <xacro:kangaroo_pelvis_differential_transmission name="${name}" number1="1" number2="2"
+    <!-- <xacro:kangaroo_pelvis_differential_transmission name="${name}" number1="1" number2="2"
                                                 act_reduction1="1.0" act_reduction2="1.0"
-                                                jnt_reduction1="-1.0" jnt_reduction2="1.395348837" />
+                                                jnt_reduction1="1.0" jnt_reduction2="1.395348837" /> -->
   </xacro:macro>
 </robot>

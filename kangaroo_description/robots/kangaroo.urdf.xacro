@@ -1,44 +1,139 @@
 <?xml version="1.0"?>
 <!--
 
-  Copyright (c) 2020, PAL Robotics, S.L.
-  All rights reserved.
+  Copyright (c) 2025 PAL Robotics S.L. All rights reserved.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
 -->
-<robot name="kangaroo" xmlns:xacro="http://ros.org/wiki/xacro"
-        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <!-- 4dof, 7dof -->
-  <xacro:arg name="end_effector_type" default="fake-forearm" />
-  <xacro:arg name="arm_type" default="4dof" />
-  <xacro:arg name="with_legs" default="true" />
-  <xacro:arg name="with_pelvis" default="false" />
-  <xacro:arg name="with_arms" default="false" />
-  <xacro:arg name="with_belt" default="false" />
-  <xacro:arg name="torso_2024" default="false" />
-  <xacro:arg name="simulation" default="false" />
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo" >
+
+  <!-- ARGUMENTS -->
+  
+  <!-- True, False -->
+  <xacro:arg name="has_pelvis" default="True" />
+
+  <!-- True, False -->
+  <xacro:arg name="has_head" default="False" />
+
+  <!-- (ft-leg) not available, leg, no-leg -->
+  <xacro:arg name="legs_type" default="leg" />
+  
+  <!-- no-arm, 4dof, 5dof, 7dof] -->
+  <xacro:arg name="arm_type" default="7dof" />
+
+  <!-- cover, no-end-effector, fake-forearm, (ft-gripper) not available, gripper, RH8D -->
+  <xacro:arg name="end_effector_type" default="no-end-effector" />
+  
+  <!-- crane, fixed, floating -->
+  <xacro:arg name="fixation_type" default="floating" />
+
+  <!-- world name defined in pal_mujoco_scenes package -->
+  <xacro:arg name="world_name" default="floor"/>
+
+  <!-- torso mesh model ('torso', 'torso_2024') -->
+   <xacro:arg name="torso_mesh" default="torso" />
+
+  <!-- UNKNOWN ARGS -->
+  
+  <!-- True, False -->
+  <xacro:arg name="use_mimic" default="False" />
+
+  <!-- realsense-D435i -->
   <xacro:arg name="torso_front_camera_model" default="realsense-D435i" />
+  
+  <!-- realsense-D435i -->
   <xacro:arg name="torso_back_camera_model" default="realsense-D435i" />
+  
+  <!-- realsense-D435i -->
   <xacro:arg name="waist_front_camera_model" default="realsense-D435i" />
+  
+  <!-- realsense-D435i -->
   <xacro:arg name="waist_back_camera_model" default="realsense-D435i" />
+  
+  <!-- COMMON ARGS -->
+  
+  <!-- True, False -->
+  <xacro:arg name="use_sim_time" default="False" />
 
-  <xacro:property name="end_effector_type" default="$(arg end_effector_type)" />
+  <!-- mujoco-ros2-control, mujoco, no-simulation -->
+  <xacro:arg name="sim_type" default="no-simulation" />
+
+  <!-- false, position, motor -->
+  <xacro:arg name="mj_control" default="position" />
+  
+  <!-- mesh, capsule -->
+  <xacro:arg name="collision_type" default="mesh" />
+
+  <!-- GLOBAL PROPERTIES -->
+  
+  <xacro:property name="use_sim_time" value="$(arg use_sim_time)" />
+  <xacro:property name="sim_type" value="$(arg sim_type)"/>
+  <xacro:property name="mj_control" value="$(arg mj_control)" />
+  <xacro:property name="collision_type" value="$(arg collision_type)"/>
+  <xacro:property name="torso_mesh" value="$(arg torso_mesh)"/>
+
+  <!-- PROPERTIES -->
+
+  <xacro:property name="has_pelvis" value="$(arg has_pelvis)" />
+  <xacro:property name="has_head" value="$(arg has_head)" />
   <xacro:property name="arm_type" value="$(arg arm_type)" />
-  <xacro:property name="with_legs" value="$(arg with_legs)" />
-  <xacro:property name="with_pelvis" value="$(arg with_pelvis)" />
-  <xacro:property name="with_arms" value="$(arg with_arms)" />
-  <xacro:property name="with_belt" value="$(arg with_belt)" />
-  <xacro:property name="torso_2024" value="$(arg torso_2024)" />
-  <xacro:property name="simulation" value="$(arg simulation)" />
+  <xacro:property name="legs_type" value="$(arg legs_type)" />
+  <xacro:property name="fixation_type" value="$(arg fixation_type)" />
+  <xacro:property name="end_effector_type" value="$(arg end_effector_type)" />
+  <xacro:property name="world_name" value="$(arg world_name)" />
+
+  <xacro:property name="use_mimic" value="$(arg use_mimic)" />
   <xacro:property name="torso_front_camera_model" value="$(arg torso_front_camera_model)" />
   <xacro:property name="torso_back_camera_model" value="$(arg torso_back_camera_model)" />
   <xacro:property name="waist_front_camera_model" value="$(arg waist_front_camera_model)" />
   <xacro:property name="waist_back_camera_model" value="$(arg waist_back_camera_model)" />
  
+  <!-- Properties check -->
+  
+  <xacro:if value="${sim_type not in ['mujoco-ros2-control', 'mujoco', 'no-simulation']}">
+    <xacro:wrong_sim_type />
+  </xacro:if>
+
+  <xacro:if value="${mj_control not in ['false', 'position', 'motor']}">
+    <xacro:wrong_mj_control />
+  </xacro:if>
+
+  <xacro:if value="${collision_type not in ['mesh', 'capsule']}">
+    <xacro:wrong_collision_type />
+  </xacro:if>
+  
+  <xacro:if value="${arm_type not in ['no-arm', '4dof', '5dof', '7dof']}">
+    <xacro:wrong_arm_type />
+  </xacro:if>
+
+  <!-- (ft-gripper) not available -->
+  <xacro:if value="${end_effector_type not in ['cover', 'no-end-effector', 'fake-forearm', 'gripper', 'RH8D']}">
+    <xacro:wrong_end_effector_type />
+  </xacro:if>
+
   <!-- Valid Combinations -->
+  <xacro:if value="${arm_type in ['no-arm']}">
+    <xacro:if value="${end_effector_type not in ['cover']}">
+      <xacro:wrong_arm_end_effector_combination />
+    </xacro:if>
+  </xacro:if>
   <xacro:if value="${arm_type in ['4dof']}">
     <xacro:if value="${end_effector_type not in ['fake-forearm']}">
+      <xacro:wrong_arm_end_effector_combination />
+    </xacro:if>
+  </xacro:if>
+  <xacro:if value="${arm_type in ['5dof']}">
+    <xacro:if value="${end_effector_type not in ['no-end-effector', 'RH8D']}">
       <xacro:wrong_arm_end_effector_combination />
     </xacro:if>
   </xacro:if>
@@ -48,7 +143,11 @@
     </xacro:if>
   </xacro:if>
 
-  
+  <!-- (ft-leg) not available -->
+  <xacro:if value="${legs_type not in ['leg', 'no-leg']}">
+    <xacro:wrong_legs_type />
+  </xacro:if>
+
   <xacro:if value="${torso_front_camera_model not in ['realsense-D435i']}">
     <xacro:wrong_torso_front_camera_model/>
   </xacro:if>
@@ -65,20 +164,51 @@
     <xacro:wrong_waist_back_camera_model/>
   </xacro:if>
 
+  <!-- INCLUDES -->
+
+  <!-- Tools -->
+  <xacro:include filename="$(find kangaroo_description)/urdf/materials.urdf.xacro" />
   <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" />
-
-  <!--************************-->
-  <!--        BASE_LINK       -->
-  <!--************************-->
+  <xacro:include filename="$(find kangaroo_description)/urdf/collision.xacro" />
+  
+  <!-- Base -->
   <xacro:include filename="$(find kangaroo_description)/urdf/base/base.urdf.xacro"/>
-  <xacro:base_link with_pelvis="${with_pelvis}" with_belt="${with_belt}" torso_2024="${torso_2024}"/>
 
-
-  <xacro:if value="$(arg enable_crane)">
+  <!-- Crane -->
+  <xacro:if value="${fixation_type == 'crane'}">
     <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
-    <xacro:crane parent="base_link"/>
   </xacro:if>
-  <xacro:if value="$(arg fixed_base)">
+
+  <!-- Legs -->
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
+
+  <!-- Arms -->
+  <xacro:if value="${arm_type in ['4dof', '5dof', '7dof']}">
+    <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.urdf.xacro" />
+  </xacro:if>
+  <xacro:unless value="${arm_type in ['4dof', '5dof', '7dof']}">
+    <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm_cover/arm_cover.urdf.xacro" />
+  </xacro:unless>
+
+  <!-- End Effector -->
+  <xacro:if value="${end_effector_type in ['gripper']}">
+    <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/pal_pro_gripper.urdf.xacro" />
+  </xacro:if>
+  <xacro:if value="${end_effector_type in ['RH8D']}">
+    <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/rh8d_hand.urdf.xacro" />
+  </xacro:if>
+  <xacro:if value="${end_effector_type in ['fake-forearm']}">
+    <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/fake_forearm.urdf.xacro" />
+  </xacro:if>
+
+  <!-- ROBOT DEFINITION -->
+
+  <!-- BASE, PELVIS, TORSO -->
+
+  <xacro:base_link has_pelvis="${has_pelvis}"/>
+
+  <!-- Fixed Base Link crane, fixed, floating -->
+   <xacro:if value="${fixation_type == 'fixed'}">
     <link name="world"/>
     <joint name="world_base_link" type="fixed">
       <origin xyz="0.0 0.0 1.2" rpy="0.0  0.0  0.0"/>
@@ -86,79 +216,168 @@
       <child link="base_link" />
     </joint>
   </xacro:if>
+
+  <xacro:unless value="${fixation_type == 'fixed'}">
+    <xacro:if value="${fixation_type == 'crane'}">
+      <!-- Crane -->
+      <xacro:crane parent="base_link"/>
+    </xacro:if>
+  </xacro:unless>
   
-  <!--************************-->
-  <!--           LEGS         -->
-  <!--************************-->
-  <xacro:if value="${with_legs}">
-    <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
-    <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" simulation="$(arg simulation)" use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
+  <!-- LEGS -->
+
+  <xacro:if value="${legs_type in ['leg', 'ft-leg']}">
+    <!-- Left Leg -->
+    <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" leg_type="${legs_type}">
       <origin xyz="-0.0150025976417119 0.08 -0.0585" rpy="0 0 0"/>
     </xacro:kangaroo_leg>
-    <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" simulation="$(arg simulation)"  use_mimic="$(arg use_mimic)" ft_sensors="$(arg ft_sensors)">
+    <!-- Right Leg -->
+    <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" leg_type="${legs_type}">
       <origin xyz="-0.0150025976417119 -0.08 -0.0585" rpy="0 0 0"/>
     </xacro:kangaroo_leg>
   </xacro:if>
- 
-  <!--************************-->
-  <!--          ARMS          -->
-  <!--************************-->
-  <xacro:if value="${with_arms}">
-    <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm.urdf.xacro" />
+
+  <!-- ARMS -->
+
+  <xacro:if value="${arm_type in ['4dof', '5dof', '7dof']}">
     <!-- Left Arm -->
-    <xacro:kangaroo_arm name="arm" type="${arm_type}" side="left" reflect="1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
+    <xacro:kangaroo_arm name="arm" side="left" type="${arm_type}" reflect="1" parent="torso_link" >
       <origin xyz="0 0.105954 0.384396" rpy="1.3963 3.14159 3.14159" />
     </xacro:kangaroo_arm>
-
     <!-- Right Arm -->
-    <xacro:kangaroo_arm name="arm" type="${arm_type}" side="right" reflect="-1" parent="torso_link" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0">
+    <xacro:kangaroo_arm name="arm" side="right" type="${arm_type}" reflect="-1" parent="torso_link" >
       <origin xyz="0 -0.105954 0.384396" rpy="1.3963 3.14159 0" />
     </xacro:kangaroo_arm>
-
-    <!--************************-->
-    <!--      END EFFECTOR      -->
-    <!--************************-->
-
-    <xacro:if value="${arm_type=='4dof'}">
-      <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/fake_forearm.urdf.xacro" />
-      <!-- Left Fake Forearm -->
-      <xacro:fake-forearm name="arm" side="left" reflect="1" parent="arm_left_3_link">
-        <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
-      </xacro:fake-forearm>
-      <!-- Right Fake Forearm -->
-      <xacro:fake-forearm name="arm" side="right" reflect="-1" parent="arm_right_3_link">
-        <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
-      </xacro:fake-forearm>
-    </xacro:if>
-    <xacro:if value="${arm_type=='7dof' and end_effector_type=='gripper'}">
-      <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/gripper/gripper.urdf.xacro" />
-      <!-- Left Gripper -->
-      <xacro:pal_pro_gripper tool_changer="true" name="gripper_left" parent="arm_left_tool_link">
-        <origin xyz="0.0 0.0 0.0" rpy="0 0 -1.57" />
-      </xacro:pal_pro_gripper>
-      <!-- Right Gripper -->
-      <xacro:pal_pro_gripper tool_changer="true" name="gripper_right" parent="arm_right_tool_link">
-        <origin xyz="0.0 0.0 0.0" rpy="0 0 -1.57" />
-      </xacro:pal_pro_gripper>
-    </xacro:if>
   </xacro:if>
 
-  <!--************************-->
-  <!--         WITHOUT ARMS   -->
-  <!--************************-->
- <xacro:unless value="${with_arms}">
-   <xacro:include filename="$(find kangaroo_description)/urdf/arm/arm_cover/arm_cover.urdf.xacro" />
-   <xacro:kangaroo_arm_cover name="arm_cover" side="left" reflect="1" parent="torso_link">  
-     <origin xyz="0 0.105954 0.384396" rpy="1.3963 0 0" />
-   </xacro:kangaroo_arm_cover>
-   <xacro:kangaroo_arm_cover name="arm_cover" side="right" reflect="-1" parent="torso_link">  
-     <origin xyz="0 -0.105954 0.384396" rpy="1.3963 0 3.14159" />
-   </xacro:kangaroo_arm_cover>
- </xacro:unless>
-  <!-- Generic simulator_gazebo plugins -->
-  <xacro:include filename="$(find kangaroo_description)/gazebo/gazebo.urdf.xacro" />
+  <xacro:unless value="${arm_type in ['4dof', '5dof', '7dof']}">
+    <!-- Left Arm Cover -->
+    <xacro:kangaroo_arm_cover name="arm_cover" side="left" reflect="1" parent="torso_link">  
+      <origin xyz="0 0.105954 0.384396" rpy="1.3963 0 0" />
+    </xacro:kangaroo_arm_cover>
+    <!-- Right Arm Cover -->
+    <xacro:kangaroo_arm_cover name="arm_cover" side="right" reflect="-1" parent="torso_link">  
+      <origin xyz="0 -0.105954 0.384396" rpy="1.3963 0 3.14159" />
+    </xacro:kangaroo_arm_cover>
+  </xacro:unless>
 
-  <!-- Materials for visualization -->
-  <xacro:include filename="$(find kangaroo_description)/urdf/materials.urdf.xacro" />
+  <!-- END EFFECTOR -->
+
+  <xacro:if value="${end_effector_type in ['gripper']}">
+    <xacro:gripper name="gripper_left" parent="arm_left_tool_link"/>
+    <xacro:gripper name="gripper_right" parent="arm_right_tool_link"/>
+  </xacro:if>
+
+  <xacro:if value="${end_effector_type in ['RH8D']}">
+    <xacro:hand name="hand" side="left" parent="arm_left_tool_link" mimic="${use_mimic}">
+      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
+    </xacro:hand>
+    <xacro:hand name="hand" side="right" parent="arm_right_tool_link" mimic="${use_mimic}">
+      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
+    </xacro:hand>
+  </xacro:if>
+
+  <xacro:if value="${end_effector_type in ['fake-forearm']}">
+    <xacro:fake-forearm name="arm" side="left" reflect="1" parent="arm_left_3_link">
+      <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
+    </xacro:fake-forearm>
+    <xacro:fake-forearm name="arm" side="right" reflect="-1" parent="arm_right_3_link">
+      <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
+    </xacro:fake-forearm>
+  </xacro:if>
+
+  <!-- MUJOCO   -->
+
+  <xacro:if value="${sim_type == 'mujoco' or sim_type == 'mujoco-ros2-control'}">
+    <xacro:if value="${end_effector_type == 'gripper'}">
+      <xacro:include filename="$(find pal_pro_gripper_description)/mujoco/mj_tags.xacro" />
+    </xacro:if>
+    <xacro:if value="${end_effector_type == 'RH8D'}">
+      <xacro:include filename="$(find rh8d_description)/mujoco/mj_tags.xacro" />
+    </xacro:if>
+    <xacro:include filename="$(find kangaroo_description)/mujoco/mj_tags.xacro" />
+    <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" />
+
+    <xacro:if value="${fixation_type == 'floating'}">
+      <link name="origin">
+      </link>
+
+      <joint name="free_floating" type="floating">
+        <parent link="origin" />
+        <child link="base_link" />
+        <origin xyz="0.0 0.0 0.95" />
+      </joint>
+    </xacro:if>
+   
+    <mujoco> 
+
+      <!-- Mujoco environment -->
+      <xacro:mj_scene/>
+
+      <!-- Default values -->
+      <default>
+        <xacro:mj_robot_defaults />
+      </default>
+
+      <!-- Contact-->
+      <contact>
+        <xacro:mj_robot_contacts />
+        <xacro:if value="${end_effector_type == 'gripper'}">
+          <xacro:mj_gripper_contact name="gripper_left" />
+          <xacro:mj_gripper_contact name="gripper_right" />
+        </xacro:if>
+        <xacro:if value="${end_effector_type == 'RH8D'}">
+          <xacro:mj_hand_contact name="hand" side="left"/>
+          <xacro:mj_hand_contact name="hand" side="right"/>
+          <exclude body1="hand_left_palm_link"  body2="arm_left_5_link"/>
+          <exclude body1="hand_right_palm_link"  body2="arm_right_5_link"/>
+        </xacro:if>
+      </contact>
+
+      <!-- Equality-->
+      <equality>
+        <xacro:mj_robot_equality />
+        <xacro:if value="${end_effector_type == 'gripper'}">
+          <xacro:mj_gripper_equality name="gripper_left" anchor_r="0.01475 -0.001463 0.001" anchor_l="0.0145 -0.0015 0.001"/>
+          <xacro:mj_gripper_equality name="gripper_right" anchor_r="0.014 -0.0015 0" anchor_l="0.014 -0.001 0" />
+        </xacro:if>
+        <xacro:if value="${end_effector_type == 'RH8D'}">
+          <xacro:mj_hand_equality name="hand" side="left" />
+          <xacro:mj_hand_equality name="hand" side="right" />
+        </xacro:if>
+      </equality>
+
+      
+      <xacro:if value="${sim_type == 'mujoco'}">
+        <!-- Actuator -->
+        <actuator>
+          <xacro:mj_robot_actuators/>
+          <xacro:if value="${end_effector_type == 'gripper'}">
+            <xacro:mj_gripper_actuators name="gripper_left" />
+            <xacro:mj_gripper_actuators name="gripper_right" />
+          </xacro:if>
+          <xacro:if value="${end_effector_type == 'RH8D'}">
+            <xacro:mj_hand_actuators name="hand" side="left" />
+            <xacro:mj_hand_actuators name="hand" side="right" />
+          </xacro:if>
+        </actuator>
+      </xacro:if>    
+      
+      <!-- Keyframe -->
+      <xacro:keyframe_home/>
+
+      <!-- special pal_mujoco tag. This is the least invasive solution I found to add a site to a body  -->
+      <!-- this tag won't work in a regular mjcf xml file -->
+      <!-- <site name="base_footprint_site" body_name="base_footprint"/> -->
+    </mujoco>  
+  
+  </xacro:if>
+
+
+  <!-- ROS 2 Control -->
+  <xacro:if value="${sim_type == 'mujoco-ros2-control'}">
+    <xacro:include filename="$(find kangaroo_description)/ros2_control/ros2_control.urdf.xacro" />
+    <xacro:kangaroo_ros2_control arm_type="${arm_type}"/>
+  </xacro:if>
 
 </robot>

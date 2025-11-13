@@ -31,19 +31,30 @@
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-      <origin  xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm5_link.STL" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/arm/arm5_link.STL"
+        scale="1 1 1"
+        capsule_radius="0"
+        capsule_length="0">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_${side}_5_joint" type="revolute">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}" />
       <child link="${name}_${side}_5_link" />
-      <axis xyz="0 0 1" />
-      <limit lower="${deg_to_rad * -150}" upper="${deg_to_rad * 150}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+      <axis xyz="0 0 -1" />
+      <xacro:if value="${side == 'left'}">
+        <limit lower="${deg_to_rad * -210}" upper="${deg_to_rad * 90}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+      </xacro:if>
+      <xacro:if value="${side == 'right'}">
+        <limit lower="${deg_to_rad * -90}" upper="${deg_to_rad * 210}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+      </xacro:if>
     </joint>
 
     <!-- ARM 6 LINK -->
@@ -66,12 +77,18 @@
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-      <origin  xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm6_link.STL" />
-        </geometry>
-      </collision>
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/arm/arm6_link.STL"
+        scale="1 1 1"
+        capsule_radius="0"
+        capsule_length="0">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_${side}_6_joint" type="revolute">
       <origin xyz="0.0422 0 0.1654" rpy="0 1.5708 0" />
@@ -101,26 +118,26 @@
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
-      <collision>
-      <origin  xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm7_link.STL" />
-        </geometry>
-      </collision>
-     
+      <xacro:link_collision 
+        mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
+        collision_type="${collision_type}"
+        mesh_file="package://kangaroo_description/meshes/arm/arm7_link.STL"
+        scale="1 1 1"
+        capsule_radius="0"
+        capsule_length="0">
+          <properties>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+          </properties>
+      </xacro:link_collision>
     </link>
     <joint name="${name}_${side}_7_joint" type="revolute">
       <origin xyz="-0.0534 -0.07 -0.0422" rpy="0 -1.5708 0" />
       <parent link="${name}_${side}_6_link" />
       <child link="${name}_${side}_7_link" />
-      <axis xyz="0 0 1" />
+      <axis xyz="0 0 -1" />
       <limit lower="${deg_to_rad * -150}" upper="${deg_to_rad * 150}" effort="${arm_7_max_effort}" velocity="${arm_7_max_velocity}" />
     </joint>
-
-    <!-- TRANSMISSIONS -->
-    <xacro:arm_simple_transmission name="${name}_${side}" number="5" reduction="1.0" offset_value="${arm_2_offset}"/>
-    <xacro:arm_simple_transmission name="${name}_${side}" number="6" reduction="1.0" offset_value="${arm_1_offset}"/>
-    <xacro:arm_simple_transmission name="${name}_${side}" number="7" reduction="1.0" offset_value="${arm_2_offset}"/>
 
   </xacro:macro>
 </robot>

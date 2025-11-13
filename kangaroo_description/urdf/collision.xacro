@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2025 PAL Robotics S.L. All rights reserved.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:macro name="origin" params="xyz rpy condition">
+        <xacro:if value="${condition}">
+            <xacro:property name="origin_xyz" value="${xyz}" scope="parent"/>
+            <xacro:property name="origin_rpy" value="${rpy}" scope="parent"/>
+        </xacro:if>
+    </xacro:macro>
+
+    <!-- Macro for modular collision geometry -->
+    <xacro:macro name="link_collision" params="collision_type mesh_file scale capsule_radius:=0.0 capsule_length:=0.0 mujoco:=false **properties">
+        <xacro:unless value="${capsule_radius == 0.0 and collision_type == 'capsule'}">
+            <xacro:insert_block name="properties"/>
+            
+            <xacro:if value="${collision_type == 'mesh'}"> 
+                <collision>
+                    <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+                    <geometry>
+                        <mesh filename="${mesh_file}" scale="${scale}"/>
+                    </geometry>
+                </collision>
+            </xacro:if>
+
+            <xacro:if value="${collision_type == 'capsule'}">
+                <xacro:if value="${mujoco}">
+                    <collision>
+                        <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+                        <geometry>
+                            <capsule radius="${capsule_radius}" length="${capsule_length}" />   
+                        </geometry>
+                    </collision>
+                </xacro:if>
+                <xacro:unless value="${mujoco}">
+                    <xacro:property name="x" value="${origin_xyz.split()[0]}"/>
+                    <xacro:property name="y" value="${origin_xyz.split()[1]}"/>
+                    <xacro:property name="z" value="${origin_xyz.split()[2]}"/>
+                    <xacro:property name="roll" value="${origin_rpy.split()[0]}"/>
+                    <xacro:property name="pitch" value="${origin_rpy.split()[1]}"/>
+                    <xacro:property name="yaw" value="${origin_rpy.split()[2]}"/>
+                    
+                    <!-- Cylinder (main body) -->
+                    <collision>
+                        <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+                        <geometry>
+                            <cylinder radius="${capsule_radius}" length="${capsule_length}"/>
+                        </geometry>
+                    </collision>
+                    
+                    <!-- Pre-calculate sines and cosines for readability -->
+                    <xacro:property name="cr" value="${cos(roll)}"/>
+                    <xacro:property name="sr" value="${sin(roll)}"/>
+                    <xacro:property name="cp" value="${cos(pitch)}"/>   
+                    <xacro:property name="sp" value="${sin(pitch)}"/>
+                    <xacro:property name="cy" value="${cos(yaw)}"/>
+                    <xacro:property name="sy" value="${sin(yaw)}"/>
+                    <xacro:property name="half_length" value="${capsule_length/2}"/>
+                    
+                    <!-- Calculate the world-frame offsets by rotating a vector [0, 0, half_length]
+                         using the ZYX Euler (RPY) rotation matrix. This is the third column of the matrix. -->
+                    <xacro:property name="offset_x" value="${half_length * (cy*sp*cr + sy*sr)}"/>
+                    <xacro:property name="offset_y" value="${half_length * (sy*sp*cr - cy*sr)}"/>
+                    <xacro:property name="offset_z" value="${half_length * (cp*cr)}"/>
+
+                    <!-- Top Sphere -->
+                    <collision>
+                        <origin xyz="${x + offset_x} ${y + offset_y} ${z + offset_z}" rpy="${origin_rpy}"/>
+                        <geometry>
+                            <sphere radius="${capsule_radius}"/>
+                        </geometry>
+                    </collision>
+                    
+                    <!-- Bottom Sphere -->
+                    <collision>
+                        <origin xyz="${x - offset_x} ${y - offset_y} ${z - offset_z}" rpy="${origin_rpy}"/>
+                        <geometry>
+                            <sphere radius="${capsule_radius}"/>
+                        </geometry>
+                    </collision>
+                </xacro:unless>
+            </xacro:if>
+        </xacro:unless>
+    </xacro:macro>
+</robot>
