@@ -1,32 +1,12 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.8)
 project(kangaroo_description)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake_auto REQUIRED)
+ament_auto_find_build_dependencies()
 
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES kangaroo_description
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
-)
+ament_auto_add_executable(parameter_blackboard src/parameter_blackboard.cpp)
 
-foreach(dir config gazebo launch meshes robots urdf)
-    install(DIRECTORY ${dir}/
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
-endforeach(dir)
+# Install Python modules
+ament_python_install_package(${PROJECT_NAME})
 
-install(
-    PROGRAMS
-        scripts/homing
-	scripts/robot_type
-    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
-
-
-#############
-## Testing ##
-#############
-
-if(CATKIN_ENABLE_TESTING)
-  add_subdirectory(test)
-endif()
+ament_auto_package(INSTALL_TO_SHARE config launch meshes mujoco robots urdf ros2_control)

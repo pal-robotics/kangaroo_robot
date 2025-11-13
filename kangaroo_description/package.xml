@@ -1,31 +1,21 @@
 <?xml version="1.0"?>
-<package format="2">
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>kangaroo_description</name>
-  <version>0.3.0</version>
-  <description>The kangaroo_description package</description>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="user@todo.todo">user</maintainer>
+  <license>TODO: License declaration</license>
 
-  <maintainer email="luca.marchionni@pal-robotics.com">Luca Marchionni</maintainer>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <license>PAL Propietary</license>
+  <depend>rclcpp</depend>
+  <depend>rcl_interfaces</depend>
 
-  <buildtool_depend>catkin</buildtool_depend>
-
-  <depend>realsense2_description</depend>
-  
-  <exec_depend>imu_sensor_controller</exec_depend>
-  <exec_depend>force_torque_sensor_controller</exec_depend>
-  <exec_depend>kangaroo_transmissions</exec_depend>
-
-  <!-- Gazebo related dependencies -->
-  <exec_depend>gazebo_plugins</exec_depend>
-  <exec_depend>pal_gazebo_plugins</exec_depend>
-  <exec_depend>pal_hardware_gazebo</exec_depend>
-  <exec_depend>pal_hardware_interfaces</exec_depend>
-
-  <test_depend>rostest</test_depend>
-  <test_depend>urdf_test</test_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
 
   <export>
+    <build_type>ament_cmake</build_type>
   </export>
-
 </package>

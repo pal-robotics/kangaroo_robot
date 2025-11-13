@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>kangaroo_robot</name>
-  <version>0.3.0</version>
-  <description>Description and launch files for the kangaroo robot</description>
-  <maintainer email="luca.marchionni@pal-robotics.com">Luca Marchionni</maintainer>
-  <license>Propietary</license>
-  <author email="luca.marchionni@pal-robotics.com">Luca Marchionni</author>
+  <version>1.31.0</version>
+  <description>The kangaroo_robot package</description>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <maintainer email="sergi.acosta@pal-robotics.com">Sergi de las Muelas</maintainer>
+
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <exec_depend>kangaroo_description</exec_depend>
   <exec_depend>kangaroo_bringup</exec_depend>
   <exec_depend>kangaroo_controller_configuration</exec_depend>
-  <exec_depend>kangaroo_mj_description</exec_depend>
 
   <export>
-    <metapackage/>
+    <build_type>ament_cmake</build_type>
   </export>
-</package>
 
+</package>
