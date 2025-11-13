@@ -1,0 +1,45 @@
+# Configuration file for the Kangaroo robot
+end_effector_type:
+  description: "choose the desired end effector type with its corresponding arm."
+  choices: ["cover", "no-end-effector", "fake-forearm", "ft-gripper", "gripper", "RH8D"]
+  default_value: "no-end-effector"
+
+fixation_type:
+  description: "Fixation type"
+  choices: ["crane", "fixed", "floating"]
+  default_value: "floating"
+
+legs_type:
+  description: "Adds legs to the model"
+  choices: ["ft-leg", "leg", "no-leg"]
+  default_value: "leg"
+
+arm_type:
+  description: "Adds arms to the model"
+  choices: ["no-arm", "4dof", "5dof", "7dof"]
+  default_value: "7dof"
+
+has_pelvis:
+  description: "Adds the 2 DoFs of the pelvis to the model"
+  choices: ["True", "False"]
+  default_value: "True"
+
+has_head:
+  description: "Adds a head of 2 DoFs to the model"
+  choices: ["True", "False"]
+  default_value: "False"
+
+collision_type:
+  description: "Type of collision geometry"
+  default_value: "mesh"
+  choices: ["mesh", "capsule"]
+
+sim_type:
+  description: "Simulation type"
+  default_value: "no-simulation"
+  choices: ["mujoco-ros2-control", "mujoco", "no-simulation"]
+
+use_mimic:
+  description: "Whether to include the mimic joints in the model"
+  choices: ["True", "False"]
+  default_value: "False"
