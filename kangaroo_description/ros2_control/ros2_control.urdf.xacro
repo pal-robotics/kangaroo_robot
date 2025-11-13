@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- 
+  Copyright (c) 2024 PAL Robotics S.L. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ -->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+  <!-- INCLUDES -->
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/ros2_control.urdf.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/urdf/arm/ros2_control.urdf.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/ros2_control.urdf.xacro" />
+  <!-- MACRO DEFINITION-->
+  <xacro:macro name="kangaroo_ros2_control" params="arm_type">
+
+    <ros2_control name="MujocoSystem" type="system">
+      <hardware>
+        <plugin>mujoco_ros2_simulation/MujocoSystemInterface</plugin>
+
+        <!-- Override the slowdown settings in the Simulate App and run at 3x speed -->
+        <param name="sim_speed_factor">1.0</param>
+      </hardware>
+
+      <xacro:if value="${has_pelvis}">
+        <xacro:kangaroo_joint_ros2control name="pelvis_1" />
+        <xacro:kangaroo_joint_ros2control name="pelvis_2" />
+      </xacro:if>
+      
+      <xacro:if value="${legs_type != 'no-leg'}">
+        <xacro:leg_ros2_control side="left"/>
+        <xacro:leg_ros2_control side="right"/>
+      </xacro:if>
+
+      <xacro:if value="${arm_type != 'no-arm'}">
+        <xacro:arm_ros2_control side="left" arm_type="${arm_type}"/>
+        <xacro:arm_ros2_control side="right" arm_type="${arm_type}"/>
+      </xacro:if>
+      
+      <xacro:if value="${end_effector_type != 'no-end-effector'}">
+        <xacro:end_effector_ros2_control side="left" end_effector_type="${end_effector_type}"/>
+        <xacro:end_effector_ros2_control side="right" end_effector_type="${end_effector_type}"/>
+      </xacro:if>
+
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>
