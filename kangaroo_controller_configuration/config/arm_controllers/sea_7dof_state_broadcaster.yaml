@@ -1,0 +1,12 @@
+${ARM_SIDE_PREFIX}_sea_state_broadcaster_controller:
+  ros__parameters:
+    type: pal_controllers/SeaStateBroadcaster
+    joints:
+      - ${ARM_SIDE_PREFIX}_1_joint
+      - ${ARM_SIDE_PREFIX}_2_joint
+      - ${ARM_SIDE_PREFIX}_3_joint
+      - ${ARM_SIDE_PREFIX}_4_joint
+      - ${ARM_SIDE_PREFIX}_5_joint
+      - ${ARM_SIDE_PREFIX}_6_joint
+      - ${ARM_SIDE_PREFIX}_7_joint
+    update_rate: 1000
