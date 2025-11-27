@@ -208,14 +208,14 @@
   <xacro:base_link has_pelvis="${has_pelvis}"/>
 
   <!-- Fixed Base Link crane, fixed, floating -->
-   <xacro:if value="${fixation_type == 'fixed'}">
+   <!-- <xacro:if value="${fixation_type == 'fixed'}">
     <link name="world"/>
     <joint name="world_base_link" type="fixed">
       <origin xyz="0.0 0.0 1.2" rpy="0.0  0.0  0.0"/>
       <parent link="world" />
       <child link="base_link" />
     </joint>
-  </xacro:if>
+  </xacro:if> -->
 
   <xacro:unless value="${fixation_type == 'fixed'}">
     <xacro:if value="${fixation_type == 'crane'}">
@@ -298,7 +298,8 @@
     <xacro:include filename="$(find kangaroo_description)/mujoco/mj_tags.xacro" />
     <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" />
 
-    <xacro:if value="${fixation_type == 'floating' and sim_type == 'mujoco'}">
+    <xacro:if value="${sim_type == 'mujoco'}">
+    <!-- <xacro:if value="${fixation_type == 'floating' and sim_type == 'mujoco'}"> -->
       <link name="origin">
       </link>
 
