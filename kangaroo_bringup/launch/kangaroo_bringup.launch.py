@@ -67,23 +67,23 @@ class LaunchArguments(LaunchArgumentsBase):
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
     #Playmotion2    
-    # play_motion2 = include_scoped_launch_py_description(
-    #     pkg_name='kangaroo_bringup',
-    #     paths=['launch', 'kangaroo_playmotion2.launch.py'],
-    #     launch_arguments={
-    #         "use_sim_time": launch_args.use_sim_time,
-    #         "collision_type": launch_args.collision_type,
-    #         "sim_type": launch_args.sim_type,
-    #         "mj_control": launch_args.mj_control,
-    #         "has_head": launch_args.has_head,
-    #         "has_pelvis": launch_args.has_pelvis,
-    #         "arm_type": launch_args.arm_type,
-    #         "legs_type": launch_args.legs_type,
-    #         "end_effector_type": launch_args.end_effector_type,
-    #         "fixation_type": launch_args.fixation_type,
-    #         })
+    play_motion2 = include_scoped_launch_py_description(
+        pkg_name='kangaroo_bringup',
+        paths=['launch', 'kangaroo_playmotion2.launch.py'],
+        launch_arguments={
+            "use_sim_time": launch_args.use_sim_time,
+            "collision_type": launch_args.collision_type,
+            "sim_type": launch_args.sim_type,
+            "mj_control": launch_args.mj_control,
+            "has_head": launch_args.has_head,
+            "has_pelvis": launch_args.has_pelvis,
+            "arm_type": launch_args.arm_type,
+            "legs_type": launch_args.legs_type,
+            "end_effector_type": launch_args.end_effector_type,
+            "fixation_type": launch_args.fixation_type,
+            })
 
-    # launch_description.add_action(play_motion2)
+    launch_description.add_action(play_motion2)
 
     # Robot State Publisher
     robot_state_publisher = include_scoped_launch_py_description(
