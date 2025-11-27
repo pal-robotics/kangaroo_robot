@@ -179,6 +179,5 @@ def create_robot_description_param(context, *args, **kwargs):
         "has_pelvis": read_launch_argument("has_pelvis", context),
     }
     robot_description = load_xacro(xacro_file_path, xacro_input_args)
-    with open("kangaroo_urdf_tmp.urdf", "w") as f:
-        f.writelines(robot_description)
+
     return [SetLaunchConfiguration("robot_description", robot_description)]
