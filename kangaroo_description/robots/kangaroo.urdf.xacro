@@ -298,7 +298,7 @@
     <xacro:include filename="$(find kangaroo_description)/mujoco/mj_tags.xacro" />
     <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" />
 
-    <xacro:if value="${fixation_type == 'floating'}">
+    <xacro:if value="${fixation_type == 'floating' and sim_type == 'mujoco'}">
       <link name="origin">
       </link>
 
