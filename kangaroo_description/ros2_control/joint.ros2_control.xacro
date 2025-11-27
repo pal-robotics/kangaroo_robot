@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
-    <xacro:macro name="kangaroo_joint_ros2control"
+    <xacro:macro name="joint_ros2control"
         params="name initial_position:=0.0">
         <joint name="${name}_joint">
             <command_interface name="position" />

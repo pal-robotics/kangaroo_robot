@@ -18,6 +18,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
 
   <!-- INCLUDES -->
+  <xacro:include filename="$(find kangaroo_description)/urdf/pelvis/ros2_control.urdf.xacro" />
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/ros2_control.urdf.xacro" />
   <xacro:include filename="$(find kangaroo_description)/urdf/arm/ros2_control.urdf.xacro" />
   <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/ros2_control.urdf.xacro" />
@@ -33,8 +34,7 @@
       </hardware>
 
       <xacro:if value="${has_pelvis}">
-        <xacro:kangaroo_joint_ros2control name="pelvis_1" />
-        <xacro:kangaroo_joint_ros2control name="pelvis_2" />
+        <xacro:pelvis_ros2_control />
       </xacro:if>
       
       <xacro:if value="${legs_type != 'no-leg'}">

@@ -16,7 +16,7 @@ limitations under the License.
 -->
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="mimic_joint_ros2control" params="name initial_position:=0.0">
+  <xacro:macro name="passive_joint_ros2control" params="name initial_position:=0.0">
     <joint name="${name}_joint">
         <state_interface name="position">
           <param name="initial_value">${initial_position}</param>
