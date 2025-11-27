@@ -4,7 +4,14 @@
     <xacro:macro name="joint_ros2control"
         params="name initial_position:=0.0">
         <joint name="${name}_joint">
-            <command_interface name="position" />
+            <xacro:if value="${mj_control == 'position'}">
+                <command_interface name="position" />
+            </xacro:if>
+
+            <xacro:if value="${mj_control == 'motor'}">
+                <command_interface name="effort" />
+            </xacro:if>
+
             <state_interface name="position">
                 <param name="initial_value">${initial_position}</param>
             </state_interface>

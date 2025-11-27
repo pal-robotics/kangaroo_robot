@@ -31,6 +31,12 @@ class LaunchArguments(LaunchArgumentsBase):
         name='side',
         default_value='',
         description='side of the leg')
+
+    control_type: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='control_type',
+        default_value='effort',
+        choices=['effort', 'position'],
+        description='type of control for the leg')
     
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -50,19 +56,21 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 def setup_controller_configuration(context: LaunchContext):
 
     side = read_launch_argument('side', context)
+    control_type = read_launch_argument('control_type', context)
 
     leg_prefix = "leg"
     if side:
         leg_prefix = f"leg_{side}"
 
-    controller_name = f"{leg_prefix}_controller"
+    controller_name = f"{leg_prefix}_{control_type}_controller"
     remappings = {"LEG_SIDE_PREFIX": leg_prefix}
 
     param_file = os.path.join(
         get_package_share_directory('kangaroo_controller_configuration'),
-        'config', 'leg_controller.yaml')
+        'config', f'leg_{control_type}_controller.yaml')
 
     parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
+    print(f"Parsed YAML for {controller_name}: {parsed_yaml}")
 
     return [SetLaunchConfiguration('controller_name', controller_name),
             SetLaunchConfiguration('controller_config', parsed_yaml)]

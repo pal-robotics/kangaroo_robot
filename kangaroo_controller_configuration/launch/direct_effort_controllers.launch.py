@@ -52,58 +52,24 @@ def start_controllers(context, *args, **kwargs):
     ld = []
 
     # Pelvis controller
-    if read_launch_argument("has_pelvis", context) == "True":
-        pelvis_controller = GroupAction(
-            [generate_load_controller_launch_description(
-                controller_name='pelvis_controller',
-                controller_params_file=os.path.join(
-                    pkg_share_folder,
-                    'config', 'pelvis_controller.yaml'))
-            ],
-            forwarding=False)
-
-        ld.append(pelvis_controller)
     
     # Arm controllers
-    if read_launch_argument("arm_type", context) != "no-arm":
-        arm_left_controller = include_scoped_launch_py_description(
-            pkg_name='kangaroo_controller_configuration',
-            paths=['launch', 'arm_controller.launch.py'],
-            launch_arguments={"side": "left", "arm_type": LaunchConfiguration('arm_type')})
-        ld.append(arm_left_controller)
-        
-        arm_right_controller = include_scoped_launch_py_description(
-            pkg_name='kangaroo_controller_configuration',
-            paths=['launch', 'arm_controller.launch.py'],
-            launch_arguments={"side": "right", "arm_type": LaunchConfiguration('arm_type')})
-        ld.append(arm_right_controller)
     
     # End-effector controllers
-    if read_launch_argument("end_effector_type", context) == "gripper":
-        end_effector_left_controller = include_scoped_launch_py_description(
-            pkg_name='pal_pro_gripper_controller_configuration',
-            paths=['launch', 'pal_pro_gripper_controller.launch.py'],
-            launch_arguments={"side": "left"})
-        ld.append(end_effector_left_controller)
-
-        end_effector_left_controller = include_scoped_launch_py_description(
-            pkg_name='pal_pro_gripper_controller_configuration',
-            paths=['launch', 'pal_pro_gripper_controller.launch.py'],
-            launch_arguments={"side": "right"})
-        ld.append(end_effector_left_controller)
+    
 
     # Leg controllers
     if read_launch_argument("legs_type", context) != "no-legs":
         leg_left_controller = include_scoped_launch_py_description(
             pkg_name='kangaroo_controller_configuration',
             paths=['launch', 'leg_controller.launch.py'],
-            launch_arguments={"side": "left", "control_type": "position"})
+            launch_arguments={"side": "left", "control_type": "effort"})
         ld.append(leg_left_controller)
 
         leg_right_controller = include_scoped_launch_py_description(
             pkg_name='kangaroo_controller_configuration',
             paths=['launch', 'leg_controller.launch.py'],
-            launch_arguments={"side": "right", "control_type": "position"})
+            launch_arguments={"side": "right", "control_type": "effort"})
         ld.append(leg_right_controller)
 
     return ld

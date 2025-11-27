@@ -1,4 +1,4 @@
-${LEG_SIDE_PREFIX}_controller:
+${LEG_SIDE_PREFIX}_position_controller:
   ros__parameters:
     type: joint_trajectory_controller/JointTrajectoryController
     open_loop_control: true
