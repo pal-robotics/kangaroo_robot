@@ -78,6 +78,20 @@ def start_controllers(context, *args, **kwargs):
             launch_arguments={"side": "right", "arm_type": LaunchConfiguration('arm_type')})
         ld.append(arm_right_controller)
     
+    # End-effector controllers
+    if read_launch_argument("end_effector_type", context) == "gripper":
+        end_effector_left_controller = include_scoped_launch_py_description(
+            pkg_name='pal_pro_gripper_controller_configuration',
+            paths=['launch', 'pal_pro_gripper_controller.launch.py'],
+            launch_arguments={"side": "left"})
+        ld.append(end_effector_left_controller)
+
+        end_effector_left_controller = include_scoped_launch_py_description(
+            pkg_name='pal_pro_gripper_controller_configuration',
+            paths=['launch', 'pal_pro_gripper_controller.launch.py'],
+            launch_arguments={"side": "right"})
+        ld.append(end_effector_left_controller)
+
     # Leg controllers
     if read_launch_argument("legs_type", context) != "no-legs":
         leg_left_controller = include_scoped_launch_py_description(
