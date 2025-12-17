@@ -20,6 +20,14 @@ Changelog for package kangaroo_bringup
 0.1.7 (2024-07-11)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'omm/offer_motions' into 'master'
+  Added basic offering movements needed for PRIMI
+  See merge request robots/kangaroo_robot!82
+* Added basic offering movements needed for PRIMI
+* Contributors: Sai Kishor Kothakota, Óscar Martínez
+
 0.3.2 (2025-11-06)
 ------------------
 * Reduce rotational velocity of joystick
