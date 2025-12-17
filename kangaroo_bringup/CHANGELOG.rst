@@ -20,8 +20,8 @@ Changelog for package kangaroo_bringup
 0.1.7 (2024-07-11)
 ------------------
 
-Forthcoming
------------
+0.3.3 (2025-12-17)
+------------------
 * Merge branch 'omm/offer_motions' into 'master'
   Added basic offering movements needed for PRIMI
   See merge request robots/kangaroo_robot!82
