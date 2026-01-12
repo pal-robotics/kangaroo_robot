@@ -298,17 +298,15 @@
     <xacro:include filename="$(find kangaroo_description)/mujoco/mj_tags.xacro" />
     <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" />
 
-    <xacro:if value="${sim_type == 'mujoco'}">
-    <!-- <xacro:if value="${fixation_type == 'floating' and sim_type == 'mujoco'}"> -->
-      <link name="origin">
-      </link>
+    <!-- Add free floating joint -->
+    <link name="origin">
+    </link>
 
-      <joint name="free_floating" type="floating">
-        <parent link="origin" />
-        <child link="base_link" />
-        <origin xyz="0.0 0.0 0.95" />
-      </joint>
-    </xacro:if>
+    <joint name="free_floating" type="floating">
+      <parent link="origin" />
+      <child link="base_link" />
+      <origin xyz="0.0 0.0 0.95" />
+    </joint>
    
     <mujoco_inputs> 
       <!-- Mujoco environment -->
