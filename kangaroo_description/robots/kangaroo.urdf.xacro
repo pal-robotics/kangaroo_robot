@@ -297,16 +297,6 @@
     </xacro:if>
     <xacro:include filename="$(find kangaroo_description)/mujoco/mj_tags.xacro" />
     <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" />
-
-    <!-- Add free floating joint -->
-    <link name="origin">
-    </link>
-
-    <joint name="free_floating" type="floating">
-      <parent link="origin" />
-      <child link="base_link" />
-      <origin xyz="0.0 0.0 0.95" />
-    </joint>
    
     <mujoco_inputs> 
       <!-- Mujoco environment -->
@@ -448,6 +438,7 @@
         <!-- Note that the type and name elements are required -->
         <!-- <modify_element type="joint" name="joint1" frictionloss="1.0" damping="2.0"/>
         <modify_element type="body" name="forearm" gravcomp="1.0"/> -->
+        <modify_element type="body" name="base_link" pos="0 0 0.9" quat="1 0 0 0" />
 
       </processed_inputs>
     </mujoco_inputs>  
