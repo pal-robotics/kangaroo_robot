@@ -349,20 +349,18 @@
           </xacro:if>
         </equality>
 
-        <xacro:if value="${sim_type == 'mujoco-ros2-control'}">
-          <!-- Actuator -->
-          <actuator>
-            <xacro:mj_robot_actuators/>
-            <xacro:if value="${end_effector_type == 'gripper'}">
-              <xacro:mj_gripper_actuators name="gripper_left" />
-              <xacro:mj_gripper_actuators name="gripper_right" />
-            </xacro:if>
-            <xacro:if value="${end_effector_type == 'RH8D'}">
-              <xacro:mj_hand_actuators name="hand" side="left" />
-              <xacro:mj_hand_actuators name="hand" side="right" />
-            </xacro:if>
-          </actuator>
-        </xacro:if>    
+        <!-- Actuator -->
+        <actuator>
+          <xacro:mj_robot_actuators/>
+          <xacro:if value="${end_effector_type == 'gripper'}">
+            <xacro:mj_gripper_actuators name="gripper_left" />
+            <xacro:mj_gripper_actuators name="gripper_right" />
+          </xacro:if>
+          <xacro:if value="${end_effector_type == 'RH8D'}">
+            <xacro:mj_hand_actuators name="hand" side="left" />
+            <xacro:mj_hand_actuators name="hand" side="right" />
+          </xacro:if>
+        </actuator>
         
         <!-- Keyframe -->
         <xacro:keyframe_home/>
