@@ -172,10 +172,10 @@
 
     <!-- Keyframe -->
     <xacro:macro name="keyframe_home">
-      <xacro:if value="${mj_control == 'position' and sim_type != 'mujoco-ros2-control'}">
+      <xacro:if value="${mj_control == 'position'}">
         <xacro:keyframe_position/>
       </xacro:if>
-      <xacro:if value="${mj_control == 'motor' or sim_type == 'mujoco-ros2-control'}">
+      <xacro:if value="${mj_control == 'motor'}">
         <xacro:keyframe_motor/>
       </xacro:if>
     </xacro:macro>
