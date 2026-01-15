@@ -2,7 +2,7 @@
 end_effector_type:
   description: "choose the desired end effector type with its corresponding arm."
   choices: ["cover", "no-end-effector", "fake-forearm", "ft-gripper", "gripper", "RH8D"]
-  default_value: "no-end-effector"
+  default_value: "fake-forearm"
 
 fixation_type:
   description: "Fixation type"
@@ -17,7 +17,7 @@ legs_type:
 arm_type:
   description: "Adds arms to the model"
   choices: ["no-arm", "4dof", "5dof", "7dof"]
-  default_value: "7dof"
+  default_value: "4dof"
 
 has_pelvis:
   description: "Adds the 2 DoFs of the pelvis to the model"

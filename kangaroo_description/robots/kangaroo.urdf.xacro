@@ -29,10 +29,10 @@
   <xacro:arg name="legs_type" default="leg" />
   
   <!-- no-arm, 4dof, 5dof, 7dof] -->
-  <xacro:arg name="arm_type" default="7dof" />
+  <xacro:arg name="arm_type" default="4dof" />
 
   <!-- cover, no-end-effector, fake-forearm, (ft-gripper) not available, gripper, RH8D -->
-  <xacro:arg name="end_effector_type" default="no-end-effector" />
+  <xacro:arg name="end_effector_type" default="fake-forearm" />
   
   <!-- crane, fixed, floating -->
   <xacro:arg name="fixation_type" default="floating" />
