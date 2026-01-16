@@ -24,11 +24,11 @@
   <!-- MACRO DEFINITION-->
   <xacro:macro name="leg_ros2_control" params="side">
 
-        <xacro:joint_ros2control name="leg_${side}_1" initial_position="${(-1 if side == 'left' else 1) * 0.012}"  />
-        <xacro:joint_ros2control name="leg_${side}_2" initial_position="0.054" />
-        <xacro:joint_ros2control name="leg_${side}_3" initial_position="${(-1 if side == 'right' else 1) * 0.04}"  />
+        <xacro:joint_ros2control name="leg_${side}_1" initial_position="0.0"  />
+        <xacro:joint_ros2control name="leg_${side}_2" initial_position="0.05" />
+        <xacro:joint_ros2control name="leg_${side}_3" initial_position="0.0"  />
         <xacro:joint_ros2control name="leg_${side}_length" initial_position="0.6" />
-        <xacro:joint_ros2control name="leg_${side}_4" initial_position="-0.053" />
+        <xacro:joint_ros2control name="leg_${side}_4" initial_position="-0.07" />
         <xacro:joint_ros2control name="leg_${side}_5" initial_position="0.0" />
         <xacro:passive_joint_ros2control name="leg_${side}_femur" initial_position="0.9" />
         <xacro:passive_joint_ros2control name="leg_${side}_knee" initial_position="1.8" />
