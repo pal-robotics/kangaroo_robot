@@ -29,10 +29,10 @@
   <xacro:arg name="legs_type" default="leg" />
   
   <!-- no-arm, 4dof, 5dof, 7dof] -->
-  <xacro:arg name="arm_type" default="7dof" />
+  <xacro:arg name="arm_type" default="4dof" />
 
   <!-- cover, no-end-effector, fake-forearm, (ft-gripper) not available, gripper, RH8D -->
-  <xacro:arg name="end_effector_type" default="no-end-effector" />
+  <xacro:arg name="end_effector_type" default="fake-forearm" />
   
   <!-- crane, fixed, floating -->
   <xacro:arg name="fixation_type" default="floating" />
@@ -297,59 +297,58 @@
     </xacro:if>
     <xacro:include filename="$(find kangaroo_description)/mujoco/mj_tags.xacro" />
     <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" />
-
-    <xacro:if value="${sim_type == 'mujoco'}">
-    <!-- <xacro:if value="${fixation_type == 'floating' and sim_type == 'mujoco'}"> -->
-      <link name="origin">
-      </link>
-
-      <joint name="free_floating" type="floating">
-        <parent link="origin" />
-        <child link="base_link" />
-        <origin xyz="0.0 0.0 0.95" />
-      </joint>
-    </xacro:if>
    
-    <mujoco> 
-
+    <mujoco_inputs> 
       <!-- Mujoco environment -->
-      <xacro:mj_scene/>
-
-      <!-- Default values -->
-      <default>
-        <xacro:mj_robot_defaults />
-      </default>
-
-      <!-- Contact-->
-      <contact>
-        <xacro:mj_robot_contacts />
-        <xacro:if value="${end_effector_type == 'gripper'}">
-          <xacro:mj_gripper_contact name="gripper_left" />
-          <xacro:mj_gripper_contact name="gripper_right" />
-        </xacro:if>
-        <xacro:if value="${end_effector_type == 'RH8D'}">
-          <xacro:mj_hand_contact name="hand" side="left"/>
-          <xacro:mj_hand_contact name="hand" side="right"/>
-          <exclude body1="hand_left_palm_link"  body2="arm_left_5_link"/>
-          <exclude body1="hand_right_palm_link"  body2="arm_right_5_link"/>
-        </xacro:if>
-      </contact>
-
-      <!-- Equality-->
-      <equality>
-        <xacro:mj_robot_equality />
-        <xacro:if value="${end_effector_type == 'gripper'}">
-          <xacro:mj_gripper_equality name="gripper_left" anchor_r="0.01475 -0.001463 0.001" anchor_l="0.0145 -0.0015 0.001"/>
-          <xacro:mj_gripper_equality name="gripper_right" anchor_r="0.014 -0.0015 0" anchor_l="0.014 -0.001 0" />
-        </xacro:if>
-        <xacro:if value="${end_effector_type == 'RH8D'}">
-          <xacro:mj_hand_equality name="hand" side="left" />
-          <xacro:mj_hand_equality name="hand" side="right" />
-        </xacro:if>
-      </equality>
-
+      <scene>
+        <xacro:mj_scene/>
+      </scene>
       
-      <xacro:if value="${sim_type == 'mujoco'}">
+      <!-- The contents of `raw_inputs` will be copied and pasted directly into the MJCF -->
+      <raw_inputs>
+
+        <!-- Default values -->
+        <default>
+          <xacro:mj_robot_defaults />
+        </default>
+
+        <!-- Contact-->
+        <contact>
+          <xacro:mj_robot_contacts />
+          <xacro:if value="${end_effector_type == 'gripper'}">
+            <xacro:mj_gripper_contact name="gripper_left" />
+            <xacro:mj_gripper_contact name="gripper_right" />
+          </xacro:if>
+          <xacro:if value="${end_effector_type == 'RH8D'}">
+            <xacro:mj_hand_contact name="hand" side="left"/>
+            <xacro:mj_hand_contact name="hand" side="right"/>
+            <exclude body1="hand_left_palm_link"  body2="arm_left_5_link"/>
+            <exclude body1="hand_right_palm_link"  body2="arm_right_5_link"/>
+          </xacro:if>
+        </contact>
+
+        <default>
+          <default class="visual">
+            <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+          </default>
+          <default class="collision">
+            <geom group="3" type="mesh"/>
+          </default>
+        </default>
+
+        <!-- Equality-->
+        <equality>
+          <xacro:mj_robot_equality />
+          <xacro:if value="${end_effector_type == 'gripper'}">
+            <xacro:mj_gripper_equality name="gripper_left" anchor_r="0.01475 -0.001463 0.001" anchor_l="0.0145 -0.0015 0.001"/>
+            <xacro:mj_gripper_equality name="gripper_right" anchor_r="0.014 -0.0015 0" anchor_l="0.014 -0.001 0" />
+          </xacro:if>
+          <xacro:if value="${end_effector_type == 'RH8D'}">
+            <xacro:mj_hand_equality name="hand" side="left" />
+            <xacro:mj_hand_equality name="hand" side="right" />
+          </xacro:if>
+        </equality>
+
         <!-- Actuator -->
         <actuator>
           <xacro:mj_robot_actuators/>
@@ -362,16 +361,85 @@
             <xacro:mj_hand_actuators name="hand" side="right" />
           </xacro:if>
         </actuator>
-      </xacro:if>    
-      
-      <!-- Keyframe -->
-      <xacro:keyframe_home/>
+        
+        <!-- Keyframe -->
+        <xacro:keyframe_home/>
 
-      <!-- special pal_mujoco tag. This is the least invasive solution I found to add a site to a body  -->
-      <!-- this tag won't work in a regular mjcf xml file -->
-      <!-- <site name="base_footprint_site" body_name="base_footprint"/> -->
-    </mujoco>  
-  
+        <!-- special pal_mujoco tag. This is the least invasive solution I found to add a site to a body  -->
+        <!-- this tag won't work in a regular mjcf xml file -->
+        <!-- <site name="base_footprint_site" body_name="base_footprint"/> -->
+      </raw_inputs>
+
+      <processed_inputs>
+
+        <!-- Specifying decompose_mesh will set the `decompose` flag when using obj2mjcf -->
+        <!-- Base/Torso Meshes -->
+        <!-- <decompose_mesh mesh_name="torso_2024_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="torso_link_collision" threshold="0.05"/> 
+        <decompose_mesh mesh_name="torso_link_convex" threshold="0.05"/> 
+        <decompose_mesh mesh_name="torso_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="base_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="base_link_collision" threshold="0.05"/> 
+        <decompose_mesh mesh_name="base_link_with_pelvis" threshold="0.05"/> 
+        <decompose_mesh mesh_name="base_link_with_pelvis_collision" threshold="0.05"/> 
+        <decompose_mesh mesh_name="handle" threshold="0.05"/> 
+        <decompose_mesh mesh_name="waist_protector_collision" threshold="0.05"/>  -->
+        <!-- Pelvis Meshes -->
+        <!-- <decompose_mesh mesh_name="pelvis_base_link_collision" threshold="0.05"/> 
+        <decompose_mesh mesh_name="pelvis_base_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="pelvis_1_link_collision" threshold="0.05"/> 
+        <decompose_mesh mesh_name="pelvis_1_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="pelvis_2_link_collision" threshold="0.05"/> 
+        <decompose_mesh mesh_name="pelvis_2_link" threshold="0.05"/>  -->
+        <!-- Arm Meshes -->
+        <!-- <decompose_mesh mesh_name="arm_base_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm1_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm2_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm3_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm4_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm5_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm5_tip_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm6_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm7_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="fake_forearm_left_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="fake_forearm_right_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="old_arm6_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="old_arm7_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="arm_cover_collision" threshold="0.05"/>  -->
+        <!-- Leg Meshes -->
+        <!-- <decompose_mesh mesh_name="leg_left_1_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_left_2_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_left_3_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_right_1_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_right_2_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_right_3_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_4_collision_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_5_collision_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_6_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_femur_link" threshold="0.05"/> 
+        <decompose_mesh mesh_name="leg_tibia_link" threshold="0.05"/>  -->
+        <decompose_mesh mesh_name="leg_7_link" threshold="0.02"/> 
+        
+        <!-- The camera with the specified values will be added at the specified site name. -->
+        <!-- The position and quaterinion will be filled in by the converter -->
+        <!-- <camera site="pelvis_1_link" name="camera" fovy="58" mode="fixed" resolution="640 480" pos="2 2 2" quat="1 0 0 0"/> -->
+
+        <!-- Adds a lidar tag below a site tag to support a lidar sensor. -->
+        <!-- In the URDF, we assume that that the sensor frame has the Z-axis pointed directly up in the sensor -->
+        <!-- frame. This tag will create rangefinders in the MJCF between min_angle and max_angle at each -->
+        <!-- angle_increment rotated about the replicate frame's Y axis. The hardware intercface then combines -->
+        <!-- them into a single LaserScan message. -->
+        <!-- <lidar ref_site="torso_link" sensor_name="rf" min_angle="-0.3" max_angle="0.3" angle_increment="0.025" /> -->
+
+        <!-- The element with the type and name as listed below will be modified with the remaining attributes -->
+        <!-- If the attribute already existed, it will be overwritten -->
+        <!-- Note that the type and name elements are required -->
+        <!-- <modify_element type="joint" name="joint1" frictionloss="1.0" damping="2.0"/>
+        <modify_element type="body" name="forearm" gravcomp="1.0"/> -->
+        <modify_element type="body" name="base_link" pos="0 0 0.9" quat="1 0 0 0" />
+
+      </processed_inputs>
+    </mujoco_inputs>  
   </xacro:if>
 
 

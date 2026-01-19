@@ -70,14 +70,7 @@
               <xacro:origin xyz="0.0349999939117332 ${reflect * -2.55850040738657e-11} -0.0200000000271849" rpy="0 ${-110.0 * deg_to_rad} 0" condition="${collision_type == 'capsule'}"/>
             </properties>
         </xacro:link_collision>
-	      <collision>
-          <origin xyz="0.01 0.0 -0.028" rpy="0 ${-20.0 * deg_to_rad} 0" />
-          <geometry>
-            <!-- The length of the sole is around 24cm, but with the attached rubber sole it would be 24.9cm -->
-            <box size="0.249 0.10 0.025"/> 
-          </geometry>
-        </collision>
-      </xacro:unless>
+      </xacro:unless> 
       <!-- The FT sensors is still not available -->
       <!-- <xacro:if value="${legs_type in ['ft-leg']}">
         <inertial>

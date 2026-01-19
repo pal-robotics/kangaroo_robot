@@ -27,9 +27,9 @@
 
     <ros2_control name="MujocoSystem" type="system">
       <hardware>
-        <plugin>mujoco_ros2_simulation/MujocoSystemInterface</plugin>
+        <plugin>mujoco_ros2_control/MujocoSystemInterface</plugin>
 
-        <!-- Override the slowdown settings in the Simulate App and run at 3x speed -->
+        <!-- Override the slowdown settings in the Simulate App and run at 1x speed -->
         <param name="sim_speed_factor">1.0</param>
       </hardware>
 

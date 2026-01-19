@@ -213,13 +213,6 @@
             iyz="0.0" izz="${(1./2.)*m*r*r}" />
         </xacro:unless>
       </inertial>
-      <visual>
-        <origin rpy="0 0 0" xyz="0 0 ${(leg_min_length - leg_max_length)/2}"/>
-        <geometry>
-          <cylinder length="${(leg_max_length - leg_min_length)}" radius="0.00005"/>
-        </geometry>
-        <material name="pal/DarkGrey" />
-      </visual>
     </link>
     <joint name="leg_${side}_length_joint" type="prismatic">
      <origin xyz="0 ${reflect * 0.0669} -0.09" rpy="0 ${180 * deg_to_rad} 0" />
