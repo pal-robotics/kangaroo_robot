@@ -71,8 +71,6 @@
 
   <include file="$(find kangaroo_controller_configuration)/launch/position_controllers.launch">
     <arg name="with_legs"     value="$(arg with_legs)"/>
-    <arg name="with_pelvis"   value="$(arg with_pelvis)"/>
-    <arg name="with_arms"     value="$(arg with_arms)"/> 
   </include>
 
   <!-- HOMING -->
