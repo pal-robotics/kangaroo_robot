@@ -1,0 +1,5 @@
+robot_state_publisher:
+  launch: "kangaroo_description robot_state_publisher.launch.py
+          arm_type:=7dof
+          end_effector_type:=no-end-effector
+          has_pelvis:=True"
