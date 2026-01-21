@@ -28,7 +28,7 @@
   <!-- MACRO DEFINITION-->
   <xacro:macro name="kangaroo_ros2_control" params="arm_type">
 
-    <ros2_control name="ros2_control_kangaroo_system" type="system">
+    <ros2_control name="ros2_control_kangaroo_system" type="system" is_async="${'true' if sim_type == 'no-simulation' else 'false'}">
       <xacro:if value="${sim_type == 'no-simulation'}" >
         <properties>
           <async thread_priority="70" affinity="[1]" scheduling_policy="detached"/>
