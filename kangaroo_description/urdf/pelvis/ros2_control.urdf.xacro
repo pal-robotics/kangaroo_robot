@@ -24,7 +24,11 @@
   <xacro:macro name="pelvis_ros2_control" params="">
 
         <xacro:joint_ros2control name="pelvis_1" />
+        <xacro:simple_transmission name="pelvis_1" reduction="1.0" offset_value="${pelvis_1_joint_offset}" />
+
         <xacro:joint_ros2control name="pelvis_2" />
+        <xacro:simple_transmission name="pelvis_2" reduction="1.0" offset_value="${pelvis_2_joint_offset}" />
+
    
   </xacro:macro>
 

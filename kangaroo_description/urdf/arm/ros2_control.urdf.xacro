@@ -19,22 +19,34 @@
 
   <!-- INCLUDES -->
   <xacro:include filename="$(find kangaroo_description)/ros2_control/joint.ros2_control.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/ros2_control/transmissions.urdf.xacro" />
 
   <!-- MACRO DEFINITION-->
   <xacro:macro name="arm_ros2_control" params="side arm_type">
-      
+    
       <xacro:if value="${arm_type in ['4dof', '5dof', '7dof']}">
         <xacro:joint_ros2control name="arm_${side}_1" initial_position="${(-1 if side == 'right' else 1) * 0.24}" />
+        <xacro:simple_transmission name="arm_${side}_1" reduction="1.0" offset_value="${arm_1_joint_offset}" />
+
         <xacro:joint_ros2control name="arm_${side}_2" initial_position="1.32" />
+        <xacro:simple_transmission name="arm_${side}_2" reduction="1.0" offset_value="${arm_2_joint_offset}" />
+        
         <xacro:joint_ros2control name="arm_${side}_3" initial_position="${(-1 if side == 'right' else 1) * 1.57}" />
+        <xacro:simple_transmission name="arm_${side}_3" reduction="1.0" offset_value="${arm_3_joint_offset}" />
+        
         <xacro:joint_ros2control name="arm_${side}_4" initial_position="0.8" />
+        <xacro:simple_transmission name="arm_${side}_4" reduction="1.0" offset_value="${arm_4_joint_offset}" />
       </xacro:if>
       <xacro:if value="${arm_type in ['5dof', '7dof']}">
         <xacro:joint_ros2control name="arm_${side}_5" initial_position="0.0" />
+        <xacro:simple_transmission name="arm_${side}_5" reduction="1.0" offset_value="${arm_5_joint_offset}" />
       </xacro:if>
       <xacro:if value="${arm_type in ['7dof']}">
         <xacro:joint_ros2control name="arm_${side}_6" initial_position="0.0" />
+        <xacro:simple_transmission name="arm_${side}_6" reduction="1.0" offset_value="${arm_6_joint_offset}" />
+        
         <xacro:joint_ros2control name="arm_${side}_7" initial_position="0.0" />
+        <xacro:simple_transmission name="arm_${side}_7" reduction="1.0" offset_value="${arm_7_joint_offset}" />
       </xacro:if>
 
   </xacro:macro>

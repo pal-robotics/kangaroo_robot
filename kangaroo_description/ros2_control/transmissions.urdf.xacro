@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="sea_transmission" params="name reduction offset_value">
+    <transmission name="${name}_trans">
+      <plugin>sea_transmissions/SeaSimpleTransmission</plugin>
+      <actuator name="${name}_actuator" role="actuator1"/>
+      <joint name="${name}_joint" role="joint1">
+        <offset>${offset_value}</offset>
+        <mechanical_reduction>${reduction}</mechanical_reduction>
+      </joint>
+      <param name="sea_data_type">sea_data</param>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="simple_transmission" params="name reduction offset_value">
+    <transmission name="${name}_trans">
+      <plugin>transmission_interface/SimpleTransmission</plugin>
+      <actuator name="${name}_actuator" role="actuator1"/>
+      <joint name="${name}_joint" role="joint1">
+        <offset>${offset_value}</offset>
+        <mechanical_reduction>${reduction}</mechanical_reduction>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+</robot>
