@@ -444,9 +444,9 @@
 
 
   <!-- ROS 2 Control -->
-  <xacro:if value="${sim_type == 'mujoco-ros2-control'}">
+  <xacro:unless value="${sim_type == 'mujoco'}">
     <xacro:include filename="$(find kangaroo_description)/ros2_control/ros2_control.urdf.xacro" />
     <xacro:kangaroo_ros2_control arm_type="${arm_type}"/>
-  </xacro:if>
+  </xacro:unless>
 
 </robot>
