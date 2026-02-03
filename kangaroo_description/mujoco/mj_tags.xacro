@@ -19,23 +19,51 @@
     <xacro:macro name="mj_robot_contacts">
       <xacro:if value="${legs_type != 'no-leg'}">
         <xacro:if value="${has_pelvis}">
-          <exclude body1="base_link" body2="pelvis_1_link" />
-          <exclude body1="base_link" body2="pelvis_2_link" />
-          <exclude body1="leg_right_1_link" body2="pelvis_2_link" />
-          <exclude body1="leg_left_1_link" body2="pelvis_2_link" />
-          <exclude body1="leg_right_1_link" body2="pelvis_1_link" />
-          <exclude body1="leg_left_1_link" body2="pelvis_1_link" />
+          <exclude body1="pelvis_base_link" body2="base_link" />
+          <exclude body1="pelvis_base_link" body2="back_handle" />
+          <exclude body1="pelvis_base_link" body2="leg_left_1_link" />
+          <exclude body1="pelvis_base_link" body2="leg_left_2_link" />
+          <exclude body1="pelvis_base_link" body2="leg_right_1_link" />
+          <exclude body1="pelvis_base_link" body2="leg_right_2_link" />
+          <exclude body1="pelvis_1_link" body2="base_link" />
+          <exclude body1="pelvis_1_link" body2="back_handle" />
+          <exclude body1="pelvis_1_link" body2="pelvis_base_link" />
+          <exclude body1="pelvis_1_link" body2="leg_left_1_link" />
+          <exclude body1="pelvis_1_link" body2="leg_left_2_link" />
+          <exclude body1="pelvis_1_link" body2="leg_right_1_link" />
+          <exclude body1="pelvis_1_link" body2="leg_right_2_link" />
+          <exclude body1="pelvis_2_link" body2="base_link" />
+          <exclude body1="pelvis_2_link" body2="back_handle" />
+          <exclude body1="pelvis_2_link" body2="pelvis_base_link" />
+          <exclude body1="pelvis_2_link" body2="pelvis_1_link" />
+          <exclude body1="pelvis_2_link" body2="leg_left_1_link" />
+          <exclude body1="pelvis_2_link" body2="leg_left_2_link" />
+          <exclude body1="pelvis_2_link" body2="leg_right_1_link" />
+          <exclude body1="pelvis_2_link" body2="leg_right_2_link" />
         </xacro:if>  
-
+        
+        <exclude body1="base_link" body2="back_handle" />
+        <exclude body1="base_link" body2="torso_link" />
         <exclude body1="base_link" body2="leg_left_1_link" />
         <exclude body1="base_link" body2="leg_left_2_link" />
         <exclude body1="base_link" body2="leg_left_3_link" />
+        <exclude body1="base_link" body2="leg_right_1_link" />
+        <exclude body1="base_link" body2="leg_right_2_link" />
+        <exclude body1="base_link" body2="leg_right_3_link" />
+        <exclude body1="base_link" body2="leg_right_femur_link" />
+        <exclude body1="base_link" body2="leg_left_femur_link" />
+
+        <exclude body1="back_handle" body2="leg_left_1_link"/>
+        <exclude body1="back_handle" body2="leg_left_2_link"/>
+        <exclude body1="back_handle" body2="leg_right_1_link"/>
+        <exclude body1="back_handle" body2="leg_right_2_link"/>
+
+        <exclude body1="torso_link" body2="leg_left_1_link"/>
+        <exclude body1="torso_link" body2="leg_left_2_link"/>
+        <exclude body1="torso_link" body2="leg_right_1_link"/>
+        <exclude body1="torso_link" body2="leg_right_2_link"/>
 
         <exclude body1="leg_left_1_link" body2="leg_right_1_link" />
-
-        <exclude body1="leg_right_femur_link" body2="base_link" />
-        <exclude body1="leg_left_femur_link" body2="base_link" />
-
         <exclude body1="leg_left_1_link" body2="leg_left_3_link" />
         <exclude body1="leg_left_2_link" body2="leg_left_3_link" />
         <exclude body1="leg_left_2_link" body2="leg_left_1_link" />
@@ -51,9 +79,6 @@
         <exclude body1="leg_left_knee_link" body2="leg_left_5_link" />
         <exclude body1="leg_left_4_link" body2="leg_left_5_link" />
         
-        <exclude body1="base_link" body2="leg_right_1_link" />
-        <exclude body1="base_link" body2="leg_right_2_link" />
-        <exclude body1="base_link" body2="leg_right_3_link" />
         <exclude body1="leg_right_1_link" body2="leg_right_3_link" />
         <exclude body1="leg_right_2_link" body2="leg_right_3_link" />
         <exclude body1="leg_right_2_link" body2="leg_right_1_link" />
@@ -190,7 +215,7 @@
     <xacro:unless value="${fixation_type == 'fixed'}">
       <xacro:property name="floating_base_pose" 
       value="
-      0 0 0.95
+      0 0 0.9
       1 0 0 0" />
     </xacro:unless>
 

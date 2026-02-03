@@ -1,0 +1,3 @@
+default_broadcasters:
+  launch: "kangaroo_controller_configuration default_broadcasters.launch.py"
+  finishes: True

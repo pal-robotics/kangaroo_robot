@@ -3,14 +3,23 @@
 <package format="3">
   <name>kangaroo_bringup</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>The kangaroo_bringup package</description>
   <maintainer email="sergi.acosta@pal-robotics.com">user</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache License 2.0</license>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_auto</buildtool_depend>
 
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+  <build_depend condition="$PAL_DISTRO >= alum">pal_module_cmake</build_depend>
+
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>diagnostic_aggregator</exec_depend>
+  <exec_depend>kangaroo_controller_configuration</exec_depend>
+  <exec_depend>kangaroo_description</exec_depend>
+  <exec_depend>joy_linux</exec_depend>
+  <exec_depend>joy_teleop</exec_depend>
+  <exec_depend>twist_mux</exec_depend>
+  <exec_depend>play_motion2</exec_depend>
+  <exec_depend>play_motion2_cli</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

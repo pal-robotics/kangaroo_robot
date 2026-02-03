@@ -107,7 +107,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     # Broadcaster Controllers
     broadcaster_controllers = include_scoped_launch_py_description(
         pkg_name='kangaroo_controller_configuration',
-        paths=['launch', 'broadcasters.launch.py'],
+        paths=['launch', 'default_broadcasters.launch.py'],
         )
 
     launch_description.add_action(broadcaster_controllers)

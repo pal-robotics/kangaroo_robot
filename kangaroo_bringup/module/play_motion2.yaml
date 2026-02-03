@@ -1,0 +1,2 @@
+play_motion2:
+  launch: "kangaroo_bringup kangaroo_playmotion2.launch.py"

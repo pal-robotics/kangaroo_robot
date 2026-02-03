@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2023, PAL Robotics, S.L.
+  All rights reserved.
+
+-->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<!--Constant parameters-->
+	<xacro:property name="pelvis_1_joint_offset" value="0.0" />
+	<xacro:property name="pelvis_2_joint_offset" value="0.0" />
+	
+	<xacro:property name="arm_1_joint_offset" value="0.0" />
+	<xacro:property name="arm_2_joint_offset" value="0.0" />
+	<xacro:property name="arm_3_joint_offset" value="0.0" />
+	<xacro:property name="arm_4_joint_offset" value="0.0" />
+	<xacro:property name="arm_5_joint_offset" value="0.0" />
+	<xacro:property name="arm_6_joint_offset" value="0.0" />
+	<xacro:property name="arm_7_joint_offset" value="0.0" />
+
+	<xacro:property name="leg_1_joint_offset" value="0.0" />
+	<xacro:property name="leg_2_joint_offset" value="0.0" />
+	<xacro:property name="leg_3_joint_offset" value="0.0" />
+	<xacro:property name="leg_length_joint_offset" value="0.0" />
+	<xacro:property name="leg_4_joint_offset" value="0.0" />
+	<xacro:property name="leg_5_joint_offset" value="0.0" />
+
+
+</robot>
