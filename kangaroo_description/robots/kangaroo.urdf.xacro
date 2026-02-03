@@ -34,7 +34,7 @@
   <!-- cover, no-end-effector, fake-forearm, (ft-gripper) not available, gripper, RH8D -->
   <xacro:arg name="end_effector_type" default="fake-forearm" />
   
-  <!-- crane, fixed, floating -->
+  <!-- fixed, floating -->
   <xacro:arg name="fixation_type" default="floating" />
 
   <!-- world name defined in pal_mujoco_scenes package -->
@@ -108,6 +108,10 @@
     <xacro:wrong_mj_control />
   </xacro:if>
 
+  <xacro:if value="${fixation_type not in ['fixed', 'floating']}">
+    <xacro:wrong_fixation_type />
+  </xacro:if>
+
   <xacro:if value="${collision_type not in ['mesh', 'capsule']}">
     <xacro:wrong_collision_type />
   </xacro:if>
@@ -174,11 +178,6 @@
   <!-- Base -->
   <xacro:include filename="$(find kangaroo_description)/urdf/base/base.urdf.xacro"/>
 
-  <!-- Crane -->
-  <xacro:if value="${fixation_type == 'crane'}">
-    <xacro:include filename="$(find kangaroo_description)/urdf/crane/crane.urdf.xacro" />
-  </xacro:if>
-
   <!-- Legs -->
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
 
@@ -206,23 +205,6 @@
   <!-- BASE, PELVIS, TORSO -->
 
   <xacro:base_link has_pelvis="${has_pelvis}"/>
-
-  <!-- Fixed Base Link crane, fixed, floating -->
-   <!-- <xacro:if value="${fixation_type == 'fixed'}">
-    <link name="world"/>
-    <joint name="world_base_link" type="fixed">
-      <origin xyz="0.0 0.0 1.2" rpy="0.0  0.0  0.0"/>
-      <parent link="world" />
-      <child link="base_link" />
-    </joint>
-  </xacro:if> -->
-
-  <xacro:unless value="${fixation_type == 'fixed'}">
-    <xacro:if value="${fixation_type == 'crane'}">
-      <!-- Crane -->
-      <xacro:crane parent="base_link"/>
-    </xacro:if>
-  </xacro:unless>
   
   <!-- LEGS -->
 
@@ -436,6 +418,10 @@
         <!-- Note that the type and name elements are required -->
         <!-- <modify_element type="joint" name="joint1" frictionloss="1.0" damping="2.0"/>
         <modify_element type="body" name="forearm" gravcomp="1.0"/> -->
+        <xacro:if value="${fixation_type == 'fixed'}">
+          <modify_element type="body" name="base_link" pos="0 0 1.2" quat="1 0 0 0" />
+        </xacro:if>
+        
 
       </processed_inputs>
     </mujoco_inputs>  
