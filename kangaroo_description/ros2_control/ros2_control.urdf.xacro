@@ -45,6 +45,7 @@
           <plugin>mujoco_ros2_control/MujocoSystemInterface</plugin>
           <!-- Override the slowdown settings in the Simulate App and run at 1x speed -->
           <param name="sim_speed_factor">1.0</param>
+          <param name="initial_keyframe">home</param>
         </xacro:unless>
       </hardware>
 

@@ -190,7 +190,7 @@
     <xacro:unless value="${fixation_type == 'fixed'}">
       <xacro:property name="floating_base_pose" 
       value="
-      0 0 0.95
+      0 0 0.9
       1 0 0 0" />
     </xacro:unless>
 
