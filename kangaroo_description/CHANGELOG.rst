@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2026-02-04)
+------------------
 * set last ros1 version
 * updated version and metadeta
 * added logic for simple transmissions loading sim/real
