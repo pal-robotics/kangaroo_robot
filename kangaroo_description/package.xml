@@ -2,9 +2,9 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>kangaroo_description</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="user@todo.todo">user</maintainer>
+  <version>1.31.0</version>
+  <description>The kangaroo_description package</description>
+  <maintainer email="sergi.acosta@pal-robotics.com">Sergi de las Muelas</maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
