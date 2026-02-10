@@ -38,6 +38,7 @@
         <xacro:if value="${sim_type == 'no-simulation'}">
           <plugin>robot_control/RobotControl</plugin>
           <param name="error_protection">true</param>
+          <param name="expose_safety_interface">true</param>
           <param name="idle_mode_on_stop">true</param>
           <param name="idle_mode_on_stop_interfaces">[current, effort, torque]</param>
         </xacro:if>
