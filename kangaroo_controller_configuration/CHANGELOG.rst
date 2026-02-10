@@ -2,6 +2,9 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.0.0 (2026-02-04)
 ------------------
 * set last ros1 version
