@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.1 (2026-02-10)
+------------------
 * Expose safety interface
 * Contributors: Noel Jimenez
 
