@@ -145,11 +145,11 @@
           iyy="0.0121128398206334" iyz="-1.93362671261787E-05" izz="0.0025734913670898" />
       </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 ${60.0 * deg_to_rad} 0" />
         <geometry>
           <!-- The ballscrews are removed from the meshes for better visualization, but they are
         used for inertia computation etc -->
-          <mesh filename="package://kangaroo_description/meshes/leg/leg_femur_link.stl" />
+          <mesh filename="package://kangaroo_description/meshes/leg/leg_4_collision_link.stl" />
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
@@ -173,14 +173,14 @@
         <inertia ixx="0.00193955870555937" ixy="-7.22330237538467E-08" ixz="-0.000472475893337071"
           iyy="0.00215347079183119" iyz="1.36520012214457E-06" izz="0.000391378760186175" />
       </inertial>
-      <!-- <visual>
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://kangaroo_description/meshes/leg/leg_tibia_link.stl" />
         </geometry>
         <material name="pal/DarkGrey" />
-      </visual> -->
-      <!-- <xacro:link_collision 
+      </visual>
+      <xacro:link_collision 
         mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
         collision_type="${collision_type}"
         mesh_file="package://kangaroo_description/meshes/leg/leg_5_collision_link.stl"
@@ -191,7 +191,7 @@
             <xacro:origin xyz="0 0 0" rpy="0 ${-60.0 * deg_to_rad} 0" condition="${collision_type == 'mesh'}"/>
             <xacro:origin xyz="-0.0569664873635563 ${reflect * 7.99553099622616e-06} -0.148820781933269" rpy="0 ${30.0 * deg_to_rad} 0" condition="${collision_type == 'capsule'}"/>
           </properties>
-      </xacro:link_collision> -->
+      </xacro:link_collision>
     </link>
 
     <!-- We approximate the virtual length link with a small cylinder mass and inertia -->
