@@ -2,6 +2,16 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* removed unecessary comments
+* updated dt to 2khz
+* commented local model
+* reduce broadcaster update rate and uncomment the meshes
+* updated xml path
+* test to make inference work
+* Contributors: Sai Kishor Kothakota, sergiacosta
+
 2.0.1 (2026-02-10)
 ------------------
 * Expose safety interface

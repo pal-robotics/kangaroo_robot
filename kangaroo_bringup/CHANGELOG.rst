@@ -2,6 +2,11 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* added kangaroo moveit config dependency
+* Contributors: sergiacosta
+
 2.0.1 (2026-02-10)
 ------------------
 
