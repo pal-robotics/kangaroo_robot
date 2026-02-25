@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.1.0 (2026-02-25)
+------------------
 * reduce broadcaster update rate and uncomment the meshes
 * test to make inference work
 * Contributors: Sai Kishor Kothakota, sergiacosta
