@@ -288,7 +288,7 @@
       
       <!-- The contents of `raw_inputs` will be copied and pasted directly into the MJCF -->
       <raw_inputs>
-        <option timestep="0.001" />
+        <option timestep="0.0005"/>
 
         <!-- Default values -->
         <default>
