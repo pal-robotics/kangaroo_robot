@@ -15,6 +15,7 @@
   <exec_depend>diagnostic_aggregator</exec_depend>
   <exec_depend>kangaroo_controller_configuration</exec_depend>
   <exec_depend>kangaroo_description</exec_depend>
+  <exec_depend>kangaroo_moveit_config</exec_depend>
   <exec_depend>joy_linux</exec_depend>
   <exec_depend>joy_teleop</exec_depend>
   <exec_depend>twist_mux</exec_depend>
