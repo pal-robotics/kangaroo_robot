@@ -288,6 +288,7 @@
       
       <!-- The contents of `raw_inputs` will be copied and pasted directly into the MJCF -->
       <raw_inputs>
+        <option timestep="0.0005"/>
 
         <!-- Default values -->
         <default>
@@ -349,7 +350,11 @@
 
         <!-- special pal_mujoco tag. This is the least invasive solution I found to add a site to a body  -->
         <!-- this tag won't work in a regular mjcf xml file -->
-        <!-- <site name="base_footprint_site" body_name="base_footprint"/> -->
+        <sensor>
+          <framequat name="imu_sensor_quat" objtype="site" objname="imu_link" />
+          <gyro name="imu_sensor_gyro" site="imu_link" />
+          <accelerometer name="imu_sensor_accel" site="imu_link" />
+        </sensor>
       </raw_inputs>
 
       <processed_inputs>
