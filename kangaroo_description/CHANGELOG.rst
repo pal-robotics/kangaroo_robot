@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.1.1 (2026-03-05)
+------------------
 * Renaming robot_state_publisher module file
   As it is, there is a name clash with:
   pal_sea_arm_description/module/10_robot_state_publisher.yaml
