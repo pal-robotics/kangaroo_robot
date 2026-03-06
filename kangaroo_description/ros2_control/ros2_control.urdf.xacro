@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- 
+<!--
   Copyright (c) 2024 PAL Robotics S.L. All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,7 +55,7 @@
       <xacro:if value="${has_pelvis}">
         <xacro:pelvis_ros2_control />
       </xacro:if>
-      
+
       <xacro:if value="${legs_type != 'no-leg'}">
         <xacro:leg_ros2_control side="left"/>
         <xacro:leg_ros2_control side="right"/>
@@ -65,35 +65,50 @@
         <xacro:arm_ros2_control side="left" arm_type="${arm_type}"/>
         <xacro:arm_ros2_control side="right" arm_type="${arm_type}"/>
       </xacro:if>
-      
+
       <xacro:if value="${end_effector_type != 'no-end-effector'}">
         <xacro:end_effector_ros2_control side="left" end_effector_type="${end_effector_type}"/>
         <xacro:end_effector_ros2_control side="right" end_effector_type="${end_effector_type}"/>
       </xacro:if>
 
-      <sensor name="imu_sensor">
-        <param name="mujoco_type">imu</param>
-        <!-- There is no requirement for the mujoco_sensor_name to match the ros2_control sensor name -->
-        <param name="mujoco_sensor_name">imu_sensor</param>
-        <!-- Default value of orientation_mjcf_suffix is '_quat' -->
-        <param name="orientation_mjcf_suffix">_quat</param>
-        <!-- Default value of angular_velocity_mjcf_suffix is '_gyro' -->
-        <param name="angular_velocity_mjcf_suffix">_gyro</param>
-        <!-- Default value of linear_acceleration_mjcf_suffix is '_accel' -->
-        <param name="linear_acceleration_mjcf_suffix">_accel</param>
-        <state_interface name="orientation.x"/>
-        <state_interface name="orientation.y"/>
-        <state_interface name="orientation.z"/>
-        <state_interface name="orientation.w"/>
-        <state_interface name="angular_velocity.x"/>
-        <state_interface name="angular_velocity.y"/>
-        <state_interface name="angular_velocity.z"/>
-        <state_interface name="linear_acceleration.x"/>
-        <state_interface name="linear_acceleration.y"/>
-        <state_interface name="linear_acceleration.z"/>
-      </sensor>
+      <xacro:unless value="${sim_type == 'no-simulation'}">
+        <sensor name="imu_sensor">
+          <param name="mujoco_type">imu</param>
+          <!-- There is no requirement for the mujoco_sensor_name to match the ros2_control sensor name -->
+          <param name="mujoco_sensor_name">imu_sensor</param>
+          <!-- Default value of orientation_mjcf_suffix is '_quat' -->
+          <param name="orientation_mjcf_suffix">_quat</param>
+          <!-- Default value of angular_velocity_mjcf_suffix is '_gyro' -->
+          <param name="angular_velocity_mjcf_suffix">_gyro</param>
+          <!-- Default value of linear_acceleration_mjcf_suffix is '_accel' -->
+          <param name="linear_acceleration_mjcf_suffix">_accel</param>
+          <state_interface name="orientation.x"/>
+          <state_interface name="orientation.y"/>
+          <state_interface name="orientation.z"/>
+          <state_interface name="orientation.w"/>
+          <state_interface name="angular_velocity.x"/>
+          <state_interface name="angular_velocity.y"/>
+          <state_interface name="angular_velocity.z"/>
+          <state_interface name="linear_acceleration.x"/>
+          <state_interface name="linear_acceleration.y"/>
+          <state_interface name="linear_acceleration.z"/>
+        </sensor>
+      </xacro:unless>
 
     </ros2_control>
+
+    <xacro:if value="${sim_type == 'no-simulation'}">
+      <ros2_control name="ros2_control_orientus" type="sensor" rw_rate="1000" is_async="true">
+        <hardware>
+          <plugin>pal_orientus_sensor/OrientusSensor</plugin>
+          <param name="io_device">/dev/ttyUSB0</param>
+          <param name="sensor_name">imu_sensor</param>
+          <param name="orientation_to_enu_frame">3.14159, 0.0, 1.570796</param>
+          <!-- The following parameter is used to enable the ENU transformation for velocity and acceleration -->
+          <param name="enable_orientation_to_enu_frame">false</param>
+        </hardware>
+      </ros2_control>
+    </xacro:if>
 
   </xacro:macro>
 
