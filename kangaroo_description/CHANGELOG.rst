@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.1.2 (2026-03-06)
+------------------
 * Merge branch 'fix/add_orientus_imu' into 'humble-devel'
   Add orientus imu
   See merge request robots/kangaroo_robot!94
