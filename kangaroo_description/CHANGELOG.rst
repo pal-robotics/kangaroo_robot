@@ -2,6 +2,14 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/add_orientus_imu' into 'humble-devel'
+  Add orientus imu
+  See merge request robots/kangaroo_robot!94
+* Adding orientus ros2_control hardware
+* Contributors: Jordan Palacios, Sai Kishor Kothakota
+
 2.1.1 (2026-03-05)
 ------------------
 * Renaming robot_state_publisher module file
