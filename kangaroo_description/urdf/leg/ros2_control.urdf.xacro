@@ -21,6 +21,7 @@
   <xacro:include filename="$(find kangaroo_description)/ros2_control/joint.ros2_control.xacro" />
   <xacro:include filename="$(find kangaroo_description)/ros2_control/passive_joint.ros2_control.xacro" />
   <xacro:include filename="$(find kangaroo_description)/ros2_control/transmissions.urdf.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.transmissions.xacro" />
 
   <!-- MACRO DEFINITION-->
   <xacro:macro name="leg_ros2_control" params="side">
@@ -35,7 +36,8 @@
         <xacro:passive_joint_ros2control name="leg_${side}_knee" initial_position="1.8" />
 
         <xacro:if value="${sim_type == 'no-simulation'}" >
-          <xacro:simple_transmission name="leg_${side}_1" reduction="1.0" offset_value="${leg_1_joint_offset}" />
+          <!--xacro:simple_transmission name="leg_${side}_1" reduction="1.0" offset_value="${leg_1_joint_offset}" /-->
+          <xacro:hip_transmission_yaw side="${side}" />
           <xacro:simple_transmission name="leg_${side}_2" reduction="1.0" offset_value="${leg_2_joint_offset}" />
           <xacro:simple_transmission name="leg_${side}_3" reduction="1.0" offset_value="${leg_3_joint_offset}" />
           <xacro:simple_transmission name="leg_${side}_length" reduction="1.0" offset_value="${leg_length_joint_offset}" />
