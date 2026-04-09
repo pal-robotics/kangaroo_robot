@@ -13,10 +13,13 @@
   <!--File includes-->
   <!-- <xacro:include filename="$(find kangaroo_description)/urdf/deg_to_rad.xacro" />
   <xacro:include filename="$(find kangaroo_description)/urdf/collision.xacro" /> -->
+  
 
   <xacro:include filename="$(find pal_urdf_utils)/urdf/camera/realsense_d435i.urdf.xacro"/>
 
   <xacro:macro name="kangaroo_torso" params="parent *origin">
+  <xacro:property name="gazebo_version" value="classic"/>
+  <xacro:property name="namespace" value=""/>
 
   <link name="torso_link">
     <inertial>
@@ -60,7 +63,7 @@
   </joint>
 
 
-  <!-- Torso front cameras -->
+  <!-- Torso back cameras -->
   <xacro:realsense_d435i name="torso_front_roof_rgbd_camera"  parent="torso_link" use_nominal_extrinsics="false">
       <origin xyz="0.1056 0 0.40767" rpy="0 0.5236 0"/>
   </xacro:realsense_d435i>
