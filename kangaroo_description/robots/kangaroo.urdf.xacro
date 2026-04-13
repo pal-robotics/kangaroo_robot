@@ -52,13 +52,13 @@
   <xacro:arg name="torso_front_up_camera_model" default="realsense-d435i" />
   
   <!-- realsense-D435i -->
-  <xacro:arg name="torso_back_up_camera_model" default="realsense-d435i" />
+  <xacro:arg name="torso_rear_up_camera_model" default="realsense-d435i" />
   
   <!-- realsense-D435i -->
   <xacro:arg name="torso_front_down_camera_model" default="realsense-d435i" />
   
   <!-- realsense-D435i -->
-  <xacro:arg name="torso_back_down_camera_model" default="realsense-d435i" />
+  <xacro:arg name="torso_rear_down_camera_model" default="realsense-d435i" />
   
   <!-- COMMON ARGS -->
   
@@ -94,9 +94,9 @@
 
   <xacro:property name="use_mimic" value="$(arg use_mimic)" />
   <xacro:property name="torso_front_up_camera_model" value="$(arg torso_front_up_camera_model)" />
-  <xacro:property name="torso_back_up_camera_model" value="$(arg torso_back_up_camera_model)" />
+  <xacro:property name="torso_rear_up_camera_model" value="$(arg torso_rear_up_camera_model)" />
   <xacro:property name="torso_front_down_camera_model" value="$(arg torso_front_down_camera_model)" />
-  <xacro:property name="torso_back_down_camera_model" value="$(arg torso_back_down_camera_model)" />
+  <xacro:property name="torso_rear_down_camera_model" value="$(arg torso_rear_down_camera_model)" />
 
   <!-- Camera properties -->
   <xacro:property name="gazebo_version" value="classic"/>
@@ -160,16 +160,16 @@
     <xacro:wrong_torso_front_up_camera_model/>
   </xacro:if>
   
-  <xacro:if value="${torso_back_up_camera_model not in ['realsense-d435i']}">
-    <xacro:wrong_torso_back_up_camera_model/>
+  <xacro:if value="${torso_rear_up_camera_model not in ['realsense-d435i']}">
+    <xacro:wrong_torso_rear_up_camera_model/>
   </xacro:if>
 
   <xacro:if value="${torso_front_down_camera_model not in ['realsense-d435i']}">
     <xacro:wrong_torso_front_down_camera_model/>
   </xacro:if>
   
-  <xacro:if value="${torso_back_down_camera_model not in ['realsense-d435i']}">
-    <xacro:wrong_torso_back_down_camera_model/>
+  <xacro:if value="${torso_rear_down_camera_model not in ['realsense-d435i']}">
+    <xacro:wrong_torso_rear_down_camera_model/>
   </xacro:if>
 
   <!-- INCLUDES -->

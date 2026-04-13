@@ -68,11 +68,11 @@
   </xacro:realsense_d435i>
   
   <!-- Torso back cameras -->
-  <xacro:realsense_d435i name="torso_back_up_rgbd_camera"  parent="torso_link" use_nominal_extrinsics="${use_sim_time}">
+  <xacro:realsense_d435i name="torso_rear_up_rgbd_camera"  parent="torso_link" use_nominal_extrinsics="${use_sim_time}">
     <origin xyz="-0.1056 0 0.40767" rpy="0 0.5236 3.14159"/>
   </xacro:realsense_d435i>
 
-  <xacro:realsense_d435i name="torso_back_down_rgbd_camera"  parent="torso_link" use_nominal_extrinsics="${use_sim_time}">
+  <xacro:realsense_d435i name="torso_rear_down_rgbd_camera"  parent="torso_link" use_nominal_extrinsics="${use_sim_time}">
     <origin xyz="-0.095041 0 0.186487" rpy="0 1.0472 3.14159"/>
   </xacro:realsense_d435i>
 
