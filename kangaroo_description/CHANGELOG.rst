@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.2.0 (2026-04-14)
+------------------
 * using rear instead of back
 * update urdf and cleaning
 * added properties to make it compatible with last changes of pal_urdf_utils
