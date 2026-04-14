@@ -2,6 +2,14 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* using rear instead of back
+* update urdf and cleaning
+* added properties to make it compatible with last changes of pal_urdf_utils
+* add torso cameras
+* Contributors: Andrea Capodacqua, andreacapodacqua
+
 2.1.2 (2026-03-06)
 ------------------
 * Merge branch 'fix/add_orientus_imu' into 'humble-devel'
