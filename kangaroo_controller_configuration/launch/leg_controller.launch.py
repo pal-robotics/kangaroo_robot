@@ -70,7 +70,6 @@ def setup_controller_configuration(context: LaunchContext):
         'config', f'leg_{control_type}_controller.yaml')
 
     parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
-    print(f"Parsed YAML for {controller_name}: {parsed_yaml}")
 
     return [SetLaunchConfiguration('controller_name', controller_name),
             SetLaunchConfiguration('controller_config', parsed_yaml)]
