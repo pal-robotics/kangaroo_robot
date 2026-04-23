@@ -56,4 +56,3 @@ for has_pelvis in [True, False]:
                         f.write("<!-- " + msg + "-->\n")
 
                     f.write(expanded_contents)
-                print("Generated " + expanded_file_name)

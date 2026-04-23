@@ -159,7 +159,6 @@ def create_play_motion_filename(context):
 
     
     # Generate a combined motions file
-    print([motions_yaml.perform(context) for motions_yaml in motions_files])
     merged_yaml = merge_param_files([motions_yaml.perform(context) for motions_yaml in motions_files])
 
     # Determine planner
@@ -167,7 +166,6 @@ def create_play_motion_filename(context):
     motion_planner_config = PathJoinSubstitution(
                                 [pkg_share_dir, 'config', 'motion_planner', f"{arm_type}_specifics", f"motion_planner{full_hw_suffix}.yaml"]
                             )
-    print("Motion planner config:", motion_planner_config.perform(context))
     return [SetLaunchConfiguration("motions_file", merged_yaml),
             SetLaunchConfiguration("motion_planner_config", motion_planner_config)]
 
