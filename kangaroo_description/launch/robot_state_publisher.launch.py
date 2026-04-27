@@ -68,7 +68,8 @@ class LaunchArguments(LaunchArgumentsBase):
     legs_type: DeclareLaunchArgument = KangarooArgs.legs_type
     
     # ["cover", "fake-forearm", "ft-gripper", "gripper", "RA8D"]
-    end_effector_type: DeclareLaunchArgument = KangarooArgs.end_effector_type
+    end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
+    end_effector_left: DeclareLaunchArgument = KangarooArgs.end_effector_left
 
     # Fixation type ["crane", "fixed", "floating"]
     fixation_type: DeclareLaunchArgument = KangarooArgs.fixation_type
@@ -110,7 +111,8 @@ def declare_actions(
             "has_head": LaunchConfiguration("has_head"),
             "has_pelvis": LaunchConfiguration("has_pelvis"),
             "arm_type": LaunchConfiguration("arm_type"),
-            "end_effector_type": LaunchConfiguration("end_effector_type"),
+            "end_effector_right": LaunchConfiguration("end_effector_right"),
+            "end_effector_left": LaunchConfiguration("end_effector_left"),
             "legs_type": LaunchConfiguration("legs_type"),
             "fixation_type": LaunchConfiguration("fixation_type")
         }
@@ -174,7 +176,8 @@ def create_robot_description_param(context, *args, **kwargs):
         "fixation_type": read_launch_argument("fixation_type", context),
         "legs_type": read_launch_argument("legs_type", context),
         "arm_type": read_launch_argument("arm_type", context),
-        "end_effector_type": read_launch_argument("end_effector_type", context),
+        "end_effector_right": read_launch_argument("end_effector_right", context),
+        "end_effector_left": read_launch_argument("end_effector_left", context),
         "has_head": read_launch_argument("has_head", context),
         "has_pelvis": read_launch_argument("has_pelvis", context),
     }
