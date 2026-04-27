@@ -27,10 +27,10 @@
     <transmission name="leg_${side}_ankle_transmission">
       <plugin>kangaroo_transmissions/AnkleXYCustomTransmission</plugin>
 
-      <actuator name="leg_${side}_${roll_joint}_motor" role="actuator_right">
+      <actuator name="leg_${side}_${roll_joint}_actuator" role="actuator_right">
       </actuator>
 
-      <actuator name="leg_${side}_${pitch_joint}_motor" role="actuator_left">
+      <actuator name="leg_${side}_${pitch_joint}_actuator" role="actuator_left">
       </actuator>
 
       <actuator name="${read_actuator}" role="actuator_length">
