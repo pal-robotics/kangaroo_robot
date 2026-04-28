@@ -25,10 +25,10 @@ from rclpy.parameter import ParameterType
 
 
 class GetParametersFromBlackboard(Action):
-
     """
-    A custom launch action to fetch a list of parameters from a running node
-    and store each one as a new LaunchConfiguration.
+    Fetch parameters from a running node.
+
+    Store each fetched parameter as a new LaunchConfiguration.
     """
 
     def __init__(
@@ -39,7 +39,7 @@ class GetParametersFromBlackboard(Action):
         **kwargs
     ):
         """
-        Constructs the action.
+        Construct the action.
 
         :param blackboard_node_name: The name of the node to get the parameter from.
         :param parameter_names: A list of parameter names to fetch.
@@ -53,7 +53,7 @@ class GetParametersFromBlackboard(Action):
         self._logger = get_logger('GetParametersFromBlackboard')
 
     def _get_value_as_string(self, param_value) -> str:
-        """Helper to convert any parameter type to a string."""
+        """Convert a parameter value to a string."""
         if param_value.type == ParameterType.PARAMETER_STRING:
             return param_value.string_value
         elif param_value.type == ParameterType.PARAMETER_BOOL:
@@ -66,9 +66,7 @@ class GetParametersFromBlackboard(Action):
         return ''
 
     def execute(self, context: LaunchContext):
-        """
-        This method is executed by the launch system.
-        """
+        """Execute this action in the launch system."""
         actions_to_return = []
 
         # Initialize a temporary node to make the service call
@@ -131,8 +129,9 @@ class GetParametersFromBlackboard(Action):
 
 class SetParametersToBlackboard(Action):
     """
-    A custom launch action to set parameters on a running node
-    by resolving LaunchConfigurations.
+    Set parameters on a running node.
+
+    Resolve LaunchConfigurations before sending parameter values.
     """
 
     def __init__(
@@ -142,7 +141,7 @@ class SetParametersToBlackboard(Action):
         **kwargs
     ):
         """
-        Constructs the action.
+        Construct the action.
 
         :param blackboard_node_name: The name of the node to set parameters on.
         :param parameters: A dictionary mapping the desired parameter name (str)
@@ -156,8 +155,9 @@ class SetParametersToBlackboard(Action):
 
     def _string_to_parameter_value(self, value: str) -> ParameterValue:
         """
-        Tries to intelligently convert a string to the most appropriate
-        ParameterValue type (bool, int, double, or string).
+        Convert a string to the most appropriate ParameterValue type.
+
+        Infer bool, int, double, or string values.
         """
         if value.lower() == 'true':
             return ParameterValue(type=ParameterType.PARAMETER_BOOL, bool_value=True)
@@ -174,9 +174,7 @@ class SetParametersToBlackboard(Action):
         return ParameterValue(type=ParameterType.PARAMETER_STRING, string_value=value)
 
     def execute(self, context: LaunchContext):
-        """
-        This method is executed by the launch system.
-        """
+        """Execute this action in the launch system."""
         rclpy.init()
         try:
             temp_node = rclpy.create_node('temporary_param_setter')
