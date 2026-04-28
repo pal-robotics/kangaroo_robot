@@ -36,6 +36,8 @@ class KangarooArgs:
     end_effector_right: DLA = __arg_creator.get_argument("end_effector_right")
     end_effector_left: DLA = __arg_creator.get_argument("end_effector_left")
     fixation_type: DLA = __arg_creator.get_argument("fixation_type")
+    ft_sensor_right: DLA = __arg_creator.get_argument("ft_sensor_right")
+    ft_sensor_left: DLA = __arg_creator.get_argument("ft_sensor_left")
     collision_type: DLA = __arg_creator.get_argument("collision_type")
     use_mimic: DLA = __arg_creator.get_argument("use_mimic")
     sim_type: DLA = __arg_creator.get_argument("sim_type")

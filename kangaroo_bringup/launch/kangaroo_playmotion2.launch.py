@@ -66,6 +66,10 @@ class LaunchArguments(LaunchArgumentsBase):
     # Fixation type ["crane", "fixed", "floating"]
     fixation_type: DeclareLaunchArgument = KangarooArgs.fixation_type
 
+    # FT sensor type ["no-ft-sensor", "ati"]
+    ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
+    ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
     

@@ -1,18 +1,28 @@
 # Configuration file for the Kangaroo robot
 end_effector_right:
   description: "choose the desired end effector right with its corresponding arm."
-  choices: ["cover", "no-end-effector", "fake-forearm", "ft-gripper", "gripper", "RH8D"]
+  choices: ["cover", "no-end-effector", "fake-forearm", "gripper", "RH8D"]
   default_value: "fake-forearm"
 
 end_effector_left:
   description: "choose the desired end effector left with its corresponding arm."
-  choices: ["cover", "no-end-effector", "fake-forearm", "ft-gripper", "gripper", "RH8D"]
+  choices: ["cover", "no-end-effector", "fake-forearm", "gripper", "RH8D"]
   default_value: "fake-forearm"
 
 fixation_type:
   description: "Fixation type"
   choices: ["crane", "fixed", "floating"]
   default_value: "floating"
+
+ft_sensor_right:
+  description: "Force-torque sensor on the right arm"
+  choices: ["no-ft-sensor", "ati"]
+  default_value: "no-ft-sensor"
+
+ft_sensor_left:
+  description: "Force-torque sensor on the left arm"
+  choices: ["no-ft-sensor", "ati"]
+  default_value: "no-ft-sensor"
 
 legs_type:
   description: "Adds legs to the model"

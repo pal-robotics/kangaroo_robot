@@ -38,6 +38,10 @@
   <!-- fixed, floating -->
   <xacro:arg name="fixation_type" default="floating" />
 
+  <xacro:arg name="ft_sensor_left" default="no-ft-sensor" />
+  <xacro:arg name="ft_sensor_right" default="no-ft-sensor" />
+
+
   <!-- world name defined in pal_mujoco_scenes package -->
   <xacro:arg name="world_name" default="floor"/>
 
@@ -92,6 +96,8 @@
   <xacro:property name="fixation_type" value="$(arg fixation_type)" />
   <xacro:property name="end_effector_right" value="$(arg end_effector_right)" />
   <xacro:property name="end_effector_left" value="$(arg end_effector_left)" />
+  <xacro:property name="ft_sensor_left" value="$(arg ft_sensor_left)" />
+  <xacro:property name="ft_sensor_right" value="$(arg ft_sensor_right)" />
   <xacro:property name="world_name" value="$(arg world_name)" />
 
   <xacro:property name="use_mimic" value="$(arg use_mimic)" />
@@ -99,6 +105,13 @@
   <xacro:property name="torso_rear_up_camera_model" value="$(arg torso_rear_up_camera_model)" />
   <xacro:property name="torso_front_down_camera_model" value="$(arg torso_front_down_camera_model)" />
   <xacro:property name="torso_rear_down_camera_model" value="$(arg torso_rear_down_camera_model)" />
+
+  <xacro:property name="has_ft_sensor_left" value="${ft_sensor_left not in ['no-ft-sensor']}"/>
+  <xacro:property name="has_ft_sensor_right" value="${ft_sensor_right not in ['no-ft-sensor']}"/>
+  <xacro:property name="end_effector_right_link" value="${'wrist_right_ft_tool_link' if has_ft_sensor_right else 'arm_right_tool_link'}" />
+  <xacro:property name="end_effector_left_link" value="${'wrist_left_ft_tool_link' if has_ft_sensor_left else 'arm_left_tool_link'}" />
+
+
 
   <!-- Camera properties -->
   <xacro:property name="gazebo_version" value="classic"/>
@@ -126,7 +139,6 @@
     <xacro:wrong_arm_type />
   </xacro:if>
 
-  <!-- (ft-gripper) not available -->
   <xacro:if value="${end_effector_right not in ['cover', 'no-end-effector', 'fake-forearm', 'gripper', 'RH8D']}">
     <xacro:wrong_end_effector_right />
   </xacro:if>
@@ -139,6 +151,13 @@
     <xacro:if value="${end_effector_right or end_effector_left not in ['cover'] or end_effector_left not in ['cover']}">
       <xacro:wrong_arm_end_effector_combination />
     </xacro:if>
+  </xacro:if>
+  <!-- FT SENSORS -->
+  <xacro:if value="${ft_sensor_left not in ['no-ft-sensor', 'ati']}">
+    <xacro:wrong_ft_sensor_left />
+  </xacro:if>
+  <xacro:if value="${ft_sensor_right not in ['no-ft-sensor', 'ati']}">
+    <xacro:wrong_ft_sensor_right />
   </xacro:if>
 
   <xacro:if value="${arm_type in ['4dof']}">
@@ -210,6 +229,13 @@
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/fake_forearm.urdf.xacro" />
   </xacro:if>
 
+  <!-- FT Sensors  -->
+  <xacro:if value="${has_ft_sensor_right or has_ft_sensor_left}">
+    <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.urdf.xacro" />
+    <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.gazebo.xacro" />
+  </xacro:if>
+
+
   <!-- ROBOT DEFINITION -->
 
   <!-- BASE, PELVIS, TORSO -->
@@ -256,10 +282,10 @@
   <!-- END EFFECTOR -->
 
   <xacro:if value="${end_effector_right in ['gripper']}">
-    <xacro:gripper name="gripper_right" parent="arm_right_tool_link"/>
+    <xacro:gripper name="gripper_right" parent="${end_effector_right_link}"/>
   </xacro:if>
   <xacro:if value="${end_effector_left in ['gripper']}">
-    <xacro:gripper name="gripper_left" parent="arm_left_tool_link"/>
+    <xacro:gripper name="gripper_left" parent="${end_effector_left_link}"/>
   </xacro:if>
 
   <xacro:if value="${end_effector_right in ['RH8D']}">
@@ -283,6 +309,15 @@
       <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
     </xacro:fake-forearm>
   </xacro:if>
+
+  <!-- FT SENSORS -->
+    <xacro:if value="${has_ft_sensor_left}">
+      <xacro:ft_sensor type="${ft_sensor_left}" name="wrist_left" parent="arm_left_tool_link"/>
+    </xacro:if>
+
+    <xacro:if value="${has_ft_sensor_right}">
+      <xacro:ft_sensor type="${ft_sensor_right}" name="wrist_right" parent="arm_right_tool_link"/>
+    </xacro:if>
 
   <!-- MUJOCO   -->
 

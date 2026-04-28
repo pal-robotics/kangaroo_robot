@@ -64,6 +64,9 @@ class LaunchArguments(LaunchArgumentsBase):
     # Fixation type ["crane", "fixed", "floating"]
     fixation_type: DeclareLaunchArgument = KangarooArgs.fixation_type
 
+    # FT sensor type ["no-ft-sensor", "ati"]
+    ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
+    ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
@@ -83,6 +86,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             "end_effector_right": launch_args.end_effector_right,
             "end_effector_left": launch_args.end_effector_left,
             "fixation_type": launch_args.fixation_type,
+            "ft_sensor_right": launch_args.ft_sensor_right,
+            "ft_sensor_left": launch_args.ft_sensor_left,
             })
 
     launch_description.add_action(play_motion2)
@@ -103,6 +108,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             "end_effector_right": launch_args.end_effector_right,
             "end_effector_left": launch_args.end_effector_left,
             "fixation_type": launch_args.fixation_type,
+            "ft_sensor_right": launch_args.ft_sensor_right,
+            "ft_sensor_left": launch_args.ft_sensor_left,
             })
 
     launch_description.add_action(robot_state_publisher)
