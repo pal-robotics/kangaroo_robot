@@ -136,10 +136,11 @@
 
   <!-- Valid Combinations -->
   <xacro:if value="${arm_type in ['no-arm']}">
-    <xacro:if value="${end_effector_right not in ['cover']}">
+    <xacro:if value="${end_effector_right or end_effector_left not in ['cover'] or end_effector_left not in ['cover']}">
       <xacro:wrong_arm_end_effector_combination />
     </xacro:if>
   </xacro:if>
+
   <xacro:if value="${arm_type in ['4dof']}">
     <xacro:if value="${end_effector_right not in ['fake-forearm'] or end_effector_left not in ['fake-forearm']}">
       <xacro:wrong_arm_end_effector_combination />
