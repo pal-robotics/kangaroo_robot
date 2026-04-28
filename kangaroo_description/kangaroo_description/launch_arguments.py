@@ -12,32 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 from dataclasses import dataclass
+
+from ament_index_python.packages import get_package_share_directory
+
 from launch.actions import DeclareLaunchArgument as DLA
 from launch_pal.arg_utils import parse_launch_args_from_yaml
-from ament_index_python.packages import get_package_share_directory
 
 
 @dataclass(frozen=True)
 class KangarooArgs:
     """This dataclass contains launch arguments for Kangaroo."""
 
-    __robot_name = "kangaroo"
-    __pkg_dir = get_package_share_directory(f"{__robot_name}_description")
+    __robot_name = 'kangaroo'
+    __pkg_dir = get_package_share_directory(f'{__robot_name}_description')
     __arg_creator = parse_launch_args_from_yaml(
-        f"{__pkg_dir}/config/{__robot_name}_configuration.yaml"
+        f'{__pkg_dir}/config/{__robot_name}_configuration.yaml'
     )
 
-    legs_type: DLA = __arg_creator.get_argument("legs_type")
-    has_pelvis: DLA = __arg_creator.get_argument("has_pelvis")
-    has_head: DLA = __arg_creator.get_argument("has_head")
-    arm_type: DLA = __arg_creator.get_argument("arm_type")
-    end_effector_right: DLA = __arg_creator.get_argument("end_effector_right")
-    end_effector_left: DLA = __arg_creator.get_argument("end_effector_left")
-    fixation_type: DLA = __arg_creator.get_argument("fixation_type")
-    ft_sensor_right: DLA = __arg_creator.get_argument("ft_sensor_right")
-    ft_sensor_left: DLA = __arg_creator.get_argument("ft_sensor_left")
-    collision_type: DLA = __arg_creator.get_argument("collision_type")
-    use_mimic: DLA = __arg_creator.get_argument("use_mimic")
-    sim_type: DLA = __arg_creator.get_argument("sim_type")
+    legs_type: DLA = __arg_creator.get_argument('legs_type')
+    has_pelvis: DLA = __arg_creator.get_argument('has_pelvis')
+    has_head: DLA = __arg_creator.get_argument('has_head')
+    arm_type: DLA = __arg_creator.get_argument('arm_type')
+    end_effector_right: DLA = __arg_creator.get_argument('end_effector_right')
+    end_effector_left: DLA = __arg_creator.get_argument('end_effector_left')
+    fixation_type: DLA = __arg_creator.get_argument('fixation_type')
+    ft_sensor_right: DLA = __arg_creator.get_argument('ft_sensor_right')
+    ft_sensor_left: DLA = __arg_creator.get_argument('ft_sensor_left')
+    collision_type: DLA = __arg_creator.get_argument('collision_type')
+    use_mimic: DLA = __arg_creator.get_argument('use_mimic')
+    sim_type: DLA = __arg_creator.get_argument('sim_type')

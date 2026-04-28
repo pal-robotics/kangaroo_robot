@@ -12,31 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from dataclasses import dataclass
 import os
 from pathlib import Path
 
 from ament_index_python.packages import get_package_share_directory
 
+from kangaroo_description.kangaroo_launch_utils import SetParametersToBlackboard
+from kangaroo_description.launch_arguments import KangarooArgs
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, OpaqueFunction, SetLaunchConfiguration, RegisterEventHandler, LogInfo
+from launch.actions import DeclareLaunchArgument, OpaqueFunction, SetLaunchConfiguration
+from launch.actions import LogInfo, RegisterEventHandler
 from launch.event_handlers import OnProcessStart
 from launch.substitutions import LaunchConfiguration
+from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
+from launch_pal.robot_arguments import CommonArgs
+from launch_param_builder import load_xacro
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
-from launch_param_builder import load_xacro
-from launch_pal.arg_utils import read_launch_argument
-from launch_pal.arg_utils import LaunchArgumentsBase
-from dataclasses import dataclass
-from kangaroo_description.launch_arguments import KangarooArgs
-from launch_pal.robot_arguments import CommonArgs
-
-from kangaroo_description.kangaroo_launch_utils import SetParametersToBlackboard
 
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
 
-    ## Common
+    # Common
 
     # ["True", "False"]
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
@@ -44,11 +43,11 @@ class LaunchArguments(LaunchArgumentsBase):
     # ["false", "position", "motor"]
     mj_control: DeclareLaunchArgument = CommonArgs.mj_control
 
-    ## Kangaroo specific
+    # Kangaroo specific
 
     # ["mujoco-ros2-control", "mujoco", "no-simulation"]
     sim_type: DeclareLaunchArgument = KangarooArgs.sim_type
-    
+
     # ["True", "False"]
     use_mimic: DeclareLaunchArgument = KangarooArgs.use_mimic
 
@@ -57,16 +56,16 @@ class LaunchArguments(LaunchArgumentsBase):
 
     # [True, False]
     has_head: DeclareLaunchArgument = KangarooArgs.has_head
-    
+
     # [True, False]
     has_pelvis: DeclareLaunchArgument = KangarooArgs.has_pelvis
 
     # ["no-arm", "4dof", "5dof", "7dof"]
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
-    
+
     # ["ft-leg", "leg", "no-leg"]
     legs_type: DeclareLaunchArgument = KangarooArgs.legs_type
-    
+
     # ["cover", "fake-forearm", "ft-gripper", "gripper", "RA8D"]
     end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = KangarooArgs.end_effector_left
@@ -77,6 +76,7 @@ class LaunchArguments(LaunchArgumentsBase):
     # FT sensor type ["no-ft-sensor", "ati"]
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
+
 
 def generate_launch_description():
 
@@ -100,26 +100,26 @@ def declare_actions(
         output='screen'
     )
     launch_description.add_action(parameter_blackboard_node)
-    
+
     # Define Robot Specific Parameters
     set_params_on_blackboard = SetParametersToBlackboard(
         blackboard_node_name='parameter_blackboard',
         parameters={
-            "robot_model": LaunchConfiguration("robot_model"),
-            "use_sim_time": LaunchConfiguration("use_sim_time"),
-            "use_mimic": LaunchConfiguration("use_mimic"),
-            "sim_type": LaunchConfiguration("sim_type"),
-            "mj_control": LaunchConfiguration("mj_control"),
-            "collision_type": LaunchConfiguration("collision_type"),
-            "has_head": LaunchConfiguration("has_head"),
-            "has_pelvis": LaunchConfiguration("has_pelvis"),
-            "arm_type": LaunchConfiguration("arm_type"),
-            "end_effector_right": LaunchConfiguration("end_effector_right"),
-            "end_effector_left": LaunchConfiguration("end_effector_left"),
-            "ft_sensor_right": LaunchConfiguration("ft_sensor_right"),
-            "ft_sensor_left": LaunchConfiguration("ft_sensor_left"),
-            "legs_type": LaunchConfiguration("legs_type"),
-            "fixation_type": LaunchConfiguration("fixation_type")
+            'robot_model': LaunchConfiguration('robot_model'),
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+            'use_mimic': LaunchConfiguration('use_mimic'),
+            'sim_type': LaunchConfiguration('sim_type'),
+            'mj_control': LaunchConfiguration('mj_control'),
+            'collision_type': LaunchConfiguration('collision_type'),
+            'has_head': LaunchConfiguration('has_head'),
+            'has_pelvis': LaunchConfiguration('has_pelvis'),
+            'arm_type': LaunchConfiguration('arm_type'),
+            'end_effector_right': LaunchConfiguration('end_effector_right'),
+            'end_effector_left': LaunchConfiguration('end_effector_left'),
+            'ft_sensor_right': LaunchConfiguration('ft_sensor_right'),
+            'ft_sensor_left': LaunchConfiguration('ft_sensor_left'),
+            'legs_type': LaunchConfiguration('legs_type'),
+            'fixation_type': LaunchConfiguration('fixation_type')
         }
     )
 
@@ -130,7 +130,7 @@ def declare_actions(
             # When that node starts, execute our custom action
             on_start=[
                 LogInfo(msg='Parameter blackboard started'),
-                SetLaunchConfiguration("robot_model", "kangaroo"),
+                SetLaunchConfiguration('robot_model', 'kangaroo'),
                 set_params_on_blackboard
             ]
         )
@@ -144,17 +144,17 @@ def declare_actions(
     # Using ParameterValue is needed so ROS knows the parameter type
     # Otherwise https://github.com/ros2/launch_ros/issues/136
     rsp = Node(
-        package="robot_state_publisher",
-        executable="robot_state_publisher",
-        output="both",
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        output='both',
         parameters=[
             {
-                "robot_description": ParameterValue(
-                    LaunchConfiguration("robot_description"), value_type=str
+                'robot_description': ParameterValue(
+                    LaunchConfiguration('robot_description'), value_type=str
                 ),
             },
-            {"use_sim_time": LaunchConfiguration("use_sim_time")},
-            {"publish_frequency": 100.0},
+            {'use_sim_time': LaunchConfiguration('use_sim_time')},
+            {'publish_frequency': 100.0},
         ],
     )
 
@@ -167,27 +167,27 @@ def create_robot_description_param(context, *args, **kwargs):
 
     xacro_file_path = Path(
         os.path.join(
-            get_package_share_directory("kangaroo_description"),
-            "robots",
-            "kangaroo.urdf.xacro",
+            get_package_share_directory('kangaroo_description'),
+            'robots',
+            'kangaroo.urdf.xacro',
         )
     )
 
     xacro_input_args = {
-        "use_sim_time": read_launch_argument("use_sim_time", context),
-        "collision_type": read_launch_argument("collision_type", context),
-        "sim_type": read_launch_argument("sim_type", context),
-        "mj_control": read_launch_argument("mj_control", context),
-        "fixation_type": read_launch_argument("fixation_type", context),
-        "legs_type": read_launch_argument("legs_type", context),
-        "arm_type": read_launch_argument("arm_type", context),
-        "end_effector_right": read_launch_argument("end_effector_right", context),
-        "end_effector_left": read_launch_argument("end_effector_left", context),
-        "ft_sensor_right": read_launch_argument("ft_sensor_right", context),
-        "ft_sensor_left": read_launch_argument("ft_sensor_left", context),
-        "has_head": read_launch_argument("has_head", context),
-        "has_pelvis": read_launch_argument("has_pelvis", context),
+        'use_sim_time': read_launch_argument('use_sim_time', context),
+        'collision_type': read_launch_argument('collision_type', context),
+        'sim_type': read_launch_argument('sim_type', context),
+        'mj_control': read_launch_argument('mj_control', context),
+        'fixation_type': read_launch_argument('fixation_type', context),
+        'legs_type': read_launch_argument('legs_type', context),
+        'arm_type': read_launch_argument('arm_type', context),
+        'end_effector_right': read_launch_argument('end_effector_right', context),
+        'end_effector_left': read_launch_argument('end_effector_left', context),
+        'ft_sensor_right': read_launch_argument('ft_sensor_right', context),
+        'ft_sensor_left': read_launch_argument('ft_sensor_left', context),
+        'has_head': read_launch_argument('has_head', context),
+        'has_pelvis': read_launch_argument('has_pelvis', context),
     }
     robot_description = load_xacro(xacro_file_path, xacro_input_args)
 
-    return [SetLaunchConfiguration("robot_description", robot_description)]
+    return [SetLaunchConfiguration('robot_description', robot_description)]

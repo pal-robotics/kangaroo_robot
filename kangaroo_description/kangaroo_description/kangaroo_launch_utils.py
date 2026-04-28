@@ -12,18 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import rclpy
-import rcl_interfaces.srv
-from rcl_interfaces.msg import Parameter, ParameterValue
-from launch import Action
-from launch.launch_context import LaunchContext
-from launch.actions import SetLaunchConfiguration
-from launch.logging import get_logger
-from rclpy.parameter import ParameterType
 from typing import Any
+
+from launch import Action
+from launch.actions import SetLaunchConfiguration
+from launch.launch_context import LaunchContext
+from launch.logging import get_logger
+from rcl_interfaces.msg import Parameter, ParameterValue
+import rcl_interfaces.srv
+import rclpy
+from rclpy.parameter import ParameterType
 
 
 class GetParametersFromBlackboard(Action):
+
     """
     A custom launch action to fetch a list of parameters from a running node
     and store each one as a new LaunchConfiguration.
@@ -61,14 +63,14 @@ class GetParametersFromBlackboard(Action):
         elif param_value.type == ParameterType.PARAMETER_DOUBLE:
             return str(param_value.double_value)
         # Add other types like arrays if needed
-        return ""
+        return ''
 
     def execute(self, context: LaunchContext):
         """
         This method is executed by the launch system.
         """
         actions_to_return = []
-        
+
         # Initialize a temporary node to make the service call
         rclpy.init()
         try:
@@ -79,17 +81,18 @@ class GetParametersFromBlackboard(Action):
             if not client.wait_for_service(timeout_sec=3.0):
                 self._logger.error(
                     f"Parameter blackboard '{self._blackboard_node_name}' not available. "
-                    "Using default values for all requested parameters.")
+                    'Using default values for all requested parameters.')
                 # If blackboard is down, set all params to their defaults
                 for param_name in self._parameter_names:
                     default = self._default_values.get(param_name, '')
-                    actions_to_return.append(SetLaunchConfiguration(name=param_name, value=default))
+                    actions_to_return.append(SetLaunchConfiguration(name=param_name,
+                                                                    value=default))
                 return actions_to_return
 
             # If blackboard is up, make a single request for all parameters
             request = rcl_interfaces.srv.GetParameters.Request()
             request.names = self._parameter_names
-            
+
             future = client.call_async(request)
             rclpy.spin_until_future_complete(temp_node, future, timeout_sec=3.0)
 
@@ -97,23 +100,27 @@ class GetParametersFromBlackboard(Action):
                 # The response is a list of values in the same order as the request
                 for i, param_name in enumerate(self._parameter_names):
                     param_value = future.result().values[i]
-                    
+
                     if param_value.type != ParameterType.PARAMETER_NOT_SET:
                         fetched_value = self._get_value_as_string(param_value)
                         self._logger.info(
-                            f"Fetched '{param_name}' = '{fetched_value}'. Setting LaunchConfiguration.")
-                        actions_to_return.append(SetLaunchConfiguration(name=param_name, value=fetched_value))
+                            f"Fetched '{param_name}' = '{fetched_value}'. "
+                            'Setting LaunchConfiguration.')
+                        actions_to_return.append(SetLaunchConfiguration(name=param_name,
+                                                                        value=fetched_value))
                     else:
                         default = self._default_values.get(param_name, '')
                         self._logger.warn(
                             f"Could not fetch '{param_name}'. Using default value '{default}'.")
-                        actions_to_return.append(SetLaunchConfiguration(name=param_name, value=default))
+                        actions_to_return.append(SetLaunchConfiguration(name=param_name,
+                                                                        value=default))
             else:
-                self._logger.error("Service call to get parameters failed.")
+                self._logger.error('Service call to get parameters failed.')
                 # Fallback to defaults if the call itself fails
                 for param_name in self._parameter_names:
                     default = self._default_values.get(param_name, '')
-                    actions_to_return.append(SetLaunchConfiguration(name=param_name, value=default))
+                    actions_to_return.append(SetLaunchConfiguration(name=param_name,
+                                                                    value=default))
 
         finally:
             temp_node.destroy_node()
@@ -179,7 +186,7 @@ class SetParametersToBlackboard(Action):
             if not client.wait_for_service(timeout_sec=5.0):
                 self._logger.error(
                     f"Parameter blackboard '{self._blackboard_node_name}' not available. "
-                    "Cannot set parameters.")
+                    'Cannot set parameters.')
                 return
 
             request = rcl_interfaces.srv.SetParameters.Request()
@@ -195,7 +202,7 @@ class SetParametersToBlackboard(Action):
                 request.parameters.append(param_msg)
 
             if not request.parameters:
-                self._logger.warn("No parameters provided to set.")
+                self._logger.warn('No parameters provided to set.')
                 return
 
             future = client.call_async(request)
@@ -210,7 +217,7 @@ class SetParametersToBlackboard(Action):
                         self._logger.error(
                             f"Failed to set parameter '{param_name}': {result.reason}")
             else:
-                self._logger.error(f"Service call to set parameters failed: {future.exception()}")
+                self._logger.error(f'Service call to set parameters failed: {future.exception()}')
 
         finally:
             temp_node.destroy_node()
