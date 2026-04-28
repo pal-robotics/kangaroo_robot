@@ -20,8 +20,8 @@
   <!-- INCLUDES -->
   <xacro:include filename="$(find kangaroo_description)/urdf/pelvis/ros2_control.urdf.xacro" />
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/ros2_control.urdf.xacro" />
-  <xacro:include filename="$(find kangaroo_description)/urdf/arm/ros2_control.urdf.xacro" />
-  <xacro:include filename="$(find kangaroo_description)/urdf/end_effector/ros2_control.urdf.xacro" />
+  <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/humanoid/ros2_control.urdf.xacro" />
+  <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/ros2_control.urdf.xacro" />
   <!-- calibration offsets -->
   <xacro:include filename="$(find kangaroo_description)/urdf/calibration_constants.urdf.xacro" />
 
@@ -66,9 +66,14 @@
         <xacro:arm_ros2_control side="right" arm_type="${arm_type}"/>
       </xacro:if>
 
-      <xacro:if value="${end_effector_type != 'no-end-effector'}">
-        <xacro:end_effector_ros2_control side="left" end_effector_type="${end_effector_type}"/>
-        <xacro:end_effector_ros2_control side="right" end_effector_type="${end_effector_type}"/>
+
+      <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
+        <!-- pal-pro-gripper right -->
+        <xacro:ros2_control_pal_pro_gripper name="gripper_right" reduction="1.0" />
+      </xacro:if>
+      <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
+        <!-- pal-pro-gripper left -->
+        <xacro:ros2_control_pal_pro_gripper name="gripper_left" reduction="1.0" />
       </xacro:if>
 
       <xacro:unless value="${sim_type == 'no-simulation'}">

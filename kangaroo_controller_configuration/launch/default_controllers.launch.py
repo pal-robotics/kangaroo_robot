@@ -37,7 +37,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     # Add controller of right arm, end-effector and ft-sensor
     get_params_from_blackboard = GetParametersFromBlackboard(
         blackboard_node_name='parameter_blackboard', 
-        parameter_names=["legs_type", "has_pelvis", "arm_type", "end_effector_type"]
+        parameter_names=["legs_type", "has_pelvis", "arm_type", "end_effector_right", "end_effector_left"]
         )
     launch_description.add_action(get_params_from_blackboard)
 
@@ -79,12 +79,12 @@ def start_controllers(context, *args, **kwargs):
         ld.append(arm_right_controller)
     
     # End-effector controllers
-    if read_launch_argument("end_effector_type", context) == "gripper":
-        end_effector_left_controller = include_scoped_launch_py_description(
+    if read_launch_argument("end_effector_right", context) == "gripper":
+        end_effector_right_controller = include_scoped_launch_py_description(
             pkg_name='pal_pro_gripper_controller_configuration',
             paths=['launch', 'pal_pro_gripper_controller.launch.py'],
-            launch_arguments={"side": "left"})
-        ld.append(end_effector_left_controller)
+            launch_arguments={"side": "right"})
+        ld.append(end_effector_right_controller)
 
         end_effector_left_controller = include_scoped_launch_py_description(
             pkg_name='pal_pro_gripper_controller_configuration',
