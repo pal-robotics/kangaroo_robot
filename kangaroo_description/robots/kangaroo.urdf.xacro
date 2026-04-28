@@ -32,8 +32,8 @@
   <xacro:arg name="arm_type" default="4dof" />
 
   <!-- cover, no-end-effector, fake-forearm, gripper, RH8D -->
-  <xacro:arg name="end_effector_right" default="fake-forearm" />
-  <xacro:arg name="end_effector_left" default="fake-forearm" />
+  <xacro:arg name="end_effector_right" default="no-end-effector" />
+  <xacro:arg name="end_effector_left" default="no-end-effector" />
   
   <!-- fixed, floating -->
   <xacro:arg name="fixation_type" default="floating" />
