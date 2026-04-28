@@ -200,26 +200,15 @@
   </xacro:unless>
 
   <!-- End Effector -->
-  <xacro:if value="${end_effector_right in ['gripper']}">
+  <xacro:if value="${end_effector_right in ['gripper'] or end_effector_left in ['gripper']}">
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/pal_pro_gripper.urdf.xacro" />
   </xacro:if>
-  <xacro:if value="${end_effector_right in ['RH8D']}">
+  <xacro:if value="${end_effector_right in ['RH8D'] or end_effector_left in ['RH8D']}">
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/rh8d_hand.urdf.xacro" />
   </xacro:if>
-  <xacro:if value="${end_effector_right in ['fake-forearm']}">
+  <xacro:if value="${end_effector_right in ['fake-forearm'] or end_effector_left in ['fake-forearm']}">
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/fake_forearm.urdf.xacro" />
   </xacro:if>
-
-  <xacro:if value="${end_effector_left in ['gripper']}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/pal_pro_gripper.urdf.xacro" />
-  </xacro:if>
-  <xacro:if value="${end_effector_left in ['RH8D']}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/rh8d_hand.urdf.xacro" />
-  </xacro:if>
-  <xacro:if value="${end_effector_left in ['fake-forearm']}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/fake_forearm.urdf.xacro" />
-  </xacro:if>
-
 
   <!-- ROBOT DEFINITION -->
 
