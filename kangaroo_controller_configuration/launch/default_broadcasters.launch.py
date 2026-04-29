@@ -14,18 +14,65 @@
 
 import os
 from ament_index_python.packages import get_package_share_directory
-from launch import LaunchDescription
-from launch.actions import GroupAction
+from kangaroo_description.kangaroo_description.launch_arguments import KangarooArgs
+from launch import LaunchDescription, LaunchConfiguration
+from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
+from launch.conditions import IfCondition, LaunchConfigurationNotEquals
+from launch.substitutions import PythonExpression
 from controller_manager.launch_utils import generate_load_controller_launch_description
-from launch_pal.arg_utils import LaunchArgumentsBase
+from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
+from launch_pal.include_utils import include_scoped_launch_py_description
+
+from typing import List
 
 from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
-    pass
+    arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
+    ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
+    ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
+
    
+
+def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: bool = False):
+
+    concatenated_string = ''
+
+    if skip_empty:
+        concatenated_string = delimiter.join(filter(None, strings))
+    else:
+        concatenated_string = delimiter.join(strings)
+
+    return concatenated_string
+
+
+def configure_side_controllers(context, side='right', *args, **kwargs):
+    
+    ft_sensor_arg_name = concatenate_strings(
+        strings=['ft_sensor', side],
+        delimiter='_',
+        skip_empty=True)
+
+
+    # Setup ft-sensor controller
+    ft_sensor = read_launch_argument(ft_sensor_arg_name, context)
+
+    ft_pkg_name = 'pal_sea_arm_controller_configuration'
+    ft_launch_file = 'ft_sensor_controller.launch.py'
+
+    ft_sensor_controller = include_scoped_launch_py_description(
+        pkg_name=ft_pkg_name,
+        paths=['launch', ft_launch_file],
+        launch_arguments={"side": side,
+                          "ft_sensor": ft_sensor},
+        condition=LaunchConfigurationNotEquals(
+            ft_sensor_arg_name, 'no-ft-sensor')
+
+    )
+    return [ft_sensor_controller]
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
@@ -54,7 +101,24 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     launch_description.add_action(imu_sensor_broadcaster)
 
-   
+    # Add controller of right ft-sensor
+    launch_description.add_action(OpaqueFunction(
+        function=configure_side_controllers, args=['right'],
+        condition= IfCondition(
+                    PythonExpression(["'", LaunchConfiguration('arm_type'),
+                                      "' not in ['no-arm', '4dof']"])
+        ))
+    )
+
+    # Add controller of left ft-sensor
+    launch_description.add_action(OpaqueFunction(
+        function=configure_side_controllers, args=['left'],
+        condition= IfCondition(
+                    PythonExpression(["'", LaunchConfiguration('arm_type'),
+                                      "' not in ['no-arm', '4dof']"])
+        ))
+    )
+
 def generate_launch_description():
 
     # Create the launch description

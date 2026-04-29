@@ -74,6 +74,9 @@ class LaunchArguments(LaunchArgumentsBase):
     # Fixation type ["crane", "fixed", "floating"]
     fixation_type: DeclareLaunchArgument = KangarooArgs.fixation_type
 
+    # FT sensor type ["no-ft-sensor", "ati"]
+    ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
+    ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
 def generate_launch_description():
 
@@ -113,6 +116,8 @@ def declare_actions(
             "arm_type": LaunchConfiguration("arm_type"),
             "end_effector_right": LaunchConfiguration("end_effector_right"),
             "end_effector_left": LaunchConfiguration("end_effector_left"),
+            "ft_sensor_right": LaunchConfiguration("ft_sensor_right"),
+            "ft_sensor_left": LaunchConfiguration("ft_sensor_left"),
             "legs_type": LaunchConfiguration("legs_type"),
             "fixation_type": LaunchConfiguration("fixation_type")
         }
@@ -178,6 +183,8 @@ def create_robot_description_param(context, *args, **kwargs):
         "arm_type": read_launch_argument("arm_type", context),
         "end_effector_right": read_launch_argument("end_effector_right", context),
         "end_effector_left": read_launch_argument("end_effector_left", context),
+        "ft_sensor_right": read_launch_argument("ft_sensor_right", context),
+        "ft_sensor_left": read_launch_argument("ft_sensor_left", context),
         "has_head": read_launch_argument("has_head", context),
         "has_pelvis": read_launch_argument("has_pelvis", context),
     }
