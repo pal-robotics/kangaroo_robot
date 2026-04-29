@@ -15,9 +15,9 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from kangaroo_description.kangaroo_description.launch_arguments import KangarooArgs
-from launch import LaunchDescription
+from launch import LaunchDescription, LaunchConfiguration
 from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
-from launch.conditions import IfCondition, IfLaunchConfigurationNotEquals, LaunchConfigurationNotEquals
+from launch.conditions import IfCondition, LaunchConfigurationNotEquals
 from launch.substitutions import PythonExpression
 from controller_manager.launch_utils import generate_load_controller_launch_description
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
@@ -104,20 +104,20 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     # Add controller of right ft-sensor
     launch_description.add_action(OpaqueFunction(
         function=configure_side_controllers, args=['right'],
-        condition=IfCondition(
-            PythonExpression([
-                "(", IfLaunchConfigurationNotEquals("arm_type", "no-arm"), ") and  ('",
-                IfLaunchConfigurationNotEquals("arm_type", "4dof"), "')"])
+        condition= IfCondition(
+                    PythonExpression(["'", LaunchConfiguration('arm_type'),
+                                      "' not in ['no-arm', '4dof']"])
         ))
+    )
 
     # Add controller of left ft-sensor
     launch_description.add_action(OpaqueFunction(
         function=configure_side_controllers, args=['left'],
-        condition=IfCondition(
-            PythonExpression([
-                "(", IfLaunchConfigurationNotEquals("arm_type", "no-arm"), ") and  ('",
-                IfLaunchConfigurationNotEquals("arm_type", "4dof"), "')"])
-        )))
+        condition= IfCondition(
+                    PythonExpression(["'", LaunchConfiguration('arm_type'),
+                                      "' not in ['no-arm', '4dof']"])
+        ))
+    )
 
 def generate_launch_description():
 
