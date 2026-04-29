@@ -17,7 +17,8 @@ from ament_index_python.packages import get_package_share_directory
 from kangaroo_description.kangaroo_description.launch_arguments import KangarooArgs
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
-from launch.conditions import LaunchConfigurationNotEquals
+from launch.conditions import IfCondition, IfLaunchConfigurationNotEquals, LaunchConfigurationNotEquals
+from launch.substitutions import PythonExpression
 from controller_manager.launch_utils import generate_load_controller_launch_description
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.include_utils import include_scoped_launch_py_description
@@ -29,47 +30,22 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
+    arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
    
 
-def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
+def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: bool = False):
 
-    pkg_share_folder = get_package_share_directory('kangaroo_controller_configuration')
-    # Joint state broadcaster
-    joint_state_broadcaster = GroupAction(
-        [generate_load_controller_launch_description(
-            controller_name='joint_state_broadcaster',
-            controller_params_file=os.path.join(
-                pkg_share_folder,
-                'config', 'joint_state_broadcaster.yaml'))
-         ],
-        forwarding=False)
+    concatenated_string = ''
 
-    launch_description.add_action(joint_state_broadcaster)
+    if skip_empty:
+        concatenated_string = delimiter.join(filter(None, strings))
+    else:
+        concatenated_string = delimiter.join(strings)
 
-    # IMU sensor broadcaster
-    imu_sensor_broadcaster = GroupAction(
-        [generate_load_controller_launch_description(
-            controller_name='imu_sensor_broadcaster',
-            controller_params_file=os.path.join(
-                pkg_share_folder,
-                'config', 'sensors_broadcaster.yaml'))
-         ],
-        forwarding=False)
-
-    launch_description.add_action(imu_sensor_broadcaster)
-    # Add controller of right ft-sensor
-    launch_description.add_action(OpaqueFunction(
-        function=configure_side_controllers, args=['right'],
-        condition=LaunchConfigurationNotEquals('arm_type', 'no-arm')))
-
-    # Add controller of left ft-sensor
-    launch_description.add_action(OpaqueFunction(
-        function=configure_side_controllers, args=['left'],
-        condition=LaunchConfigurationNotEquals('arm_type', 'no-arm')))
-
+    return concatenated_string
 
 
 def configure_side_controllers(context, end_effector_side='right', *args, **kwargs):
@@ -97,16 +73,51 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
     )
     return [ft_sensor_controller]
 
-def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: bool = False):
 
-    concatenated_string = ''
+def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
-    if skip_empty:
-        concatenated_string = delimiter.join(filter(None, strings))
-    else:
-        concatenated_string = delimiter.join(strings)
+    pkg_share_folder = get_package_share_directory('kangaroo_controller_configuration')
+    # Joint state broadcaster
+    joint_state_broadcaster = GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name='joint_state_broadcaster',
+            controller_params_file=os.path.join(
+                pkg_share_folder,
+                'config', 'joint_state_broadcaster.yaml'))
+         ],
+        forwarding=False)
 
-    return concatenated_string
+    launch_description.add_action(joint_state_broadcaster)
+
+    # IMU sensor broadcaster
+    imu_sensor_broadcaster = GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name='imu_sensor_broadcaster',
+            controller_params_file=os.path.join(
+                pkg_share_folder,
+                'config', 'sensors_broadcaster.yaml'))
+         ],
+        forwarding=False)
+
+    launch_description.add_action(imu_sensor_broadcaster)
+
+    # Add controller of right ft-sensor
+    launch_description.add_action(OpaqueFunction(
+        function=configure_side_controllers, args=['right'],
+        condition=IfCondition(
+            PythonExpression([
+                "(", IfLaunchConfigurationNotEquals("arm_type", "no-arm"), ") and  ('",
+                IfLaunchConfigurationNotEquals("arm_type", "4dof"), "')"])
+        ))
+
+    # Add controller of left ft-sensor
+    launch_description.add_action(OpaqueFunction(
+        function=configure_side_controllers, args=['left'],
+        condition=IfCondition(
+            PythonExpression([
+                "(", IfLaunchConfigurationNotEquals("arm_type", "no-arm"), ") and  ('",
+                IfLaunchConfigurationNotEquals("arm_type", "4dof"), "')"])
+        )))
 
 def generate_launch_description():
 
