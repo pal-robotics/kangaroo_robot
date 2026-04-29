@@ -48,10 +48,10 @@ def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: boo
     return concatenated_string
 
 
-def configure_side_controllers(context, end_effector_side='right', *args, **kwargs):
+def configure_side_controllers(context, side='right', *args, **kwargs):
     
     ft_sensor_arg_name = concatenate_strings(
-        strings=['ft_sensor', end_effector_side],
+        strings=['ft_sensor', side],
         delimiter='_',
         skip_empty=True)
 
@@ -65,7 +65,7 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
     ft_sensor_controller = include_scoped_launch_py_description(
         pkg_name=ft_pkg_name,
         paths=['launch', ft_launch_file],
-        launch_arguments={"side": end_effector_side,
+        launch_arguments={"side": side,
                           "ft_sensor": ft_sensor},
         condition=LaunchConfigurationNotEquals(
             ft_sensor_arg_name, 'no-ft-sensor')
