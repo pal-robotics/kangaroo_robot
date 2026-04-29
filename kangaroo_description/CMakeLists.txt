@@ -14,6 +14,15 @@ endif()
 
 ament_auto_add_executable(parameter_blackboard src/parameter_blackboard.cpp)
 
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+
+  add_launch_test(test/test_description.launch.py)
+
+endif()
+
+
 # Install Python modules
 ament_python_install_package(${PROJECT_NAME})
 

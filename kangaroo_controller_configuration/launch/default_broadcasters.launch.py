@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from dataclasses import dataclass
 import os
+from typing import List
+
 from ament_index_python.packages import get_package_share_directory
+
+from controller_manager.launch_utils import generate_load_controller_launch_description
 from kangaroo_description.kangaroo_description.launch_arguments import KangarooArgs
-from launch import LaunchDescription, LaunchConfiguration
+from launch import LaunchConfiguration, LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch.conditions import IfCondition, LaunchConfigurationNotEquals
 from launch.substitutions import PythonExpression
-from controller_manager.launch_utils import generate_load_controller_launch_description
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.include_utils import include_scoped_launch_py_description
-
-from typing import List
-
-from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
@@ -34,7 +34,6 @@ class LaunchArguments(LaunchArgumentsBase):
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
-   
 
 def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: bool = False):
 
@@ -49,12 +48,11 @@ def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: boo
 
 
 def configure_side_controllers(context, side='right', *args, **kwargs):
-    
+
     ft_sensor_arg_name = concatenate_strings(
         strings=['ft_sensor', side],
         delimiter='_',
         skip_empty=True)
-
 
     # Setup ft-sensor controller
     ft_sensor = read_launch_argument(ft_sensor_arg_name, context)
@@ -65,12 +63,12 @@ def configure_side_controllers(context, side='right', *args, **kwargs):
     ft_sensor_controller = include_scoped_launch_py_description(
         pkg_name=ft_pkg_name,
         paths=['launch', ft_launch_file],
-        launch_arguments={"side": side,
-                          "ft_sensor": ft_sensor},
+        launch_arguments={'side': side,
+                          'ft_sensor': ft_sensor},
         condition=LaunchConfigurationNotEquals(
             ft_sensor_arg_name, 'no-ft-sensor')
-
     )
+
     return [ft_sensor_controller]
 
 
@@ -104,20 +102,21 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     # Add controller of right ft-sensor
     launch_description.add_action(OpaqueFunction(
         function=configure_side_controllers, args=['right'],
-        condition= IfCondition(
-                    PythonExpression(["'", LaunchConfiguration('arm_type'),
-                                      "' not in ['no-arm', '4dof']"])
-        ))
+        condition=IfCondition(
+            PythonExpression(["'", LaunchConfiguration('arm_type'),
+                              "' not in ['no-arm', '4dof']"])
+                              ))
     )
 
     # Add controller of left ft-sensor
     launch_description.add_action(OpaqueFunction(
         function=configure_side_controllers, args=['left'],
-        condition= IfCondition(
-                    PythonExpression(["'", LaunchConfiguration('arm_type'),
-                                      "' not in ['no-arm', '4dof']"])
-        ))
+        condition=IfCondition(
+            PythonExpression(["'", LaunchConfiguration('arm_type'),
+                              "' not in ['no-arm', '4dof']"])
+                            ))
     )
+
 
 def generate_launch_description():
 
