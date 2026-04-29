@@ -66,7 +66,7 @@ def configure_side_controllers(context, end_effector_side='right', *args, **kwar
         pkg_name=ft_pkg_name,
         paths=['launch', ft_launch_file],
         launch_arguments={"side": end_effector_side,
-                          "ft_sensor": f"ft_sensor_{end_effector_side}"},
+                          "ft_sensor": ft_sensor},
         condition=LaunchConfigurationNotEquals(
             ft_sensor_arg_name, 'no-ft-sensor')
 
