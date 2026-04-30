@@ -59,7 +59,7 @@ class LaunchArguments(LaunchArgumentsBase):
     # ["ft-leg", "leg", "no-leg"]
     legs_type: DeclareLaunchArgument = KangarooArgs.legs_type
 
-    # ["cover", "fake-forearm", "ft-gripper", "gripper", "RA8D"]
+    # ["fake-forearm", "ft-gripper", "gripper", "RA8D"]
     end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = KangarooArgs.end_effector_left
 

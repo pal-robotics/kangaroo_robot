@@ -29,7 +29,7 @@ extension = os.path.splitext(no_em_extension_path)[1]
 legs = ['ft-leg', 'leg', 'no-leg']
 # Pairs [arm_type, end_effector_type]
 valid_pairs = [['4dof', 'fake-forearm'], ['5dof', 'RH8D'], ['5dof', 'no-end-effector'],
-               ['7dof', 'gripper'], ['7dof', 'no-end-effector'], ['no-arm', 'cover']]
+               ['7dof', 'gripper'], ['7dof', 'no-end-effector'], ['no-arm', 'no-end-effector']]
 
 for has_pelvis in [True, False]:
     for leg_type in legs:
