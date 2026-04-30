@@ -31,7 +31,7 @@
   <!-- no-arm, 4dof, 5dof, 7dof] -->
   <xacro:arg name="arm_type" default="4dof" />
 
-  <!-- cover, no-end-effector, fake-forearm, gripper, RH8D -->
+  <!-- no-end-effector, fake-forearm, gripper, RH8D -->
   <xacro:arg name="end_effector_right" default="no-end-effector" />
   <xacro:arg name="end_effector_left" default="no-end-effector" />
   
@@ -105,7 +105,7 @@
   <xacro:property name="torso_rear_up_camera_model" value="$(arg torso_rear_up_camera_model)" />
   <xacro:property name="torso_front_down_camera_model" value="$(arg torso_front_down_camera_model)" />
   <xacro:property name="torso_rear_down_camera_model" value="$(arg torso_rear_down_camera_model)" />
-
+  <xacro:property name="has_arms" value="${arm_type not in ['no-arm']}" />
   <xacro:property name="has_ft_sensor_left" value="${ft_sensor_left not in ['no-ft-sensor']}"/>
   <xacro:property name="has_ft_sensor_right" value="${ft_sensor_right not in ['no-ft-sensor']}"/>
   <xacro:property name="end_effector_right_link" value="${'wrist_right_ft_tool_link' if has_ft_sensor_right else 'arm_right_tool_link'}" />
@@ -139,19 +139,13 @@
     <xacro:wrong_arm_type />
   </xacro:if>
 
-  <xacro:if value="${end_effector_right not in ['cover', 'no-end-effector', 'fake-forearm', 'gripper', 'RH8D']}">
+  <xacro:if value="${end_effector_right not in ['no-end-effector', 'fake-forearm', 'gripper', 'RH8D']}">
     <xacro:wrong_end_effector_right />
   </xacro:if>
-  <xacro:if value="${end_effector_left not in ['cover', 'no-end-effector', 'fake-forearm', 'gripper', 'RH8D']}">
+  <xacro:if value="${end_effector_left not in ['no-end-effector', 'fake-forearm', 'gripper', 'RH8D']}">
     <xacro:wrong_end_effector_left />
   </xacro:if>
 
-  <!-- Valid Combinations -->
-  <xacro:if value="${arm_type in ['no-arm']}">
-    <xacro:if value="${end_effector_right or end_effector_left not in ['cover'] or end_effector_left not in ['cover']}">
-      <xacro:wrong_arm_end_effector_combination />
-    </xacro:if>
-  </xacro:if>
   <!-- FT SENSORS -->
   <xacro:if value="${ft_sensor_left not in ['no-ft-sensor', 'ati']}">
     <xacro:wrong_ft_sensor_left />
@@ -211,29 +205,30 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/leg/leg.urdf.xacro" />
 
   <!-- Arms -->
-  <xacro:if value="${arm_type in ['4dof', '5dof', '7dof']}">
+  <xacro:if value="${has_arms}">
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/humanoid/arm.urdf.xacro" />
+    
+    <!-- End Effector -->
+    <xacro:if value="${end_effector_right in ['gripper'] or end_effector_left in ['gripper']}">
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/pal_pro_gripper.urdf.xacro" />
+    </xacro:if>
+    <xacro:if value="${end_effector_right in ['RH8D'] or end_effector_left in ['RH8D']}">
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/rh8d_hand.urdf.xacro" />
+    </xacro:if>
+    <xacro:if value="${end_effector_right in ['fake-forearm'] or end_effector_left in ['fake-forearm']}">
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/fake_forearm.urdf.xacro" />
+    </xacro:if>
+
+    <!-- FT Sensors  -->
+    <xacro:if value="${has_ft_sensor_right or has_ft_sensor_left}">
+      <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.urdf.xacro" />
+      <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.gazebo.xacro" />
+    </xacro:if>
   </xacro:if>
-  <xacro:unless value="${arm_type in ['4dof', '5dof', '7dof']}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/humanoid/arm_cover.urdf.xacro" />
+
+  <xacro:unless value="${has_arms}">
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/humanoid/arm_cover.urdf.xacro" />
   </xacro:unless>
-
-  <!-- End Effector -->
-  <xacro:if value="${end_effector_right in ['gripper'] or end_effector_left in ['gripper']}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/pal_pro_gripper.urdf.xacro" />
-  </xacro:if>
-  <xacro:if value="${end_effector_right in ['RH8D'] or end_effector_left in ['RH8D']}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/rh8d_hand.urdf.xacro" />
-  </xacro:if>
-  <xacro:if value="${end_effector_right in ['fake-forearm'] or end_effector_left in ['fake-forearm']}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/fake_forearm.urdf.xacro" />
-  </xacro:if>
-
-  <!-- FT Sensors  -->
-  <xacro:if value="${has_ft_sensor_right or has_ft_sensor_left}">
-    <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.urdf.xacro" />
-    <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ft_sensor.gazebo.xacro" />
-  </xacro:if>
 
 
   <!-- ROBOT DEFINITION -->
@@ -257,7 +252,7 @@
 
   <!-- ARMS -->
 
-  <xacro:if value="${arm_type in ['4dof', '5dof', '7dof']}">
+  <xacro:if value="${has_arms}">
     <!-- Left Arm -->
     <xacro:kangaroo_arm name="arm" side="left" type="${arm_type}" reflect="1" parent="torso_link" >
       <origin xyz="0 0.105954 0.384396" rpy="1.3963 3.14159 3.14159" />
@@ -266,9 +261,50 @@
     <xacro:kangaroo_arm name="arm" side="right" type="${arm_type}" reflect="-1" parent="torso_link" >
       <origin xyz="0 -0.105954 0.384396" rpy="1.3963 3.14159 0" />
     </xacro:kangaroo_arm>
+
+    <!-- END EFFECTOR -->
+
+    <xacro:if value="${end_effector_right in ['gripper']}">
+      <xacro:gripper name="gripper_right" parent="${end_effector_right_link}"/>
+    </xacro:if>
+    <xacro:if value="${end_effector_left in ['gripper']}">
+      <xacro:gripper name="gripper_left" parent="${end_effector_left_link}"/>
+    </xacro:if>
+
+    <xacro:if value="${end_effector_right in ['RH8D']}">
+      <xacro:hand name="hand" side="left" parent="arm_left_tool_link" mimic="${use_mimic}">
+        <origin xyz="0 0 0" rpy="0 0 1.5708"/>
+      </xacro:hand>
+    </xacro:if>
+    <xacro:if value="${end_effector_left in ['RH8D']}">
+      <xacro:hand name="hand" side="right" parent="arm_right_tool_link" mimic="${use_mimic}">
+        <origin xyz="0 0 0" rpy="0 0 1.5708"/>
+      </xacro:hand>
+    </xacro:if>
+
+    <xacro:if value="${end_effector_right in ['fake-forearm']}">
+      <xacro:fake-forearm name="arm" side="left" reflect="1" parent="arm_left_3_link">
+        <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
+      </xacro:fake-forearm>
+    </xacro:if>
+    <xacro:if value="${end_effector_left in ['fake-forearm']}">
+      <xacro:fake-forearm name="arm" side="right" reflect="-1" parent="arm_right_3_link">
+        <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
+      </xacro:fake-forearm>
+    </xacro:if>
+
+    <!-- FT SENSORS -->
+      <xacro:if value="${has_ft_sensor_left}">
+        <xacro:ft_sensor type="${ft_sensor_left}" name="wrist_left" parent="arm_left_tool_link"/>
+      </xacro:if>
+
+      <xacro:if value="${has_ft_sensor_right}">
+        <xacro:ft_sensor type="${ft_sensor_right}" name="wrist_right" parent="arm_right_tool_link"/>
+      </xacro:if>
+
   </xacro:if>
 
-  <xacro:unless value="${arm_type in ['4dof', '5dof', '7dof']}">
+  <xacro:unless value="${has_arms}">
     <!-- Left Arm Cover -->
     <xacro:kangaroo_arm_cover name="arm_cover" side="left" reflect="1" parent="torso_link">  
       <origin xyz="0 0.105954 0.384396" rpy="1.3963 0 0" />
@@ -278,46 +314,6 @@
       <origin xyz="0 -0.105954 0.384396" rpy="1.3963 0 3.14159" />
     </xacro:kangaroo_arm_cover>
   </xacro:unless>
-
-  <!-- END EFFECTOR -->
-
-  <xacro:if value="${end_effector_right in ['gripper']}">
-    <xacro:gripper name="gripper_right" parent="${end_effector_right_link}"/>
-  </xacro:if>
-  <xacro:if value="${end_effector_left in ['gripper']}">
-    <xacro:gripper name="gripper_left" parent="${end_effector_left_link}"/>
-  </xacro:if>
-
-  <xacro:if value="${end_effector_right in ['RH8D']}">
-    <xacro:hand name="hand" side="left" parent="arm_left_tool_link" mimic="${use_mimic}">
-      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
-    </xacro:hand>
-  </xacro:if>
-  <xacro:if value="${end_effector_left in ['RH8D']}">
-    <xacro:hand name="hand" side="right" parent="arm_right_tool_link" mimic="${use_mimic}">
-      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
-    </xacro:hand>
-  </xacro:if>
-
-  <xacro:if value="${end_effector_right in ['fake-forearm']}">
-    <xacro:fake-forearm name="arm" side="left" reflect="1" parent="arm_left_3_link">
-      <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
-    </xacro:fake-forearm>
-  </xacro:if>
-  <xacro:if value="${end_effector_left in ['fake-forearm']}">
-    <xacro:fake-forearm name="arm" side="right" reflect="-1" parent="arm_right_3_link">
-      <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
-    </xacro:fake-forearm>
-  </xacro:if>
-
-  <!-- FT SENSORS -->
-    <xacro:if value="${has_ft_sensor_left}">
-      <xacro:ft_sensor type="${ft_sensor_left}" name="wrist_left" parent="arm_left_tool_link"/>
-    </xacro:if>
-
-    <xacro:if value="${has_ft_sensor_right}">
-      <xacro:ft_sensor type="${ft_sensor_right}" name="wrist_right" parent="arm_right_tool_link"/>
-    </xacro:if>
 
   <!-- MUJOCO   -->
 

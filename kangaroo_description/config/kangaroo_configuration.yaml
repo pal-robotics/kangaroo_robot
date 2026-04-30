@@ -1,12 +1,12 @@
 # Configuration file for the Kangaroo robot
 end_effector_right:
   description: "choose the desired end effector right with its corresponding arm."
-  choices: ["cover", "no-end-effector", "fake-forearm", "gripper", "RH8D"]
+  choices: ["no-end-effector", "fake-forearm", "gripper", "RH8D"]
   default_value: "fake-forearm"
 
 end_effector_left:
   description: "choose the desired end effector left with its corresponding arm."
-  choices: ["cover", "no-end-effector", "fake-forearm", "gripper", "RH8D"]
+  choices: ["no-end-effector", "fake-forearm", "gripper", "RH8D"]
   default_value: "fake-forearm"
 
 fixation_type:
