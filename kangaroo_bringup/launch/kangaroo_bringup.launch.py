@@ -12,33 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from dataclasses import dataclass
 
+from kangaroo_description.launch_arguments import KangarooArgs
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-
-from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase
+from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.robot_arguments import CommonArgs
-from kangaroo_description.launch_arguments import KangarooArgs
-
-from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
-    ## Common
+    # Common
 
     # ["True", "False"]
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
 
     # ["false", "position", "motor"]
     mj_control: DeclareLaunchArgument = CommonArgs.mj_control
-    
-    ## Kangaroo specific
+
+    # Kangaroo specific
 
     # ["mujoco-ros2-control", "mujoco", "no-simulation"]
     sim_type: DeclareLaunchArgument = KangarooArgs.sim_type
-     
+
     # ["True", "False"]
     use_mimic: DeclareLaunchArgument = KangarooArgs.use_mimic
 
@@ -47,16 +45,16 @@ class LaunchArguments(LaunchArgumentsBase):
 
     # [True, False]
     has_head: DeclareLaunchArgument = KangarooArgs.has_head
-    
+
     # [True, False]
     has_pelvis: DeclareLaunchArgument = KangarooArgs.has_pelvis
 
     # ["no-arm", "4dof", "5dof", "7dof"]
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
-    
+
     # ["ft-leg", "leg", "no-leg"]
     legs_type: DeclareLaunchArgument = KangarooArgs.legs_type
-    
+
     # ["cover", "fake-forearm", "ft-gripper", "gripper", "RA8D"]
     end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = KangarooArgs.end_effector_left
@@ -68,26 +66,27 @@ class LaunchArguments(LaunchArgumentsBase):
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
+
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
-    #Playmotion2    
+    # Playmotion2
     play_motion2 = include_scoped_launch_py_description(
         pkg_name='kangaroo_bringup',
         paths=['launch', 'kangaroo_playmotion2.launch.py'],
         launch_arguments={
-            "use_sim_time": launch_args.use_sim_time,
-            "collision_type": launch_args.collision_type,
-            "sim_type": launch_args.sim_type,
-            "mj_control": launch_args.mj_control,
-            "has_head": launch_args.has_head,
-            "has_pelvis": launch_args.has_pelvis,
-            "arm_type": launch_args.arm_type,
-            "legs_type": launch_args.legs_type,
-            "end_effector_right": launch_args.end_effector_right,
-            "end_effector_left": launch_args.end_effector_left,
-            "fixation_type": launch_args.fixation_type,
-            "ft_sensor_right": launch_args.ft_sensor_right,
-            "ft_sensor_left": launch_args.ft_sensor_left,
+            'use_sim_time': launch_args.use_sim_time,
+            'collision_type': launch_args.collision_type,
+            'sim_type': launch_args.sim_type,
+            'mj_control': launch_args.mj_control,
+            'has_head': launch_args.has_head,
+            'has_pelvis': launch_args.has_pelvis,
+            'arm_type': launch_args.arm_type,
+            'legs_type': launch_args.legs_type,
+            'end_effector_right': launch_args.end_effector_right,
+            'end_effector_left': launch_args.end_effector_left,
+            'fixation_type': launch_args.fixation_type,
+            'ft_sensor_right': launch_args.ft_sensor_right,
+            'ft_sensor_left': launch_args.ft_sensor_left,
             })
 
     launch_description.add_action(play_motion2)
@@ -97,19 +96,19 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         pkg_name='kangaroo_description',
         paths=['launch', 'robot_state_publisher.launch.py'],
         launch_arguments={
-            "use_sim_time": launch_args.use_sim_time,
-            "collision_type": launch_args.collision_type,
-            "sim_type": launch_args.sim_type,
-            "mj_control": launch_args.mj_control,
-            "has_head": launch_args.has_head,
-            "has_pelvis": launch_args.has_pelvis,
-            "arm_type": launch_args.arm_type,
-            "legs_type": launch_args.legs_type,
-            "end_effector_right": launch_args.end_effector_right,
-            "end_effector_left": launch_args.end_effector_left,
-            "fixation_type": launch_args.fixation_type,
-            "ft_sensor_right": launch_args.ft_sensor_right,
-            "ft_sensor_left": launch_args.ft_sensor_left,
+            'use_sim_time': launch_args.use_sim_time,
+            'collision_type': launch_args.collision_type,
+            'sim_type': launch_args.sim_type,
+            'mj_control': launch_args.mj_control,
+            'has_head': launch_args.has_head,
+            'has_pelvis': launch_args.has_pelvis,
+            'arm_type': launch_args.arm_type,
+            'legs_type': launch_args.legs_type,
+            'end_effector_right': launch_args.end_effector_right,
+            'end_effector_left': launch_args.end_effector_left,
+            'fixation_type': launch_args.fixation_type,
+            'ft_sensor_right': launch_args.ft_sensor_right,
+            'ft_sensor_left': launch_args.ft_sensor_left,
             })
 
     launch_description.add_action(robot_state_publisher)

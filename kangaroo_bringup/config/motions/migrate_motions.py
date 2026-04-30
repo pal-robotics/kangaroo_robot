@@ -1,4 +1,17 @@
-#!/usr/bin/env python3
+# Copyright (c) 2026 PAL Robotics S.L. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 from __future__ import annotations
 
 import argparse
@@ -9,81 +22,104 @@ import yaml
 
 
 class YamlIO:
-    """Load and dump YAML files with basic safety.
+    """
+    Load and dump YAML files with basic safety.
 
-    Methods:
-        load(path): Load a YAML file into a Python dictionary.
-        dump(data, path): Dump a Python dictionary to a YAML file.
+    Methods
+    -------
+    load(path)
+        Load a YAML file into a Python dictionary.
+    dump(data, path)
+        Dump a Python dictionary to a YAML file.
+
     """
 
     @staticmethod
     def load(path: Path) -> dict[str, Any]:
-        """Load a YAML file into a Python dictionary.
+        """
+        Load a YAML file into a Python dictionary.
 
         Args:
+        ----
             path: Path to the YAML file.
 
-        Returns:
+        Returns
+        -------
             A dictionary representing the YAML content.
 
-        Raises:
+        Raises
+        ------
             FileNotFoundError: If the file does not exist.
             yaml.YAMLError: If the YAML content is invalid.
+
         """
         if not path.is_file():
-            raise FileNotFoundError(f"Input file not found: {path}")
-        with path.open("r", encoding="utf-8") as f:
+            raise FileNotFoundError(f'Input file not found: {path}')
+        with path.open('r', encoding='utf-8') as f:
             data = yaml.safe_load(f)
         if not isinstance(data, dict):
-            raise yaml.YAMLError("Top-level YAML content must be a mapping.")
+            raise yaml.YAMLError('Top-level YAML content must be a mapping.')
         return data
 
     @staticmethod
     def dump(data: dict[str, Any], path: Path) -> None:
-        """Dump a Python dictionary to a YAML file.
+        """
+        Dump a Python dictionary to a YAML file.
 
         Args:
+        ----
             data: The data to serialize.
             path: Output path for the YAML file.
 
-        Returns:
+        Returns
+        -------
             None
 
-        Raises:
+        Raises
+        ------
             OSError: If the file cannot be written.
+
         """
         path.parent.mkdir(parents=True, exist_ok=True)
-        with path.open("w", encoding="utf-8") as f:
+        with path.open('w', encoding='utf-8') as f:
             yaml.safe_dump(data, f, sort_keys=False, allow_unicode=True)
         return None
 
 
 class MotionFormatTransformer:
-    """Transform motion entries by flattening points into times and positions.
+    """
+    Transform motion entries by flattening points into times and positions.
 
-    Methods:
+    Methods
+    -------
         transform(data): Transform the entire YAML payload.
+
     """
 
     def transform(self, data: dict[str, Any]) -> dict[str, Any]:
-        """Transform the entire YAML payload.
+        """
+        Transform the entire YAML payload.
 
         Args:
+        ----
             data: The original YAML mapping keyed by motion names.
 
-        Returns:
+        Returns
+        -------
             A new mapping with flattened time and position sequences.
 
-        Raises:
+        Raises
+        ------
             ValueError: If required fields are missing or invalid.
+
         """
         result: dict[str, Any] = {}
         for motion_name, motion in data.items():
             if not isinstance(motion, dict):
-                raise ValueError(f"Motion '{motion_name}' must be a mapping.")
-            joints = motion.get("joints")
-            points = motion.get("points")
-            meta = motion.get("meta", {})
+                raise ValueError(f'Motion {motion_name} must be a mapping.')
+            joints = motion.get('joints')
+            points = motion.get('points')
+            meta = motion.get('meta', {})
             if not isinstance(joints, list):
                 raise ValueError(f"Motion '{motion_name}' must contain a 'joints' list.")
             if not isinstance(points, list) or len(points) == 0:
@@ -93,8 +129,8 @@ class MotionFormatTransformer:
             for idx, point in enumerate(points):
                 if not isinstance(point, dict):
                     raise ValueError(f"Point {idx} in '{motion_name}' must be a mapping.")
-                t = point.get("time_from_start")
-                pos = point.get("positions")
+                t = point.get('time_from_start')
+                pos = point.get('positions')
                 if t is None:
                     raise ValueError(f"Point {idx} in '{motion_name}' lacks 'time_from_start'.")
                 if not isinstance(pos, list) or not all(isinstance(x, (int, float)) for x in pos):
@@ -102,30 +138,35 @@ class MotionFormatTransformer:
                 times_from_start.append(t)
                 positions.extend(float(x) for x in pos)
             result[motion_name] = {
-                "joints": joints,
-                "times_from_start": times_from_start,
-                "positions": positions,
-                "meta": meta,
+                'joints': joints,
+                'times_from_start': times_from_start,
+                'positions': positions,
+                'meta': meta,
             }
         return result
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Build the command-line argument parser.
+    """
+    Build the command-line argument parser.
 
-    Returns:
+    Returns
+    -------
         An argparse.ArgumentParser configured for this application.
+
     """
     parser = argparse.ArgumentParser(
-        description="Flatten 'points' into 'times_from_start' and concatenated 'positions' in a motion YAML."
+        description="Flatten 'points' into 'times_from_start' and concatenated"
+        "'positions' in a motion YAML."
     )
-    parser.add_argument("input", type=Path, help="Path to the input YAML file.")
-    parser.add_argument("output", type=Path, help="Path to the output YAML file.")
+    parser.add_argument('input', type=Path, help='Path to the input YAML file.')
+    parser.add_argument('output', type=Path, help='Path to the output YAML file.')
     return parser
 
 
 def main() -> None:
-    """Entry point for the motion YAML transformer.
+    """
+    Entry point for the motion YAML transformer.
 
     Reads the input YAML, applies the transformation, and writes the output YAML.
     """
@@ -135,5 +176,5 @@ def main() -> None:
     YamlIO.dump(transformed, args.output)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
