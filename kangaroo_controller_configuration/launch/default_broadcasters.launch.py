@@ -19,7 +19,7 @@ from typing import List
 from ament_index_python.packages import get_package_share_directory
 
 from controller_manager.launch_utils import generate_load_controller_launch_description
-from kangaroo_description.kangaroo_description.launch_arguments import KangarooArgs
+from kangaroo_description.launch_arguments import KangarooArgs
 from launch import LaunchConfiguration, LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch.conditions import IfCondition, LaunchConfigurationNotEquals
