@@ -20,10 +20,10 @@ from ament_index_python.packages import get_package_share_directory
 
 from controller_manager.launch_utils import generate_load_controller_launch_description
 from kangaroo_description.launch_arguments import KangarooArgs
-from launch import LaunchConfiguration, LaunchDescription
+from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch.conditions import IfCondition, LaunchConfigurationNotEquals
-from launch.substitutions import PythonExpression
+from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.include_utils import include_scoped_launch_py_description
 
