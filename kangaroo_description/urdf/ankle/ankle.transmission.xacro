@@ -10,6 +10,7 @@
 
     <joint name="leg_${side}_${roll_joint}_joint">
       <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
@@ -18,6 +19,7 @@
 
     <joint name="leg_${side}_${pitch_joint}_joint">
       <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
@@ -27,14 +29,11 @@
     <transmission name="leg_${side}_ankle_transmission">
       <plugin>kangaroo_transmissions/AnkleXYCustomTransmission</plugin>
 
-      <actuator name="leg_${side}_${roll_joint}_actuator" role="actuator_right">
-      </actuator>
+      <actuator name="leg_${side}_${roll_joint}_actuator" role="actuator_right"/>
 
-      <actuator name="leg_${side}_${pitch_joint}_actuator" role="actuator_left">
-      </actuator>
+      <actuator name="leg_${side}_${pitch_joint}_actuator" role="actuator_left"/>
 
-      <actuator name="${read_actuator}" role="actuator_length">
-      </actuator>
+      <actuator name="${read_actuator}" role="actuator_length"/>
 
       <joint name="leg_${side}_${roll_joint}_joint" role="pitch">
         <offset>0.0</offset>
