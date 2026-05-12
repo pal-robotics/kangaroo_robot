@@ -2,6 +2,48 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'amr/test-new-transmissions' into 'humble-devel'
+  Adapt urdf to new kangaroo transmissions
+  See merge request robots/kangaroo_robot!103
+* Apply merge request review suggestions
+  Co-authored-by: Sai Kishor Kothakota <sai.kishor@pal-robotics.com>
+* enable nl trans for all the joints
+* Changes to make work hipxy and leg length transmissions
+* Test hip-z on actual robot
+* Testing custom transmission or robot instead of simple hipz
+* Added custom transmission xacros for ros2 testing
+* Merge branch 'feat/rm_cover_ee' into 'humble-devel'
+  Remove cover as ee option and just check ee when has_arms is True
+  See merge request robots/kangaroo_robot!101
+* Fix comments RA8D to RH8D
+* Remove cover as ee option and just check ee when has_arms is True
+* Merge branch 'feat/add_tests' into 'humble-devel'
+  Feat/add tests
+  See merge request robots/kangaroo_robot!99
+* Add tests
+* Fix pep257 tests
+* Fix uncrustify
+* Fix flake8 tests
+* Missing blank last line
+* Fix copyrights
+* Add tests
+* Merge branch 'fix/kangaroo_description' into 'humble-devel'
+  Fix/kangaroo description
+  See merge request robots/kangaroo_robot!98
+* Add ft sensors
+* Fix default end effectors
+* Fix module arguments
+* Merge branch 'feat/move_arm' into 'humble-devel'
+  Move arm to pal_sea_arm_description
+  See merge request robots/kangaroo_robot!97
+* Fix includes for end effectors
+* Add condition for no arm and no left end effector cover
+* Split end effectors into sides
+* Move arm to pal_sea_arm_description
+* Contributors: Aina, Daniel Costanzi, Noel Jimenez, Sai Kishor Kothakota, antoniomartinez
+
 2.2.0 (2026-04-14)
 ------------------
 * using rear instead of back

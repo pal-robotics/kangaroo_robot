@@ -2,6 +2,32 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/rm_cover_ee' into 'humble-devel'
+  Remove cover as ee option and just check ee when has_arms is True
+  See merge request robots/kangaroo_robot!101
+* Fix comments RA8D to RH8D
+* Remove cover as ee option and just check ee when has_arms is True
+* Merge branch 'feat/add_tests' into 'humble-devel'
+  Add tests on bringup pkg
+  See merge request robots/kangaroo_robot!100
+* Fix pep257 tests
+* Add tests and solve flake8
+* Merge branch 'fix/kangaroo_description' into 'humble-devel'
+  Fix/kangaroo description
+  See merge request robots/kangaroo_robot!98
+* Add ft sensors
+* Merge branch 'feat/move_arm' into 'humble-devel'
+  Move arm to pal_sea_arm_description
+  See merge request robots/kangaroo_robot!97
+* Split end effectors into sides
+* Merge branch 'fix/remove-prints' into 'humble-devel'
+  Remove leftover prints
+  See merge request robots/kangaroo_robot!96
+* Remove leftover prints
+* Contributors: Aina, Noel Jimenez
+
 2.2.0 (2026-04-14)
 ------------------
 

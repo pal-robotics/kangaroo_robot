@@ -2,6 +2,39 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/import' into 'humble-devel'
+  Fix LaunchConfiguration import
+  See merge request robots/kangaroo_robot!105
+* Fix LaunchConfiguration import
+* Merge branch 'fix/remove-duplicated' into 'humble-devel'
+  Remove duplication from import
+  See merge request robots/kangaroo_robot!104
+* Remove duplication from import
+* Merge branch 'feat/add_tests' into 'humble-devel'
+  Feat/add tests
+  See merge request robots/kangaroo_robot!99
+* Add tests on controller_config
+* Merge branch 'fix/kangaroo_description' into 'humble-devel'
+  Fix/kangaroo description
+  See merge request robots/kangaroo_robot!98
+* Change condition for the launch description
+* Rename end_effector_side to side
+* Use ft_sensor parameter for launch arguments
+* Update module arguments
+* Add arm configuration and condition for no arm and 4dof
+* Add ft sensors
+* Merge branch 'feat/move_arm' into 'humble-devel'
+  Move arm to pal_sea_arm_description
+  See merge request robots/kangaroo_robot!97
+* Split end effectors into sides
+* Merge branch 'fix/remove-prints' into 'humble-devel'
+  Remove leftover prints
+  See merge request robots/kangaroo_robot!96
+* Remove leftover prints
+* Contributors: Aina, Aina Irisarri, Noel Jimenez
+
 2.2.0 (2026-04-14)
 ------------------
 
