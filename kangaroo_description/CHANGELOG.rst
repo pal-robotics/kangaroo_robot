@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.0 (2026-05-12)
+------------------
 * Merge branch 'amr/test-new-transmissions' into 'humble-devel'
   Adapt urdf to new kangaroo transmissions
   See merge request robots/kangaroo_robot!103

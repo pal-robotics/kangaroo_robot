@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.0 (2026-05-12)
+------------------
 * Merge branch 'fix/import' into 'humble-devel'
   Fix LaunchConfiguration import
   See merge request robots/kangaroo_robot!105

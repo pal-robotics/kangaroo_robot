@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.0 (2026-05-12)
+------------------
 * Merge branch 'feat/rm_cover_ee' into 'humble-devel'
   Remove cover as ee option and just check ee when has_arms is True
   See merge request robots/kangaroo_robot!101
