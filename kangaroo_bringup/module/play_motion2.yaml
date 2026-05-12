@@ -1,2 +1,8 @@
 play_motion2:
-  launch: "kangaroo_bringup kangaroo_playmotion2.launch.py"
+  launch: "kangaroo_bringup kangaroo_playmotion2.launch.py 
+    arm_type:=@arm_type@ 
+    has_pelvis:=@has_pelvis@ 
+    end_effector_left:=@end_effector_left@ 
+    end_effector_right:=@end_effector_right@ 
+    ft_sensor_right:=@ft_sensor_right@ 
+    ft_sensor_left:=@ft_sensor_left@"
