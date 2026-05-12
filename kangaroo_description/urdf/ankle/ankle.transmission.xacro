@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2026, PAL Robotics, S.L.
+  All rights reserved.
+-->
+<robot name="kangaroo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="kangaroo_ankle_transmission" params="side roll_joint pitch_joint read_actuator">
+
+    <joint name="leg_${side}_${roll_joint}_joint">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="leg_${side}_${pitch_joint}_joint">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <transmission name="leg_${side}_ankle_transmission">
+      <plugin>kangaroo_transmissions/AnkleXYCustomTransmission</plugin>
+
+      <actuator name="leg_${side}_${roll_joint}_actuator" role="actuator_right"/>
+
+      <actuator name="leg_${side}_${pitch_joint}_actuator" role="actuator_left"/>
+
+      <actuator name="${read_actuator}" role="actuator_length"/>
+
+      <joint name="leg_${side}_${roll_joint}_joint" role="pitch">
+        <offset>0.0</offset>
+      </joint>
+      
+      <joint name="leg_${side}_${pitch_joint}_joint" role="roll">
+        <offset>0.0</offset>
+      </joint>
+      
+    </transmission>
+
+  </xacro:macro>
+
+</robot>
+

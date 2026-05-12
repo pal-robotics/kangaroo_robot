@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2026, PAL Robotics, S.L.
+  All rights reserved.
+  
+-->
+<robot name="kangaroo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side">
+
+    <joint name="leg_${side}_length_joint">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="leg_${side}_knee_joint">
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="leg_${side}_femur_joint">
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <transmission name="leg_${side}_length_transmission">
+      <plugin>kangaroo_transmissions/LegCustomTransmission</plugin>
+      <actuator name="leg_${side}_length_actuator" role="actuator_main"/>
+      <joint name="leg_${side}_length_joint" role="joint_main">
+        <offset>0.0</offset>
+      </joint>
+      <param name="joint_type">leg_length</param>
+      <param name="leg_side">${side}</param>
+    </transmission>
+
+    <transmission name="leg_${side}_knee_joint_trans">
+      <plugin>kangaroo_transmissions/LegCustomTransmission</plugin>
+      <actuator name="leg_${side}_length_actuator" role="actuator_main"/>
+      <joint name="leg_${side}_knee_joint" role="joint_aux">
+        <offset>0.0</offset>
+      </joint>
+      <param name="joint_type">knee</param>
+      <param name="leg_side">${side}</param>
+    </transmission>
+
+    <transmission name="leg_${side}_femur_joint_trans">
+      <plugin>kangaroo_transmissions/LegCustomTransmission</plugin>
+      <actuator name="leg_${side}_length_actuator" role="actuator_main"/>
+      <joint name="leg_${side}_femur_joint" role="joint_aux">
+        <offset>0.0</offset>
+      </joint>
+      <param name="joint_type">femur</param>
+      <param name="leg_side">${side}</param>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="hip_transmission_roll_pitch" params="side roll_joint pitch_joint">
+    <joint name="leg_${side}_${roll_joint}_joint">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="leg_${side}_${pitch_joint}_joint">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <transmission name="leg_${side}_hip_transmission">
+      <plugin>kangaroo_transmissions/HipXYCustomTransmission</plugin>
+      
+      <actuator name="leg_${side}_${pitch_joint}_actuator" role="actuator_left"/>
+      <actuator name="leg_${side}_${roll_joint}_actuator" role="actuator_right"/>
+     
+      <joint name="leg_${side}_${roll_joint}_joint" role="pitch">
+        <offset>0.0</offset>
+      </joint>
+      <joint name="leg_${side}_${pitch_joint}_joint" role="roll">
+        <offset>0.0</offset>
+      </joint>
+      <param name="leg_side">${side}</param>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="hip_transmission_yaw" params="side offset initial_position:=0.0">
+    <joint name="leg_${side}_1_joint">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+      <state_interface name="position">
+          <param name="initial_value">${initial_position}</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <transmission name="leg_${side}_yaw_transmission">
+      <plugin>kangaroo_transmissions/HipZCustomTransmission</plugin>
+      <actuator name="leg_${side}_1_actuator" role="actuator_yaw"/>
+      <joint name="leg_${side}_1_joint" role="joint_yaw">
+        <offset>${offset}</offset>
+      </joint>
+      <param name="leg_side">${side}</param>
+    </transmission>
+  </xacro:macro>
+
+</robot>
+
