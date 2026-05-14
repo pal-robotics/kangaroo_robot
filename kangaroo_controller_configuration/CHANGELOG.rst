@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.1 (2026-05-14)
+------------------
 * Merge branch 'fix/end_effector/arg_parsing' into 'humble-devel'
   Fix end effector arg parsing
   See merge request robots/kangaroo_robot!107
