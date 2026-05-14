@@ -2,6 +2,15 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/end_effector/arg_parsing' into 'humble-devel'
+  Fix end effector arg parsing
+  See merge request robots/kangaroo_robot!107
+* parse arguments to play_motion2 module
+* Fix kangaroo play_motion2 parsing
+* Contributors: Sai Kishor Kothakota
+
 2.3.0 (2026-05-12)
 ------------------
 * Merge branch 'feat/rm_cover_ee' into 'humble-devel'

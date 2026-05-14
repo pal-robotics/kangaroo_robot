@@ -2,6 +2,14 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/end_effector/arg_parsing' into 'humble-devel'
+  Fix end effector arg parsing
+  See merge request robots/kangaroo_robot!107
+* Fix the default controllers launch file
+* Contributors: Sai Kishor Kothakota
+
 2.3.0 (2026-05-12)
 ------------------
 * Merge branch 'fix/import' into 'humble-devel'
