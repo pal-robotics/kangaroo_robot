@@ -94,7 +94,7 @@ def create_play_motion_filename(context):
 
     pkg_name = 'kangaroo_bringup'
     pkg_share_dir = get_package_share_directory(pkg_name)
-    end_effector_type = read_launch_argument('end_effector_type', context)
+    end_effector_type = read_launch_argument('end_effector_right', context)
     arm_type = read_launch_argument('arm_type', context)
     legs_type = read_launch_argument('legs_type', context)
     has_pelvis = read_launch_argument('has_pelvis', context)
@@ -107,7 +107,7 @@ def create_play_motion_filename(context):
                          'kangaroo_motions_legs_only.yaml']
                     ))
 
-    if has_pelvis:
+    if has_pelvis == 'True':
         motions_files.append(PathJoinSubstitution(
                         [pkg_share_dir, 'config', 'motions', 'lower_body',
                          'kangaroo_motions_pelvis_only.yaml']
@@ -136,8 +136,8 @@ def create_play_motion_filename(context):
                                  f'kangaroo_motions{full_hw_suffix}.yaml']
                             ))
         # No-end-effector + With pelvis
-        if has_pelvis:
-            full_hw_suffix = '_' + f'{arm_type}_' + f'{end_effector_type}_' + 'with-pelvis_' + \
+        if has_pelvis == 'True':
+            full_hw_suffix = '_' + f'{arm_type}_' + 'no-end-effector_' + 'with-pelvis_' + \
                 f"{'leg' if legs_type != 'no-leg' else 'no-leg'}"
             motions_files.append(PathJoinSubstitution(
                             [pkg_share_dir, 'config', 'motions', f'{arm_type}_specifics',
@@ -154,7 +154,7 @@ def create_play_motion_filename(context):
                      f'kangaroo_motions{full_hw_suffix}.yaml']
                 ))
             # With pelvis
-            if has_pelvis:
+            if has_pelvis == 'True':
                 full_hw_suffix = '_' + f'{arm_type}_' + f'{end_effector_type}_' + \
                     'with-pelvis_' + f"{'leg' if legs_type != 'no-leg' else 'no-leg'}"
                 motions_files.append(PathJoinSubstitution(
@@ -170,7 +170,7 @@ def create_play_motion_filename(context):
                  f'kangaroo_motions{full_hw_suffix}.yaml']
             ))
         # With pelvis
-        if has_pelvis:
+        if has_pelvis == 'True':
             full_hw_suffix = '_' + f'{arm_type}_' + f'{end_effector_type}_' + 'with-pelvis_' + \
                 f"{'leg' if legs_type != 'no-leg' else 'no-leg'}"
             motions_files.append(PathJoinSubstitution(
@@ -183,9 +183,14 @@ def create_play_motion_filename(context):
                                      in motions_files])
 
     # Determine planner
-    full_hw_suffix = '_' + f'{arm_type}_' + f'{end_effector_type}_' + \
-        f"{'with-pelvis' if has_pelvis else 'no-pelvis'}_" + \
-        f"{'leg' if legs_type != 'no-leg' else 'no-leg'}"
+    if arm_type == 'no-arm':
+        full_hw_suffix = '_' + f'{arm_type}_' + \
+            f"{'with-pelvis' if has_pelvis == 'True' else 'no-pelvis'}_" + \
+            f"{'leg' if legs_type != 'no-leg' else 'no-leg'}"
+    else:
+        full_hw_suffix = '_' + f'{arm_type}_' + f'{end_effector_type}_' + \
+            f"{'with-pelvis' if has_pelvis == 'True' else 'no-pelvis'}_" + \
+            f"{'leg' if legs_type != 'no-leg' else 'no-leg'}"
     motion_planner_config = PathJoinSubstitution(
                                 [pkg_share_dir, 'config', 'motion_planner',
                                  f'{arm_type}_specifics', f'motion_planner{full_hw_suffix}.yaml']
