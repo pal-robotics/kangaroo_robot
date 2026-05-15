@@ -57,7 +57,7 @@ class LaunchArguments(LaunchArgumentsBase):
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
 
     # ["ft-leg", "leg", "no-leg"]
-    feet_type: DeclareLaunchArgument = KangarooArgs.feet_type
+    # feet_type: DeclareLaunchArgument = KangarooArgs.feet_type
 
     # ["fake-forearm", "ft-gripper", "gripper", "RH8D"]
     end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
@@ -96,7 +96,7 @@ def create_play_motion_filename(context):
     pkg_share_dir = get_package_share_directory(pkg_name)
     end_effector_type = read_launch_argument('end_effector_right', context)
     arm_type = read_launch_argument('arm_type', context)
-    feet_type = read_launch_argument('feet_type', context)
+    # feet_type = read_launch_argument('feet_type', context)
     has_pelvis = read_launch_argument('has_pelvis', context)
 
     motions_files = []
