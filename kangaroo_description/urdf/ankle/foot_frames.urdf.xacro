@@ -4,8 +4,7 @@
 <xacro:property name="foot_length"   value="0.21" />
 <xacro:property name="foot_width"   value="0.09" />
 
-<xacro:macro name="kangaroo_foot_frames" params="side parent offset_x:=0.0 offset_y:=0.0">
-
+<xacro:macro name="kangaroo_fixed_foot_frames" params="side parent offset_x:=0.0 offset_y:=0.0">
 	<link name="${side}_foot_upper_left"/>
 	<link name="${side}_foot_upper_right"/>
 	<link name="${side}_foot_lower_left"/>

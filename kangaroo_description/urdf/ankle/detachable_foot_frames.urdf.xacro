@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo">
+
+<xacro:property name="foot_length"   value="0.21" />
+<xacro:property name="foot_width"   value="0.09" />
+
+    <xacro:macro name="kangaroo_detachable_foot_frames" params="side parent offset_x:=0.0 offset_y:=0.0">
+        <link name="${side}_foot">
+            <inertial>
+                <origin xyz="0.000132090232624911 -3.05273190426678E-05 0.00417401893266306" rpy="0 0 0" />
+                <mass value="0.126216116323818" />
+                <inertia ixx="5.05342139344645E-05" ixy="-1.21919910576268E-06" ixz="3.77129027963418E-08"
+                        iyy="3.0799641719044E-05" iyz="1.55920192749335E-08"
+                        izz="7.74873112907028E-05" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://kangaroo_description/meshes/leg/foot.stl" />
+                </geometry>
+                    <material name="pal/DarkGrey" />
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://kangaroo_description/meshes/leg/foot.stl" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="${side}_foot_joint" type="fixed">
+            <origin xyz="${offset_x} ${offset_y} 0" rpy="0 0 0" />
+            <parent link="${parent}" />
+            <child link="${side}_foot" />
+            <axis xyz="0 0 0" />
+        </joint>
+        <link name="${side}_foot_ft">
+            <inertial>
+                <origin xyz="-0.000443003666554599 0.000522074497974099 -0.0153068327087122" rpy="0 0 0" />
+                <mass value="0.00199617753343338" />
+                <inertia ixx="5.9973064680877E-07" ixy="2.01121334144999E-08" ixz="-8.68902393943816E-09"
+                        iyy="5.90181580371415E-07" iyz="1.10619053149078E-08"
+                        izz="8.97962347086075E-07" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://kangaroo_description/meshes/leg/foot-ft.stl" />
+                </geometry>
+                <material name="pal/DarkGrey" />
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://kangaroo_description/meshes/leg/foot-ft.stl" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="${side}_foot_ft" type="fixed">
+            <origin xyz="0 0 0.014" rpy="0 3.1416 0" />
+            <parent link="${side}_foot" />
+            <child link="${side}_foot_ft" />
+            <axis xyz="0 0 0" />
+        </joint>
+        <link name="${side}_foot_sole">
+            <inertial>
+                <origin xyz="0.000379366462454072 5.80159494661185E-05 -0.00336003668438848" rpy="0 0 0" />
+                <mass value="0.34359589794105" />
+                <inertia ixx="0.000243921537522367" ixy="-3.79473815942421E-07" ixz="1.12448005808514E-07"
+                        iyy="0.0015816516325665" iyz="5.17989402289206E-08"
+                        izz="0.00182204612839865" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://kangaroo_description/meshes/leg/foot-sole.stl" />
+                </geometry>
+                <material name="pal/DarkGrey" />
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://kangaroo_description/meshes/leg/foot-sole.stl" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="${side}_foot_sole" type="fixed">
+            <origin xyz="0 0 -0.038472" rpy="0 3.1416 0" />
+            <parent link="${side}_foot_ft" />
+            <child link="${side}_foot_sole" />
+            <axis xyz="0 0 0" />
+        </joint>
+    </xacro:macro>
+</robot>
