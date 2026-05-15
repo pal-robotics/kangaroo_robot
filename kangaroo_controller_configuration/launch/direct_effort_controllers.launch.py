@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from kangaroo_description.kangaroo_launch_utils import GetParametersFromBlackboard
 from launch import LaunchDescription
 from launch.actions import OpaqueFunction
-from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
+from launch_pal.arg_utils import LaunchArgumentsBase
 from launch_pal.include_utils import include_scoped_launch_py_description
 
 

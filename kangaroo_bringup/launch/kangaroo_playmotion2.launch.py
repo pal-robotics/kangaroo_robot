@@ -166,7 +166,8 @@ def create_play_motion_filename(context):
             ))
         # With pelvis
         if has_pelvis == 'True':
-            full_hw_suffix = '_' + f'{arm_type}_' + f'{end_effector_type}_' + 'with-pelvis_' + 'leg'
+            full_hw_suffix = '_' + f'{arm_type}_' + f'{end_effector_type}_' + 'with-pelvis_' + \
+                'leg'
             motions_files.append(PathJoinSubstitution(
                     [pkg_share_dir, 'config', 'motions', f'{arm_type}_specifics',
                      f'kangaroo_motions{full_hw_suffix}.yaml']
