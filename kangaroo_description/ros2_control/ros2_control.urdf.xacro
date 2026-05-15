@@ -26,7 +26,7 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/calibration_constants.urdf.xacro" />
 
   <!-- MACRO DEFINITION-->
-  <xacro:macro name="kangaroo_ros2_control" params="arm_type">
+  <xacro:macro name="kangaroo_ros2_control" params="arm_type has_ankle_ft_sensor_right has_ankle_ft_sensor_left">
 
     <ros2_control name="ros2_control_kangaroo_system" type="system" is_async="${'true' if sim_type == 'no-simulation' else 'false'}">
       <xacro:if value="${sim_type == 'no-simulation'}" >
@@ -56,22 +56,21 @@
         <xacro:pelvis_ros2_control />
       </xacro:if>
 
-      <xacro:leg_ros2_control side="left"/>
-      <xacro:leg_ros2_control side="right"/>
+      <xacro:leg_ros2_control side="left" has_ankle_ft_sensor="${has_ankle_ft_sensor_left}"/>
+      <xacro:leg_ros2_control side="right" has_ankle_ft_sensor="${has_ankle_ft_sensor_right}"/>
 
       <xacro:if value="${arm_type != 'no-arm'}">
         <xacro:arm_ros2_control side="left" arm_type="${arm_type}"/>
         <xacro:arm_ros2_control side="right" arm_type="${arm_type}"/>
-      </xacro:if>
 
-
-      <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
-        <!-- pal-pro-gripper right -->
-        <xacro:ros2_control_pal_pro_gripper name="gripper_right" reduction="1.0" />
-      </xacro:if>
-      <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
-        <!-- pal-pro-gripper left -->
-        <xacro:ros2_control_pal_pro_gripper name="gripper_left" reduction="1.0" />
+        <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
+          <!-- pal-pro-gripper right -->
+          <xacro:ros2_control_pal_pro_gripper name="gripper_right" reduction="1.0" />
+        </xacro:if>
+        <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
+          <!-- pal-pro-gripper left -->
+          <xacro:ros2_control_pal_pro_gripper name="gripper_left" reduction="1.0" />
+        </xacro:if>
       </xacro:if>
 
       <xacro:unless value="${sim_type == 'no-simulation'}">

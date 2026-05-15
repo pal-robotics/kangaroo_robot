@@ -18,7 +18,10 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kangaroo" >
 
   <!-- ARGUMENTS -->
-  
+  <!-- ati, no-ft-sensor -->
+  <xacro:arg name="ankle_ft_right" default="no-ft-sensor" />
+  <xacro:arg name="ankle_ft_left" default="no-ft-sensor" />
+
   <!-- True, False -->
   <xacro:arg name="has_pelvis" default="True" />
 
@@ -89,6 +92,8 @@
 
   <!-- PROPERTIES -->
 
+  <xacro:property name="ankle_ft_right" value="$(arg ankle_ft_right)" />
+  <xacro:property name="ankle_ft_left" value="$(arg ankle_ft_left)" />
   <xacro:property name="has_pelvis" value="$(arg has_pelvis)" />
   <xacro:property name="has_head" value="$(arg has_head)" />
   <xacro:property name="arm_type" value="$(arg arm_type)" />
@@ -108,6 +113,8 @@
   <xacro:property name="has_arms" value="${arm_type not in ['no-arm']}" />
   <xacro:property name="has_ft_sensor_left" value="${ft_sensor_left not in ['no-ft-sensor']}"/>
   <xacro:property name="has_ft_sensor_right" value="${ft_sensor_right not in ['no-ft-sensor']}"/>
+  <xacro:property name="has_ankle_ft_sensor_left" value="${ankle_ft_left not in ['no-ft-sensor']}"/>
+  <xacro:property name="has_ankle_ft_sensor_right" value="${ankle_ft_right not in ['no-ft-sensor']}"/>
   <xacro:property name="end_effector_right_link" value="${'wrist_right_ft_tool_link' if has_ft_sensor_right else 'arm_right_tool_link'}" />
   <xacro:property name="end_effector_left_link" value="${'wrist_left_ft_tool_link' if has_ft_sensor_left else 'arm_left_tool_link'}" />
 
@@ -152,6 +159,12 @@
   </xacro:if>
   <xacro:if value="${ft_sensor_right not in ['no-ft-sensor', 'ati']}">
     <xacro:wrong_ft_sensor_right />
+  </xacro:if>
+  <xacro:if value="${ankle_ft_left not in ['no-ft-sensor', 'ati']}">
+    <xacro:wrong_ankle_ft_sensor_left />
+  </xacro:if>
+  <xacro:if value="${ankle_ft_right not in ['no-ft-sensor', 'ati']}">
+    <xacro:wrong_ankle_ft_sensor_right />
   </xacro:if>
 
   <xacro:if value="${arm_type in ['4dof']}">
@@ -495,7 +508,7 @@
   <!-- ROS 2 Control -->
   <xacro:unless value="${sim_type == 'mujoco'}">
     <xacro:include filename="$(find kangaroo_description)/ros2_control/ros2_control.urdf.xacro" />
-    <xacro:kangaroo_ros2_control arm_type="${arm_type}"/>
+    <xacro:kangaroo_ros2_control arm_type="${arm_type}" has_ankle_ft_sensor_right="${has_ankle_ft_sensor_right}" has_ankle_ft_sensor_left="${has_ankle_ft_sensor_left}" />
   </xacro:unless>
 
 </robot>

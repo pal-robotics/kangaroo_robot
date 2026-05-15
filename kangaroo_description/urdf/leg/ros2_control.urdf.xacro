@@ -25,7 +25,7 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle.transmission.xacro" />
 
   <!-- MACRO DEFINITION-->
-  <xacro:macro name="leg_ros2_control" params="side">
+  <xacro:macro name="leg_ros2_control" params="side" has_ankle_ft_sensor="false">
 
 
         <xacro:if value="${sim_type == 'no-simulation'}" >
@@ -34,7 +34,10 @@
           <xacro:kangaroo_leg_length_actuator_transmission side="${side}" />
           <xacro:kangaroo_ankle_transmission side="${side}" roll_joint="5" pitch_joint="4" read_actuator="leg_${side}_length_actuator" />
         </xacro:if>
-        
+        <xacro:if value="${has_ankle_ft_sensor}">
+           <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ftsensor.ros2_control.xacro"/>
+           <xacro:ros2_control_force_torque_sensor name="ankle_${side}_ft_sensor"/>
+        </xacro:if>
   </xacro:macro>
 
 </robot>
