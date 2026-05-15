@@ -52,8 +52,8 @@ class LaunchArguments(LaunchArgumentsBase):
     # ["no-arm", "4dof", "5dof", "7dof"]
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
 
-    # ["ft-leg", "leg", "no-leg"]
-    legs_type: DeclareLaunchArgument = KangarooArgs.legs_type
+    # ["fixed", "detachable"]
+    feet_type: DeclareLaunchArgument = KangarooArgs.feet_type
 
     # ["fake-forearm", "ft-gripper", "gripper", "RH8D"]
     end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
@@ -81,7 +81,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             'has_head': launch_args.has_head,
             'has_pelvis': launch_args.has_pelvis,
             'arm_type': launch_args.arm_type,
-            'legs_type': launch_args.legs_type,
+            'feet_type': launch_args.feet_type,
             'end_effector_right': launch_args.end_effector_right,
             'end_effector_left': launch_args.end_effector_left,
             'fixation_type': launch_args.fixation_type,
@@ -103,7 +103,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             'has_head': launch_args.has_head,
             'has_pelvis': launch_args.has_pelvis,
             'arm_type': launch_args.arm_type,
-            'legs_type': launch_args.legs_type,
+            'feet_type': launch_args.leg_type,
             'end_effector_right': launch_args.end_effector_right,
             'end_effector_left': launch_args.end_effector_left,
             'fixation_type': launch_args.fixation_type,

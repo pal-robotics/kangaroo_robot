@@ -9,91 +9,87 @@
 
     <!-- Equality -->
     <xacro:macro name="mj_robot_equality">
-      <xacro:if value="${legs_type != 'no-leg'}">
-        <connect anchor="0.0 0.0 0.0" body1="leg_left_4_link" body2="leg_left_knee_link" name="leg_left_closed_kin_joint" solref="0.002 1" />
-        <connect anchor="0.0 0.0 0.0" body1="leg_right_4_link" body2="leg_right_knee_link" name="leg_right_closed_kin_joint" solref="0.002 1" />
-      </xacro:if>
+      <connect anchor="0.0 0.0 0.0" body1="leg_left_4_link" body2="leg_left_knee_link" name="leg_left_closed_kin_joint" solref="0.002 1" />
+      <connect anchor="0.0 0.0 0.0" body1="leg_right_4_link" body2="leg_right_knee_link" name="leg_right_closed_kin_joint" solref="0.002 1" />
     </xacro:macro>
 
     <!-- Contacts -->
     <xacro:macro name="mj_robot_contacts">
-      <xacro:if value="${legs_type != 'no-leg'}">
-        <xacro:if value="${has_pelvis}">
-          <exclude body1="pelvis_base_link" body2="base_link" />
-          <exclude body1="pelvis_base_link" body2="back_handle" />
-          <exclude body1="pelvis_base_link" body2="leg_left_1_link" />
-          <exclude body1="pelvis_base_link" body2="leg_left_2_link" />
-          <exclude body1="pelvis_base_link" body2="leg_right_1_link" />
-          <exclude body1="pelvis_base_link" body2="leg_right_2_link" />
-          <exclude body1="pelvis_1_link" body2="base_link" />
-          <exclude body1="pelvis_1_link" body2="back_handle" />
-          <exclude body1="pelvis_1_link" body2="pelvis_base_link" />
-          <exclude body1="pelvis_1_link" body2="leg_left_1_link" />
-          <exclude body1="pelvis_1_link" body2="leg_left_2_link" />
-          <exclude body1="pelvis_1_link" body2="leg_right_1_link" />
-          <exclude body1="pelvis_1_link" body2="leg_right_2_link" />
-          <exclude body1="pelvis_2_link" body2="base_link" />
-          <exclude body1="pelvis_2_link" body2="back_handle" />
-          <exclude body1="pelvis_2_link" body2="pelvis_base_link" />
-          <exclude body1="pelvis_2_link" body2="pelvis_1_link" />
-          <exclude body1="pelvis_2_link" body2="leg_left_1_link" />
-          <exclude body1="pelvis_2_link" body2="leg_left_2_link" />
-          <exclude body1="pelvis_2_link" body2="leg_right_1_link" />
-          <exclude body1="pelvis_2_link" body2="leg_right_2_link" />
-        </xacro:if>  
-        
-        <exclude body1="base_link" body2="back_handle" />
-        <exclude body1="base_link" body2="torso_link" />
-        <exclude body1="base_link" body2="leg_left_1_link" />
-        <exclude body1="base_link" body2="leg_left_2_link" />
-        <exclude body1="base_link" body2="leg_left_3_link" />
-        <exclude body1="base_link" body2="leg_right_1_link" />
-        <exclude body1="base_link" body2="leg_right_2_link" />
-        <exclude body1="base_link" body2="leg_right_3_link" />
-        <exclude body1="base_link" body2="leg_right_femur_link" />
-        <exclude body1="base_link" body2="leg_left_femur_link" />
+      <xacro:if value="${has_pelvis}">
+        <exclude body1="pelvis_base_link" body2="base_link" />
+        <exclude body1="pelvis_base_link" body2="back_handle" />
+        <exclude body1="pelvis_base_link" body2="leg_left_1_link" />
+        <exclude body1="pelvis_base_link" body2="leg_left_2_link" />
+        <exclude body1="pelvis_base_link" body2="leg_right_1_link" />
+        <exclude body1="pelvis_base_link" body2="leg_right_2_link" />
+        <exclude body1="pelvis_1_link" body2="base_link" />
+        <exclude body1="pelvis_1_link" body2="back_handle" />
+        <exclude body1="pelvis_1_link" body2="pelvis_base_link" />
+        <exclude body1="pelvis_1_link" body2="leg_left_1_link" />
+        <exclude body1="pelvis_1_link" body2="leg_left_2_link" />
+        <exclude body1="pelvis_1_link" body2="leg_right_1_link" />
+        <exclude body1="pelvis_1_link" body2="leg_right_2_link" />
+        <exclude body1="pelvis_2_link" body2="base_link" />
+        <exclude body1="pelvis_2_link" body2="back_handle" />
+        <exclude body1="pelvis_2_link" body2="pelvis_base_link" />
+        <exclude body1="pelvis_2_link" body2="pelvis_1_link" />
+        <exclude body1="pelvis_2_link" body2="leg_left_1_link" />
+        <exclude body1="pelvis_2_link" body2="leg_left_2_link" />
+        <exclude body1="pelvis_2_link" body2="leg_right_1_link" />
+        <exclude body1="pelvis_2_link" body2="leg_right_2_link" />
+      </xacro:if>  
+      
+      <exclude body1="base_link" body2="back_handle" />
+      <exclude body1="base_link" body2="torso_link" />
+      <exclude body1="base_link" body2="leg_left_1_link" />
+      <exclude body1="base_link" body2="leg_left_2_link" />
+      <exclude body1="base_link" body2="leg_left_3_link" />
+      <exclude body1="base_link" body2="leg_right_1_link" />
+      <exclude body1="base_link" body2="leg_right_2_link" />
+      <exclude body1="base_link" body2="leg_right_3_link" />
+      <exclude body1="base_link" body2="leg_right_femur_link" />
+      <exclude body1="base_link" body2="leg_left_femur_link" />
 
-        <exclude body1="back_handle" body2="leg_left_1_link"/>
-        <exclude body1="back_handle" body2="leg_left_2_link"/>
-        <exclude body1="back_handle" body2="leg_right_1_link"/>
-        <exclude body1="back_handle" body2="leg_right_2_link"/>
+      <exclude body1="back_handle" body2="leg_left_1_link"/>
+      <exclude body1="back_handle" body2="leg_left_2_link"/>
+      <exclude body1="back_handle" body2="leg_right_1_link"/>
+      <exclude body1="back_handle" body2="leg_right_2_link"/>
 
-        <exclude body1="torso_link" body2="leg_left_1_link"/>
-        <exclude body1="torso_link" body2="leg_left_2_link"/>
-        <exclude body1="torso_link" body2="leg_right_1_link"/>
-        <exclude body1="torso_link" body2="leg_right_2_link"/>
+      <exclude body1="torso_link" body2="leg_left_1_link"/>
+      <exclude body1="torso_link" body2="leg_left_2_link"/>
+      <exclude body1="torso_link" body2="leg_right_1_link"/>
+      <exclude body1="torso_link" body2="leg_right_2_link"/>
 
-        <exclude body1="leg_left_1_link" body2="leg_right_1_link" />
-        <exclude body1="leg_left_1_link" body2="leg_left_3_link" />
-        <exclude body1="leg_left_2_link" body2="leg_left_3_link" />
-        <exclude body1="leg_left_2_link" body2="leg_left_1_link" />
-        <exclude body1="leg_left_3_link" body2="leg_left_4_link" />
-        <exclude body1="leg_left_3_link" body2="leg_left_5_link" />
-        <exclude body1="leg_left_3_link" body2="leg_left_knee_link" />
-        <exclude body1="leg_left_femur_link" body2="leg_left_3_link" />
-        <exclude body1="leg_left_femur_link" body2="leg_left_1_link" />
-        <exclude body1="leg_left_femur_link" body2="leg_left_knee_link" />
-        <exclude body1="leg_left_femur_link" body2="leg_left_4_link" />
-        <exclude body1="leg_left_femur_link" body2="leg_left_5_link" />
-        <exclude body1="leg_left_knee_link" body2="leg_left_4_link" />
-        <exclude body1="leg_left_knee_link" body2="leg_left_5_link" />
-        <exclude body1="leg_left_4_link" body2="leg_left_5_link" />
-        
-        <exclude body1="leg_right_1_link" body2="leg_right_3_link" />
-        <exclude body1="leg_right_2_link" body2="leg_right_3_link" />
-        <exclude body1="leg_right_2_link" body2="leg_right_1_link" />
-        <exclude body1="leg_right_3_link" body2="leg_right_4_link" />
-        <exclude body1="leg_right_3_link" body2="leg_right_5_link" />
-        <exclude body1="leg_right_3_link" body2="leg_right_knee_link" />
-        <exclude body1="leg_right_femur_link" body2="leg_right_3_link" />
-        <exclude body1="leg_right_femur_link" body2="leg_right_1_link" />
-        <exclude body1="leg_right_femur_link" body2="leg_right_knee_link" />
-        <exclude body1="leg_right_femur_link" body2="leg_right_4_link" />
-        <exclude body1="leg_right_femur_link" body2="leg_right_5_link" />
-        <exclude body1="leg_right_knee_link" body2="leg_right_4_link" />
-        <exclude body1="leg_right_knee_link" body2="leg_right_5_link" />
-        <exclude body1="leg_right_4_link" body2="leg_right_5_link" />
-      </xacro:if>
+      <exclude body1="leg_left_1_link" body2="leg_right_1_link" />
+      <exclude body1="leg_left_1_link" body2="leg_left_3_link" />
+      <exclude body1="leg_left_2_link" body2="leg_left_3_link" />
+      <exclude body1="leg_left_2_link" body2="leg_left_1_link" />
+      <exclude body1="leg_left_3_link" body2="leg_left_4_link" />
+      <exclude body1="leg_left_3_link" body2="leg_left_5_link" />
+      <exclude body1="leg_left_3_link" body2="leg_left_knee_link" />
+      <exclude body1="leg_left_femur_link" body2="leg_left_3_link" />
+      <exclude body1="leg_left_femur_link" body2="leg_left_1_link" />
+      <exclude body1="leg_left_femur_link" body2="leg_left_knee_link" />
+      <exclude body1="leg_left_femur_link" body2="leg_left_4_link" />
+      <exclude body1="leg_left_femur_link" body2="leg_left_5_link" />
+      <exclude body1="leg_left_knee_link" body2="leg_left_4_link" />
+      <exclude body1="leg_left_knee_link" body2="leg_left_5_link" />
+      <exclude body1="leg_left_4_link" body2="leg_left_5_link" />
+      
+      <exclude body1="leg_right_1_link" body2="leg_right_3_link" />
+      <exclude body1="leg_right_2_link" body2="leg_right_3_link" />
+      <exclude body1="leg_right_2_link" body2="leg_right_1_link" />
+      <exclude body1="leg_right_3_link" body2="leg_right_4_link" />
+      <exclude body1="leg_right_3_link" body2="leg_right_5_link" />
+      <exclude body1="leg_right_3_link" body2="leg_right_knee_link" />
+      <exclude body1="leg_right_femur_link" body2="leg_right_3_link" />
+      <exclude body1="leg_right_femur_link" body2="leg_right_1_link" />
+      <exclude body1="leg_right_femur_link" body2="leg_right_knee_link" />
+      <exclude body1="leg_right_femur_link" body2="leg_right_4_link" />
+      <exclude body1="leg_right_femur_link" body2="leg_right_5_link" />
+      <exclude body1="leg_right_knee_link" body2="leg_right_4_link" />
+      <exclude body1="leg_right_knee_link" body2="leg_right_5_link" />
+      <exclude body1="leg_right_4_link" body2="leg_right_5_link" />
     </xacro:macro>
 
     <!-- Actuators -->
@@ -164,7 +160,7 @@
           <motor joint="arm_right_7_joint" ctrllimited="true" ctrlrange="-43 43" name="arm_right_7_actuator_motor" />
         </xacro:if>
 
-        <xacro:if value="${mj_control == 'position' and legs_type != 'no-leg'}">
+        <xacro:if value="${mj_control == 'position'}">
           <position joint="leg_left_1_joint" kp="1000" ctrllimited="true" ctrlrange="-0.261799 0.698132" name="leg_left_1_actuator_position" />
           <position joint="leg_left_2_joint" kp="1000" ctrllimited="true" ctrlrange="-0.741765 0.741765" name="leg_left_2_actuator_position" />
           <position joint="leg_left_3_joint" kp="1000" ctrllimited="true" ctrlrange="-0.471239 0.471239" name="leg_left_3_actuator_position" />
@@ -178,7 +174,7 @@
           <position joint="leg_right_4_joint" kp="1000" ctrllimited="true" ctrlrange="-0.741765 0.741765" name="leg_right_4_actuator_position" />
           <position joint="leg_right_5_joint" kp="1000" ctrllimited="true" ctrlrange="-0.471239 0.471239" name="leg_right_5_actuator_position" />
         </xacro:if>
-        <xacro:if value="${mj_control == 'motor' and legs_type != 'no-leg'}">
+        <xacro:if value="${mj_control == 'motor'}">
           <motor joint="leg_left_1_joint" ctrllimited="true" ctrlrange="-80 80" name="leg_left_1_actuator_motor" />
           <motor joint="leg_left_2_joint" ctrllimited="true" ctrlrange="-230 230" name="leg_left_2_actuator_motor" />
           <motor joint="leg_left_3_joint" ctrllimited="true" ctrlrange="-139 139" name="leg_left_3_actuator_motor" />
@@ -266,32 +262,24 @@
     </xacro:if>
 
     <!-- legs positions -->
-    <xacro:unless value="${legs_type == 'no-leg'}">
-      <xacro:property name="leg_left_pose" 
-        value="0 0.05 0
-              0.6
-              -0.07 0"/>
-      <!-- value="-0.012 0.054 0.04
-              0.6
-             -0.053 0" /> -->
-      <xacro:property name="leg_left_passive_pose" 
-      value="0.9 1.8" />
-      <xacro:property name="leg_right_pose" 
+    <xacro:property name="leg_left_pose" 
       value="0 0.05 0
-              0.6
-              -0.07 0"/>
-      <!-- value="0.012 0.054 -0.04
-              0.6
-             -0.053 0" /> -->
-      <xacro:property name="leg_right_passive_pose" 
-      value="0.9 1.8" />
-    </xacro:unless>
-    <xacro:if value="${legs_type == 'no-leg'}">
-      <xacro:property name="leg_left_pose" value="" />
-      <xacro:property name="leg_left_passive_pose" value="" />
-      <xacro:property name="leg_right_pose" value="" />
-      <xacro:property name="leg_right_passive_pose" value="" />
-    </xacro:if>
+            0.6
+            -0.07 0"/>
+    <!-- value="-0.012 0.054 0.04
+            0.6
+            -0.053 0" /> -->
+    <xacro:property name="leg_left_passive_pose" 
+    value="0.9 1.8" />
+    <xacro:property name="leg_right_pose" 
+    value="0 0.05 0
+            0.6
+            -0.07 0"/>
+    <!-- value="0.012 0.054 -0.04
+            0.6
+            -0.053 0" /> -->
+    <xacro:property name="leg_right_passive_pose" 
+    value="0.9 1.8" />
 
     <!-- End effector pose -->
     <xacro:unless value="${end_effector_type in ['RH8D', 'gripper']}">
