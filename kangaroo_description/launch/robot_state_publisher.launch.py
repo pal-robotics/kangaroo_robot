@@ -63,8 +63,8 @@ class LaunchArguments(LaunchArgumentsBase):
     # ["no-arm", "4dof", "5dof", "7dof"]
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
 
-    # ["ft-leg", "leg", "no-leg"]
-    legs_type: DeclareLaunchArgument = KangarooArgs.legs_type
+    # ["fixed", "detachable"]
+    feet_type: DeclareLaunchArgument = KangarooArgs.feet_type
 
     # ["fake-forearm", "ft-gripper", "gripper", "RH8D"]
     end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
@@ -118,7 +118,7 @@ def declare_actions(
             'end_effector_left': LaunchConfiguration('end_effector_left'),
             'ft_sensor_right': LaunchConfiguration('ft_sensor_right'),
             'ft_sensor_left': LaunchConfiguration('ft_sensor_left'),
-            'legs_type': LaunchConfiguration('legs_type'),
+            'feet_type': LaunchConfiguration('feet_type'),
             'fixation_type': LaunchConfiguration('fixation_type')
         }
     )
@@ -179,7 +179,7 @@ def create_robot_description_param(context, *args, **kwargs):
         'sim_type': read_launch_argument('sim_type', context),
         'mj_control': read_launch_argument('mj_control', context),
         'fixation_type': read_launch_argument('fixation_type', context),
-        'legs_type': read_launch_argument('legs_type', context),
+        'feet_type': read_launch_argument('feet_type', context),
         'arm_type': read_launch_argument('arm_type', context),
         'end_effector_right': read_launch_argument('end_effector_right', context),
         'end_effector_left': read_launch_argument('end_effector_left', context),

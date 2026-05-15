@@ -24,10 +24,10 @@ ft_sensor_left:
   choices: ["no-ft-sensor", "ati"]
   default_value: "no-ft-sensor"
 
-legs_type:
+feet_type:
   description: "Adds legs to the model"
-  choices: ["ft-leg", "leg", "no-leg"]
-  default_value: "leg"
+  choices: ["fixed", "detachable"]
+  default_value: "fixed"
 
 arm_type:
   description: "Adds arms to the model"

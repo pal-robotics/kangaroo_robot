@@ -25,8 +25,8 @@
   <!-- True, False -->
   <xacro:arg name="has_head" default="False" />
 
-  <!-- (ft-leg) not available, leg, no-leg -->
-  <xacro:arg name="legs_type" default="leg" />
+  <!-- fixed, detachable-->
+  <xacro:arg name="feet_type" default="fixed" />
   
   <!-- no-arm, 4dof, 5dof, 7dof] -->
   <xacro:arg name="arm_type" default="4dof" />
@@ -92,7 +92,7 @@
   <xacro:property name="has_pelvis" value="$(arg has_pelvis)" />
   <xacro:property name="has_head" value="$(arg has_head)" />
   <xacro:property name="arm_type" value="$(arg arm_type)" />
-  <xacro:property name="legs_type" value="$(arg legs_type)" />
+  <xacro:property name="feet_type" value="$(arg feet_type)" />
   <xacro:property name="fixation_type" value="$(arg fixation_type)" />
   <xacro:property name="end_effector_right" value="$(arg end_effector_right)" />
   <xacro:property name="end_effector_left" value="$(arg end_effector_left)" />
@@ -171,8 +171,8 @@
   </xacro:if>
 
   <!-- (ft-leg) not available -->
-  <xacro:if value="${legs_type not in ['leg', 'no-leg']}">
-    <xacro:wrong_legs_type />
+  <xacro:if value="${feet_type not in ['fixed', 'detachable']}">
+    <xacro:wrong_feet_type />
   </xacro:if>
 
   <xacro:if value="${torso_front_up_camera_model not in ['realsense-d435i']}">
@@ -239,13 +239,13 @@
   
   <!-- LEGS -->
 
-  <xacro:if value="${legs_type in ['leg', 'ft-leg']}">
+  <xacro:if value="${feet_type in ['fixed', 'detachable']}">
     <!-- Left Leg -->
-    <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" leg_type="${legs_type}">
+    <xacro:kangaroo_leg side="left" reflect="1" parent="base_link" feet_type="${feet_type}">
       <origin xyz="-0.0150025976417119 0.08 -0.0585" rpy="0 0 0"/>
     </xacro:kangaroo_leg>
     <!-- Right Leg -->
-    <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" leg_type="${legs_type}">
+    <xacro:kangaroo_leg side="right" reflect="-1" parent="base_link" feet_type="${feet_type}">
       <origin xyz="-0.0150025976417119 -0.08 -0.0585" rpy="0 0 0"/>
     </xacro:kangaroo_leg>
   </xacro:if>
