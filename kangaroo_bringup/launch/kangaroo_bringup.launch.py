@@ -103,7 +103,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             'has_head': launch_args.has_head,
             'has_pelvis': launch_args.has_pelvis,
             'arm_type': launch_args.arm_type,
-            'feet_type': launch_args.leg_type,
+            'feet_type': launch_args.feet_type,
             'end_effector_right': launch_args.end_effector_right,
             'end_effector_left': launch_args.end_effector_left,
             'fixation_type': launch_args.fixation_type,
