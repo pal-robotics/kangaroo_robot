@@ -281,18 +281,32 @@
     <xacro:property name="leg_right_passive_pose" 
     value="0.9 1.8" />
 
-    <!-- End effector pose -->
-    <xacro:unless value="${end_effector_type in ['RH8D', 'gripper']}">
-      <xacro:property name="end_effector_actuator_pose" value="" />
-      <xacro:property name="end_effector_pose" value="" />
+    <!-- End effector pose right -->
+    <xacro:unless value="${end_effector_right in ['RH8D', 'gripper']}">
+      <xacro:property name="end_effector_right_actuator_pose" value="" />
+      <xacro:property name="end_effector_right_pose" value="" />
     </xacro:unless>
-    <xacro:if value="${end_effector_type == 'RH8D'}">
-      <xacro:mj_hand_actuator_pose property_name="end_effector_actuator_pose"/>
-      <xacro:mj_hand_pose property_name="end_effector_pose"/>
+    <xacro:if value="${end_effector_right == 'RH8D'}">
+      <xacro:mj_hand_actuator_pose property_name="end_effector_right_actuator_pose"/>
+      <xacro:mj_hand_pose property_name="end_effector_right_pose"/>
     </xacro:if>
-    <xacro:if value="${end_effector_type == 'gripper'}">
-      <xacro:mj_gripper_actuator_pose property_name="end_effector_actuator_pose"/>
-      <xacro:mj_gripper_pose property_name="end_effector_pose"/>
+    <xacro:if value="${end_effector_right == 'gripper'}">
+      <xacro:mj_gripper_actuator_pose property_name="end_effector_right_actuator_pose"/>
+      <xacro:mj_gripper_pose property_name="end_effector_right_pose"/>
+    </xacro:if>
+
+    <!-- End effector pose left -->
+    <xacro:unless value="${end_effector_left in ['RH8D', 'gripper']}">
+      <xacro:property name="end_effector_left_actuator_pose" value="" />
+      <xacro:property name="end_effector_left_pose" value="" />
+    </xacro:unless>
+    <xacro:if value="${end_effector_left == 'RH8D'}">
+      <xacro:mj_hand_actuator_pose property_name="end_effector_left_actuator_pose"/>
+      <xacro:mj_hand_pose property_name="end_effector_left_pose"/>
+    </xacro:if>
+    <xacro:if value="${end_effector_left == 'gripper'}">
+      <xacro:mj_gripper_actuator_pose property_name="end_effector_left_actuator_pose"/>
+      <xacro:mj_gripper_pose property_name="end_effector_left_pose"/>
     </xacro:if>
 
     <!-- Keyframe Home using position actuators-->
@@ -308,8 +322,8 @@
             ${leg_left_pose}
             ${leg_right_pose}
             
-            ${end_effector_actuator_pose} 
-            ${end_effector_actuator_pose}"
+            ${end_effector_right_actuator_pose} 
+            ${end_effector_left_actuator_pose}"
 
           qpos="
             ${floating_base_pose}
@@ -317,10 +331,10 @@
             ${pelvis_pose}  
 
             ${arm_left_pose}
-            ${end_effector_pose}
+            ${end_effector_left_pose}
 
             ${arm_right_pose}
-            ${end_effector_pose}
+            ${end_effector_right_pose}
 
             ${leg_left_pose}
             ${leg_left_passive_pose}
@@ -341,10 +355,10 @@
               ${pelvis_pose}  
 
               ${arm_left_pose}
-              ${end_effector_pose}
+              ${end_effector_left_pose}
 
               ${arm_right_pose}
-              ${end_effector_pose}
+              ${end_effector_right_pose}
 
               ${leg_left_pose}
               ${leg_left_passive_pose}
