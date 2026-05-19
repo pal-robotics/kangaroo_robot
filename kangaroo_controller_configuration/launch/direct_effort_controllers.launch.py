@@ -31,8 +31,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     # Add controller of right arm, end-effector and ft-sensor
     get_params_from_blackboard = GetParametersFromBlackboard(
         blackboard_node_name='parameter_blackboard',
-        parameter_names=['feet_type', 'has_pelvis', 'arm_type', 'end_effector_right',
-                         'end_effector_left']
+        parameter_names=['has_pelvis', 'arm_type', 'end_effector_right', 'end_effector_left']
         )
     launch_description.add_action(get_params_from_blackboard)
 
