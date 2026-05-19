@@ -19,17 +19,19 @@
 
   <!-- INCLUDES -->
   <xacro:include filename="$(find kangaroo_description)/ros2_control/joint.ros2_control.xacro" />
+  <xacro:include filename="$(find kangaroo_description)/urdf/pelvis/pelvis.transmission.xacro" />
 
   <!-- MACRO DEFINITION-->
   <xacro:macro name="pelvis_ros2_control" params="">
 
-        <xacro:joint_ros2control name="pelvis_1" />
-        <xacro:joint_ros2control name="pelvis_2" />
+    <xacro:joint_ros2control name="pelvis_1" />
+    <xacro:joint_ros2control name="pelvis_2" />
         
-        <xacro:if value="${sim_type == 'no-simulation'}" >
-          <xacro:simple_transmission name="pelvis_1" reduction="1.0" offset_value="${pelvis_1_joint_offset}" />
-          <xacro:simple_transmission name="pelvis_2" reduction="1.0" offset_value="${pelvis_2_joint_offset}" />
-        </xacro:if>
+    <xacro:if value="${sim_type == 'no-simulation'}" >
+      <xacro:kangaroo_pelvis_differential_transmission name="pelvis" number1="1" number2="2"
+        act_reduction1="1.0" act_reduction2="1.0" 
+        jnt_reduction1="1.0" jnt_reduction2="1.395348837" />
+    </xacro:if>
 
   </xacro:macro>
 
