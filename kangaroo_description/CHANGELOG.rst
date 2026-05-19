@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.3.2 (2026-05-19)
+------------------
 * Merge branch 'fix/pelvis_trans' into 'humble-devel'
   Use differential transmission for  pelvis joints
   See merge request robots/kangaroo_robot!112
