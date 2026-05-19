@@ -2,6 +2,9 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.3.1 (2026-05-14)
 ------------------
 * Merge branch 'fix/end_effector/arg_parsing' into 'humble-devel'

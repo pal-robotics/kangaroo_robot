@@ -2,6 +2,14 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/pelvis_trans' into 'humble-devel'
+  Use differential transmission for  pelvis joints
+  See merge request robots/kangaroo_robot!112
+* Readding missing pelvis trans
+* Contributors: Sai Kishor Kothakota, Óscar Martínez
+
 2.3.1 (2026-05-14)
 ------------------
 
