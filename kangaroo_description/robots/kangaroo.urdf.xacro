@@ -331,7 +331,7 @@
   <!-- MUJOCO   -->
 
   <xacro:if value="${sim_type == 'mujoco' or sim_type == 'mujoco-ros2-control'}">
-    <xacro:if value="${end_effector_right == 'gripper'}">
+    <xacro:if value="${end_effector_right == 'gripper' or end_effector_left == 'gripper'}">
       <xacro:include filename="$(find pal_pro_gripper_description)/mujoco/mj_tags.xacro" />
     </xacro:if>
     <xacro:if value="${end_effector_right == 'RH8D'}">
