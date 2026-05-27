@@ -18,18 +18,10 @@
 
   <link name="torso_link">
     <inertial>
-      <origin
-        xyz="-0.01 -0.00074 0.22222"
-        rpy="0 0 0" />
-      <mass
-        value="13.33642" />
-      <inertia
-        ixx="0.28794"
-        ixy="-0.00047"
-        ixz="-0.00161"
-        iyy="0.26647"
-        iyz="0.00368"
-        izz="0.11215" />
+      <mass value="15.1027"/>
+      <origin xyz="-0.008953 0.001581 0.216619" rpy="0 0 0"/>
+      <inertia ixx="0.342263" ixy="-0.000525" ixz="-0.00056" 
+        iyy="0.31113" iyz="0.002265" izz="0.128871"/>
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />

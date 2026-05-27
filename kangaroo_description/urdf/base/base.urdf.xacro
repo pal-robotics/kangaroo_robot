@@ -33,15 +33,10 @@
     <xacro:if value="${has_pelvis}">
       <link name="base_link">
         <inertial>
-          <origin xyz="-0.098278 0.0050886 -0.0322547" rpy="0 0 0" />
-          <mass value="2.6738" />
-          <inertia
-            ixx="0.022825"
-            ixy="-0.00038658"
-            ixz="0.00034009"
-            iyy="0.008341"
-            iyz="-4.4033E-05"
-            izz="0.027837" />
+          <mass value="4.951914"/>
+          <origin xyz="-0.109747 -0.000051 -0.014501" rpy="0 0 0"/>
+          <inertia ixx="0.035976" ixy="-0.000021" ixz="0.001481"
+            iyy="0.025426" iyz="0.000014" izz="0.051135"/>
         </inertial>
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
@@ -119,18 +114,10 @@
     <xacro:unless value="${has_pelvis}">
       <link name="base_link">
         <inertial>
-          <origin
-            xyz="-0.0976652 0.0052196 -0.0319554"
-            rpy="0 0 0" />
-          <mass
-            value="2.5752" />
-          <inertia
-            ixx="0.022653"
-            ixy="-0.00037405"
-            ixz="0.00039289"
-            iyy="0.0079829"
-            iyz="-3.4044E-05"
-            izz="0.027412" />
+          <mass value="4.951914"/>
+          <origin xyz="-0.109747 -0.000051 -0.014501" rpy="0 0 0"/>
+          <inertia ixx="0.035976" ixy="-0.000021" ixz="0.001481" 
+            iyy="0.025426" iyz="0.000014" izz="0.051135"/>
         </inertial>
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
