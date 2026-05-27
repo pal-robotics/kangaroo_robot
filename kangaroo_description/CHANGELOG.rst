@@ -2,6 +2,18 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'update/robot_model' into 'humble-devel'
+  Model with updated masses, origin and inertias
+  See merge request robots/kangaroo_robot!113
+* Fix the missing inertial tag
+* Update torso link mass and inertial properties
+* update pelvis_link mass and inertial parameters
+* Update base_link mass and inertial properties
+* Update the mass and the inertial elements of leg links
+* Contributors: Sai Kishor Kothakota
+
 2.3.2 (2026-05-19)
 ------------------
 * Merge branch 'fix/pelvis_trans' into 'humble-devel'
