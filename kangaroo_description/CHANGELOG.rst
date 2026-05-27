@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.4.0 (2026-05-27)
+------------------
 * Merge branch 'update/robot_model' into 'humble-devel'
   Model with updated masses, origin and inertias
   See merge request robots/kangaroo_robot!113
