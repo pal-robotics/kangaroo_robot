@@ -2,6 +2,11 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add kangaroo_transmissions missing dependency
+* Contributors: Noel Jimenez
+
 2.4.0 (2026-05-27)
 ------------------
 * Merge branch 'update/robot_model' into 'humble-devel'
