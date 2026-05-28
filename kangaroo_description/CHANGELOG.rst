@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.4.1 (2026-05-28)
+------------------
 * Add kangaroo_transmissions missing dependency
 * Contributors: Noel Jimenez
 
