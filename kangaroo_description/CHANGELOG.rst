@@ -2,6 +2,11 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Change home position for show file
+* Contributors: Aina
+
 2.4.1 (2026-05-28)
 ------------------
 * Add kangaroo_transmissions missing dependency
