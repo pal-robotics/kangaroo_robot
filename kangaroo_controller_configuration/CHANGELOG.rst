@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.4.3 (2026-05-31)
+------------------
 * Merge branch 'fix/pid_controllers' into 'humble-devel'
   PID Controllers
   See merge request robots/kangaroo_robot!117
