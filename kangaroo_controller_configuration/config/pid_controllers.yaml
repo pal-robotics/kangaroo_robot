@@ -1,0 +1,106 @@
+pid_command_controller:
+  ros__parameters:
+    type: pid_command_controller/ActuatorPIDCommandController
+    actuator_names:
+      - leg_left_1_actuator
+      - leg_left_2_actuator
+      - leg_left_3_actuator
+      - leg_left_4_actuator
+      - leg_left_5_actuator
+      - leg_left_length_actuator
+      - leg_right_1_actuator
+      - leg_right_2_actuator
+      - leg_right_3_actuator
+      - leg_right_4_actuator
+      - leg_right_5_actuator
+      - leg_right_length_actuator
+      - pelvis_1_actuator
+      - pelvis_2_actuator
+      - arm_left_1_actuator
+      - arm_left_2_actuator
+      - arm_left_3_actuator
+      - arm_left_4_actuator
+      - arm_left_5_actuator
+      - arm_right_1_actuator
+      - arm_right_2_actuator
+      - arm_right_3_actuator
+      - arm_right_4_actuator
+      - arm_right_5_actuator
+
+    position:
+      leg_left_1_actuator:      {proportional: 0.0003,   integral: 0.000035, derivative: 1.0e-08}
+      leg_left_2_actuator:      {proportional: 0.0003,   integral: 0.000035, derivative: 8.5e-08}
+      leg_left_3_actuator:      {proportional: 0.0003,   integral: 0.00003,  derivative: 2.0e-07}
+      leg_left_4_actuator:      {proportional: 0.0003,   integral: 0.00003,  derivative: 1.0e-07}
+      leg_left_5_actuator:      {proportional: 0.00032,  integral: 0.00003,  derivative: 1.0e-07}
+      leg_left_length_actuator: {proportional: 0.015,    integral: 0.002,    derivative: 0.00003}
+      leg_right_1_actuator:     {proportional: 0.00049,  integral: 0.000046, derivative: 2.0e-07}
+      leg_right_2_actuator:     {proportional: 0.0003,   integral: 0.00003,  derivative: 8.0e-08}
+      leg_right_3_actuator:     {proportional: 0.00035,  integral: 0.00003,  derivative: 4.0e-08}
+      leg_right_4_actuator:     {proportional: 0.00032,  integral: 0.000035, derivative: 2.0e-07}
+      leg_right_5_actuator:     {proportional: 0.0003,   integral: 0.000035, derivative: 2.0e-07}
+      leg_right_length_actuator: {proportional: 0.015,    integral: 0.002,    derivative: 0.00003}
+      pelvis_1_actuator:        {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      pelvis_2_actuator:        {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_left_1_actuator:      {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_left_2_actuator:      {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_left_3_actuator:      {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_left_4_actuator:      {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_left_5_actuator:      {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_right_1_actuator:     {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_right_2_actuator:     {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_right_3_actuator:     {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_right_4_actuator:     {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+      arm_right_5_actuator:     {proportional: 7.0e-05,  integral: 0.0,      derivative: 2.0e-08}
+
+    velocity:
+      leg_left_1_actuator:      {proportional: 1.1,  integral: 11.0,  derivative: 8.0e-04}
+      leg_left_2_actuator:      {proportional: 1.1,  integral: 11.0,  derivative: 8.0e-04}
+      leg_left_3_actuator:      {proportional: 1.0,  integral: 11.0,  derivative: 8.0e-04}
+      leg_left_4_actuator:      {proportional: 1.0,  integral: 11.0,  derivative: 0.0012}
+      leg_left_5_actuator:      {proportional: 1.0,  integral: 10.5,  derivative: 0.0012}
+      leg_left_length_actuator: {proportional: 1.5,  integral: 12.0,  derivative: 3.0e-05}
+      leg_right_1_actuator:     {proportional: 1.1,  integral: 11.0,  derivative: 8.0e-04}
+      leg_right_2_actuator:     {proportional: 1.0,  integral: 10.5,  derivative: 8.0e-04}
+      leg_right_3_actuator:     {proportional: 1.1,  integral: 11.0,  derivative: 8.0e-04}
+      leg_right_4_actuator:     {proportional: 1.1,  integral: 11.0,  derivative: 0.0012}
+      leg_right_5_actuator:     {proportional: 1.0,  integral: 11.0,  derivative: 0.0012}
+      leg_right_length_actuator: {proportional: 1.5,  integral: 12.0,  derivative: 4.0e-05}
+      pelvis_1_actuator:        {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      pelvis_2_actuator:        {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_left_1_actuator:      {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_left_2_actuator:      {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_left_3_actuator:      {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_left_4_actuator:      {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_left_5_actuator:      {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_right_1_actuator:     {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_right_2_actuator:     {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_right_3_actuator:     {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_right_4_actuator:     {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+      arm_right_5_actuator:     {proportional: 0.3,  integral: 2.0,   derivative: 0.0}
+
+    current:
+      leg_left_1_actuator:      {proportional: 1.47,  integral: 12000.0, derivative: 0.0}
+      leg_left_2_actuator:      {proportional: 1.47,  integral: 12000.0, derivative: 0.0}
+      leg_left_3_actuator:      {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      leg_left_4_actuator:      {proportional: 1.51,  integral: 12000.0, derivative: 0.0}
+      leg_left_5_actuator:      {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      leg_left_length_actuator: {proportional: 0.75,  integral: 3500.0,  derivative: 0.0}
+      leg_right_1_actuator:     {proportional: 1.47,  integral: 12000.0, derivative: 0.0}
+      leg_right_2_actuator:     {proportional: 1.52,  integral: 12000.0, derivative: 0.0}
+      leg_right_3_actuator:     {proportional: 1.52,  integral: 12000.0, derivative: 0.0}
+      leg_right_4_actuator:     {proportional: 1.47,  integral: 12000.0, derivative: 0.0}
+      leg_right_5_actuator:     {proportional: 1.52,  integral: 12000.0, derivative: 0.0}
+      leg_right_length_actuator: {proportional: 0.75,  integral: 3500.0,  derivative: 0.0}
+      pelvis_1_actuator:        {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      pelvis_2_actuator:        {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_left_1_actuator:      {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_left_2_actuator:      {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_left_3_actuator:      {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_left_4_actuator:      {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_left_5_actuator:      {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_right_1_actuator:     {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_right_2_actuator:     {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_right_3_actuator:     {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_right_4_actuator:     {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
+      arm_right_5_actuator:     {proportional: 1.5,   integral: 12000.0, derivative: 0.0}
