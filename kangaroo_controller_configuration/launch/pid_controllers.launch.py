@@ -12,20 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from dataclasses import dataclass
 import os
 
 from ament_index_python.packages import get_package_share_directory
 
 from controller_manager.launch_utils import generate_load_controller_launch_description
 from launch import LaunchDescription
-from dataclasses import dataclass
 from launch.actions import GroupAction
-from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
+from launch_pal.arg_utils import LaunchArgumentsBase
 
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
     pass
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
