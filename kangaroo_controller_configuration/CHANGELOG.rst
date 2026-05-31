@@ -2,6 +2,17 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/pid_controllers' into 'humble-devel'
+  PID Controllers
+  See merge request robots/kangaroo_robot!117
+* Add missing actuator_pid_controllers dependency
+* Fix module
+* Fix flake8
+* Adding PID controllers
+* Contributors: Sai Kishor Kothakota, Óscar Martínez
+
 2.4.2 (2026-05-29)
 ------------------
 
