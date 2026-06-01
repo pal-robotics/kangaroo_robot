@@ -48,7 +48,9 @@ def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: boo
 
     return concatenated_string
 
-def configure_side_controllers(context, side='right', sensor_prefix='ft_sensor', is_ankle=False, *args, **kwargs):
+
+def configure_side_controllers(context, side='right', sensor_prefix='ft_sensor',
+                               is_ankle=False, *args, **kwargs):
 
     ft_sensor_arg_name = concatenate_strings(
         strings=[sensor_prefix, side],
@@ -122,17 +124,19 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     )
 
     # Add controller of right ankle ft-sensor
-    launch_description.add_action(OpaqueFunction(
-        function=configure_side_controllers, kwargs={'side': 'right',
-                                                     'sensor_prefix': 'ankle_ft',
-                                                     'is_ankle': True})
+    launch_description.add_action(
+        OpaqueFunction(
+            function=configure_side_controllers,
+            kwargs={'side': 'right', 'sensor_prefix': 'ankle_ft', 'is_ankle': True}
+        )
     )
 
     # Add controller of left ankle ft-sensor
-    launch_description.add_action(OpaqueFunction(
-        function=configure_side_controllers, kwargs={'side': 'left',
-                                                     'sensor_prefix': 'ankle_ft',
-                                                     'is_ankle': True})
+    launch_description.add_action(
+        OpaqueFunction(
+            function=configure_side_controllers,
+            kwargs={'side': 'left', 'sensor_prefix': 'ankle_ft', 'is_ankle': True}
+        )
     )
 
 
