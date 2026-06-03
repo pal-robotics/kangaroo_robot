@@ -2,6 +2,11 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add default_controllers module
+* Contributors: Noel Jimenez
+
 2.4.3 (2026-05-31)
 ------------------
 * Merge branch 'fix/pid_controllers' into 'humble-devel'
