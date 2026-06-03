@@ -62,13 +62,12 @@ def configure_side_controllers(context, side='right', sensor_prefix='ft_sensor',
 
     ft_pkg_name = 'pal_sea_arm_controller_configuration'
     ft_launch_file = 'ft_sensor_controller.launch.py'
-    is_ankle_val = 'True' if sensor_prefix == 'ankle_ft' else 'False'
     ft_sensor_controller = include_scoped_launch_py_description(
         pkg_name=ft_pkg_name,
         paths=['launch', ft_launch_file],
         launch_arguments={'side': side,
                           'ft_sensor': ft_sensor,
-                          'is_ankle': is_ankle_val},
+                          'location': 'ankle' if sensor_prefix == 'ankle_ft' else 'wrist'},
         condition=LaunchConfigurationNotEquals(
             ft_sensor_arg_name, 'no-ft-sensor')
     )
@@ -127,7 +126,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     launch_description.add_action(
         OpaqueFunction(
             function=configure_side_controllers,
-            kwargs={'side': 'right', 'sensor_prefix': 'ankle_ft', 'is_ankle': True}
+            kwargs={'side': 'right', 'sensor_prefix': 'ankle_ft', 'location': 'ankle'},
         )
     )
 
@@ -135,7 +134,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     launch_description.add_action(
         OpaqueFunction(
             function=configure_side_controllers,
-            kwargs={'side': 'left', 'sensor_prefix': 'ankle_ft', 'is_ankle': True}
+            kwargs={'side': 'left', 'sensor_prefix': 'ankle_ft', 'location': 'ankle'}
         )
     )
 
