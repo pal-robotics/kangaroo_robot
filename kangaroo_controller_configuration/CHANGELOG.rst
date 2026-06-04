@@ -2,6 +2,9 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.4.4 (2026-06-03)
 ------------------
 * Add default_controllers module

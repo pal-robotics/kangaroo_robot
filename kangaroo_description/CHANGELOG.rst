@@ -2,6 +2,11 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix pelvis 1 axis
+* Contributors: Aina
+
 2.4.4 (2026-06-03)
 ------------------
 

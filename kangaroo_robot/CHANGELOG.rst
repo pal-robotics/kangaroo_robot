@@ -2,6 +2,9 @@
 Changelog for package kangaroo_robot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.4.4 (2026-06-03)
 ------------------
 
