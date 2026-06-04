@@ -6,4 +6,5 @@ robot_state_publisher:
           ft_sensor_right:=@ft_sensor_right@
           ft_sensor_left:=@ft_sensor_left@
           has_head:=@has_head@
-          has_pelvis:=@has_pelvis@"
+          has_pelvis:=@has_pelvis@
+          feet_type:=@feet_type@"
