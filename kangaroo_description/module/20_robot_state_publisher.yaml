@@ -1,6 +1,8 @@
 robot_state_publisher:
   launch: "kangaroo_description robot_state_publisher.launch.py
           arm_type:=@arm_type@
+          ankle_ft_right:=@ankle_ft_right@
+          ankle_ft_left:=@ankle_ft_left@
           end_effector_right:=@end_effector_right@
           end_effector_left:=@end_effector_left@
           ft_sensor_right:=@ft_sensor_right@
