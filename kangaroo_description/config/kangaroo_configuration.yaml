@@ -1,4 +1,14 @@
 # Configuration file for the Kangaroo robot
+ankle_ft_left:
+  description: "Force-torque sensor on the left ankle"
+  choices: ["no-ft-sensor", "ati"]
+  default_value: "no-ft-sensor"
+
+ankle_ft_right:
+  description: "Force-torque sensor on the right ankle"
+  choices: ["no-ft-sensor", "ati"]
+  default_value: "no-ft-sensor"
+
 end_effector_right:
   description: "choose the desired end effector right with its corresponding arm."
   choices: ["no-end-effector", "fake-forearm", "gripper", "RH8D"]

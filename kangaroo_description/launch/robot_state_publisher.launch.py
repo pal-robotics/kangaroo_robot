@@ -77,6 +77,9 @@ class LaunchArguments(LaunchArgumentsBase):
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
+    ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
+    ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
+
 
 def generate_launch_description():
 
@@ -118,6 +121,8 @@ def declare_actions(
             'end_effector_left': LaunchConfiguration('end_effector_left'),
             'ft_sensor_right': LaunchConfiguration('ft_sensor_right'),
             'ft_sensor_left': LaunchConfiguration('ft_sensor_left'),
+            'ankle_ft_right': LaunchConfiguration('ankle_ft_right'),
+            'ankle_ft_left': LaunchConfiguration('ankle_ft_left'),
             'feet_type': LaunchConfiguration('feet_type'),
             'fixation_type': LaunchConfiguration('fixation_type')
         }
@@ -185,6 +190,8 @@ def create_robot_description_param(context, *args, **kwargs):
         'end_effector_left': read_launch_argument('end_effector_left', context),
         'ft_sensor_right': read_launch_argument('ft_sensor_right', context),
         'ft_sensor_left': read_launch_argument('ft_sensor_left', context),
+        'ankle_ft_right': read_launch_argument('ankle_ft_right', context),
+        'ankle_ft_left': read_launch_argument('ankle_ft_left', context),
         'has_head': read_launch_argument('has_head', context),
         'has_pelvis': read_launch_argument('has_pelvis', context),
     }

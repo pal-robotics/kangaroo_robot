@@ -33,6 +33,8 @@ class LaunchArguments(LaunchArgumentsBase):
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
+    ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
+    ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
 
 
 def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: bool = False):
@@ -47,10 +49,11 @@ def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: boo
     return concatenated_string
 
 
-def configure_side_controllers(context, side='right', *args, **kwargs):
+def configure_side_controllers(context, side='right', sensor_prefix='ft_sensor',
+                               is_ankle=False, *args, **kwargs):
 
     ft_sensor_arg_name = concatenate_strings(
-        strings=['ft_sensor', side],
+        strings=[sensor_prefix, side],
         delimiter='_',
         skip_empty=True)
 
@@ -59,12 +62,12 @@ def configure_side_controllers(context, side='right', *args, **kwargs):
 
     ft_pkg_name = 'pal_sea_arm_controller_configuration'
     ft_launch_file = 'ft_sensor_controller.launch.py'
-
     ft_sensor_controller = include_scoped_launch_py_description(
         pkg_name=ft_pkg_name,
         paths=['launch', ft_launch_file],
         launch_arguments={'side': side,
-                          'ft_sensor': ft_sensor},
+                          'ft_sensor': ft_sensor,
+                          'location': 'ankle' if sensor_prefix == 'ankle_ft' else 'wrist'},
         condition=LaunchConfigurationNotEquals(
             ft_sensor_arg_name, 'no-ft-sensor')
     )
@@ -101,7 +104,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     # Add controller of right ft-sensor
     launch_description.add_action(OpaqueFunction(
-        function=configure_side_controllers, args=['right'],
+        function=configure_side_controllers, kwargs={'side': 'right',
+                                                     'sensor_prefix': 'ft_sensor'},
         condition=IfCondition(
             PythonExpression(["'", LaunchConfiguration('arm_type'),
                               "' not in ['no-arm', '4dof']"])
@@ -110,11 +114,28 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     # Add controller of left ft-sensor
     launch_description.add_action(OpaqueFunction(
-        function=configure_side_controllers, args=['left'],
+        function=configure_side_controllers, kwargs={'side': 'left',
+                                                     'sensor_prefix': 'ft_sensor'},
         condition=IfCondition(
             PythonExpression(["'", LaunchConfiguration('arm_type'),
                               "' not in ['no-arm', '4dof']"])
                             ))
+    )
+
+    # Add controller of right ankle ft-sensor
+    launch_description.add_action(
+        OpaqueFunction(
+            function=configure_side_controllers,
+            kwargs={'side': 'right', 'sensor_prefix': 'ankle_ft', 'location': 'ankle'},
+        )
+    )
+
+    # Add controller of left ankle ft-sensor
+    launch_description.add_action(
+        OpaqueFunction(
+            function=configure_side_controllers,
+            kwargs={'side': 'left', 'sensor_prefix': 'ankle_ft', 'location': 'ankle'}
+        )
     )
 
 
