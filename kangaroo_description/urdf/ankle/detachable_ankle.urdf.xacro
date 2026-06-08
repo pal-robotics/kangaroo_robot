@@ -41,7 +41,7 @@
       <origin xyz="0 0 0" rpy="0 ${-20.0 * deg_to_rad} 3.1416" />
       <parent link="${parent}" />
       <child link="leg_${side}_${pitch_joint}_link" />
-      <axis xyz="0 1 0" /> 
+      <axis xyz="0 -1 0" /> 
       <limit lower="${pitch_joint_min_pos}" upper="${pitch_joint_max_pos}" effort="140" velocity="3.87" />
     </joint>
 
@@ -103,7 +103,7 @@
         </geometry>
       </collision>
     </link>
-    <joint name="leg_${side}_ankle_attach" type="continuous">
+    <joint name="leg_${side}_ankle_attach_joint" type="continuous">
       <origin xyz="0.013168 0 0.036178" rpy="0 0.34907 0" />
       <parent link="leg_${side}_${roll_joint}_link" />
       <child link="leg_${side}_ankle_attach" />
