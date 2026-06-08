@@ -30,7 +30,7 @@ class KangarooArgs:
         f'{__pkg_dir}/config/{__robot_name}_configuration.yaml'
     )
 
-    legs_type: DLA = __arg_creator.get_argument('legs_type')
+    feet_type: DLA = __arg_creator.get_argument('feet_type')
     has_pelvis: DLA = __arg_creator.get_argument('has_pelvis')
     has_head: DLA = __arg_creator.get_argument('has_head')
     arm_type: DLA = __arg_creator.get_argument('arm_type')

@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from kangaroo_description.kangaroo_launch_utils import GetParametersFromBlackboard
 from launch import LaunchDescription
 from launch.actions import OpaqueFunction
-from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
+from launch_pal.arg_utils import LaunchArgumentsBase
 from launch_pal.include_utils import include_scoped_launch_py_description
 
 
@@ -31,8 +31,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     # Add controller of right arm, end-effector and ft-sensor
     get_params_from_blackboard = GetParametersFromBlackboard(
         blackboard_node_name='parameter_blackboard',
-        parameter_names=['legs_type', 'has_pelvis', 'arm_type', 'end_effector_right',
-                         'end_effector_left']
+        parameter_names=['has_pelvis', 'arm_type', 'end_effector_right', 'end_effector_left']
         )
     launch_description.add_action(get_params_from_blackboard)
 
@@ -53,18 +52,17 @@ def start_controllers(context, *args, **kwargs):
     # End-effector controllers
 
     # Leg controllers
-    if read_launch_argument('legs_type', context) != 'no-legs':
-        leg_left_controller = include_scoped_launch_py_description(
-            pkg_name='kangaroo_controller_configuration',
-            paths=['launch', 'leg_controller.launch.py'],
-            launch_arguments={'side': 'left', 'control_type': 'effort'})
-        ld.append(leg_left_controller)
+    leg_left_controller = include_scoped_launch_py_description(
+        pkg_name='kangaroo_controller_configuration',
+        paths=['launch', 'leg_controller.launch.py'],
+        launch_arguments={'side': 'left', 'control_type': 'effort'})
+    ld.append(leg_left_controller)
 
-        leg_right_controller = include_scoped_launch_py_description(
-            pkg_name='kangaroo_controller_configuration',
-            paths=['launch', 'leg_controller.launch.py'],
-            launch_arguments={'side': 'right', 'control_type': 'effort'})
-        ld.append(leg_right_controller)
+    leg_right_controller = include_scoped_launch_py_description(
+        pkg_name='kangaroo_controller_configuration',
+        paths=['launch', 'leg_controller.launch.py'],
+        launch_arguments={'side': 'right', 'control_type': 'effort'})
+    ld.append(leg_right_controller)
 
     return ld
 
