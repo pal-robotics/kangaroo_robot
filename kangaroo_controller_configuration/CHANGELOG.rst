@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.5.0 (2026-06-09)
+------------------
 * Merge branch 'feat/add_ankle_ft' into 'humble-devel'
   Add ankle ft
   See merge request robots/kangaroo_robot!110
