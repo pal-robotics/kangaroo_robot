@@ -1,3 +1,0 @@
-pid_controllers:
-  launch: "kangaroo_controller_configuration pid_controllers.launch.py"
-  finishes: True
