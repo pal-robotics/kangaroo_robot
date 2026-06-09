@@ -9,27 +9,6 @@
 
   <xacro:macro name="kangaroo_leg_length_actuator_transmission" params="side">
 
-    <joint name="leg_${side}_length_joint">
-      <command_interface name="position"/>
-      <command_interface name="velocity"/>
-      <command_interface name="effort"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
-
-    <joint name="leg_${side}_knee_joint">
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
-
-    <joint name="leg_${side}_femur_joint">
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
-
     <transmission name="leg_${side}_length_transmission">
       <plugin>kangaroo_transmissions/LegCustomTransmission</plugin>
       <actuator name="leg_${side}_length_actuator" role="actuator_main"/>
@@ -62,23 +41,6 @@
   </xacro:macro>
 
   <xacro:macro name="hip_transmission_roll_pitch" params="side roll_joint pitch_joint">
-    <joint name="leg_${side}_${roll_joint}_joint">
-      <command_interface name="position"/>
-      <command_interface name="velocity"/>
-      <command_interface name="effort"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
-
-    <joint name="leg_${side}_${pitch_joint}_joint">
-      <command_interface name="position"/>
-      <command_interface name="velocity"/>
-      <command_interface name="effort"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
 
     <transmission name="leg_${side}_hip_transmission">
       <plugin>kangaroo_transmissions/HipXYCustomTransmission</plugin>
@@ -97,16 +59,6 @@
   </xacro:macro>
 
   <xacro:macro name="hip_transmission_yaw" params="side offset initial_position:=0.0">
-    <joint name="leg_${side}_1_joint">
-      <command_interface name="position"/>
-      <command_interface name="velocity"/>
-      <command_interface name="effort"/>
-      <state_interface name="position">
-          <param name="initial_value">${initial_position}</param>
-      </state_interface>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
 
     <transmission name="leg_${side}_yaw_transmission">
       <plugin>kangaroo_transmissions/HipZCustomTransmission</plugin>
