@@ -2,6 +2,9 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.5.0 (2026-06-09)
 ------------------
 * Merge branch 'fix/mujoco_sim' into 'humble-devel'
