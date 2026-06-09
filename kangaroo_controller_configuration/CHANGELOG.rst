@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.5.1 (2026-06-09)
+------------------
 * Merge branch 'rename/pid_controller/module' into 'humble-devel'
   Rename pid_controllers module to actuators_pid_controller module
   See merge request robots/kangaroo_robot!125
