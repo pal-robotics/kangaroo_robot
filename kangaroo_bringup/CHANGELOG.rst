@@ -2,6 +2,19 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/add_feet_type' into 'humble-devel'
+  Add feet type
+  See merge request robots/kangaroo_robot!108
+* Use same string for pelvis than leg
+* No feet_type need it in play_motion2
+* Fix argument
+* Comment feet_type until using it
+* Fix flake8 tests
+* Remove legs_type
+* Contributors: Aina, Aina Irisarri
+
 2.4.5 (2026-06-04)
 ------------------
 

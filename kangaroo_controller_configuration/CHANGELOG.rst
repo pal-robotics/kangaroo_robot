@@ -2,6 +2,22 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/add_ankle_ft' into 'humble-devel'
+  Add ankle ft
+  See merge request robots/kangaroo_robot!110
+* Change is_ankle to location to better scalability
+* Fix flake8
+* Add ft ankle broadcasters
+* Merge branch 'feat/add_feet_type' into 'humble-devel'
+  Add feet type
+  See merge request robots/kangaroo_robot!108
+* Remove feet_type argument on the controllers
+* Fix flake8 tests
+* Remove legs_type
+* Contributors: Aina, Aina Irisarri
+
 2.4.5 (2026-06-04)
 ------------------
 

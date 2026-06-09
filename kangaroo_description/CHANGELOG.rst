@@ -2,6 +2,36 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/mujoco_sim' into 'humble-devel'
+  Fix mujoco tags
+  See merge request robots/kangaroo_robot!111
+* Remove the duplicate interfaces information defined in the transmissions
+* Add missing kangaroo leg state and command interface
+* Extend condition to also hceck for end_effector_left
+* Add end effectors sides on mujoco tags
+* Merge branch 'feat/add_ankle_ft' into 'humble-devel'
+  Add ankle ft
+  See merge request robots/kangaroo_robot!110
+* Add ankle ft to launch and module
+* Fix arguments ros2_control urdf
+* Add ros2 ft sensor for ankle
+* Add ankle ft side arguments
+* Merge branch 'fix/rm_arm_meshes' into 'humble-devel'
+  Remove arm meshes
+  See merge request robots/kangaroo_robot!109
+* Remove arm meshes
+* Merge branch 'feat/add_feet_type' into 'humble-devel'
+  Add feet type
+  See merge request robots/kangaroo_robot!108
+* Fix detachable feet joints
+* Add argument on the module
+* Remove legs_type
+* Add both types of feet
+* Remove leg_type and add fett_type
+* Contributors: Aina, Aina Irisarri, Noel Jimenez, Sai Kishor Kothakota
+
 2.4.5 (2026-06-04)
 ------------------
 * Fix pelvis 1 axis
