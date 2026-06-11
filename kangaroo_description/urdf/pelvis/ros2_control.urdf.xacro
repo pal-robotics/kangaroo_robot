@@ -30,7 +30,7 @@
     <xacro:if value="${sim_type == 'no-simulation'}" >
       <xacro:kangaroo_pelvis_differential_transmission name="pelvis" number1="1" number2="2"
         act_reduction1="1.0" act_reduction2="1.0" 
-        jnt_reduction1="1.0" jnt_reduction2="1.395348837" />
+        jnt_reduction1="-1.0" jnt_reduction2="1.395348837" />
     </xacro:if>
 
   </xacro:macro>

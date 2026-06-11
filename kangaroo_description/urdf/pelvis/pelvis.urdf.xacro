@@ -72,7 +72,7 @@
       <origin xyz="0 0 0.052" rpy="0 1.5708 0" />
       <parent link="${name}_base_link" />
       <child link="${name}_1_link" />
-      <axis xyz="0 0 1" />
+      <axis xyz="0 0 -1" />
       <limit
         lower="-0.3490658504"
         upper="0.3490658504"
