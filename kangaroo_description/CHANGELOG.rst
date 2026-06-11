@@ -2,6 +2,14 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/pelvis_axis' into 'humble-devel'
+  Fix the pelvis axis to maintain consistency with ROS 1
+  See merge request robots/kangaroo_robot!126
+* Fix the pelvis axis to maintain consistency with ROS 1
+* Contributors: Noel Jimenez, Sai Kishor Kothakota
+
 2.5.1 (2026-06-09)
 ------------------
 
