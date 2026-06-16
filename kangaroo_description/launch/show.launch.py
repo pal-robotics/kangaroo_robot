@@ -74,7 +74,7 @@ class LaunchArguments(LaunchArgumentsBase):
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
-    # IMU type ["orientus", "microstrain"]
+    # IMU type ["orientus", "microstrain", "no-imu"]
     torso_imu_model: DeclareLaunchArgument = KangarooArgs.torso_imu_model
     base_imu_model: DeclareLaunchArgument = KangarooArgs.base_imu_model
 

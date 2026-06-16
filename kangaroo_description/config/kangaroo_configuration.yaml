@@ -71,7 +71,7 @@ use_mimic:
 
 torso_imu_model:
   description: "Type of IMU for the torso"
-  choices: ["orientus", "microstrain"]
+  choices: ["orientus", "microstrain", "no-imu"]
   default_value: "orientus"
 
 base_imu_model:

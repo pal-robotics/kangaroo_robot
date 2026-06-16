@@ -82,9 +82,9 @@
   <!-- mesh, capsule -->
   <xacro:arg name="collision_type" default="mesh" />
 
-  <!-- orientus, microstrain -->
+  <!-- orientus, microstrain, no-imu -->
   <xacro:arg name="torso_imu_model" default="orientus" />
-  <xacro:arg name="base_imu_model" default="orientus" />
+  <xacro:arg name="base_imu_model" default="no-imu" />
 
   <!-- GLOBAL PROPERTIES -->
   

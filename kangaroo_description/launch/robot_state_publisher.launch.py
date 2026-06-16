@@ -80,7 +80,7 @@ class LaunchArguments(LaunchArgumentsBase):
     ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
     ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
 
-    # ["orientus", "microstrain"]
+    # ["orientus", "microstrain", "no-imu"]
     torso_imu_model: DeclareLaunchArgument = KangarooArgs.torso_imu_model
     base_imu_model: DeclareLaunchArgument = KangarooArgs.base_imu_model
 
