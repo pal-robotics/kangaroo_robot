@@ -25,7 +25,7 @@
   <xacro:macro name="base_link" params="has_pelvis:=false">
 
     <!-- IMU -->
-    <xacro:kangaroo_imu name="imu" parent="torso_link" >
+    <xacro:kangaroo_imu name="torso_imu" parent="torso_link" >
       <origin xyz="0.071 -0.0014 0.02" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${-90.0*deg_to_rad}"/>
     </xacro:kangaroo_imu>
 
@@ -95,6 +95,13 @@
         <parent link="base_link" />
         <child link="back_handle" />
       </joint>
+
+      <!-- BASE IMU -->
+      <xacro:if value="${base_imu_model != 'no-imu'}">
+        <xacro:kangaroo_imu name="base_imu_sensor" parent="base_link" >
+          <origin xyz="0.05051 0 0.02055" rpy="${180.0*deg_to_rad} ${0.0*deg_to_rad} ${-90.0*deg_to_rad}"/>
+        </xacro:kangaroo_imu>
+      </xacro:if>
 
       <!-- PELVIS -->
 

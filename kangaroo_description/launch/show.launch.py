@@ -74,6 +74,9 @@ class LaunchArguments(LaunchArgumentsBase):
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
 
+    # IMU type ["orientus", "microstrain"]
+    torso_imu_model: DeclareLaunchArgument = KangarooArgs.torso_imu_model
+    base_imu_model: DeclareLaunchArgument = KangarooArgs.base_imu_model
 
 def generate_launch_description():
 
@@ -110,6 +113,8 @@ def declare_actions(
             'ft_sensor_left': launch_args.ft_sensor_left,
             'ankle_ft_right': launch_args.ankle_ft_right,
             'ankle_ft_left': launch_args.ankle_ft_left,
+            'torso_imu_model': launch_args.torso_imu_model,
+            'base_imu_model': launch_args.base_imu_model
         },
     )
 

@@ -18,7 +18,7 @@
         </geometry>
       </visual>
     </link>
-    <joint name="imu_joint" type="fixed">
+    <joint name="${name}_imu_joint" type="fixed">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
       <child link="${name}_link"/>

@@ -82,6 +82,10 @@
   <!-- mesh, capsule -->
   <xacro:arg name="collision_type" default="mesh" />
 
+  <!-- orientus, microstrain -->
+  <xacro:arg name="torso_imu_model" default="orientus" />
+  <xacro:arg name="base_imu_model" default="orientus" />
+
   <!-- GLOBAL PROPERTIES -->
   
   <xacro:property name="use_sim_time" value="$(arg use_sim_time)" />
@@ -117,7 +121,8 @@
   <xacro:property name="has_ankle_ft_sensor_right" value="${ankle_ft_right not in ['no-ft-sensor']}"/>
   <xacro:property name="end_effector_right_link" value="${'wrist_right_ft_tool_link' if has_ft_sensor_right else 'arm_right_tool_link'}" />
   <xacro:property name="end_effector_left_link" value="${'wrist_left_ft_tool_link' if has_ft_sensor_left else 'arm_left_tool_link'}" />
-
+  <xacro:property name="torso_imu_model" value="$(arg torso_imu_model)" />
+  <xacro:property name="base_imu_model" value="$(arg base_imu_model)" />
 
 
   <!-- Camera properties -->
@@ -508,7 +513,7 @@
   <!-- ROS 2 Control -->
   <xacro:unless value="${sim_type == 'mujoco'}">
     <xacro:include filename="$(find kangaroo_description)/ros2_control/ros2_control.urdf.xacro" />
-    <xacro:kangaroo_ros2_control arm_type="${arm_type}" has_ankle_ft_sensor_right="${has_ankle_ft_sensor_right}" has_ankle_ft_sensor_left="${has_ankle_ft_sensor_left}" />
+    <xacro:kangaroo_ros2_control arm_type="${arm_type}" has_ankle_ft_sensor_right="${has_ankle_ft_sensor_right}" has_ankle_ft_sensor_left="${has_ankle_ft_sensor_left}" torso_imu_model="${torso_imu_model}" base_imu_model="${base_imu_model}" />
   </xacro:unless>
 
 </robot>
