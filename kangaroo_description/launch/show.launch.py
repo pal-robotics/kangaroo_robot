@@ -78,6 +78,7 @@ class LaunchArguments(LaunchArgumentsBase):
     torso_imu_model: DeclareLaunchArgument = KangarooArgs.torso_imu_model
     base_imu_model: DeclareLaunchArgument = KangarooArgs.base_imu_model
 
+
 def generate_launch_description():
 
     # Create the launch description and populate

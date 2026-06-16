@@ -31,6 +31,7 @@ from launch_pal.include_utils import include_scoped_launch_py_description
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
+    base_imu_model: DeclareLaunchArgument = KangarooArgs.base_imu_model
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
     ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
@@ -90,17 +91,32 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     launch_description.add_action(joint_state_broadcaster)
 
-    # IMU sensor broadcaster
-    imu_sensor_broadcaster = GroupAction(
+    # IMU torso sensor broadcaster
+    imu_torso_sensor_broadcaster = GroupAction(
         [generate_load_controller_launch_description(
-            controller_name='imu_sensor_broadcaster',
+            controller_name='imu_torso_sensor_broadcaster',
             controller_params_file=os.path.join(
                 pkg_share_folder,
                 'config', 'sensors_broadcaster.yaml'))
          ],
         forwarding=False)
 
-    launch_description.add_action(imu_sensor_broadcaster)
+    launch_description.add_action(imu_torso_sensor_broadcaster)
+
+    # IMU base sensor broadcaster
+    imu_base_sensor_broadcaster = GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name='imu_base_sensor_broadcaster',
+            controller_params_file=os.path.join(
+                pkg_share_folder,
+                'config', 'sensors_broadcaster.yaml'))
+         ],
+        forwarding=False,
+        condition=IfCondition(PythonExpression(["'", LaunchConfiguration('base_imu_model'),
+                                                "' != 'no-imu'"]))
+    )
+
+    launch_description.add_action(imu_base_sensor_broadcaster)
 
     # Add controller of right ft-sensor
     launch_description.add_action(OpaqueFunction(
