@@ -41,6 +41,8 @@ class KangarooArgs:
     fixation_type: DLA = __arg_creator.get_argument('fixation_type')
     ft_sensor_right: DLA = __arg_creator.get_argument('ft_sensor_right')
     ft_sensor_left: DLA = __arg_creator.get_argument('ft_sensor_left')
+    torso_imu_model: DLA = __arg_creator.get_argument('torso_imu_model')
+    base_imu_model: DLA = __arg_creator.get_argument('base_imu_model')
     collision_type: DLA = __arg_creator.get_argument('collision_type')
     use_mimic: DLA = __arg_creator.get_argument('use_mimic')
     sim_type: DLA = __arg_creator.get_argument('sim_type')
