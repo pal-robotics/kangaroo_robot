@@ -38,6 +38,10 @@ class LaunchArguments(LaunchArgumentsBase):
 
     # Kangaroo specific
 
+    # Ankle FT sensor type ["no-ft-sensor", "ati"]
+    ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
+    ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
+
     # ["mujoco-ros2-control", "mujoco", "no-simulation"]
     sim_type: DeclareLaunchArgument = KangarooArgs.sim_type
 
@@ -104,6 +108,8 @@ def declare_actions(
             'fixation_type': launch_args.fixation_type,
             'ft_sensor_right': launch_args.ft_sensor_right,
             'ft_sensor_left': launch_args.ft_sensor_left,
+            'ankle_ft_right': launch_args.ankle_ft_right,
+            'ankle_ft_left': launch_args.ankle_ft_left,
         },
     )
 
