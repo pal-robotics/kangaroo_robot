@@ -26,6 +26,7 @@ from launch.conditions import IfCondition, LaunchConfigurationNotEquals
 from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.include_utils import include_scoped_launch_py_description
+from launch_pal.param_utils import parse_parametric_yaml
 
 
 @dataclass(frozen=True)
@@ -48,6 +49,21 @@ def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: boo
         concatenated_string = delimiter.join(strings)
 
     return concatenated_string
+
+
+def configure_imu_broadcaster(context, sensor_name, frame_id, *args, **kwargs):
+
+    pkg_share_folder = get_package_share_directory('kangaroo_controller_configuration')
+    parsed_yaml = parse_parametric_yaml(
+        source_files=[os.path.join(pkg_share_folder, 'config', 'sensors_broadcaster.yaml')],
+        param_rewrites={'IMU_SENSOR_NAME': sensor_name, 'IMU_FRAME_ID': frame_id}
+    )
+
+    return [GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name=f'{sensor_name}_broadcaster',
+            controller_params_file=parsed_yaml)],
+        forwarding=False)]
 
 
 def configure_side_controllers(context, side='right', sensor_prefix='ft_sensor',
@@ -92,31 +108,15 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     launch_description.add_action(joint_state_broadcaster)
 
     # IMU torso sensor broadcaster
-    imu_torso_sensor_broadcaster = GroupAction(
-        [generate_load_controller_launch_description(
-            controller_name='imu_torso_sensor_broadcaster',
-            controller_params_file=os.path.join(
-                pkg_share_folder,
-                'config', 'sensors_broadcaster.yaml'))
-         ],
-        forwarding=False)
-
-    launch_description.add_action(imu_torso_sensor_broadcaster)
+    launch_description.add_action(OpaqueFunction(
+        function=configure_imu_broadcaster,
+        kwargs={'sensor_name': 'torso_imu_sensor', 'frame_id': 'torso_imu_link'}))
 
     # IMU base sensor broadcaster
-    imu_base_sensor_broadcaster = GroupAction(
-        [generate_load_controller_launch_description(
-            controller_name='imu_base_sensor_broadcaster',
-            controller_params_file=os.path.join(
-                pkg_share_folder,
-                'config', 'sensors_broadcaster.yaml'))
-         ],
-        forwarding=False,
-        condition=IfCondition(PythonExpression(["'", LaunchConfiguration('base_imu_model'),
-                                                "' != 'no-imu'"]))
-    )
-
-    launch_description.add_action(imu_base_sensor_broadcaster)
+    launch_description.add_action(OpaqueFunction(
+        function=configure_imu_broadcaster,
+        kwargs={'sensor_name': 'base_imu_sensor', 'frame_id': 'base_imu_sensor_link'},
+        condition=LaunchConfigurationNotEquals('base_imu_model', 'no-imu')))
 
     # Add controller of right ft-sensor
     launch_description.add_action(OpaqueFunction(
