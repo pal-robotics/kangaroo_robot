@@ -6,6 +6,7 @@ ament_auto_find_build_dependencies()
 
 if(pal_module_cmake_FOUND)
   pal_register_modules(
+    module/joystick_teleop.yaml
     module/play_motion2.yaml
   )
 elseif(DEFINED ENV{PAL_DISTRO})
