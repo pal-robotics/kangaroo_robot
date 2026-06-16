@@ -1,3 +1,16 @@
 /**:
   ros__parameters:
-    motions: {}
+    motions:
+      pelvis_homing:
+        joints:
+        - pelvis_1_joint
+        - pelvis_2_joint
+        times_from_start:
+        - 2.0
+        positions:
+        - 0.0
+        - 0.0
+        meta:
+          name: pelvis_homing
+          usage: ''
+          description: Move the pelvis to home configuration

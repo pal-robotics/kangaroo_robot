@@ -1,3 +1,102 @@
 /**:
   ros__parameters:
-    motions: {}
+    motions:
+      legs_homing:
+        joints:
+        - leg_left_1_joint
+        - leg_left_2_joint
+        - leg_left_3_joint
+        - leg_left_4_joint
+        - leg_left_5_joint
+        - leg_left_length_joint
+        - leg_right_1_joint
+        - leg_right_2_joint
+        - leg_right_3_joint
+        - leg_right_4_joint
+        - leg_right_5_joint
+        - leg_right_length_joint
+        times_from_start:
+        - 3.0
+        positions:
+        - -0.012
+        - 0.054
+        - 0.04
+        - -0.053
+        - 0.0
+        - 0.6
+        - 0.012
+        - 0.054
+        - -0.04
+        - -0.053
+        - 0.0
+        - 0.6
+        meta:
+          name: legs_homing
+          usage: ''
+          description: Move the legs to home configuration
+      legs_sumo_pose:
+        joints:
+        - leg_left_1_joint
+        - leg_left_2_joint
+        - leg_left_3_joint
+        - leg_left_5_joint
+        - leg_left_4_joint
+        - leg_left_length_joint
+        - leg_right_1_joint
+        - leg_right_3_joint
+        - leg_right_2_joint
+        - leg_right_4_joint
+        - leg_right_5_joint
+        - leg_right_length_joint
+        times_from_start:
+        - 3.0
+        positions:
+        - 0.49597
+        - -0.18697
+        - -0.051218
+        - -0.0066392
+        - 0.13778
+        - 0.2565
+        - -0.59451
+        - 0.04802
+        - -0.26023
+        - 0.17464
+        - 0.02503
+        - 0.2549
+        meta:
+          name: legs_sumo_pose
+          usage: ''
+          description: Move the legs to the sumo posture
+      legs_run_pose:
+        joints:
+        - leg_left_1_joint
+        - leg_left_2_joint
+        - leg_left_3_joint
+        - leg_left_5_joint
+        - leg_left_4_joint
+        - leg_left_length_joint
+        - leg_right_1_joint
+        - leg_right_3_joint
+        - leg_right_2_joint
+        - leg_right_4_joint
+        - leg_right_5_joint
+        - leg_right_length_joint
+        times_from_start:
+        - 3.0
+        positions:
+        - -0.17868
+        - 0.57984
+        - -0.078389
+        - 0.019816
+        - 0.49726
+        - 0.70929
+        - -0.17438
+        - 0.070536
+        - -0.73269
+        - 0.21572
+        - 0.070781
+        - 0.67342
+        meta:
+          name: legs_run_pose
+          usage: ''
+          description: Move the legs to running pose with the front step lifting
