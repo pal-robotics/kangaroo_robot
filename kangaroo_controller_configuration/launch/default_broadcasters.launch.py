@@ -37,6 +37,7 @@ class LaunchArguments(LaunchArgumentsBase):
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
     ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
     ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
+    torso_imu_model: DeclareLaunchArgument = KangarooArgs.torso_imu_model
 
 
 def concatenate_strings(strings: List[str], delimiter: str = '', skip_empty: bool = False):
@@ -110,7 +111,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     # IMU torso sensor broadcaster
     launch_description.add_action(OpaqueFunction(
         function=configure_imu_broadcaster,
-        kwargs={'sensor_name': 'torso_imu_sensor', 'frame_id': 'torso_imu_link'}))
+        kwargs={'sensor_name': 'torso_imu_sensor', 'frame_id': 'torso_imu_link'},
+        condition=LaunchConfigurationNotEquals('torso_imu_model', 'no-imu')))
 
     # IMU base sensor broadcaster
     launch_description.add_action(OpaqueFunction(
