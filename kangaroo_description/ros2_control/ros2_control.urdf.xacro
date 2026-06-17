@@ -102,10 +102,10 @@
       <xacro:unless value="${sim_type == 'no-simulation'}">
         <!-- IMU sensor -->
         <xacro:if value="${torso_imu_model != 'no-imu'}">
-          <xacro:imu_ros2_control name="torso_imu_sensor"/>
+          <xacro:imu_ros2_control name="torso"/>
         </xacro:if>
       <xacro:if value="${base_imu_model != 'no-imu'}">
-        <xacro:imu_ros2_control name="base_imu_sensor"/>
+        <xacro:imu_ros2_control name="base"/>
       </xacro:if>
     </xacro:unless>
 
