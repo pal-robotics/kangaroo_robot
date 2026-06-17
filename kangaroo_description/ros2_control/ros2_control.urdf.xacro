@@ -145,7 +145,7 @@
         <ros2_control name="ros2_control_microstrain" type="sensor" rw_rate="250" is_async="true">
           <hardware>
             <plugin>pal_microstrain_sensor/MicrostrainSensor</plugin>
-            <param name="io_device">/dev/ttyACM0</param>
+            <param name="io_device">/dev/ttyACM0</param> <!--to be renamed-->
             <param name="sensor_name">torso_imu_sensor</param>
             <param name="orientation_to_enu_frame">3.14159, 0.0, 1.570796</param>
             <!-- The following parameter is used to enable the ENU transformation for velocity and acceleration -->
@@ -159,7 +159,7 @@
         <ros2_control name="ros2_control_microstrain_base" type="sensor" rw_rate="250" is_async="true">
           <hardware>
             <plugin>pal_microstrain_sensor/MicrostrainSensor</plugin>
-            <param name="io_device">/dev/ttyACM0</param> <!--to be defined-->
+            <param name="io_device">/dev/ttyACM1</param> <!--to be defined-->
             <param name="sensor_name">base_imu_sensor</param>
             <param name="orientation_to_enu_frame">3.14159, 0.0, 1.570796</param>
             <!-- The following parameter is used to enable the ENU transformation for velocity and acceleration -->
