@@ -25,6 +25,32 @@
   <!-- calibration offsets -->
   <xacro:include filename="$(find kangaroo_description)/urdf/calibration_constants.urdf.xacro" />
 
+
+  <!-- IMU MACRO DEFINITION-->
+  <xacro:macro name="imu_ros2_control" params="name">
+    <sensor name="${name}_imu_sensor">
+      <param name="mujoco_type">imu</param>
+      <!-- There is no requirement for the mujoco_sensor_name to match the ros2_control sensor name -->
+      <param name="mujoco_sensor_name">${name}_imu_sensor</param>
+      <!-- Default value of orientation_mjcf_suffix is '_quat' -->
+      <param name="orientation_mjcf_suffix">_quat</param>
+      <!-- Default value of angular_velocity_mjcf_suffix is '_gyro' -->
+      <param name="angular_velocity_mjcf_suffix">_gyro</param>
+      <!-- Default value of linear_acceleration_mjcf_suffix is '_accel' -->
+      <param name="linear_acceleration_mjcf_suffix">_accel</param>
+      <state_interface name="orientation.x"/>
+      <state_interface name="orientation.y"/>
+      <state_interface name="orientation.z"/>
+      <state_interface name="orientation.w"/>
+      <state_interface name="angular_velocity.x"/>
+      <state_interface name="angular_velocity.y"/>
+      <state_interface name="angular_velocity.z"/>
+      <state_interface name="linear_acceleration.x"/>
+      <state_interface name="linear_acceleration.y"/>
+      <state_interface name="linear_acceleration.z"/>
+    </sensor>
+  </xacro:macro>
+
   <!-- MACRO DEFINITION-->
   <xacro:macro name="kangaroo_ros2_control" params="arm_type has_ankle_ft_sensor_right has_ankle_ft_sensor_left torso_imu_model base_imu_model">
 
@@ -76,50 +102,10 @@
       <xacro:unless value="${sim_type == 'no-simulation'}">
         <!-- IMU sensor -->
         <xacro:if value="${torso_imu_model != 'no-imu'}">
-          <sensor name="torso_imu_sensor">
-            <param name="mujoco_type">imu</param>
-            <!-- There is no requirement for the mujoco_sensor_name to match the ros2_control sensor name -->
-            <param name="mujoco_sensor_name">torso_imu_sensor</param>
-            <!-- Default value of orientation_mjcf_suffix is '_quat' -->
-            <param name="orientation_mjcf_suffix">_quat</param>
-            <!-- Default value of angular_velocity_mjcf_suffix is '_gyro' -->
-            <param name="angular_velocity_mjcf_suffix">_gyro</param>
-            <!-- Default value of linear_acceleration_mjcf_suffix is '_accel' -->
-            <param name="linear_acceleration_mjcf_suffix">_accel</param>
-            <state_interface name="orientation.x"/>
-            <state_interface name="orientation.y"/>
-            <state_interface name="orientation.z"/>
-            <state_interface name="orientation.w"/>
-            <state_interface name="angular_velocity.x"/>
-            <state_interface name="angular_velocity.y"/>
-            <state_interface name="angular_velocity.z"/>
-            <state_interface name="linear_acceleration.x"/>
-            <state_interface name="linear_acceleration.y"/>
-            <state_interface name="linear_acceleration.z"/>
-          </sensor>
+          <xacro:imu_ros2_control name="torso_imu_sensor"/>
         </xacro:if>
       <xacro:if value="${base_imu_model != 'no-imu'}">
-        <sensor name="base_imu_sensor">
-          <param name="mujoco_type">imu</param>
-          <!-- There is no requirement for the mujoco_sensor_name to match the ros2_control sensor name -->
-          <param name="mujoco_sensor_name">base_imu_sensor</param>
-          <!-- Default value of orientation_mjcf_suffix is '_quat' -->
-          <param name="orientation_mjcf_suffix">_quat</param>
-          <!-- Default value of angular_velocity_mjcf_suffix is '_gyro' -->
-          <param name="angular_velocity_mjcf_suffix">_gyro</param>
-          <!-- Default value of linear_acceleration_mjcf_suffix is '_accel' -->
-          <param name="linear_acceleration_mjcf_suffix">_accel</param>
-          <state_interface name="orientation.x"/>
-          <state_interface name="orientation.y"/>
-          <state_interface name="orientation.z"/>
-          <state_interface name="orientation.w"/>
-          <state_interface name="angular_velocity.x"/>
-          <state_interface name="angular_velocity.y"/>
-          <state_interface name="angular_velocity.z"/>
-          <state_interface name="linear_acceleration.x"/>
-          <state_interface name="linear_acceleration.y"/>
-          <state_interface name="linear_acceleration.z"/>
-        </sensor>
+        <xacro:imu_ros2_control name="base_imu_sensor"/>
       </xacro:if>
     </xacro:unless>
 
