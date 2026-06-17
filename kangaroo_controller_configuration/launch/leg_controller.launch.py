@@ -52,6 +52,12 @@ class LaunchArguments(LaunchArgumentsBase):
         description='Argument to choose whether to deactivate and unload the '
                     'controllers when killing the launch process')
 
+    interface_level: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='interface_level',
+        default_value='joint',
+        choices=['joint', 'actuator'],
+        description='level of control for the leg')
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
@@ -67,6 +73,7 @@ def setup_controller_configuration(context: LaunchContext):
     control_type = read_launch_argument('control_type', context)
     activate = read_launch_argument('activate', context)
     unload_on_kill = read_launch_argument('unload_on_kill', context)
+    interface_level = read_launch_argument('interface_level', context)
 
     if unload_on_kill == 'True' and activate == 'False':
         logging.getLogger(__name__).warning(
@@ -84,8 +91,8 @@ def setup_controller_configuration(context: LaunchContext):
     if side:
         leg_prefix = f'leg_{side}'
 
-    controller_name = f'{leg_prefix}_{control_type}_controller'
-    remappings = {'LEG_SIDE_PREFIX': leg_prefix}
+    controller_name = f'{leg_prefix}_{control_type}_{interface_level}_controller'
+    remappings = {'LEG_SIDE_PREFIX': leg_prefix, 'INTERFACE_LEVEL': interface_level}
 
     param_file = os.path.join(
         get_package_share_directory('kangaroo_controller_configuration'),
