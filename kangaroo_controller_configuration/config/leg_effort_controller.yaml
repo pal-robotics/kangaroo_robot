@@ -1,11 +1,11 @@
-${LEG_SIDE_PREFIX}_effort_controller:
+${LEG_SIDE_PREFIX}_effort_${INTERFACE_LEVEL}_controller:
   ros__parameters:
     type: effort_controllers/JointGroupEffortController
     joints:
-      - ${LEG_SIDE_PREFIX}_1_joint
-      - ${LEG_SIDE_PREFIX}_2_joint
-      - ${LEG_SIDE_PREFIX}_3_joint
-      - ${LEG_SIDE_PREFIX}_length_joint
-      - ${LEG_SIDE_PREFIX}_4_joint
-      - ${LEG_SIDE_PREFIX}_5_joint
+      - ${LEG_SIDE_PREFIX}_1_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_2_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_3_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_length_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_4_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_5_${INTERFACE_LEVEL}
     

@@ -39,6 +39,12 @@ class LaunchArguments(LaunchArgumentsBase):
         choices=['effort', 'position'],
         description='type of control for the leg')
 
+    interface_level: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='interface_level',
+        default_value='joint',
+        choices=['joint', 'actuator'],
+        description='level of control for the leg')
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
@@ -58,13 +64,14 @@ def setup_controller_configuration(context: LaunchContext):
 
     side = read_launch_argument('side', context)
     control_type = read_launch_argument('control_type', context)
+    interface_level = read_launch_argument('interface_level', context)
 
     leg_prefix = 'leg'
     if side:
         leg_prefix = f'leg_{side}'
 
-    controller_name = f'{leg_prefix}_{control_type}_controller'
-    remappings = {'LEG_SIDE_PREFIX': leg_prefix}
+    controller_name = f'{leg_prefix}_{control_type}_{interface_level}_controller'
+    remappings = {'LEG_SIDE_PREFIX': leg_prefix, 'INTERFACE_LEVEL': interface_level}
 
     param_file = os.path.join(
         get_package_share_directory('kangaroo_controller_configuration'),
