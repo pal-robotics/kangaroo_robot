@@ -128,7 +128,7 @@
         <!-- After field experiments the max. serial baudrate supported by the kernel is 921600 bps, according to the reference below,
              the max. effective data rate then is (261*10*1500)/921600 = 4.248046875 ms = 0.004248046875 s = 235.40 Hz
              see: https://github.com/LORD-MicroStrain/mip_sdk/blob/e5a847d846f45c9c0b08d5efbe8ad4ed1d4d57cf/src/c/mip/mip_parser.c#L602 -->
-        <ros2_control name="ros2_control_microstrain" type="sensor" rw_rate="250" is_async="true">
+        <ros2_control name="ros2_control_microstrain" type="sensor" rw_rate="1000" is_async="true">
           <hardware>
             <plugin>pal_microstrain_sensor/MicrostrainSensor</plugin>
             <param name="io_device">/dev/torso_imu_sensor</param>
