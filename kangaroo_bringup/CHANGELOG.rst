@@ -2,6 +2,13 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add motions for lower body
+* Add joystick_teleop module
+* Add joy teleop configuration
+* Contributors: Noel Jimenez, Sai Kishor Kothakota
+
 2.5.2 (2026-06-12)
 ------------------
 

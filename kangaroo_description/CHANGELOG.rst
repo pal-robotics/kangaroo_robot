@@ -2,6 +2,28 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix low data reporting of microstrain base IMU
+* Change data_rate to 1000
+* Change data_rate_hz to 1000
+* Change imu's baudrate
+* Fix sensor name
+* Rename device port
+* Create imu macro
+* Change io device to be define
+* Change data rate to effective one
+* Add no imu option for torso imu
+* Add tag for base imu in mujoco
+* Add broadcaster for the base imu if exists
+* Add imus on the urdf
+* Add 2 imu models
+* Revert "Merge branch 'fix/show_home_position' into 'humble-devel'"
+  This reverts merge request !121
+* Enable absolute position interface on kangaroo
+* Fix show launcher
+* Contributors: Aina, Aina Irisarri, Carles Lopez, Carles Lopez Parera, antoniomartinez
+
 2.5.2 (2026-06-12)
 ------------------
 * Merge branch 'fix/pelvis_axis' into 'humble-devel'

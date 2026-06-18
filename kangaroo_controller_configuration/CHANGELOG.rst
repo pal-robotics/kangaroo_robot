@@ -2,6 +2,15 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add condition no-imu for torso imu
+* Add arguments on sensor yaml to add 2 different imus
+* Add base_imu on the broadcaster module
+* Add broadcaster for the base imu if exists
+* Add leg JTC effort base controller
+* Contributors: Aina, Sai Kishor Kothakota
+
 2.5.2 (2026-06-12)
 ------------------
 
