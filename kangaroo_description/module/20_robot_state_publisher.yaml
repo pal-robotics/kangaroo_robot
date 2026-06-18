@@ -9,4 +9,6 @@ robot_state_publisher:
           ft_sensor_left:=@ft_sensor_left@
           has_head:=@has_head@
           has_pelvis:=@has_pelvis@
-          feet_type:=@feet_type@"
+          feet_type:=@feet_type@
+          torso_imu_model:=@torso_imu_model@
+          base_imu_model:=@base_imu_model@"

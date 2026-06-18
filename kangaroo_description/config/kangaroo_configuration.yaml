@@ -68,3 +68,13 @@ use_mimic:
   description: "Whether to include the mimic joints in the model"
   choices: ["True", "False"]
   default_value: "False"
+
+torso_imu_model:
+  description: "Type of IMU for the torso"
+  choices: ["orientus", "microstrain", "no-imu"]
+  default_value: "orientus"
+
+base_imu_model:
+  description: "Type of IMU for the base"
+  choices: ["microstrain", "no-imu"]
+  default_value: "no-imu"

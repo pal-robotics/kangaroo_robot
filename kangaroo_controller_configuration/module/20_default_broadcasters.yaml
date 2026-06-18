@@ -4,5 +4,7 @@ default_broadcasters:
             ft_sensor_right:=@ft_sensor_right@
             ft_sensor_left:=@ft_sensor_left@
             ankle_ft_right:=@ankle_ft_right@
-            ankle_ft_left:=@ankle_ft_left@"
+            ankle_ft_left:=@ankle_ft_left@
+            base_imu_model:=@base_imu_model@
+            torso_imu_model:=@torso_imu_model@"
   finishes: True

@@ -80,6 +80,10 @@ class LaunchArguments(LaunchArgumentsBase):
     ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
     ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
 
+    # ["orientus", "microstrain", "no-imu"]
+    torso_imu_model: DeclareLaunchArgument = KangarooArgs.torso_imu_model
+    base_imu_model: DeclareLaunchArgument = KangarooArgs.base_imu_model
+
 
 def generate_launch_description():
 
@@ -124,7 +128,9 @@ def declare_actions(
             'ankle_ft_right': LaunchConfiguration('ankle_ft_right'),
             'ankle_ft_left': LaunchConfiguration('ankle_ft_left'),
             'feet_type': LaunchConfiguration('feet_type'),
-            'fixation_type': LaunchConfiguration('fixation_type')
+            'fixation_type': LaunchConfiguration('fixation_type'),
+            'torso_imu_model': LaunchConfiguration('torso_imu_model'),
+            'base_imu_model': LaunchConfiguration('base_imu_model')
         }
     )
 
@@ -194,6 +200,8 @@ def create_robot_description_param(context, *args, **kwargs):
         'ankle_ft_left': read_launch_argument('ankle_ft_left', context),
         'has_head': read_launch_argument('has_head', context),
         'has_pelvis': read_launch_argument('has_pelvis', context),
+        'torso_imu_model': read_launch_argument('torso_imu_model', context),
+        'base_imu_model': read_launch_argument('base_imu_model', context)
     }
     robot_description = load_xacro(xacro_file_path, xacro_input_args)
 
