@@ -125,9 +125,6 @@
         </ros2_control>
       </xacro:if>
       <xacro:if value="${torso_imu_model == 'microstrain'}">
-        <!-- After field experiments the max. serial baudrate supported by the kernel is 921600 bps, according to the reference below,
-             the max. effective data rate then is (261*10*1500)/921600 = 4.248046875 ms = 0.004248046875 s = 235.40 Hz
-             see: https://github.com/LORD-MicroStrain/mip_sdk/blob/e5a847d846f45c9c0b08d5efbe8ad4ed1d4d57cf/src/c/mip/mip_parser.c#L602 -->
         <ros2_control name="ros2_control_microstrain" type="sensor" rw_rate="1000" is_async="true">
           <hardware>
             <plugin>pal_microstrain_sensor/MicrostrainSensor</plugin>
@@ -142,7 +139,7 @@
         </ros2_control>
       </xacro:if>
       <xacro:if value="${base_imu_model == 'microstrain'}">
-        <ros2_control name="ros2_control_microstrain_base" type="sensor" rw_rate="250" is_async="true">
+        <ros2_control name="ros2_control_microstrain_base" type="sensor" rw_rate="1000" is_async="true">
           <hardware>
             <plugin>pal_microstrain_sensor/MicrostrainSensor</plugin>
             <param name="io_device">/dev/base_imu_sensor</param>
@@ -150,8 +147,8 @@
             <param name="orientation_to_enu_frame">3.14159, 0.0, 1.570796</param>
             <!-- The following parameter is used to enable the ENU transformation for velocity and acceleration -->
             <param name="enable_orientation_to_enu_frame">false</param>
-            <param name="baudrate">115200</param>
-            <param name="data_rate_hz">100</param>
+            <param name="baudrate">921600</param>
+            <param name="data_rate_hz">1000</param>
           </hardware>
         </ros2_control>
       </xacro:if>
