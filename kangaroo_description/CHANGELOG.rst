@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.6.0 (2026-06-18)
+------------------
 * Fix low data reporting of microstrain base IMU
 * Change data_rate to 1000
 * Change data_rate_hz to 1000

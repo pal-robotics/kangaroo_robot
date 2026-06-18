@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.6.0 (2026-06-18)
+------------------
 * Add condition no-imu for torso imu
 * Add arguments on sensor yaml to add 2 different imus
 * Add base_imu on the broadcaster module
