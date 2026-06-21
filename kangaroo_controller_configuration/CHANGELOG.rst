@@ -2,6 +2,9 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.6.0 (2026-06-18)
 ------------------
 * Add condition no-imu for torso imu

@@ -2,6 +2,14 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'condition/absolute_position' into 'humble-devel'
+  Don't add absolute position state interface for simulation
+  See merge request robots/kangaroo_robot!137
+* Don't add absolute position state interface for simulation
+* Contributors: Sai Kishor Kothakota
+
 2.6.0 (2026-06-18)
 ------------------
 * Fix low data reporting of microstrain base IMU

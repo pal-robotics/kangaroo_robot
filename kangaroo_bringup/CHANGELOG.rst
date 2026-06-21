@@ -2,6 +2,9 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.6.0 (2026-06-18)
 ------------------
 * Add motions for lower body
