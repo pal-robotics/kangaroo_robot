@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.6.1 (2026-06-21)
+------------------
 * Merge branch 'condition/absolute_position' into 'humble-devel'
   Don't add absolute position state interface for simulation
   See merge request robots/kangaroo_robot!137
