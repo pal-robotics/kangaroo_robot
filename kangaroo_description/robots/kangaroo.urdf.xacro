@@ -428,9 +428,9 @@
         <!-- special pal_mujoco tag. This is the least invasive solution I found to add a site to a body  -->
         <!-- this tag won't work in a regular mjcf xml file -->
         <sensor>
-          <framequat name="imu_sensor_quat" objtype="site" objname="imu_link" />
-          <gyro name="imu_sensor_gyro" site="imu_link" />
-          <accelerometer name="imu_sensor_accel" site="imu_link" />
+          <framequat name="torso_imu_sensor_quat" objtype="site" objname="torso_imu_link" />
+          <gyro name="torso_imu_sensor_gyro" site="torso_imu_link" />
+          <accelerometer name="torso_imu_sensor_accel" site="torso_imu_link" />
         </sensor>
       </raw_inputs>
 
@@ -482,7 +482,9 @@
         <decompose_mesh mesh_name="leg_6_link" threshold="0.05"/> 
         <decompose_mesh mesh_name="leg_femur_link" threshold="0.05"/> 
         <decompose_mesh mesh_name="leg_tibia_link" threshold="0.05"/>  -->
-        <decompose_mesh mesh_name="leg_7_link" threshold="0.02"/> 
+        <xacro:if value ="${feet_type == 'fixed'}">
+          <decompose_mesh mesh_name="leg_7_link" threshold="0.02"/>
+        </xacro:if>
         
         <!-- The camera with the specified values will be added at the specified site name. -->
         <!-- The position and quaterinion will be filled in by the converter -->
