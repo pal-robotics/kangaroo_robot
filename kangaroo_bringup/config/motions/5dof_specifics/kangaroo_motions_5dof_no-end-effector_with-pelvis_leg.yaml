@@ -1,7 +1,7 @@
 /**:
   ros__parameters:
     motions:
-      full_homing:
+      homing:
         joints:
         - arm_left_1_joint
         - arm_left_2_joint
@@ -55,7 +55,7 @@
         - -0.053
         - 0.0
         meta:
-          name: full_body_homing
+          name: homing
           usage: ''
           description: Move to home configuration of full body
       crouch:
