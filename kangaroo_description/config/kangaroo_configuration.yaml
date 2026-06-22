@@ -11,13 +11,13 @@ ankle_ft_right:
 
 end_effector_right:
   description: "choose the desired end effector right with its corresponding arm."
-  choices: ["no-end-effector", "fake-forearm", "gripper", "RH8D"]
-  default_value: "fake-forearm"
+  choices: ["no-end-effector", "gripper", "RH8D"]
+  default_value: "no-end-effector"
 
 end_effector_left:
   description: "choose the desired end effector left with its corresponding arm."
-  choices: ["no-end-effector", "fake-forearm", "gripper", "RH8D"]
-  default_value: "fake-forearm"
+  choices: ["no-end-effector", "gripper", "RH8D"]
+  default_value: "no-end-effector"
 
 fixation_type:
   description: "Fixation type"
