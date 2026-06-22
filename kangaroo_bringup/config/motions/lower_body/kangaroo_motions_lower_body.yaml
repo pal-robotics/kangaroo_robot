@@ -1,0 +1,40 @@
+/**:
+  ros__parameters:
+    motions:
+      homing:
+        joints:
+        - leg_left_1_joint
+        - leg_left_2_joint
+        - leg_left_3_joint
+        - leg_left_4_joint
+        - leg_left_5_joint
+        - leg_left_length_joint
+        - leg_right_1_joint
+        - leg_right_2_joint
+        - leg_right_3_joint
+        - leg_right_4_joint
+        - leg_right_5_joint
+        - leg_right_length_joint
+        - pelvis_1_joint
+        - pelvis_2_joint
+        times_from_start:
+        - 3.0
+        positions:
+        - -0.012
+        - 0.054
+        - 0.04
+        - -0.053
+        - 0.0
+        - 0.6
+        - 0.012
+        - 0.054
+        - -0.04
+        - -0.053
+        - 0.0
+        - 0.6
+        - 0.0
+        - 0.0
+        meta:
+          name: homing
+          usage: ''
+          description: Move the lower_body to home configuration
