@@ -65,6 +65,12 @@ class LaunchArguments(LaunchArgumentsBase):
     # FT sensor type ["no-ft-sensor", "ati"]
     ft_sensor_right: DeclareLaunchArgument = KangarooArgs.ft_sensor_right
     ft_sensor_left: DeclareLaunchArgument = KangarooArgs.ft_sensor_left
+    ankle_ft_right: DeclareLaunchArgument = KangarooArgs.ankle_ft_right
+    ankle_ft_left: DeclareLaunchArgument = KangarooArgs.ankle_ft_left
+
+    # IMUs
+    torso_imu_model: DeclareLaunchArgument = KangarooArgs.torso_imu_model
+    base_imu_model: DeclareLaunchArgument = KangarooArgs.base_imu_model
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -103,12 +109,16 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             'has_head': launch_args.has_head,
             'has_pelvis': launch_args.has_pelvis,
             'arm_type': launch_args.arm_type,
+            'ankle_ft_right': launch_args.ankle_ft_right,
+            'ankle_ft_left': launch_args.ankle_ft_left,
             'feet_type': launch_args.feet_type,
             'end_effector_right': launch_args.end_effector_right,
             'end_effector_left': launch_args.end_effector_left,
             'fixation_type': launch_args.fixation_type,
             'ft_sensor_right': launch_args.ft_sensor_right,
             'ft_sensor_left': launch_args.ft_sensor_left,
+            'torso_imu_model': launch_args.torso_imu_model,
+            'base_imu_model': launch_args.base_imu_model
             })
 
     launch_description.add_action(robot_state_publisher)
@@ -117,7 +127,18 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     broadcaster_controllers = include_scoped_launch_py_description(
         pkg_name='kangaroo_controller_configuration',
         paths=['launch', 'default_broadcasters.launch.py'],
-        )
+        launch_arguments={
+            'use_sim_time': launch_args.use_sim_time,
+            'arm_type': launch_args.arm_type,
+            'ankle_ft_right': launch_args.ankle_ft_right,
+            'ankle_ft_left': launch_args.ankle_ft_left,
+            'end_effector_right': launch_args.end_effector_right,
+            'end_effector_left': launch_args.end_effector_left,
+            'ft_sensor_right': launch_args.ft_sensor_right,
+            'ft_sensor_left': launch_args.ft_sensor_left,
+            'torso_imu_model': launch_args.torso_imu_model,
+            'base_imu_model': launch_args.base_imu_model
+        })
 
     launch_description.add_action(broadcaster_controllers)
 
