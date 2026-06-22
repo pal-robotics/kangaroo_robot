@@ -69,8 +69,11 @@ class GetParametersFromBlackboard(Action):
         """Execute this action in the launch system."""
         actions_to_return = []
 
-        # Initialize a temporary node to make the service call
-        rclpy.init()
+        # Only initialise rclpy if it is not already running (e.g. when invoked from
+        # launch_testing, which initialises rclpy before the test suite runs).
+        rclpy_initialized_here = not rclpy.ok()
+        if rclpy_initialized_here:
+            rclpy.init()
         try:
             temp_node = rclpy.create_node('temporary_param_fetcher')
             client = temp_node.create_client(
@@ -122,7 +125,8 @@ class GetParametersFromBlackboard(Action):
 
         finally:
             temp_node.destroy_node()
-            rclpy.shutdown()
+            if rclpy_initialized_here:
+                rclpy.shutdown()
 
         return actions_to_return
 
@@ -175,7 +179,11 @@ class SetParametersToBlackboard(Action):
 
     def execute(self, context: LaunchContext):
         """Execute this action in the launch system."""
-        rclpy.init()
+        # Only initialise rclpy if it is not already running (e.g. when invoked from
+        # launch_testing, which initialises rclpy before the test suite runs).
+        rclpy_initialized_here = not rclpy.ok()
+        if rclpy_initialized_here:
+            rclpy.init()
         try:
             temp_node = rclpy.create_node('temporary_param_setter')
             client = temp_node.create_client(
@@ -219,7 +227,8 @@ class SetParametersToBlackboard(Action):
 
         finally:
             temp_node.destroy_node()
-            rclpy.shutdown()
+            if rclpy_initialized_here:
+                rclpy.shutdown()
 
         # This action has a side effect and doesn't add other actions to the launch
         return None
