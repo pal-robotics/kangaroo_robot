@@ -108,6 +108,9 @@ def create_play_motion_filename(context):
                          'kangaroo_motions_pelvis_only.yaml']
                     ))
 
+        motions_files.append(PathJoinSubstitution([
+            pkg_share_dir, 'config', 'motions', 'lower_body', 'kangaroo_motions_lower_body.yaml']))
+
     if arm_type != 'no-arm':
         arm_hw_suffix = '_' + f'{arm_type}_' + f'{end_effector_type}'
         motions_files.append(PathJoinSubstitution(
