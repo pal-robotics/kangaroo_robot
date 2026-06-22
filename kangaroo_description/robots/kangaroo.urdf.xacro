@@ -428,9 +428,16 @@
         <!-- special pal_mujoco tag. This is the least invasive solution I found to add a site to a body  -->
         <!-- this tag won't work in a regular mjcf xml file -->
         <sensor>
-          <framequat name="torso_imu_sensor_quat" objtype="site" objname="torso_imu_link" />
-          <gyro name="torso_imu_sensor_gyro" site="torso_imu_link" />
-          <accelerometer name="torso_imu_sensor_accel" site="torso_imu_link" />
+          <xacro:if value="${torso_imu_model != 'no-imu'}">
+            <framequat name="torso_imu_sensor_quat" objtype="site" objname="torso_imu_link" />
+            <gyro name="torso_imu_sensor_gyro" site="torso_imu_link" />
+            <accelerometer name="torso_imu_sensor_accel" site="torso_imu_link" />
+          </xacro:if>
+          <xacro:if value="${base_imu_model != 'no-imu'}">
+            <framequat name="base_imu_sensor_quat" objtype="site" objname="base_imu_sensor_link" />
+            <gyro name="base_imu_sensor_gyro" site="base_imu_sensor_link" />
+            <accelerometer name="base_imu_sensor_accel" site="base_imu_sensor_link" />
+          </xacro:if>
         </sensor>
       </raw_inputs>
 
