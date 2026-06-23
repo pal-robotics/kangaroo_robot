@@ -4,14 +4,14 @@
 <xacro:property name="foot_length"   value="0.21" />
 <xacro:property name="foot_width"   value="0.09" />
 
-    <xacro:macro name="kangaroo_detachable_foot_frames" params="side parent offset_x:=0.0 offset_y:=0.0">
+    <xacro:macro name="kangaroo_detachable_foot_frames" params="side parent">
         <link name="${side}_foot">
             <inertial>
-                <origin xyz="0.000132090232624911 -3.05273190426678E-05 0.00417401893266306" rpy="0 0 0" />
-                <mass value="0.126216116323818" />
-                <inertia ixx="5.05342139344645E-05" ixy="-1.21919910576268E-06" ixz="3.77129027963418E-08"
-                        iyy="3.0799641719044E-05" iyz="1.55920192749335E-08"
-                        izz="7.74873112907028E-05" />
+                <origin xyz="-0.000166 0.000023 -0.004617" rpy="0 0 0" />
+                <mass value="0.170698" />
+                <inertia ixx="0.00007" ixy="-0.000001" ixz="0.0"
+                        iyy="0.000065" iyz="0.0"
+                        izz="0.000125" />
             </inertial>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0" />
@@ -28,7 +28,7 @@
             </collision>
         </link>
         <joint name="${side}_foot_joint" type="fixed">
-            <origin xyz="${offset_x} ${offset_y} 0" rpy="0 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <parent link="${parent}" />
             <child link="${side}_foot" />
             <axis xyz="0 0 0" />
@@ -36,10 +36,10 @@
         <link name="${side}_foot_ft">
             <inertial>
                 <origin xyz="-0.000443003666554599 0.000522074497974099 -0.0153068327087122" rpy="0 0 0" />
-                <mass value="0.00199617753343338" />
-                <inertia ixx="5.9973064680877E-07" ixy="2.01121334144999E-08" ixz="-8.68902393943816E-09"
-                        iyy="5.90181580371415E-07" iyz="1.10619053149078E-08"
-                        izz="8.97962347086075E-07" />
+                <mass value="0.345" />
+                <inertia ixx="0.000104" ixy="0.000003" ixz="-0.000002"
+                        iyy="0.000102" iyz="0.000002"
+                        izz="0.000155" />
             </inertial>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0" />
@@ -56,18 +56,18 @@
             </collision>
         </link>
         <joint name="${side}_foot_ft" type="fixed">
-            <origin xyz="0 0 0.014" rpy="0 3.1416 0" />
+            <origin xyz="0 0 -0.014" rpy="0 0 3.1416" />
             <parent link="${side}_foot" />
             <child link="${side}_foot_ft" />
             <axis xyz="0 0 0" />
         </joint>
         <link name="${side}_foot_sole">
             <inertial>
-                <origin xyz="0.000379366462454072 5.80159494661185E-05 -0.00336003668438848" rpy="0 0 0" />
-                <mass value="0.34359589794105" />
-                <inertia ixx="0.000243921537522367" ixy="-3.79473815942421E-07" ixz="1.12448005808514E-07"
-                        iyy="0.0015816516325665" iyz="5.17989402289206E-08"
-                        izz="0.00182204612839865" />
+                <origin xyz="-0.004657 -0.000039 0.022641" rpy="0 0 0" />
+                <mass value="1.081199" />
+                <inertia ixx="0.001267" ixy="0.0" ixz="0.000111"
+                        iyy="0.005705" iyz="0.0"
+                        izz="0.00652" />
             </inertial>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0" />
@@ -84,7 +84,7 @@
             </collision>
         </link>
         <joint name="${side}_foot_sole" type="fixed">
-            <origin xyz="0 0 -0.038472" rpy="0 3.1416 0" />
+            <origin xyz="0 0 -0.053972" rpy="0 0 -3.1416" />
             <parent link="${side}_foot_ft" />
             <child link="${side}_foot_sole" />
             <axis xyz="0 0 0" />
