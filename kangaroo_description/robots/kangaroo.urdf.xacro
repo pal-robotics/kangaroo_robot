@@ -489,9 +489,9 @@
         <decompose_mesh mesh_name="leg_6_link" threshold="0.05"/> 
         <decompose_mesh mesh_name="leg_femur_link" threshold="0.05"/> 
         <decompose_mesh mesh_name="leg_tibia_link" threshold="0.05"/>  -->
-        <xacro:if value ="${feet_type == 'fixed'}">
+        <!-- <xacro:if value ="${feet_type == 'fixed'}">
           <decompose_mesh mesh_name="leg_7_link" threshold="0.02"/>
-        </xacro:if>
+        </xacro:if> -->
         
         <!-- The camera with the specified values will be added at the specified site name. -->
         <!-- The position and quaterinion will be filled in by the converter -->
