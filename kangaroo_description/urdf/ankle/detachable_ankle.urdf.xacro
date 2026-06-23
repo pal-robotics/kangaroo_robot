@@ -72,7 +72,7 @@
       </xacro:link_collision>
     </link>
     <joint name="leg_${side}_${roll_joint}_joint" type="revolute">
-      <origin xyz="0 0 0" rpy="0 0.34907 0" />
+      <origin xyz="0 0 0" rpy="0 ${20.0 * deg_to_rad} 0" />
       <parent link="leg_${side}_${pitch_joint}_link" />
       <child link="leg_${side}_${roll_joint}_link" />
       <axis xyz="-1 0 0" />
@@ -102,7 +102,7 @@
       </collision>
     </link>
     <joint name="leg_${side}_ankle_attach_joint" type="fixed">
-      <origin xyz="0.013168 0 -0.036178" rpy="0 -0.34907 0" />
+      <origin xyz="0.013168 0 -0.036178" rpy="0 -${20 * deg_to_rad} 0" />
       <parent link="leg_${side}_${roll_joint}_link" />
       <child link="leg_${side}_ankle_attach" />
       <axis xyz="1 0 0" />
