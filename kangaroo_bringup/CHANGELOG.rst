@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.7.0 (2026-06-23)
+------------------
 * Merge branch 'fix/imu_simulation' into 'humble-devel'
   Fix imu simulation
   See merge request robots/kangaroo_robot!143

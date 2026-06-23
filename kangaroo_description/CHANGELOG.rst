@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.7.0 (2026-06-23)
+------------------
 * Merge branch 'fix/detachable_covers' into 'humble-devel'
   Replace feet and ankle stl with covers and axis fixed
   See merge request robots/kangaroo_robot!145
