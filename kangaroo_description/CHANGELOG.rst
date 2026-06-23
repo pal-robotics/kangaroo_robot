@@ -2,6 +2,32 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/detachable_covers' into 'humble-devel'
+  Replace feet and ankle stl with covers and axis fixed
+  See merge request robots/kangaroo_robot!145
+* Replace values to use deg_to_rad macro
+* Change feet angle
+* Replace stl with covers and axis fixed
+* Merge branch 'filter/mujoco/collision_exclude' into 'humble-devel'
+  Filter out the collision exclude when used with --fuse
+  See merge request robots/kangaroo_robot!142
+* Add pairs for fixation type fixed
+* Set ankle attach joint to fixed
+* Donot decompose leg 7 link as we use pregenerated mjcfs
+* Filter out the collision exclude when used with --fuse
+* Merge branch 'fix/imu_simulation' into 'humble-devel'
+  Fix imu simulation
+  See merge request robots/kangaroo_robot!143
+* Add imu tags for mujoco
+* Merge branch 'fix/mj_tags' into 'humble-devel'
+  Fix renamed IMU mujoco tags
+  See merge request robots/kangaroo_robot!141
+* Fix renamed IMU mujoco tags
+* Do not initialize rclpy, if already initialized by other entities
+* Contributors: Aina, Aina Irisarri, Noel Jimenez, Sai Kishor Kothakota
+
 2.6.1 (2026-06-21)
 ------------------
 * Merge branch 'condition/absolute_position' into 'humble-devel'

@@ -2,6 +2,19 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/imu_simulation' into 'humble-devel'
+  Fix imu simulation
+  See merge request robots/kangaroo_robot!143
+* Add imu broadcaster arguments for simulation
+* Merge branch 'feat/motion/homing' into 'humble-devel'
+  Standardize homing motions
+  See merge request robots/kangaroo_robot!140
+* Rename full_homing motions to homing
+* Add homing motion for lower body
+* Contributors: Aina, Aina Irisarri, Noel Jimenez, Sai Kishor Kothakota
+
 2.6.1 (2026-06-21)
 ------------------
 
