@@ -103,7 +103,7 @@
         </geometry>
       </collision>
     </link>
-    <joint name="leg_${side}_ankle_attach_joint" type="continuous">
+    <joint name="leg_${side}_ankle_attach_joint" type="fixed">
       <origin xyz="0.013168 0 0.036178" rpy="0 0.34907 0" />
       <parent link="leg_${side}_${roll_joint}_link" />
       <child link="leg_${side}_ankle_attach" />
