@@ -1,3 +1,4 @@
 default_controllers:
-  launch: "kangaroo_controller_configuration default_controllers.launch.py"
-  finishes: True
+  launch: "kangaroo_controller_configuration default_controllers.launch.py
+            unload_on_kill:=True
+            activate:=True"

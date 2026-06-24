@@ -20,8 +20,7 @@ from ament_index_python.packages import get_package_share_directory
 from controller_manager.launch_utils import generate_load_controller_launch_description
 from kangaroo_description.kangaroo_launch_utils import GetParametersFromBlackboard
 from launch import LaunchDescription
-from launch.actions import GroupAction
-from launch.actions import OpaqueFunction
+from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.include_utils import include_scoped_launch_py_description
@@ -29,7 +28,20 @@ from launch_pal.include_utils import include_scoped_launch_py_description
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
-    pass
+
+    activate: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='activate',
+        default_value='True',
+        choices=['True', 'False'],
+        description='Argument to choose whether to activate the controllers or '
+                    'leave them configured and in inactive state')
+
+    unload_on_kill: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='unload_on_kill',
+        default_value='False',
+        choices=['True', 'False'],
+        description='Argument to choose whether to deactivate and unload the '
+                    'controllers when killing the launch process')
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -48,9 +60,24 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
 
 def start_controllers(context, *args, **kwargs):
+    unload_on_kill = LaunchConfiguration('unload_on_kill').perform(context)
+    activate = LaunchConfiguration('activate').perform(context)
     pkg_share_folder = get_package_share_directory('kangaroo_controller_configuration')
 
     ld = []
+    extra_spawner_args = []
+
+    if unload_on_kill == 'True' and activate == 'False':
+        raise RuntimeError(
+            'Invalid argument combination: `unload_on_kill` cannot be True '
+            'when `activate` is False. Controllers must be activated '
+            'for unload-on-kill to have any effect.'
+        )
+
+    if activate == 'False':
+        extra_spawner_args = ['--inactive']
+    elif unload_on_kill == 'True':
+        extra_spawner_args = ['--unload-on-kill']
 
     # Pelvis controller
     if read_launch_argument('has_pelvis', context) == 'True':
@@ -59,7 +86,8 @@ def start_controllers(context, *args, **kwargs):
                 controller_name='pelvis_controller',
                 controller_params_file=os.path.join(
                     pkg_share_folder,
-                    'config', 'pelvis_controller.yaml')
+                    'config', 'pelvis_controller.yaml'),
+                extra_spawner_args=extra_spawner_args
                 )],
             forwarding=False
         )
@@ -71,13 +99,23 @@ def start_controllers(context, *args, **kwargs):
         arm_left_controller = include_scoped_launch_py_description(
             pkg_name='kangaroo_controller_configuration',
             paths=['launch', 'arm_controller.launch.py'],
-            launch_arguments={'side': 'left', 'arm_type': LaunchConfiguration('arm_type')})
+            launch_arguments={
+                'side': 'left',
+                'arm_type': LaunchConfiguration('arm_type'),
+                'activate': activate,
+                'unload_on_kill': unload_on_kill,
+            })
         ld.append(arm_left_controller)
 
         arm_right_controller = include_scoped_launch_py_description(
             pkg_name='kangaroo_controller_configuration',
             paths=['launch', 'arm_controller.launch.py'],
-            launch_arguments={'side': 'right', 'arm_type': LaunchConfiguration('arm_type')})
+            launch_arguments={
+                'side': 'right',
+                'arm_type': LaunchConfiguration('arm_type'),
+                'activate': activate,
+                'unload_on_kill': unload_on_kill,
+            })
         ld.append(arm_right_controller)
 
     # End-effector controllers
@@ -99,13 +137,23 @@ def start_controllers(context, *args, **kwargs):
     leg_left_controller = include_scoped_launch_py_description(
         pkg_name='kangaroo_controller_configuration',
         paths=['launch', 'leg_controller.launch.py'],
-        launch_arguments={'side': 'left', 'control_type': 'position'})
+        launch_arguments={
+            'side': 'left',
+            'control_type': 'position',
+            'activate': activate,
+            'unload_on_kill': unload_on_kill,
+        })
     ld.append(leg_left_controller)
 
     leg_right_controller = include_scoped_launch_py_description(
         pkg_name='kangaroo_controller_configuration',
         paths=['launch', 'leg_controller.launch.py'],
-        launch_arguments={'side': 'right', 'control_type': 'position'})
+        launch_arguments={
+            'side': 'right',
+            'control_type': 'position',
+            'activate': activate,
+            'unload_on_kill': unload_on_kill,
+        })
     ld.append(leg_right_controller)
 
     return ld

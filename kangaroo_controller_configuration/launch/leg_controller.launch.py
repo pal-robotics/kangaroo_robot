@@ -19,9 +19,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from controller_manager.launch_utils import generate_load_controller_launch_description
 from launch import LaunchContext, LaunchDescription
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
-from launch.actions import GroupAction, OpaqueFunction
-from launch.substitutions import LaunchConfiguration
+from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.param_utils import parse_parametric_yaml
 
@@ -39,17 +37,25 @@ class LaunchArguments(LaunchArgumentsBase):
         choices=['effort', 'position'],
         description='type of control for the leg')
 
+    activate: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='activate',
+        default_value='True',
+        choices=['True', 'False'],
+        description='Argument to choose whether to activate the controllers or '
+                    'leave them configured and in inactive state')
+
+    unload_on_kill: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='unload_on_kill',
+        default_value='False',
+        choices=['True', 'False'],
+        description='Argument to choose whether to deactivate and unload the '
+                    'controllers when killing the launch process')
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
     launch_description.add_action(OpaqueFunction(
         function=setup_controller_configuration))
-
-    launch_controller = GroupAction([generate_load_controller_launch_description(
-        controller_name=LaunchConfiguration('controller_name'),
-        controller_params_file=LaunchConfiguration('controller_config'))])
-
-    launch_description.add_action(launch_controller)
 
     return
 
@@ -58,6 +64,21 @@ def setup_controller_configuration(context: LaunchContext):
 
     side = read_launch_argument('side', context)
     control_type = read_launch_argument('control_type', context)
+    activate = read_launch_argument('activate', context)
+    unload_on_kill = read_launch_argument('unload_on_kill', context)
+
+    if unload_on_kill == 'True' and activate == 'False':
+        raise RuntimeError(
+            'Invalid argument combination: `unload_on_kill` cannot be True '
+            'when `activate` is False. Controllers must be activated '
+            'for unload-on-kill to have any effect.'
+        )
+
+    extra_spawner_args = []
+    if activate == 'False':
+        extra_spawner_args = ['--inactive']
+    elif unload_on_kill == 'True':
+        extra_spawner_args = ['--unload-on-kill']
 
     leg_prefix = 'leg'
     if side:
@@ -72,8 +93,12 @@ def setup_controller_configuration(context: LaunchContext):
 
     parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
 
-    return [SetLaunchConfiguration('controller_name', controller_name),
-            SetLaunchConfiguration('controller_config', parsed_yaml)]
+    launch_controller = GroupAction([generate_load_controller_launch_description(
+        controller_name=controller_name,
+        controller_params_file=parsed_yaml,
+        extra_spawner_args=extra_spawner_args)])
+
+    return [launch_controller]
 
 
 def generate_launch_description():
