@@ -1,0 +1,6 @@
+arm_right_6_joint_impedance_control:
+  ros__parameters:
+    type: pal_controllers/ImpedanceControl
+    joint_name: arm_right_6_joint
+    stiffness: 20.0
+    damping: 1.0

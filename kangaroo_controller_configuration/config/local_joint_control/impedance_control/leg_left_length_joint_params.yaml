@@ -1,0 +1,6 @@
+leg_left_length_joint_impedance_control:
+  ros__parameters:
+    type: pal_controllers/ImpedanceControl
+    joint_name: leg_left_length_joint
+    stiffness: 11000.0 # 11000.0
+    damping: 665.0 # 650.0

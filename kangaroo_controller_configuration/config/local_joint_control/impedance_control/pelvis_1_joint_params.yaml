@@ -1,0 +1,6 @@
+pelvis_1_joint_impedance_control:
+  ros__parameters:
+    type: pal_controllers/ImpedanceControl
+    joint_name: pelvis_1_joint
+    stiffness: 50.0
+    damping: 2.0

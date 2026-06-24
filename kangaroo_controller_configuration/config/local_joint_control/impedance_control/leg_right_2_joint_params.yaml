@@ -1,0 +1,6 @@
+leg_right_2_joint_impedance_control:
+  ros__parameters:
+    type: pal_controllers/ImpedanceControl
+    joint_name: leg_right_2_joint
+    stiffness: 100.0
+    damping: 4.0
