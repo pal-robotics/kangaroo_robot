@@ -8,7 +8,8 @@
   <xacro:property name="roll_joint_min_pos"   value="${-27.0 *deg_to_rad}" />
   <xacro:property name="roll_joint_max_pos"   value="${27.0 *deg_to_rad}" />
 
-  <xacro:macro name="kangaroo_detachable_ankle" params="side reflect parent *origin pitch_joint roll_joint read_actuator">
+  <xacro:macro name="kangaroo_detachable_ankle"
+    params="side reflect parent *origin pitch_joint roll_joint read_actuator full_model:='false'">
     <link name="leg_${side}_${pitch_joint}_link">
       <inertial>
           <origin xyz="-0.002212 0.0 -0.000833" rpy="0 0 0" />
@@ -101,6 +102,37 @@
         </geometry>
       </collision>
     </link>
+
+    <!-- CLOSED LOOP CONNECTION FRAMES FOR THE ANKLE -->
+    <xacro:if value="${full_model == 'true'}">
+      <link name="${side}_ankle_tibia_bar_l_connect_b">
+        <inertial>
+          <origin xyz="1e-05 1e-05 1e-05" rpy="0 0 0" />
+          <mass value="1e-05" />
+          <inertia ixx="1e-05" ixy="0.0" ixz="0.0" iyy="1e-05" iyz="0.0" izz="1e-05" />
+        </inertial>
+      </link>
+      <joint name="${side}_ankle_tibia_bar_l_connect_b" type="fixed">
+        <origin xyz="-0.05638 -0.03390 0.0590" rpy="1.57079632679491 -0.34906585039887 3.14159265358978" />
+        <parent link="leg_${side}_ankle_attach" />
+        <child link="${side}_ankle_tibia_bar_l_connect_b" />
+        <axis xyz="0 0 0" />
+      </joint>
+      <link name="${side}_ankle_tibia_bar_r_connect_b">
+        <inertial>
+          <origin xyz="1e-05 1e-05 1e-05" rpy="0 0 0" />
+          <mass value="1e-05" />
+          <inertia ixx="1e-05" ixy="0.0" ixz="0.0" iyy="1e-05" iyz="0.0" izz="1e-05" />
+        </inertial>
+      </link>
+      <joint name="${side}_ankle_tibia_bar_r_connect_b" type="fixed">
+        <origin xyz="-0.05638 0.03390 0.0590" rpy="1.57079632679491 -0.34906585039887 3.14159265358978" />
+        <parent link="leg_${side}_ankle_attach" />
+        <child link="${side}_ankle_tibia_bar_r_connect_b" />
+        <axis xyz="0 0 0" />
+      </joint>
+    </xacro:if>
+
     <joint name="leg_${side}_ankle_attach_joint" type="fixed">
       <origin xyz="0.013168 0 -0.036178" rpy="0 -${20 * deg_to_rad} 0" />
       <parent link="leg_${side}_${roll_joint}_link" />
