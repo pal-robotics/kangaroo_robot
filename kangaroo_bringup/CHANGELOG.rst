@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.8.0 (2026-06-25)
+------------------
 * Change fakeforearm to 4dof with no end effector
 * Contributors: Aina
 
