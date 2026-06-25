@@ -104,7 +104,7 @@
     </link>
 
     <!-- CLOSED LOOP CONNECTION FRAMES FOR THE ANKLE -->
-    <xacro:if value="${full_model == 'true'}">
+    <xacro:if value="${full_model}">
       <link name="${side}_ankle_tibia_bar_l_connect_b">
         <inertial>
           <origin xyz="1e-05 1e-05 1e-05" rpy="0 0 0" />
