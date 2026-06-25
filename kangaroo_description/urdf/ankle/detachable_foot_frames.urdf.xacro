@@ -33,7 +33,7 @@
             <child link="${side}_foot" />
             <axis xyz="0 0 0" />
         </joint>
-        <link name="${side}_foot_ft">
+        <link name="ankle_${side}_ft_sensor_link">
             <inertial>
                 <origin xyz="-0.000443003666554599 0.000522074497974099 -0.0153068327087122" rpy="0 0 0" />
                 <mass value="0.345" />
@@ -58,7 +58,7 @@
         <joint name="${side}_foot_ft" type="fixed">
             <origin xyz="0 0 -0.014" rpy="0 0 ${180 * deg_to_rad}" />
             <parent link="${side}_foot" />
-            <child link="${side}_foot_ft" />
+            <child link="ankle_${side}_ft_sensor_link" />
             <axis xyz="0 0 0" />
         </joint>
         <link name="${side}_foot_sole">
@@ -85,7 +85,7 @@
         </link>
         <joint name="${side}_foot_sole" type="fixed">
             <origin xyz="0 0 -0.053972" rpy="0 0 -${180 * deg_to_rad}" />
-            <parent link="${side}_foot_ft" />
+            <parent link="ankle_${side}_ft_sensor_link" />
             <child link="${side}_foot_sole" />
             <axis xyz="0 0 0" />
         </joint>
