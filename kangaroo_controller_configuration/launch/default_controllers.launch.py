@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from dataclasses import dataclass
+import logging
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -38,7 +39,7 @@ class LaunchArguments(LaunchArgumentsBase):
 
     unload_on_kill: DeclareLaunchArgument = DeclareLaunchArgument(
         name='unload_on_kill',
-        default_value='False',
+        default_value='True',
         choices=['True', 'False'],
         description='Argument to choose whether to deactivate and unload the '
                     'controllers when killing the launch process')
@@ -65,14 +66,13 @@ def start_controllers(context, *args, **kwargs):
     pkg_share_folder = get_package_share_directory('kangaroo_controller_configuration')
 
     ld = []
-    extra_spawner_args = []
 
     if unload_on_kill == 'True' and activate == 'False':
-        raise RuntimeError(
-            'Invalid argument combination: `unload_on_kill` cannot be True '
-            'when `activate` is False. Controllers must be activated '
-            'for unload-on-kill to have any effect.'
+        logging.getLogger(__name__).warning(
+            '`unload_on_kill` is set to True but `activate` is set to False: '
+            '`unload_on_kill` is ignored and the controllers will be configured and exited.'
         )
+    extra_spawner_args = []
 
     if activate == 'False':
         extra_spawner_args = ['--inactive']

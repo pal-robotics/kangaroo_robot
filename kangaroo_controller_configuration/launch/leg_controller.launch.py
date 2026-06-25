@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from dataclasses import dataclass
+import logging
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -46,7 +47,7 @@ class LaunchArguments(LaunchArgumentsBase):
 
     unload_on_kill: DeclareLaunchArgument = DeclareLaunchArgument(
         name='unload_on_kill',
-        default_value='False',
+        default_value='True',
         choices=['True', 'False'],
         description='Argument to choose whether to deactivate and unload the '
                     'controllers when killing the launch process')
@@ -68,10 +69,9 @@ def setup_controller_configuration(context: LaunchContext):
     unload_on_kill = read_launch_argument('unload_on_kill', context)
 
     if unload_on_kill == 'True' and activate == 'False':
-        raise RuntimeError(
-            'Invalid argument combination: `unload_on_kill` cannot be True '
-            'when `activate` is False. Controllers must be activated '
-            'for unload-on-kill to have any effect.'
+        logging.getLogger(__name__).warning(
+            '`unload_on_kill` is set to True but `activate` is set to False: '
+            '`unload_on_kill` is ignored and the controllers will be configured and exited.'
         )
 
     extra_spawner_args = []
