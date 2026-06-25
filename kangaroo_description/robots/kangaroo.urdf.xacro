@@ -329,7 +329,9 @@
       <xacro:include filename="$(find rh8d_description)/mujoco/mj_tags.xacro" />
     </xacro:if>
     <xacro:include filename="$(find kangaroo_description)/mujoco/mj_tags.xacro" />
-    <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" />
+    <!-- Disabling it to avoid pal_mujoco_scenes dependency -->
+    <!-- <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" /> -->
+    <xacro:include filename="$(find kangaroo_description)/mujoco/${world_name}.xacro" />
    
     <mujoco_inputs> 
       <!-- Mujoco environment -->
