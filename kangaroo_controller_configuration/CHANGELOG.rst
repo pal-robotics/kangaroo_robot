@@ -2,6 +2,12 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* reverted changes since they are now in a different branch
+* leg controller now accepts arg to define interface level, actuator or joint
+* Contributors: danielcostanzi
+
 2.7.0 (2026-06-23)
 ------------------
 

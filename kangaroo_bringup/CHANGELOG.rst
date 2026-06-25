@@ -2,6 +2,11 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Change fakeforearm to 4dof with no end effector
+* Contributors: Aina
+
 2.7.0 (2026-06-23)
 ------------------
 * Merge branch 'fix/imu_simulation' into 'humble-devel'

@@ -2,6 +2,12 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Change fakeforearm to 4dof with no end effector
+* fixed name of the ft link so that it coherent with broadcaster config
+* Contributors: Aina, Daniel Costanzi
+
 2.7.0 (2026-06-23)
 ------------------
 * Merge branch 'fix/detachable_covers' into 'humble-devel'
