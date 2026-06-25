@@ -34,7 +34,7 @@
   <!-- no-arm, 4dof, 5dof, 7dof] -->
   <xacro:arg name="arm_type" default="4dof" />
 
-  <!-- no-end-effector, fake-forearm, gripper, RH8D -->
+  <!-- no-end-effector, gripper, RH8D -->
   <xacro:arg name="end_effector_right" default="no-end-effector" />
   <xacro:arg name="end_effector_left" default="no-end-effector" />
   
@@ -151,10 +151,10 @@
     <xacro:wrong_arm_type />
   </xacro:if>
 
-  <xacro:if value="${end_effector_right not in ['no-end-effector', 'fake-forearm', 'gripper', 'RH8D']}">
+  <xacro:if value="${end_effector_right not in ['no-end-effector', 'gripper', 'RH8D']}">
     <xacro:wrong_end_effector_right />
   </xacro:if>
-  <xacro:if value="${end_effector_left not in ['no-end-effector', 'fake-forearm', 'gripper', 'RH8D']}">
+  <xacro:if value="${end_effector_left not in ['no-end-effector', 'gripper', 'RH8D']}">
     <xacro:wrong_end_effector_left />
   </xacro:if>
 
@@ -173,7 +173,7 @@
   </xacro:if>
 
   <xacro:if value="${arm_type in ['4dof']}">
-    <xacro:if value="${end_effector_right not in ['fake-forearm'] or end_effector_left not in ['fake-forearm']}">
+    <xacro:if value="${end_effector_right not in ['no-end-effector'] or end_effector_left not in ['no-end-effector']}">
       <xacro:wrong_arm_end_effector_combination />
     </xacro:if>
   </xacro:if>
@@ -232,9 +232,6 @@
     </xacro:if>
     <xacro:if value="${end_effector_right in ['RH8D'] or end_effector_left in ['RH8D']}">
       <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/rh8d_hand.urdf.xacro" />
-    </xacro:if>
-    <xacro:if value="${end_effector_right in ['fake-forearm'] or end_effector_left in ['fake-forearm']}">
-      <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/fake_forearm.urdf.xacro" />
     </xacro:if>
 
     <!-- FT Sensors  -->
@@ -298,17 +295,6 @@
       <xacro:hand name="hand" side="right" parent="arm_right_tool_link" mimic="${use_mimic}">
         <origin xyz="0 0 0" rpy="0 0 1.5708"/>
       </xacro:hand>
-    </xacro:if>
-
-    <xacro:if value="${end_effector_right in ['fake-forearm']}">
-      <xacro:fake-forearm name="arm" side="left" reflect="1" parent="arm_left_3_link">
-        <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
-      </xacro:fake-forearm>
-    </xacro:if>
-    <xacro:if value="${end_effector_left in ['fake-forearm']}">
-      <xacro:fake-forearm name="arm" side="right" reflect="-1" parent="arm_right_3_link">
-        <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
-      </xacro:fake-forearm>
     </xacro:if>
 
     <!-- FT SENSORS -->

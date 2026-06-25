@@ -56,7 +56,7 @@ class LaunchArguments(LaunchArgumentsBase):
     # ["no-arm", "4dof", "5dof", "7dof"]
     arm_type: DeclareLaunchArgument = KangarooArgs.arm_type
 
-    # ["fake-forearm", "ft-gripper", "gripper", "RH8D"]
+    # ["no-end-effector", "gripper", "RH8D"]
     end_effector_right: DeclareLaunchArgument = KangarooArgs.end_effector_right
     end_effector_left: DeclareLaunchArgument = KangarooArgs.end_effector_left
 
