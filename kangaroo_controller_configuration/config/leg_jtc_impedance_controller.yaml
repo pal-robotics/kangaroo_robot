@@ -1,0 +1,33 @@
+${LEG_SIDE_PREFIX}_jtc_impedance_${INTERFACE_LEVEL}_controller:
+  ros__parameters:
+    type: joint_trajectory_controller/JointTrajectoryController
+    open_loop_control: true
+    joints:
+      - ${LEG_SIDE_PREFIX}_1_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_2_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_3_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_4_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_5_${INTERFACE_LEVEL}
+      - ${LEG_SIDE_PREFIX}_length_${INTERFACE_LEVEL}
+    command_interfaces:
+      - position
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
+
+    constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 5.0
+      ${LEG_SIDE_PREFIX}_1_${INTERFACE_LEVEL}:
+        goal: 0.02
+      ${LEG_SIDE_PREFIX}_2_${INTERFACE_LEVEL}:
+        goal: 0.02
+      ${LEG_SIDE_PREFIX}_3_${INTERFACE_LEVEL}:
+        goal: 0.02
+      ${LEG_SIDE_PREFIX}_4_${INTERFACE_LEVEL}:
+        goal: 0.02
+      ${LEG_SIDE_PREFIX}_5_${INTERFACE_LEVEL}:
+        goal: 0.02
+      ${LEG_SIDE_PREFIX}_length_${INTERFACE_LEVEL}:
+        goal: 0.02

@@ -1,0 +1,21 @@
+pelvis_jtc_impedance_${INTERFACE_LEVEL}_controller:
+  ros__parameters:
+    type: joint_trajectory_controller/JointTrajectoryController
+    open_loop_control: true
+    joints:
+      - pelvis_1_${INTERFACE_LEVEL}
+      - pelvis_2_${INTERFACE_LEVEL}
+    command_interfaces:
+      - position
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
+
+    constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 5.0
+      pelvis_1_${INTERFACE_LEVEL}:
+        goal: 0.02
+      pelvis_2_${INTERFACE_LEVEL}:
+        goal: 0.02
