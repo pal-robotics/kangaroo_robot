@@ -2,6 +2,11 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Remove pal_mujoco_scenes dependency
+* Contributors: Sai Kishor Kothakota
+
 2.8.0 (2026-06-25)
 ------------------
 * Change fakeforearm to 4dof with no end effector

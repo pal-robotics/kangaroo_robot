@@ -2,6 +2,11 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Simplify controllers regeneration by dropping leg configuration variants
+* Contributors: Isaac Acevedo
+
 2.8.0 (2026-06-25)
 ------------------
 * Change fakeforearm to 4dof with no end effector
