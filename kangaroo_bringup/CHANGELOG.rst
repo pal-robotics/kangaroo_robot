@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.9.0 (2026-06-26)
+------------------
 * Simplify controllers regeneration by dropping leg configuration variants
 * Contributors: Isaac Acevedo
 

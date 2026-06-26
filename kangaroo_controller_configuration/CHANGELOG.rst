@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.9.0 (2026-06-26)
+------------------
 * When parsed activate to False, ignore unload_on_kill option
 * Add unload_on_kill and activate argument to default_controllers launch
 * Contributors: Sai Kishor Kothakota

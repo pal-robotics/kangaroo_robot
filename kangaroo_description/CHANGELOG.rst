@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.9.0 (2026-06-26)
+------------------
 * Remove pal_mujoco_scenes dependency
 * Contributors: Sai Kishor Kothakota
 
