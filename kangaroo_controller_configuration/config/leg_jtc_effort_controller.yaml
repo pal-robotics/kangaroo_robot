@@ -28,6 +28,8 @@ ${LEG_SIDE_PREFIX}_jtc_effort_controller:
         goal: 0.02
       ${LEG_SIDE_PREFIX}_5_joint:
         goal: 0.02
+      ${LEG_SIDE_PREFIX}_length_joint:
+        goal: 0.001
     gains:
       ${LEG_SIDE_PREFIX}_1_joint: {p: 100.0,  d: 0.0, i: 0.0, i_clamp_min: -1.0, i_clamp_max: 1.0}
       ${LEG_SIDE_PREFIX}_2_joint: {p: 250.0,  d: 0.0, i: 0.0, i_clamp_min: -1.0, i_clamp_max: 1.0}
