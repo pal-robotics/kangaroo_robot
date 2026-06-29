@@ -27,3 +27,6 @@ ${LEG_SIDE_PREFIX}_position_controller:
         goal: 0.02
       ${LEG_SIDE_PREFIX}_5_joint:
         goal: 0.02
+      ${LEG_SIDE_PREFIX}_length_joint:
+        goal: 0.001
+
