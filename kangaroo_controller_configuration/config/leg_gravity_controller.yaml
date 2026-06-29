@@ -13,8 +13,9 @@ ${LEG_SIDE_PREFIX}_gravity_controller:
     root_link: "base_link"
     tip_links: ["${SIDE}_foot_sole"]
 
-    closed_loop_first_links: ["leg_${SIDE}_4_link"]
-    closed_loop_second_links: ["leg_${SIDE}_knee_lower_bearing"]
+    closed_loop:
+      first_links: ["${LEG_SIDE_PREFIX}_4_link"]
+      second_links: ["${LEG_SIDE_PREFIX}_knee_lower_bearing"]
 
     torque_gain: 1.0
 
