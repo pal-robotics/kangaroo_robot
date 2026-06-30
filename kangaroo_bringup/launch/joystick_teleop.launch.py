@@ -39,7 +39,6 @@ def declare_actions(launch_description: LaunchDescription):
         executable='joy_teleop',
         parameters=[joy_teleop_path],
     )
-
     launch_description.add_action(joy_teleop_node)
 
     joy_node = Node(
@@ -48,7 +47,18 @@ def declare_actions(launch_description: LaunchDescription):
         name='joystick',
         parameters=[os.path.join(pkg_dir, 'config', 'joy_teleop', 'joy_config.yaml')],
     )
-
     launch_description.add_action(joy_node)
+
+    joystick_analyzer = Node(
+        package='diagnostic_aggregator',
+        executable='add_analyzer',
+        namespace='joystick',
+        output='screen',
+        emulate_tty=True,
+        parameters=[
+            os.path.join(pkg_dir, 'config', 'joy_teleop', 'joystick_analyzers.yaml')
+        ],
+    )
+    launch_description.add_action(joystick_analyzer)
 
     return
