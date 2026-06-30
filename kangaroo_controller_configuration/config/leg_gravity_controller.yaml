@@ -1,0 +1,34 @@
+${LEG_SIDE_PREFIX}_gravity_controller:
+  ros__parameters:
+    type: pal_controllers/GravityCompensationController
+
+    command_joints:
+      - ${LEG_SIDE_PREFIX}_1_joint
+      - ${LEG_SIDE_PREFIX}_2_joint
+      - ${LEG_SIDE_PREFIX}_3_joint
+      - ${LEG_SIDE_PREFIX}_length_joint
+      - ${LEG_SIDE_PREFIX}_4_joint
+      - ${LEG_SIDE_PREFIX}_5_joint
+
+    root_link: "base_link"
+    tip_links: ["${SIDE}_foot_sole"]
+
+    closed_loop:
+      first_links: ["${LEG_SIDE_PREFIX}_4_link"]
+      second_links: ["${LEG_SIDE_PREFIX}_knee_lower_bearing"]
+
+    torque_gain: 1.0
+
+    parameters:
+      ${LEG_SIDE_PREFIX}_1_joint:
+        command_interface: "${LEG_SIDE_PREFIX}_1_joint/effort"
+      ${LEG_SIDE_PREFIX}_2_joint:
+        command_interface: "${LEG_SIDE_PREFIX}_2_joint/effort"
+      ${LEG_SIDE_PREFIX}_3_joint:
+        command_interface: "${LEG_SIDE_PREFIX}_3_joint/effort"
+      ${LEG_SIDE_PREFIX}_length_joint:
+        command_interface: "${LEG_SIDE_PREFIX}_length_joint/effort"
+      ${LEG_SIDE_PREFIX}_4_joint:
+        command_interface: "${LEG_SIDE_PREFIX}_4_joint/effort"
+      ${LEG_SIDE_PREFIX}_5_joint:
+        command_interface: "${LEG_SIDE_PREFIX}_5_joint/effort"

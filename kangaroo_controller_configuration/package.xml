@@ -16,6 +16,7 @@
   <exec_depend>ros2controlcli</exec_depend>
   <exec_depend>joint_state_broadcaster</exec_depend>
   <exec_depend>joint_trajectory_controller</exec_depend>
+  <exec_depend condition="$PAL_DISTRO != ''">gravity_compensation_controller2</exec_depend>
   <exec_depend condition="$PAL_DISTRO != ''">actuator_pid_controllers</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_pal</exec_depend>
