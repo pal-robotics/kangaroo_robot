@@ -1,0 +1,7 @@
+leg_left_2_joint_position_control:
+  ros__parameters:
+    type: pal_controllers/PositionControl
+    joint_name: leg_left_2_joint
+    circular_buffer_capacity: 20
+    limiter_max_rate: 1.0
+    
