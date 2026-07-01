@@ -2,6 +2,30 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Kinematic WBC ROS 2 position control parameters
+  See merge request robots/kangaroo_robot!119
+* Kinematic WBC ROS 2 position control parameters
+* gravity compensation controller config
+  See merge request robots/kangaroo_robot!154
+* Add condition to gravity compensation dependency
+* Fix the parameters to the new namespaced changes
+* fixed CL frames names
+* Add new parameters
+* gravity controller - DOES NOT WORK because our controller does not take into account the weight of femur and knee
+* Add impedance JTC controllers for legs and pelvis
+  See merge request robots/kangaroo_robot!151
+* Add impedance JTC controllers for legs and pelvis
+* Actuator level leg controller
+  See merge request robots/kangaroo_robot!135
+* leg controller now accepts arg to define interface level, actuator or joint
+* Update JTC goal tolerances + pelvis JTC effort controller
+  See merge request robots/kangaroo_robot!153
+* add config for pelvis jtc effort controller
+* add tolerance for leg length in jtc controllers
+* Contributors: Daniel Costanzi, Luca Marchionni, Noel Jimenez, Sai Kishor Kothakota, danielcostanzi, oscarmartinez
+
 2.9.0 (2026-06-26)
 ------------------
 * When parsed activate to False, ignore unload_on_kill option

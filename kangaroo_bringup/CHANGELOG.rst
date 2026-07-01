@@ -2,6 +2,13 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add joystick analyzers
+  See merge request robots/kangaroo_robot!155
+* Add joystick analyzers
+* Contributors: Noel Jimenez
+
 2.9.0 (2026-06-26)
 ------------------
 * Simplify controllers regeneration by dropping leg configuration variants

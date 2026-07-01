@@ -2,6 +2,20 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Rename sole frame for detachable feet type so it has the same name as the fixed version
+  See merge request robots/kangaroo_robot!156
+* Rename sole frame for detachable feet type so it has the same name as the fixed version
+* Disable joint limiting for the effort interface
+  See merge request robots/kangaroo_robot!152
+* Disable joint limiting for the effort interface
+* Add closed loop frames to the feet to reuse for full model
+  See merge request robots/kangaroo_robot!150
+* fixed if condition
+* add cloesd loop frames to the foot conditionally
+* Contributors: Daniel Costanzi, Pierre Fernbach, Sai Kishor Kothakota
+
 2.9.0 (2026-06-26)
 ------------------
 * Remove pal_mujoco_scenes dependency
