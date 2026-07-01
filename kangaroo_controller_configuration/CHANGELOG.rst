@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.10.0 (2026-07-01)
+-------------------
 * Kinematic WBC ROS 2 position control parameters
   See merge request robots/kangaroo_robot!119
 * Kinematic WBC ROS 2 position control parameters

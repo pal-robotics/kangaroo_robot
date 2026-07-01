@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.10.0 (2026-07-01)
+-------------------
 * Add joystick analyzers
   See merge request robots/kangaroo_robot!155
 * Add joystick analyzers

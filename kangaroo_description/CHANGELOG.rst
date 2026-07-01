@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.10.0 (2026-07-01)
+-------------------
 * Rename sole frame for detachable feet type so it has the same name as the fixed version
   See merge request robots/kangaroo_robot!156
 * Rename sole frame for detachable feet type so it has the same name as the fixed version
