@@ -61,7 +61,7 @@
             <child link="ankle_${side}_ft_sensor_link" />
             <axis xyz="0 0 0" />
         </joint>
-        <link name="${side}_foot_sole">
+        <link name="${side}_sole_link">
             <inertial>
                 <origin xyz="-0.004657 -0.000039 0.022641" rpy="0 0 0" />
                 <mass value="1.081199" />
@@ -86,7 +86,7 @@
         <joint name="${side}_foot_sole" type="fixed">
             <origin xyz="0 0 -0.053972" rpy="0 0 -${180 * deg_to_rad}" />
             <parent link="ankle_${side}_ft_sensor_link" />
-            <child link="${side}_foot_sole" />
+            <child link="${side}_sole_link" />
             <axis xyz="0 0 0" />
         </joint>
     </xacro:macro>
