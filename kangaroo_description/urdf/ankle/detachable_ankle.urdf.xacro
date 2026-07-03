@@ -113,7 +113,7 @@
         </inertial>
       </link>
       <joint name="${side}_ankle_tibia_bar_l_connect_b" type="fixed">
-        <origin xyz="-0.05638 -0.03390 0.0590" rpy="1.57079632679491 -0.34906585039887 3.14159265358978" />
+        <origin xyz="-0.05638 0.03390 0.0590" rpy="1.57079632679491 -0.34906585039887 3.14159265358978" />
         <parent link="leg_${side}_ankle_attach" />
         <child link="${side}_ankle_tibia_bar_l_connect_b" />
         <axis xyz="0 0 0" />
@@ -126,7 +126,7 @@
         </inertial>
       </link>
       <joint name="${side}_ankle_tibia_bar_r_connect_b" type="fixed">
-        <origin xyz="-0.05638 0.03390 0.0590" rpy="1.57079632679491 -0.34906585039887 3.14159265358978" />
+        <origin xyz="-0.05638 -0.03390 0.0590" rpy="1.57079632679491 -0.34906585039887 3.14159265358978" />
         <parent link="leg_${side}_ankle_attach" />
         <child link="${side}_ankle_tibia_bar_r_connect_b" />
         <axis xyz="0 0 0" />
