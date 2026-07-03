@@ -2,6 +2,13 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add pal_local_joint_control dependency
+  See merge request robots/kangaroo_robot!162
+* Add pal_local_joint_control dependency
+* Contributors: Sai Kishor Kothakota
+
 2.11.1 (2026-07-03)
 -------------------
 

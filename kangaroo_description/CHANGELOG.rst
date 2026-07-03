@@ -2,6 +2,13 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Change the foot sole to a simpler and ligher one
+  See merge request robots/kangaroo_robot!161
+* Change the foot sole to a simpler and ligher one
+* Contributors: Sai Kishor Kothakota
+
 2.11.1 (2026-07-03)
 -------------------
 * Ankle bar frames were swapped, now they are correct
