@@ -126,6 +126,9 @@
       </xacro:if>
       <xacro:if value="${torso_imu_model == 'microstrain'}">
         <ros2_control name="ros2_control_microstrain" type="sensor" rw_rate="1000" is_async="true">
+          <properties>
+            <async print_warnings="false"/>
+          </properties>
           <hardware>
             <plugin>pal_microstrain_sensor/MicrostrainSensor</plugin>
             <param name="io_device">/dev/torso_imu_sensor</param>
@@ -140,6 +143,9 @@
       </xacro:if>
       <xacro:if value="${base_imu_model == 'microstrain'}">
         <ros2_control name="ros2_control_microstrain_base" type="sensor" rw_rate="1000" is_async="true">
+          <properties>
+            <async print_warnings="false"/>
+          </properties>
           <hardware>
             <plugin>pal_microstrain_sensor/MicrostrainSensor</plugin>
             <param name="io_device">/dev/base_imu_sensor</param>
