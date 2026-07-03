@@ -79,7 +79,7 @@ def configure_side_controllers(context, side='right', sensor_prefix='ft_sensor',
     ft_sensor = read_launch_argument(ft_sensor_arg_name, context)
 
     ft_pkg_name = 'pal_sea_arm_controller_configuration'
-    ft_launch_file = 'ft_sensor_controller.launch.py'
+    ft_launch_file = 'ft_sensor_broadcaster.launch.py'
     ft_sensor_controller = include_scoped_launch_py_description(
         pkg_name=ft_pkg_name,
         paths=['launch', ft_launch_file],
