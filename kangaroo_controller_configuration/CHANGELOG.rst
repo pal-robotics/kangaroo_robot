@@ -2,6 +2,16 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add force torque sensor related changes
+  See merge request robots/kangaroo_robot!157
+* Use ft_sensor_broadcaster instead of ft_sensor_controller
+* Impedance local joint control for leg length
+  See merge request robots/kangaroo_robot!147
+* Adding impedance local joint control params
+* Contributors: Sai Kishor Kothakota, Óscar Martínez
+
 2.10.0 (2026-07-01)
 -------------------
 * Kinematic WBC ROS 2 position control parameters

@@ -2,6 +2,16 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Suppress overrun warnings for the microstrain IMU
+  See merge request robots/kangaroo_robot!158
+* Suppress overrun warnings for the microstrain IMU
+* Add force torque sensor related changes
+  See merge request robots/kangaroo_robot!157
+* Add missing mujoco tags for force and torque
+* Contributors: Sai Kishor Kothakota
+
 2.10.0 (2026-07-01)
 -------------------
 * Rename sole frame for detachable feet type so it has the same name as the fixed version
