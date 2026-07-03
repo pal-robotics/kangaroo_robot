@@ -426,6 +426,14 @@
             <gyro name="base_imu_sensor_gyro" site="base_imu_sensor_link" />
             <accelerometer name="base_imu_sensor_accel" site="base_imu_sensor_link" />
           </xacro:if>
+          <xacro:if value="${ankle_ft_right != 'no-ft-sensor'}">
+            <force name="ankle_right_ft_sensor_force" site="ankle_right_ft_sensor_link"/>
+            <torque name="ankle_right_ft_sensor_torque" site="ankle_right_ft_sensor_link"/>
+          </xacro:if>
+          <xacro:if value="${ankle_ft_left != 'no-ft-sensor'}">
+            <force name="ankle_left_ft_sensor_force" site="ankle_left_ft_sensor_link"/>
+            <torque name="ankle_left_ft_sensor_torque" site="ankle_left_ft_sensor_link"/>
+          </xacro:if>
         </sensor>
       </raw_inputs>
 
