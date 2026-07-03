@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.11.2 (2026-07-03)
+-------------------
 * Change the foot sole to a simpler and ligher one
   See merge request robots/kangaroo_robot!161
 * Change the foot sole to a simpler and ligher one
