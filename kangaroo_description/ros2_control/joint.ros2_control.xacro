@@ -6,8 +6,8 @@
         <joint name="${name}_joint">
             <command_interface name="position" />
             <command_interface name="velocity" />
-            <command_interface name="effort">
             <command_interface name="force" />
+            <command_interface name="effort">
                 <limits enable="false"/>
             </command_interface>
 
