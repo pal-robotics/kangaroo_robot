@@ -2,6 +2,13 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Ankle bar frames were swapped, now they are correct
+  See merge request robots/kangaroo_robot!159
+* ankle bar frames were swapped, now they are correct
+* Contributors: Daniel Costanzi, Sai Kishor Kothakota
+
 2.11.0 (2026-07-03)
 -------------------
 * Suppress overrun warnings for the microstrain IMU

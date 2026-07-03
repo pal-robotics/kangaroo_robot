@@ -2,6 +2,9 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.11.0 (2026-07-03)
 -------------------
 

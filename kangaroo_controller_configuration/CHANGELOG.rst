@@ -2,6 +2,9 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.11.0 (2026-07-03)
 -------------------
 * Add force torque sensor related changes
