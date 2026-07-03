@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.11.1 (2026-07-03)
+-------------------
 * Ankle bar frames were swapped, now they are correct
   See merge request robots/kangaroo_robot!159
 * ankle bar frames were swapped, now they are correct
