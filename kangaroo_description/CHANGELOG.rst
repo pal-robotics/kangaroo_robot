@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.11.0 (2026-07-03)
+-------------------
 * Suppress overrun warnings for the microstrain IMU
   See merge request robots/kangaroo_robot!158
 * Suppress overrun warnings for the microstrain IMU
