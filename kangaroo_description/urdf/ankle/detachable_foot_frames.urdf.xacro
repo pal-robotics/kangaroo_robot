@@ -63,11 +63,11 @@
         </joint>
         <link name="${side}_sole_link">
             <inertial>
-                <origin xyz="-0.004657 -0.000039 0.022641" rpy="0 0 0" />
-                <mass value="1.081199" />
-                <inertia ixx="0.001267" ixy="0.0" ixz="0.000111"
-                        iyy="0.005705" iyz="0.0"
-                        izz="0.00652" />
+                <origin xyz="-0.004811 -0.000026 0.016821" rpy="0 0 0" />
+                <mass value="0.806297" />
+                <inertia ixx="0.000895" ixy="0.0" ixz="0.000084"
+                        iyy="0.00422" iyz="0.0"
+                        izz="0.004831" />
             </inertial>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0" />
@@ -84,7 +84,7 @@
             </collision>
         </link>
         <joint name="${side}_foot_sole" type="fixed">
-            <origin xyz="0 0 -0.053972" rpy="0 0 -${180 * deg_to_rad}" />
+            <origin xyz="0 0 -0.043472" rpy="0 0 -${180 * deg_to_rad}" />
             <parent link="ankle_${side}_ft_sensor_link" />
             <child link="${side}_sole_link" />
             <axis xyz="0 0 0" />
