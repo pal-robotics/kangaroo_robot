@@ -2,6 +2,15 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adding pid gains for force and impedance-current + force interface added
+  See merge request robots/kangaroo_robot!160
+* Remove commented lines of gains
+* Changed to stiffness and dumping
+* Adding pid gains for force and impedance-current + force interface added
+* Contributors: Sai Kishor Kothakota, antoniomartinez
+
 2.11.2 (2026-07-03)
 -------------------
 * Add pal_local_joint_control dependency

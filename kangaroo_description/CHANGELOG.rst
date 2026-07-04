@@ -2,6 +2,14 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adding pid gains for force and impedance-current + force interface added
+  See merge request robots/kangaroo_robot!160
+* Minor fix
+* Adding pid gains for force and impedance-current + force interface added
+* Contributors: Sai Kishor Kothakota, antoniomartinez
+
 2.11.2 (2026-07-03)
 -------------------
 * Change the foot sole to a simpler and ligher one
