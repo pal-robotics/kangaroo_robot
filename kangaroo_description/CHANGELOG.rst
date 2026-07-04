@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.12.1 (2026-07-05)
+-------------------
 * Modify the limits of the leg length
   See merge request robots/kangaroo_robot!163
 * Modify the limits of the leg length
