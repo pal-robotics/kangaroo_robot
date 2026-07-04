@@ -2,8 +2,8 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.12.0 (2026-07-04)
+-------------------
 * Adding pid gains for force and impedance-current + force interface added
   See merge request robots/kangaroo_robot!160
 * Remove commented lines of gains
