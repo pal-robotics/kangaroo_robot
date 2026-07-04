@@ -6,6 +6,7 @@
         <joint name="${name}_joint">
             <command_interface name="position" />
             <command_interface name="velocity" />
+            <command_interface name="force" />
             <command_interface name="effort">
                 <limits enable="false"/>
             </command_interface>
@@ -15,6 +16,7 @@
             </state_interface>
             <state_interface name="velocity" />
             <state_interface name="effort" />
+            <state_interface name="force" />
         <xacro:unless value="${sim_type == 'mujoco' or sim_type == 'mujoco-ros2-control'}">
             <state_interface name="absolute_position" />
         </xacro:unless>
