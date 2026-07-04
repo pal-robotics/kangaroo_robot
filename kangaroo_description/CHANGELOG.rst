@@ -2,6 +2,13 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Modify the limits of the leg length
+  See merge request robots/kangaroo_robot!163
+* Modify the limits of the leg length
+* Contributors: Sai Kishor Kothakota
+
 2.12.0 (2026-07-04)
 -------------------
 * Adding pid gains for force and impedance-current + force interface added
