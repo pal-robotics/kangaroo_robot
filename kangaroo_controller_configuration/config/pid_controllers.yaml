@@ -118,18 +118,6 @@ pid_command_controller:
       leg_right_4_actuator:     {proportional: 0.000815, integral: 0.7, derivative: 0.000475}
       leg_right_5_actuator:     {proportional: 0.000815, integral: 0.7, derivative: 0.000475}
       leg_right_length_actuator: {proportional: 0.0000001, integral: 0.7, derivative: 0.0000001}
-      #pelvis_1_actuator:        {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #pelvis_2_actuator:        {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_left_1_actuator:      {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_left_2_actuator:      {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_left_3_actuator:      {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_left_4_actuator:      {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_left_5_actuator:      {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_right_1_actuator:     {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_right_2_actuator:     {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_right_3_actuator:     {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_right_4_actuator:     {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
-      #arm_right_5_actuator:     {proportional: 0.000815, integral: 0.8, derivative: 0.000475}
     
     impedance: #Gains for impedance-current mode 
       leg_left_1_actuator:      {stiffness: 0.00000045, dumping: 0.00015}
@@ -144,41 +132,3 @@ pid_command_controller:
       leg_right_4_actuator:     {stiffness: 0.00000045, dumping: 0.00015}
       leg_right_5_actuator:     {stiffness: 0.00000045, dumping: 0.00015}
       leg_right_length_actuator: {stiffness: 0.000055, dumping: 0.00015}
-      #pelvis_1_actuator:        {proportional: 0.00001, derivative: 0.00015}
-      #pelvis_2_actuator:        {proportional: 0.00001, derivative: 0.00015}
-      #arm_left_1_actuator:      {proportional: 0.00001, derivative: 0.00015}
-      #arm_left_2_actuator:      {proportional: 0.00001, derivative: 0.00015}
-      #arm_left_3_actuator:      {proportional: 0.00001, derivative: 0.00015}
-      #arm_left_4_actuator:      {proportional: 0.00001, derivative: 0.00015}
-      #arm_left_5_actuator:      {proportional: 0.00001, derivative: 0.00015}
-      #arm_right_1_actuator:     {proportional: 0.00001, derivative: 0.00015}
-      #arm_right_2_actuator:     {proportional: 0.00001, derivative: 0.00015}
-      #arm_right_3_actuator:     {proportional: 0.00001, derivative: 0.00015}
-      #arm_right_4_actuator:     {proportional: 0.00001, derivative: 0.00015}
-      #arm_right_5_actuator:     {proportional: 0.00001, derivative: 0.00015}
-
-    #impedance: #Gains for impedance-force mode
-    #  leg_left_1_actuator:      {proportional: 0.00055, derivative: 0.00015}
-    #  leg_left_2_actuator:      {proportional: 0.0055, derivative: 0.00015}
-    #  leg_left_3_actuator:      {proportional: 0.0055, derivative: 0.00015}
-    #  leg_left_4_actuator:      {proportional: 0.0055, derivative: 0.00015}
-    #  leg_left_5_actuator:      {proportional: 0.0055, derivative: 0.00015}
-    #  leg_left_length_actuator: {proportional: 0.0025, derivative: 0.00015}
-    #  leg_right_1_actuator:     {proportional: 0.0055, derivative: 0.00015}
-    #  leg_right_2_actuator:     {proportional: 0.0055, derivative: 0.00015}
-    #  leg_right_3_actuator:     {proportional: 0.0055, derivative: 0.00015}
-    #  leg_right_4_actuator:     {proportional: 0.0055, derivative: 0.00015}
-    #  leg_right_5_actuator:     {proportional: 0.0055, derivative: 0.00015}
-    #  leg_right_length_actuator: {proportional: 0.0025, derivative: 0.00015}
-    #  pelvis_1_actuator:        {proportional: 0.0055, derivative: 0.00015}
-    #  pelvis_2_actuator:        {proportional: 0.0055, derivative: 0.00015}
-    #  #arm_left_1_actuator:      {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_left_2_actuator:      {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_left_3_actuator:      {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_left_4_actuator:      {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_left_5_actuator:      {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_right_1_actuator:     {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_right_2_actuator:     {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_right_3_actuator:     {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_right_4_actuator:     {proportional: 0.00001, derivative: 0.00015}
-    #  #arm_right_5_actuator:     {proportional: 0.00001, derivative: 0.00015}
