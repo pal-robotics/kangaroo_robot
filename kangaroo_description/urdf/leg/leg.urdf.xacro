@@ -16,8 +16,10 @@
   <xacro:property name="leg_femur_max_pos" value="${70.0 *deg_to_rad}" />
   <xacro:property name="leg_knee_min_pos" value="${20.0 *deg_to_rad}" />
   <xacro:property name="leg_knee_max_pos" value="${140.0 *deg_to_rad}" />
-  <xacro:property name="leg_min_length" value="0.131973" />
-  <xacro:property name="leg_max_length" value="0.71416639" />
+  <!--0.131973 is modified to avoid collapsing the robot -->
+  <xacro:property name="leg_min_length" value="0.140973" />
+  <!--0.71516639 is modified to avoid joint limiting errors-->
+  <xacro:property name="leg_max_length" value="0.71516639" />
   
   <!-- INCLUDES -->
 
