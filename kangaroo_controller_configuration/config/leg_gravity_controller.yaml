@@ -21,14 +21,14 @@ ${LEG_SIDE_PREFIX}_gravity_controller:
 
     parameters:
       ${LEG_SIDE_PREFIX}_1_joint:
-        command_interface: "${LEG_SIDE_PREFIX}_1_joint/effort"
+        command_interface: "${LEG_SIDE_PREFIX}_1_joint/${INTERFACE_TYPE}"
       ${LEG_SIDE_PREFIX}_2_joint:
-        command_interface: "${LEG_SIDE_PREFIX}_2_joint/effort"
+        command_interface: "${LEG_SIDE_PREFIX}_2_joint/${INTERFACE_TYPE}"
       ${LEG_SIDE_PREFIX}_3_joint:
-        command_interface: "${LEG_SIDE_PREFIX}_3_joint/effort"
+        command_interface: "${LEG_SIDE_PREFIX}_3_joint/${INTERFACE_TYPE}"
       ${LEG_SIDE_PREFIX}_length_joint:
-        command_interface: "${LEG_SIDE_PREFIX}_length_joint/effort"
+        command_interface: "${LEG_SIDE_PREFIX}_length_joint/${INTERFACE_TYPE}"
       ${LEG_SIDE_PREFIX}_4_joint:
-        command_interface: "${LEG_SIDE_PREFIX}_4_joint/effort"
+        command_interface: "${LEG_SIDE_PREFIX}_4_joint/${INTERFACE_TYPE}"
       ${LEG_SIDE_PREFIX}_5_joint:
-        command_interface: "${LEG_SIDE_PREFIX}_5_joint/effort"
+        command_interface: "${LEG_SIDE_PREFIX}_5_joint/${INTERFACE_TYPE}"

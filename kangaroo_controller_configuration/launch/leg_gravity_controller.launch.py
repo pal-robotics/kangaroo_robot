@@ -29,7 +29,7 @@ from launch_pal.param_utils import parse_parametric_yaml
 class LaunchArguments(LaunchArgumentsBase):
     side: DeclareLaunchArgument = DeclareLaunchArgument(
         name='side',
-        default_value='',
+        choices=['left', 'right'],
         description='side of the leg (left or right)')
 
     activate: DeclareLaunchArgument = DeclareLaunchArgument(
@@ -46,6 +46,13 @@ class LaunchArguments(LaunchArgumentsBase):
         description='Argument to choose whether to deactivate and unload the '
                     'controllers when killing the launch process')
 
+    interface_type: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='interface_type',
+        default_value='effort',
+        choices=['effort', 'force'],
+        description='Command interface the gravity compensation is written to '
+                    '(effort or force)')
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
@@ -60,6 +67,7 @@ def setup_controller_configuration(context: LaunchContext):
     side = read_launch_argument('side', context)
     activate = read_launch_argument('activate', context)
     unload_on_kill = read_launch_argument('unload_on_kill', context)
+    interface_type = read_launch_argument('interface_type', context)
 
     if unload_on_kill == 'True' and activate == 'False':
         logging.getLogger(__name__).warning(
@@ -80,7 +88,8 @@ def setup_controller_configuration(context: LaunchContext):
     controller_name = f'{leg_prefix}_gravity_controller'
     # LEG_SIDE_PREFIX -> "leg_<side>" (joint / controller names),
     # SIDE            -> "<side>"     (foot sole link name, e.g. left_sole_link).
-    remappings = {'LEG_SIDE_PREFIX': leg_prefix, 'SIDE': side}
+    remappings = {'LEG_SIDE_PREFIX': leg_prefix, 'SIDE': side,
+                  'INTERFACE_TYPE': interface_type}
 
     param_file = os.path.join(
         get_package_share_directory('kangaroo_controller_configuration'),
