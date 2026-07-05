@@ -2,6 +2,13 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add force to the idle_mode_on_stop_interfaces
+  See merge request robots/kangaroo_robot!165
+* Add force to the idle_mode_on_stop_interfaces
+* Contributors: Sai Kishor Kothakota
+
 2.13.0 (2026-07-05)
 -------------------
 
