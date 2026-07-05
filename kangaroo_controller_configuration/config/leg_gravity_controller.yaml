@@ -11,7 +11,7 @@ ${LEG_SIDE_PREFIX}_gravity_controller:
       - ${LEG_SIDE_PREFIX}_5_joint
 
     root_link: "base_link"
-    tip_links: ["${SIDE}_foot_sole"]
+    tip_links: ["${SIDE}_sole_link"]
 
     closed_loop:
       first_links: ["${LEG_SIDE_PREFIX}_4_link"]
