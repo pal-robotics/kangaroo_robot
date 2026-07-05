@@ -1,6 +1,6 @@
 ${IMU_SENSOR_NAME}_broadcaster:
   ros__parameters:
     type: imu_sensor_broadcaster/IMUSensorBroadcaster
-    publish_rate: 100.0
+    update_rate: 100
     sensor_name: ${IMU_SENSOR_NAME}
     frame_id: ${IMU_FRAME_ID}
