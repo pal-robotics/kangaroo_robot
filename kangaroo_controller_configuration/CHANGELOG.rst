@@ -2,6 +2,14 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix gravity compensation frames and launch
+  See merge request robots/kangaroo_robot!164
+* Add interface type as an argument for the gravity compensation
+* Fix the tip link of the foot
+* Contributors: Sai Kishor Kothakota
+
 2.12.1 (2026-07-05)
 -------------------
 
