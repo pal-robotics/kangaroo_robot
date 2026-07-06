@@ -2,6 +2,13 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Change the imu sensor broadcaster to 100 Hz
+  See merge request robots/kangaroo_robot!166
+* Change the imu sensor broadcaster to 100 Hz
+* Contributors: Sai Kishor Kothakota
+
 2.13.1 (2026-07-06)
 -------------------
 
