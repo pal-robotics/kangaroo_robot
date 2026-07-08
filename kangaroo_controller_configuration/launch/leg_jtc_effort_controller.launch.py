@@ -30,7 +30,7 @@ from launch_pal.param_utils import parse_parametric_yaml
 class LaunchArguments(LaunchArgumentsBase):
     side: DeclareLaunchArgument = DeclareLaunchArgument(
         name='side',
-        default_value='',
+        choices=['left', 'right'],
         description='side of the leg')
 
 
