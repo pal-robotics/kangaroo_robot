@@ -24,7 +24,9 @@
       <joint name="leg_${side}_${pitch_joint}_joint" role="roll">
         <offset>0.0</offset>
       </joint>
-      
+
+      <param name="simulation">${'$(arg sim_type)' == 'mujoco-ros2-control'}</param>
+
     </transmission>
 
   </xacro:macro>
