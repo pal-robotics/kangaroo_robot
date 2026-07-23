@@ -342,13 +342,10 @@
     <xacro:include filename="$(find kangaroo_description)/mujoco/${world_name}.xacro" />
    
     <mujoco_inputs> 
-      <!-- Mujoco environment -->
-      <scene>
-        <xacro:mj_scene/>
-      </scene>
-      
       <!-- The contents of `raw_inputs` will be copied and pasted directly into the MJCF -->
       <raw_inputs>
+        <xacro:mj_scene/>
+
         <option timestep="0.0005"/>
 
         <!-- Default values -->
