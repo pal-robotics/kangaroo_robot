@@ -52,7 +52,7 @@
   </xacro:macro>
 
   <!-- MACRO DEFINITION-->
-  <xacro:macro name="kangaroo_ros2_control" params="arm_type has_ankle_ft_sensor_right has_ankle_ft_sensor_left torso_imu_model base_imu_model">
+  <xacro:macro name="kangaroo_ros2_control" params="arm_type has_ankle_ft_sensor_right has_ankle_ft_sensor_left torso_imu_model base_imu_model emit_transmissions:=false">
 
     <ros2_control name="ros2_control_kangaroo_system" type="system" is_async="${'true' if sim_type == 'no-simulation' else 'false'}">
       <xacro:if value="${sim_type == 'no-simulation'}" >
@@ -82,8 +82,8 @@
         <xacro:pelvis_ros2_control />
       </xacro:if>
 
-      <xacro:leg_ros2_control side="left" has_ankle_ft_sensor="${has_ankle_ft_sensor_left}"/>
-      <xacro:leg_ros2_control side="right" has_ankle_ft_sensor="${has_ankle_ft_sensor_right}"/>
+      <xacro:leg_ros2_control side="left" has_ankle_ft_sensor="${has_ankle_ft_sensor_left}" emit_transmissions="${emit_transmissions}"/>
+      <xacro:leg_ros2_control side="right" has_ankle_ft_sensor="${has_ankle_ft_sensor_right}" emit_transmissions="${emit_transmissions}"/>
 
       <xacro:if value="${arm_type != 'no-arm'}">
         <xacro:arm_ros2_control side="left" arm_type="${arm_type}"/>

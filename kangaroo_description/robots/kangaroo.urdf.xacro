@@ -76,6 +76,9 @@
   <!-- mujoco-ros2-control, mujoco, no-simulation -->
   <xacro:arg name="sim_type" default="no-simulation" />
 
+  <!-- simple, full -->
+  <xacro:arg name="sim_model" default="simple" />
+
   <!-- false, position, motor -->
   <xacro:arg name="mj_control" default="position" />
   
@@ -90,6 +93,7 @@
   
   <xacro:property name="use_sim_time" value="$(arg use_sim_time)" />
   <xacro:property name="sim_type" value="$(arg sim_type)"/>
+  <xacro:property name="sim_model" value="$(arg sim_model)" />
   <xacro:property name="mj_control" value="$(arg mj_control)" />
   <xacro:property name="collision_type" value="$(arg collision_type)"/>
   <xacro:property name="torso_mesh" value="$(arg torso_mesh)"/>
@@ -133,6 +137,10 @@
   
   <xacro:if value="${sim_type not in ['mujoco-ros2-control', 'mujoco', 'no-simulation']}">
     <xacro:wrong_sim_type />
+  </xacro:if>
+
+  <xacro:if value="${sim_model not in ['simple', 'full']}">
+    <xacro:wrong_sim_model />
   </xacro:if>
 
   <xacro:if value="${mj_control not in ['false', 'position', 'motor']}">
@@ -518,7 +526,13 @@
   <!-- ROS 2 Control -->
   <xacro:unless value="${sim_type == 'mujoco'}">
     <xacro:include filename="$(find kangaroo_description)/ros2_control/ros2_control.urdf.xacro" />
-    <xacro:kangaroo_ros2_control arm_type="${arm_type}" has_ankle_ft_sensor_right="${has_ankle_ft_sensor_right}" has_ankle_ft_sensor_left="${has_ankle_ft_sensor_left}" torso_imu_model="${torso_imu_model}" base_imu_model="${base_imu_model}" />
+    <xacro:kangaroo_ros2_control
+      arm_type="${arm_type}"
+      has_ankle_ft_sensor_right="${has_ankle_ft_sensor_right}"
+      has_ankle_ft_sensor_left="${has_ankle_ft_sensor_left}"
+      torso_imu_model="${torso_imu_model}"
+      base_imu_model="${base_imu_model}"
+      emit_transmissions="${sim_type == 'no-simulation' or sim_model == 'full'}" />
   </xacro:unless>
 
 </robot>

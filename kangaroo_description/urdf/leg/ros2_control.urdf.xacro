@@ -25,7 +25,7 @@
   <xacro:include filename="$(find kangaroo_description)/urdf/ankle/ankle.transmission.xacro" />
 
   <!-- MACRO DEFINITION-->
-  <xacro:macro name="leg_ros2_control" params="side has_ankle_ft_sensor:=false">
+  <xacro:macro name="leg_ros2_control" params="side has_ankle_ft_sensor:=false emit_transmissions:=false">
     <xacro:joint_ros2control name="leg_${side}_1" initial_position="0.0" />
     <xacro:joint_ros2control name="leg_${side}_2" initial_position="0.05" />
     <xacro:joint_ros2control name="leg_${side}_3" initial_position="0.0" />
@@ -35,7 +35,7 @@
     <xacro:passive_joint_ros2control name="leg_${side}_femur" initial_position="0.9" />
     <xacro:passive_joint_ros2control name="leg_${side}_knee" initial_position="1.8" />
 
-    <xacro:if value="${sim_type == 'no-simulation'}" >
+    <xacro:if value="${emit_transmissions}">
       <xacro:hip_transmission_yaw side="${side}" offset="${leg_1_joint_offset}" initial_position="0.0" />
       <xacro:hip_transmission_roll_pitch side="${side}" roll_joint="3" pitch_joint="2" />
       <xacro:kangaroo_leg_length_actuator_transmission side="${side}" />
