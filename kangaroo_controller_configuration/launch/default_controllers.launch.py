@@ -125,11 +125,23 @@ def start_controllers(context, *args, **kwargs):
             paths=['launch', 'pal_pro_gripper_controller.launch.py'],
             launch_arguments={'side': 'right'})
         ld.append(end_effector_right_controller)
+    elif read_launch_argument('end_effector_right', context) == 'RH8D':
+        end_effector_right_controller = include_scoped_launch_py_description(
+            pkg_name='rh8d_controller_configuration',
+            paths=['launch', 'rh8d_hand_controller.launch.py'],
+            launch_arguments={'side': 'right'})
+        ld.append(end_effector_right_controller)
 
     if read_launch_argument('end_effector_left', context) == 'gripper':
         end_effector_left_controller = include_scoped_launch_py_description(
             pkg_name='pal_pro_gripper_controller_configuration',
             paths=['launch', 'pal_pro_gripper_controller.launch.py'],
+            launch_arguments={'side': 'left'})
+        ld.append(end_effector_left_controller)
+    elif read_launch_argument('end_effector_left', context) == 'RH8D':
+        end_effector_left_controller = include_scoped_launch_py_description(
+            pkg_name='rh8d_controller_configuration',
+            paths=['launch', 'rh8d_hand_controller.launch.py'],
             launch_arguments={'side': 'left'})
         ld.append(end_effector_left_controller)
 
