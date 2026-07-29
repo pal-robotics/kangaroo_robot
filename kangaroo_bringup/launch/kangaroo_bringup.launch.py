@@ -93,7 +93,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             'fixation_type': launch_args.fixation_type,
             'ft_sensor_right': launch_args.ft_sensor_right,
             'ft_sensor_left': launch_args.ft_sensor_left,
-            })
+        })
 
     launch_description.add_action(play_motion2)
 
@@ -118,8 +118,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             'ft_sensor_right': launch_args.ft_sensor_right,
             'ft_sensor_left': launch_args.ft_sensor_left,
             'torso_imu_model': launch_args.torso_imu_model,
-            'base_imu_model': launch_args.base_imu_model
-            })
+            'base_imu_model': launch_args.base_imu_model,
+            'use_mimic': launch_args.use_mimic
+        })
 
     launch_description.add_action(robot_state_publisher)
 

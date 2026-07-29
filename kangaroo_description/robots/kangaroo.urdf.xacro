@@ -287,12 +287,12 @@
     </xacro:if>
 
     <xacro:if value="${end_effector_right in ['RH8D']}">
-      <xacro:hand name="hand" side="left" parent="arm_left_tool_link" mimic="${use_mimic}">
+      <xacro:hand name="hand" side="left" parent="arm_left_tool_link">
         <origin xyz="0 0 0" rpy="0 0 1.5708"/>
       </xacro:hand>
     </xacro:if>
     <xacro:if value="${end_effector_left in ['RH8D']}">
-      <xacro:hand name="hand" side="right" parent="arm_right_tool_link" mimic="${use_mimic}">
+      <xacro:hand name="hand" side="right" parent="arm_right_tool_link">
         <origin xyz="0 0 0" rpy="0 0 1.5708"/>
       </xacro:hand>
     </xacro:if>
