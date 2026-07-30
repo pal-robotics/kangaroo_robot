@@ -2,6 +2,13 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Remove default empty option on the side argument
+  See merge request robots/kangaroo_robot!169
+* Remove default empty option on the side argument
+* Contributors: Sai Kishor Kothakota
+
 2.13.2 (2026-07-06)
 -------------------
 * Change the imu sensor broadcaster to 100 Hz

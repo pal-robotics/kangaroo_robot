@@ -2,6 +2,13 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix leg_1_link mesh
+  See merge request robots/kangaroo_robot!168
+* Fix leg_1_link mesh
+* Contributors: Aina Irisarri, Isaac Acevedo
+
 2.13.2 (2026-07-06)
 -------------------
 
