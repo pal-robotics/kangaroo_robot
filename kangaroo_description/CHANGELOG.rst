@@ -2,6 +2,9 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.14.0 (2026-07-30)
 -------------------
 * Fix leg_1_link mesh
