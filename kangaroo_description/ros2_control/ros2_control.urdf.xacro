@@ -89,13 +89,11 @@
         <xacro:arm_ros2_control side="left" arm_type="${arm_type}"/>
         <xacro:arm_ros2_control side="right" arm_type="${arm_type}"/>
 
-        <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
-          <!-- pal-pro-gripper right -->
-          <xacro:ros2_control_pal_pro_gripper name="gripper_right" reduction="1.0" />
+        <xacro:if value="${end_effector_right != 'no-end-effector'}">
+           <xacro:end_effector_ros2_control side="right" end_effector_type="${end_effector_right}" />
         </xacro:if>
-        <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
-          <!-- pal-pro-gripper left -->
-          <xacro:ros2_control_pal_pro_gripper name="gripper_left" reduction="1.0" />
+        <xacro:if value="${end_effector_left != 'no-end-effector'}">
+           <xacro:end_effector_ros2_control side="left" end_effector_type="${end_effector_left}" />
         </xacro:if>
       </xacro:if>
 
@@ -110,6 +108,16 @@
     </xacro:unless>
 
     </ros2_control>
+
+    <!-- End effectors with their own hardware component (like RH8D via rh8d_topic_driver). -->
+    <xacro:if value="${arm_type != 'no-arm'}">
+      <xacro:if value="${end_effector_right != 'no-end-effector'}">
+        <xacro:end_effector_standalone_ros2_control side="right" end_effector_type="${end_effector_right}" />
+      </xacro:if>
+      <xacro:if value="${end_effector_left != 'no-end-effector'}">
+        <xacro:end_effector_standalone_ros2_control side="left" end_effector_type="${end_effector_left}" />
+      </xacro:if>
+    </xacro:if>
 
     <xacro:if value="${sim_type == 'no-simulation'}">
       <xacro:if value="${torso_imu_model == 'orientus'}">

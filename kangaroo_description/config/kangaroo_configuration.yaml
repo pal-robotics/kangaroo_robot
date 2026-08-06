@@ -65,7 +65,7 @@ sim_type:
   choices: ["mujoco-ros2-control", "mujoco", "no-simulation"]
 
 use_mimic:
-  description: "Whether to include the mimic joints in the model"
+  description: "Model the legs as an open chain, with femur/knee slaved to the length joint via mimic tags, instead of the closed 4-bar linkage. Does not affect the RH8D hands, which always use their virtual actuator joints."
   choices: ["True", "False"]
   default_value: "False"
 

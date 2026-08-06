@@ -201,7 +201,8 @@ def create_robot_description_param(context, *args, **kwargs):
         'has_head': read_launch_argument('has_head', context),
         'has_pelvis': read_launch_argument('has_pelvis', context),
         'torso_imu_model': read_launch_argument('torso_imu_model', context),
-        'base_imu_model': read_launch_argument('base_imu_model', context)
+        'base_imu_model': read_launch_argument('base_imu_model', context),
+        'use_mimic': read_launch_argument('use_mimic', context)
     }
     robot_description = load_xacro(xacro_file_path, xacro_input_args)
 
