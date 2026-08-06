@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.14.1 (2026-08-06)
+-------------------
 * Remove unused dependency kangaroo_moveit_config
 * Contributors: Noel Jimenez
 
