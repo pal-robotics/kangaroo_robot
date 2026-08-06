@@ -2,6 +2,15 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Proper launch of the rh8d driver
+  See merge request robots/kangaroo_robot!171
+* Adding path to launch rh8d controller
+  It will load different rh8d ros2 control config depending if it's sim or
+  not.
+* Contributors: Sai Kishor Kothakota, Óscar Martínez
+
 2.14.1 (2026-08-06)
 -------------------
 

@@ -2,6 +2,18 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Proper launch of the rh8d driver
+  See merge request robots/kangaroo_robot!171
+* Adding path to launch rh8d controller
+  It will load different rh8d ros2 control config depending if it's sim or
+  not.
+* Removing passing use_mimic to the rh8d
+  use_mimic now only controls the leg chain and it's passed down properly
+  the launch files
+* Contributors: Sai Kishor Kothakota, Óscar Martínez
+
 2.14.1 (2026-08-06)
 -------------------
 
