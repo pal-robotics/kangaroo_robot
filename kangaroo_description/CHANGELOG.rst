@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.15.0 (2026-08-06)
+-------------------
 * Proper launch of the rh8d driver
   See merge request robots/kangaroo_robot!171
 * Adding path to launch rh8d controller
