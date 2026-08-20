@@ -2,6 +2,13 @@
 Changelog for package kangaroo_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add missing broadcaster dependencies
+  See merge request robots/kangaroo_robot!177
+* Add missing broadcaster dependencies
+* Contributors: Sai Kishor Kothakota
+
 2.15.0 (2026-08-06)
 -------------------
 * Proper launch of the rh8d driver

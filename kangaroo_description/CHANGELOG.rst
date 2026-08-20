@@ -2,6 +2,9 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.15.0 (2026-08-06)
 -------------------
 * Proper launch of the rh8d driver
