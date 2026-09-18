@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.16.0 (2026-09-19)
+-------------------
 * Add simulation parameter to leg transmissions
   See merge request robots/kangaroo_robot!170
 * Properly set index number for ankle and hip xy transmissions

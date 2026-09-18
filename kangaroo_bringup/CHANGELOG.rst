@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.16.0 (2026-09-19)
+-------------------
 * Add simulation parameter to leg transmissions
   See merge request robots/kangaroo_robot!170
 * added full model sim option that emits the transmissions
