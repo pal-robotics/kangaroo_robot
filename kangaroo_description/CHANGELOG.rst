@@ -2,6 +2,19 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add simulation parameter to leg transmissions
+  See merge request robots/kangaroo_robot!170
+* Properly set index number for ankle and hip xy transmissions
+  See merge request robots/kangaroo_robot!173
+* properly map actuator indexes in the transmission for hip xy and ankle xy
+* move scene tags inside raw input so that it is kept when saving the mjcf
+* point to full models pids if full model
+* added full model sim option that emits the transmissions
+* Add simulation parameter to leg transmissions
+* Contributors: Daniel Costanzi, Sai Kishor Kothakota, danielcostanzi
+
 2.15.1 (2026-08-21)
 -------------------
 
