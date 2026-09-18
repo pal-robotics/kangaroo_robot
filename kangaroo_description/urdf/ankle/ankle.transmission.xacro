@@ -11,9 +11,9 @@
     <transmission name="leg_${side}_ankle_transmission">
       <plugin>kangaroo_transmissions/AnkleXYCustomTransmission</plugin>
 
-      <actuator name="leg_${side}_${roll_joint}_actuator" role="actuator_right"/>
+      <actuator name="leg_${side}_4_actuator" role="actuator_right"/>
 
-      <actuator name="leg_${side}_${pitch_joint}_actuator" role="actuator_left"/>
+      <actuator name="leg_${side}_5_actuator" role="actuator_left"/>
 
       <actuator name="${read_actuator}" role="actuator_length"/>
 
@@ -24,7 +24,9 @@
       <joint name="leg_${side}_${pitch_joint}_joint" role="roll">
         <offset>0.0</offset>
       </joint>
-      
+
+      <param name="simulation">${'$(arg sim_type)' == 'mujoco-ros2-control'}</param>
+
     </transmission>
 
   </xacro:macro>

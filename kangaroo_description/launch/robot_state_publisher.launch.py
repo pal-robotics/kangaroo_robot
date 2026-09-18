@@ -48,6 +48,9 @@ class LaunchArguments(LaunchArgumentsBase):
     # ["mujoco-ros2-control", "mujoco", "no-simulation"]
     sim_type: DeclareLaunchArgument = KangarooArgs.sim_type
 
+    # ["simple", "full"]
+    sim_model: DeclareLaunchArgument = KangarooArgs.sim_model
+
     # ["True", "False"]
     use_mimic: DeclareLaunchArgument = KangarooArgs.use_mimic
 
@@ -188,6 +191,7 @@ def create_robot_description_param(context, *args, **kwargs):
         'use_sim_time': read_launch_argument('use_sim_time', context),
         'collision_type': read_launch_argument('collision_type', context),
         'sim_type': read_launch_argument('sim_type', context),
+        'sim_model': read_launch_argument('sim_model', context),
         'mj_control': read_launch_argument('mj_control', context),
         'fixation_type': read_launch_argument('fixation_type', context),
         'feet_type': read_launch_argument('feet_type', context),

@@ -37,6 +37,9 @@ class LaunchArguments(LaunchArgumentsBase):
     # ["mujoco-ros2-control", "mujoco", "no-simulation"]
     sim_type: DeclareLaunchArgument = KangarooArgs.sim_type
 
+    # ["simple", "full"]
+    sim_model: DeclareLaunchArgument = KangarooArgs.sim_model
+
     # ["True", "False"]
     use_mimic: DeclareLaunchArgument = KangarooArgs.use_mimic
 
@@ -105,6 +108,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
             'use_sim_time': launch_args.use_sim_time,
             'collision_type': launch_args.collision_type,
             'sim_type': launch_args.sim_type,
+            'sim_model': launch_args.sim_model,
             'mj_control': launch_args.mj_control,
             'has_head': launch_args.has_head,
             'has_pelvis': launch_args.has_pelvis,

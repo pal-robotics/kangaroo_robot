@@ -64,6 +64,11 @@ sim_type:
   default_value: "no-simulation"
   choices: ["mujoco-ros2-control", "mujoco", "no-simulation"]
 
+sim_model:
+  description: "Which robot model to simulate: 'simple' (kangaroo_description) or 'full' (kangaroo_full_model_robot, with leg transmissions enabled)"
+  default_value: "simple"
+  choices: ["simple", "full"]
+
 use_mimic:
   description: "Model the legs as an open chain, with femur/knee slaved to the length joint via mimic tags, instead of the closed 4-bar linkage. Does not affect the RH8D hands, which always use their virtual actuator joints."
   choices: ["True", "False"]

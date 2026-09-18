@@ -46,3 +46,4 @@ class KangarooArgs:
     collision_type: DLA = __arg_creator.get_argument('collision_type')
     use_mimic: DLA = __arg_creator.get_argument('use_mimic')
     sim_type: DLA = __arg_creator.get_argument('sim_type')
+    sim_model: DLA = __arg_creator.get_argument('sim_model')

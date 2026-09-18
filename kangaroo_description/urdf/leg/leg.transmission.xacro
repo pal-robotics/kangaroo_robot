@@ -17,6 +17,7 @@
       </joint>
       <param name="joint_type">leg_length</param>
       <param name="leg_side">${side}</param>
+      <param name="simulation">${'$(arg sim_type)' == 'mujoco-ros2-control'}</param>
     </transmission>
 
     <transmission name="leg_${side}_knee_joint_trans">
@@ -27,6 +28,7 @@
       </joint>
       <param name="joint_type">knee</param>
       <param name="leg_side">${side}</param>
+      <param name="simulation">${'$(arg sim_type)' == 'mujoco-ros2-control'}</param>
     </transmission>
 
     <transmission name="leg_${side}_femur_joint_trans">
@@ -37,6 +39,7 @@
       </joint>
       <param name="joint_type">femur</param>
       <param name="leg_side">${side}</param>
+      <param name="simulation">${'$(arg sim_type)' == 'mujoco-ros2-control'}</param>
     </transmission>
   </xacro:macro>
 
@@ -45,8 +48,8 @@
     <transmission name="leg_${side}_hip_transmission">
       <plugin>kangaroo_transmissions/HipXYCustomTransmission</plugin>
       
-      <actuator name="leg_${side}_${pitch_joint}_actuator" role="actuator_left"/>
-      <actuator name="leg_${side}_${roll_joint}_actuator" role="actuator_right"/>
+      <actuator name="leg_${side}_2_actuator" role="actuator_left"/>
+      <actuator name="leg_${side}_3_actuator" role="actuator_right"/>
      
       <joint name="leg_${side}_${roll_joint}_joint" role="pitch">
         <offset>0.0</offset>
@@ -55,6 +58,7 @@
         <offset>0.0</offset>
       </joint>
       <param name="leg_side">${side}</param>
+      <param name="simulation">${'$(arg sim_type)' == 'mujoco-ros2-control'}</param>
     </transmission>
   </xacro:macro>
 
@@ -67,6 +71,7 @@
         <offset>${offset}</offset>
       </joint>
       <param name="leg_side">${side}</param>
+      <param name="simulation">${'$(arg sim_type)' == 'mujoco-ros2-control'}</param>
     </transmission>
   </xacro:macro>
 
