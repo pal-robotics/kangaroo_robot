@@ -422,9 +422,9 @@
         <!-- this tag won't work in a regular mjcf xml file -->
         <sensor>
           <xacro:if value="${torso_imu_model != 'no-imu'}">
-            <framequat name="torso_imu_sensor_quat" objtype="site" objname="torso_imu_link" />
-            <gyro name="torso_imu_sensor_gyro" site="torso_imu_link" />
-            <accelerometer name="torso_imu_sensor_accel" site="torso_imu_link" />
+            <framequat name="torso_imu_sensor_quat" objtype="site" objname="torso_imu_link" noise="0.001" />
+            <gyro name="torso_imu_sensor_gyro" site="torso_imu_link" noise="0.0015" />
+            <accelerometer name="torso_imu_sensor_accel" site="torso_imu_link" noise="0.02" />
           </xacro:if>
           <xacro:if value="${base_imu_model != 'no-imu'}">
             <framequat name="base_imu_sensor_quat" objtype="site" objname="base_imu_sensor_link" />
