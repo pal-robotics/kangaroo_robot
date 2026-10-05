@@ -38,6 +38,8 @@
       <param name="angular_velocity_mjcf_suffix">_gyro</param>
       <!-- Default value of linear_acceleration_mjcf_suffix is '_accel' -->
       <param name="linear_acceleration_mjcf_suffix">_accel</param>
+      <!-- Default value of angular_velocity_mjcf_suffix is '_gyro' -->
+      <param name="noise_distribution">uniform</param>
       <state_interface name="orientation.x"/>
       <state_interface name="orientation.y"/>
       <state_interface name="orientation.z"/>

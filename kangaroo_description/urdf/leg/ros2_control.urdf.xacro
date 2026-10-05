@@ -43,7 +43,7 @@
     </xacro:if>
     <xacro:if value="${has_ankle_ft_sensor}">
         <xacro:include filename="$(find pal_urdf_utils)/urdf/ft_sensors/ftsensor.ros2_control.xacro"/>
-        <xacro:ros2_control_force_torque_sensor name="ankle_${side}_ft_sensor"/>
+        <xacro:ros2_control_force_torque_sensor name="ankle_${side}_ft_sensor" sim_noise_type="uniform"/>
     </xacro:if>
   </xacro:macro>
 
