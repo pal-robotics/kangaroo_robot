@@ -2,6 +2,14 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add sensor noise types to the ros2_control tags
+  See merge request robots/kangaroo_robot!180
+* Add default noise values
+* Add sensor noise types to the ros2_control tags
+* Contributors: Sai Kishor Kothakota
+
 2.16.0 (2026-09-19)
 -------------------
 * Add simulation parameter to leg transmissions
