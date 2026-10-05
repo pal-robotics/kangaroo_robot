@@ -2,8 +2,8 @@
 Changelog for package kangaroo_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.16.1 (2026-10-05)
+-------------------
 * Add sensor noise types to the ros2_control tags
   See merge request robots/kangaroo_robot!180
 * Add default noise values
