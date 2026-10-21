@@ -34,7 +34,7 @@
   <!-- no-arm, 4dof, 5dof, 7dof] -->
   <xacro:arg name="arm_type" default="4dof" />
 
-  <!-- no-end-effector, gripper, RH8D -->
+  <!-- no-end-effector, pal-pro-gripper, RH8D -->
   <xacro:arg name="end_effector_right" default="no-end-effector" />
   <xacro:arg name="end_effector_left" default="no-end-effector" />
   
@@ -159,10 +159,10 @@
     <xacro:wrong_arm_type />
   </xacro:if>
 
-  <xacro:if value="${end_effector_right not in ['no-end-effector', 'gripper', 'RH8D']}">
+  <xacro:if value="${end_effector_right not in ['no-end-effector', 'pal-pro-gripper', 'RH8D']}">
     <xacro:wrong_end_effector_right />
   </xacro:if>
-  <xacro:if value="${end_effector_left not in ['no-end-effector', 'gripper', 'RH8D']}">
+  <xacro:if value="${end_effector_left not in ['no-end-effector', 'pal-pro-gripper', 'RH8D']}">
     <xacro:wrong_end_effector_left />
   </xacro:if>
 
@@ -191,7 +191,7 @@
     </xacro:if>
   </xacro:if>
   <xacro:if value="${arm_type in ['7dof']}">
-    <xacro:if value="${end_effector_right not in ['no-end-effector', 'gripper'] or end_effector_left not in ['no-end-effector', 'gripper']}">
+    <xacro:if value="${end_effector_right not in ['no-end-effector', 'pal-pro-gripper'] or end_effector_left not in ['no-end-effector', 'pal-pro-gripper']}">
       <xacro:wrong_arm_end_effector_combination />
     </xacro:if>
   </xacro:if>
@@ -235,7 +235,7 @@
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/humanoid/arm.urdf.xacro" />
     
     <!-- End Effector -->
-    <xacro:if value="${end_effector_right in ['gripper'] or end_effector_left in ['gripper']}">
+    <xacro:if value="${end_effector_right in ['pal-pro-gripper'] or end_effector_left in ['pal-pro-gripper']}">
       <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/humanoid/pal_pro_gripper.urdf.xacro" />
     </xacro:if>
     <xacro:if value="${end_effector_right in ['RH8D'] or end_effector_left in ['RH8D']}">
@@ -287,10 +287,10 @@
 
     <!-- END EFFECTOR -->
 
-    <xacro:if value="${end_effector_right in ['gripper']}">
+    <xacro:if value="${end_effector_right in ['pal-pro-gripper']}">
       <xacro:gripper name="gripper_right" parent="${end_effector_right_link}"/>
     </xacro:if>
-    <xacro:if value="${end_effector_left in ['gripper']}">
+    <xacro:if value="${end_effector_left in ['pal-pro-gripper']}">
       <xacro:gripper name="gripper_left" parent="${end_effector_left_link}"/>
     </xacro:if>
 
@@ -330,7 +330,7 @@
   <!-- MUJOCO   -->
 
   <xacro:if value="${sim_type == 'mujoco' or sim_type == 'mujoco-ros2-control'}">
-    <xacro:if value="${end_effector_right == 'gripper' or end_effector_left == 'gripper'}">
+    <xacro:if value="${end_effector_right == 'pal-pro-gripper' or end_effector_left == 'pal-pro-gripper'}">
       <xacro:include filename="$(find pal_pro_gripper_description)/mujoco/mj_tags.xacro" />
     </xacro:if>
     <xacro:if value="${end_effector_right == 'RH8D'}">
@@ -356,10 +356,10 @@
         <!-- Contact-->
         <contact>
           <xacro:mj_robot_contacts />
-          <xacro:if value="${end_effector_right == 'gripper'}">
+          <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
             <xacro:mj_gripper_contact name="gripper_right" />
           </xacro:if>
-          <xacro:if value="${end_effector_left == 'gripper'}">
+          <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
             <xacro:mj_gripper_contact name="gripper_left" />
           </xacro:if>
           <xacro:if value="${end_effector_right == 'RH8D'}">
@@ -384,10 +384,10 @@
         <!-- Equality-->
         <equality>
           <xacro:mj_robot_equality />
-          <xacro:if value="${end_effector_right == 'gripper'}">
+          <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
             <xacro:mj_gripper_equality name="gripper_right" anchor_r="0.014 -0.0015 0" anchor_l="0.014 -0.001 0" />
           </xacro:if>
-          <xacro:if value="${end_effector_left == 'gripper'}">
+          <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
             <xacro:mj_gripper_equality name="gripper_left" anchor_r="0.01475 -0.001463 0.001" anchor_l="0.0145 -0.0015 0.001"/>
           </xacro:if>
           <xacro:if value="${end_effector_right == 'RH8D'}">
@@ -401,10 +401,10 @@
         <!-- Actuator -->
         <actuator>
           <xacro:mj_robot_actuators/>
-          <xacro:if value="${end_effector_right == 'gripper'}">
+          <xacro:if value="${end_effector_right == 'pal-pro-gripper'}">
             <xacro:mj_gripper_actuators name="gripper_right" />
           </xacro:if>
-          <xacro:if value="${end_effector_left == 'gripper'}">
+          <xacro:if value="${end_effector_left == 'pal-pro-gripper'}">
             <xacro:mj_gripper_actuators name="gripper_left" />
           </xacro:if>
           <xacro:if value="${end_effector_right == 'RH8D'}">

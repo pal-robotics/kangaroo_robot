@@ -119,7 +119,7 @@ def start_controllers(context, *args, **kwargs):
         ld.append(arm_right_controller)
 
     # End-effector controllers
-    if read_launch_argument('end_effector_right', context) == 'gripper':
+    if read_launch_argument('end_effector_right', context) == 'pal-pro-gripper':
         end_effector_right_controller = include_scoped_launch_py_description(
             pkg_name='pal_pro_gripper_controller_configuration',
             paths=['launch', 'pal_pro_gripper_controller.launch.py'],
@@ -132,7 +132,7 @@ def start_controllers(context, *args, **kwargs):
             launch_arguments={'side': 'right'})
         ld.append(end_effector_right_controller)
 
-    if read_launch_argument('end_effector_left', context) == 'gripper':
+    if read_launch_argument('end_effector_left', context) == 'pal-pro-gripper':
         end_effector_left_controller = include_scoped_launch_py_description(
             pkg_name='pal_pro_gripper_controller_configuration',
             paths=['launch', 'pal_pro_gripper_controller.launch.py'],
