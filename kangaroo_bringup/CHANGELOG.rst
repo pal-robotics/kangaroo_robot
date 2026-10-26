@@ -2,8 +2,8 @@
 Changelog for package kangaroo_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.17.0 (2026-10-26)
+-------------------
 * Rename play_motion files
 * Rename gripper comments to pal-pro-gripper
 * Contributors: Aina
